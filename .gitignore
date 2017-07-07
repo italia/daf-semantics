@@ -1,8 +1,12 @@
 .idea
 .DS_Store
-
-target
 .history
+
+.classpath
+.project
+.settings/
+target
+
 logs
 .swagger-codegen-ignore
 client/.gitignore
