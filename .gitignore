@@ -1,12 +1,15 @@
+
 .idea
 .DS_Store
 .history
 
+# Eclipse #
 .classpath
 .project
 .settings/
 target
 
+# Play! #
 logs
 .swagger-codegen-ignore
 client/.gitignore
@@ -21,3 +24,21 @@ client/gradlew.bat
 client/pom.xml
 client/settings.gradle
 client/src/
+
+# Play! #
+bin/
+/db
+.eclipse
+/lib/
+/logs/
+/modules
+/project/project
+/project/target
+/target
+tmp/
+test-result
+server.pid
+*.eml
+/dist/
+.cache
+
