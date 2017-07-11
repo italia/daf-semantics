@@ -5,8 +5,8 @@ info:
   description: "KB: testing OpenAPI"
   termsOfService: "http://swagger.io/terms/"
   contact: 
-    name: "seralf"
-    email: "seralf@gmail.com"
+    name: "swagger"
+    email: "apiteam@swagger.io"
   license: 
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
