@@ -19,6 +19,32 @@ consumes:
 produces: 
   - "application/json"
 paths: 
+
+  "/ontology/{slug}": 
+    get: 
+      summary: "gets an ontology"
+      description: "gets an ontology"
+      operationId: "getOntology"
+      produces: 
+        - "text/turtle"
+        - "application/rdf+xml"
+      parameters:
+        - in: path
+          name: slug
+          description: the id for the new ontology
+          required: true
+          type: string
+          #default: "foaf"
+          
+      responses: 
+        200:
+          description: "status of operation"
+          # examples: { "message": "ontology retrieved" }
+          schema:
+            type: string
+          
+      tags: [ ontologies ] 
+  
   "/time/now": 
     get: 
       summary: "returns the current time"
@@ -29,9 +55,10 @@ paths:
       responses: 
         200:
           description: "the current time"
-          #examples: { "id": 3333, "time": "2017-06-28 11:12:00" }
+          examples: { "id": 3333, "time": "2017-06-28 11:12:00" }
           schema: 
             $ref: "#/definitions/Time"
+      tags: [ test ] 
 
 definitions: 
   Time: 

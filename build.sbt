@@ -18,19 +18,18 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, ApiFirstCore, Ap
 scalaVersion in ThisBuild := "2.11.8"
 
 libraryDependencies ++= Seq(
-  jdbc,
   cache,
   ws,
   filters,
   "org.webjars" % "swagger-ui" % "3.0.7",
   specs2 % Test,
-  // "org.specs2" %% "specs2-scalacheck" % "3.8.9" % Test,
   "org.scalacheck" %% "scalacheck" % "1.12.4" % "test",
   "me.jeffmay" %% "play-json-tests" % "1.5.0" % Test,
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
   "org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
-  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.4"
-
+  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.4",
+  //"it.awave.kb" % "kb-core" % "0.0.1", // CHECK: see how to point to maven local!
+  "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
   
   //"com.github.dmitraver" %% "play-thymeleaf-plugin" % "1.0"
   //"org.mongodb" %% "casbah" % "3.1.1", //,
@@ -52,6 +51,9 @@ resolvers ++= Seq(
 routesGenerator := InjectedRoutesGenerator
 
 apiFirstParsers := Seq(ApiFirstSwaggerParser.swaggerSpec2Ast.value).flatten
+
+
+// play.modules.enabled += "modules.OnStartupModule"
 
 playScalaAutogenerateTests := false
 
@@ -76,11 +78,16 @@ dockerCommands += ExecCmd("ENTRYPOINT", s"bin/${name.value}", "-Dconfig.file=con
 dockerExposedPorts := Seq(9000)
 dockerRepository := Option("10.98.74.120:5000")
 
+// resolver for local maven repository
+//resolvers += "Local Maven Repository" at s"file://${Path.userHome.absolutePath}/.m2/repository"
 
+resolvers += Resolver.mavenLocal // Also use $HOME/.m2/repository
+
+
+
+// WART
 // wartremoverErrors ++= Warts.unsafe
-
 // Wart Remover Plugin Configuration
 // wartremoverErrors ++= Warts.allBut(Wart.Nothing, Wart.PublicInference, Wart.Any, Wart.Equals)
-
 // wartremoverExcluded ++= getRecursiveListOfFiles(baseDirectory.value / "target" / "scala-2.11" / "routes").toSeq
 
