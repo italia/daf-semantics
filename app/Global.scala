@@ -12,15 +12,19 @@ import modules.KBModule
 //CHECK: import it.gov.daf.catalogmanager.listeners.{IngestionListener, IngestionListenerImpl}
 
 @Singleton
-class Global @Inject() (
-    lifecycle: ApplicationLifecycle) {
+class Global @Inject() (lifecycle: ApplicationLifecycle) {
+
+  @Inject
+  def onStart() {
+    Logger.info("#### Application STOP")
+  }
 
   // REVIEW here
-  //  lifecycle.addStopHook { () =>
-  //    Future.successful({
-  //      println("#### Application STOP")
-  //    })
-  //  }
+  lifecycle.addStopHook { () =>
+    Future.successful({
+      Logger.info("#### Application STOP")
+    })
+  }
 
   // TODO: plug a servicefactory for repository
 
@@ -31,9 +35,9 @@ class StartModule extends AbstractModule {
 
   def configure() = {
 
-    println("\n\n\n\nCHECKING: StartModule.configure()")
+    Logger.info("\n\nCHECKING: StartModule.configure()")
 
-    //    bind(classOf[OnStartupModule]).asEagerSingleton()
+    // CHECK: bind(classOf[OnStartupModule]).asEagerSingleton()
 
     bind(classOf[KBModule]).to(classOf[KBModuleBase]).asEagerSingleton()
   }

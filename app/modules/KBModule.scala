@@ -14,6 +14,7 @@ import play.api.Configuration
 import scala.concurrent.ExecutionContext
 import play.api.Logger
 import it.almawave.linkeddata.kb.RDFRepo
+import it.gov.daf.lodmanager.utility.ConfigHelper
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule
@@ -23,7 +24,7 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  val kbrepo = RDFRepo.inMemory("RDF_CACHE")
+  lazy val kbrepo = RDFRepo.inMemory("RDF_CACHE") // CHECK HERE 
 
   @Inject
   def onStart(
@@ -31,24 +32,32 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     env: Environment,
     configuration: Configuration)(implicit ec: ExecutionContext) {
 
-    val rdf_folder = "C:/Users/Al.Serafini/awavedev/workspace_playground/kb-core/ontologies"
+    val conf = configuration.getConfig("kb").get.underlying
+    Logger.info("KBModuleBase.config")
+    Logger.info(ConfigHelper.pretty(conf))
+
+    val rdf_folder = conf.getString("cache")
 
     Logger.info("KBModuleBase.START....")
 
+    // this is needed for ensure proper connection(s) etc
     kbrepo.start()
+
+    // this could be delegated to a specific endpoint
     kbrepo.importFrom(rdf_folder)
 
+    // CHECK the initial (total) triples count
     val triples = kbrepo.triplesCount()
-
     Logger.info(s"KBModuleBase: ${triples} triples loaded")
 
   }
 
-  //  TODO:
+  // TODO:
   lifecycle.addStopHook({ () =>
 
     Future.successful {
 
+      // this is useful for saving files, closing connection ,etc
       kbrepo.stop()
       Logger.info("KBModuleBase.STOP....")
 

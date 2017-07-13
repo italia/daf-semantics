@@ -16,6 +16,9 @@ import it.almawave.linkeddata.kb.RDFRepo
 import scala.collection.JavaConverters._
 import scala.collection.JavaConversions._
 
+/*
+ * REMOVE: module for manual experiments / testing
+ */
 @Singleton
 class OnStartupModule {
 

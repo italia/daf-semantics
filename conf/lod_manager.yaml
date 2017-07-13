@@ -1,8 +1,8 @@
 swagger: "2.0"
 info: 
   version: "1.0.0"
-  title: "KB test"
-  description: "KB: testing OpenAPI"
+  title: "LOD Manager test"
+  description: "LOD Manager: testing OpenAPI"
   termsOfService: "http://swagger.io/terms/"
   contact: 
     name: "swagger"
@@ -19,6 +19,21 @@ consumes:
 produces: 
   - "application/json"
 paths: 
+
+  "/triples": 
+    get: 
+      summary: "number of triples"
+      description: "number of triples"
+      operationId: "countTriples"
+      produces: 
+        - "application/json"
+      
+      responses: 
+        200:
+          description: "triples"
+          examples: { "triples": 0 }
+          schema:
+            $ref: "#/definitions/TriplesCount"
 
   "/ontology/{slug}": 
     get: 
@@ -44,7 +59,11 @@ paths:
             type: string
           
       tags: [ ontologies ] 
+      
+  # TODO "/ontology/{slug}/triples": 
+
   
+  # NOTE: this endpoint can be used as a small reference
   "/time/now": 
     get: 
       summary: "returns the current time"
@@ -61,6 +80,7 @@ paths:
       tags: [ test ] 
 
 definitions: 
+
   Time: 
     type: "object"
     required: 
@@ -72,3 +92,15 @@ definitions:
         format: "int64"
       time: 
         type: "string"
+
+  TriplesCount: 
+    type: "object"
+    required: 
+      - "id"
+      - "triples"
+    properties: 
+      id: 
+        type: "string"
+      triples: 
+        type: "integer"
+
