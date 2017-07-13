@@ -25,6 +25,9 @@ import it.gov.daf.lodmanager.service.ServiceRegistry
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -33,7 +36,7 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-    
+                        
   import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
     // ----- End of unmanaged code area for package Lod_managerYaml
@@ -50,17 +53,7 @@ package lod_manager.yaml {
         // ----- End of unmanaged code area for constructor Lod_managerYaml
         val getOntology = getOntologyAction { (slug: String) =>  
             // ----- Start of unmanaged code area for action  Lod_managerYaml.getOntology
-            //      NotImplementedYet
-
-      //      val onto = ServiceRegistry.kbService.getOntology(slug)
-
-      val onto = ServiceRegistry.kbRepository.getOntology(slug)
-
-      //      GetOntology200(
-      //        Future {
-      //          "test OK"
-      //        })
-
+            val onto = ServiceRegistry.kbRepository.getOntology(slug)
       GetOntology200(onto)
             // ----- End of unmanaged code area for action  Lod_managerYaml.getOntology
         }
@@ -75,24 +68,6 @@ package lod_manager.yaml {
       })
             // ----- End of unmanaged code area for action  Lod_managerYaml.getCurrentTime
         }
-    
-     // Dead code for absent methodLod_managerYaml.get_ontology
-     /*
-      // ----- Start of unmanaged code area for action  Lod_managerYaml.get_ontology
-
-      NotImplementedYet
-
-      // ----- End of unmanaged code area for action  Lod_managerYaml.get_ontology
-     */
-
-    
-     // Dead code for absent methodLod_managerYaml.addOntology
-     /*
-      // ----- Start of unmanaged code area for action  Lod_managerYaml.addOntology
-      NotImplementedYet
-      // ----- End of unmanaged code area for action  Lod_managerYaml.addOntology
-     */
-
     
     }
 }

@@ -19,37 +19,35 @@ import scala.collection.JavaConversions._
 @Singleton
 class OnStartupModule {
 
-  Logger.info("OnStartupModule...")
-
   @Inject
-  def onStart(
+  def start(
     app: Application,
     env: Environment,
     configuration: Configuration)(implicit ec: ExecutionContext) {
 
-    Logger.info("#### Application START")
+    Logger.info("#### OnStartupModule.START")
 
     val conf = configuration.getConfig("kb")
 
     // print a list of configured metadata for ontologies
-    println("#### ONTOLOGIES....")
+    Logger.debug("#### ONTOLOGIES....")
     conf.getConfig("ontologies").keys()
-      .foreach { k => println(k) }
+      .foreach { k => Logger.debug(k) }
 
     //    REVIEW HERE ----------------------------------------------------------------------------
-    //    val dir_ontologies = Paths.get(conf.getString("cache")).toFile()
-    //    println("\n\n\n\n CACHE DIRECTORY: " + dir_ontologies)
+    val dir_ontologies = Paths.get(conf.getString("cache")).toFile()
+    Logger.debug("\n\n\n\n CACHE DIRECTORY: " + dir_ontologies)
 
     // TODO: check logging!
 
-    //    @Inject
-    //    val repo: RDFRepo = RDFRepo.inMemory()
-    //    // TEST val repo = new DummyRepo
-    //    repo.start()
-    //    repo.importFrom(dir_ontologies.toString()) // CHECK: evaluate using Paths
+    @Inject
+    val repo: RDFRepo = RDFRepo.inMemory()
+    // TEST val repo = new DummyRepo
+    repo.start()
+    repo.importFrom(dir_ontologies.toString()) // CHECK: evaluate using Paths
 
-    //    val triples = repo.triplesCount()
-    //    Logger.info(s"loaded ${triples} triples...")
+    val triples = repo.triplesCount()
+    Logger.info(s"loaded ${triples} triples...")
 
     // CHECK: how to use repo.shutdown?
 
