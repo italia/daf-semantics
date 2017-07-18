@@ -30,7 +30,8 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
   def onStart(
     app: Application,
     env: Environment,
-    configuration: Configuration)(implicit ec: ExecutionContext) {
+    configuration: Configuration
+  )(implicit ec: ExecutionContext) {
 
     val conf = configuration.getConfig("kb").get.underlying
     Logger.info("KBModuleBase.config")
@@ -66,6 +67,4 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
   })
 
 }
-
-
 

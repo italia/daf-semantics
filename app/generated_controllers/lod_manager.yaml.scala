@@ -22,17 +22,44 @@ import play.Logger
 import scala.concurrent.Future
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import it.gov.daf.lodmanager.service.ServiceRegistry
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import modules.KBModuleBase
 import modules.KBModule
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -50,7 +77,7 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-            
+                        
   import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
     // ----- End of unmanaged code area for package Lod_managerYaml
@@ -77,10 +104,38 @@ package lod_manager.yaml {
       })
             // ----- End of unmanaged code area for action  Lod_managerYaml.countTriples
         }
+        val countTriplesByOntology = countTriplesByOntologyAction { (ontoid: String) =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
+            val kbrepo = kb.kbrepo
+      //      lazy val triples = kbrepo.triplesCount("http://xmlns.com/foaf/spec/index.rdf") // TODO: add an inverse prefix lookup
+
+      lazy val triples = kbrepo.triplesCount("memory://graph/") // TODO: add an inverse prefix lookup
+
+      CountTriplesByOntology200(Future {
+        TriplesCount("foaf", triples)
+      })
+
+      //      NotImplementedYet
+            // ----- End of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
+        }
         val getOntology = getOntologyAction { (slug: String) =>  
             // ----- Start of unmanaged code area for action  Lod_managerYaml.getOntology
-            val onto = ServiceRegistry.kbRepository.getOntology(slug)
-      GetOntology200(onto)
+            //      val onto = ServiceRegistry.kbRepository.getOntology(slug)
+
+      val kbrepo = kb.kbrepo
+
+      // TODO: add inverse prefix lookup! (instead of using slug)
+      val query = s"""
+        SELECT ?concept ?prp
+        WHERE {
+          ?subject a ?concept .
+          ?subject ?prp [] .
+          # FILTER (REGEX(STR(?concept), '${slug}', 'i'))
+        } 
+      """
+
+      val result = kbrepo.execute_query(query) // TEST - TODO: add a properrepresentation
+      GetOntology200(result.toList.mkString("\n"))
             // ----- End of unmanaged code area for action  Lod_managerYaml.getOntology
         }
         val getCurrentTime = getCurrentTimeAction {  _ =>  

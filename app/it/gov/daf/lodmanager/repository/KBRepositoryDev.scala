@@ -7,6 +7,7 @@ import javax.inject.Inject
 import com.typesafe.config.Config
 import it.gov.daf.lodmanager.utility.ConfigHelper
 
+// testing conventions
 class KBRepositoryDev(conf: Config) extends KBRepository {
 
   // TODO

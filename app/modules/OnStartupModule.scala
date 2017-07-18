@@ -26,7 +26,8 @@ class OnStartupModule {
   def start(
     app: Application,
     env: Environment,
-    configuration: Configuration)(implicit ec: ExecutionContext) {
+    configuration: Configuration
+  )(implicit ec: ExecutionContext) {
 
     Logger.info("#### OnStartupModule.START")
 

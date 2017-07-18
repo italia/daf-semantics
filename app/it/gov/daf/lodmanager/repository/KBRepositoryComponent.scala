@@ -18,7 +18,7 @@ object KBRepository {
 
     app_mode match {
       case "dev" => new KBRepositoryDev(config)
-      case _     => throw new RuntimeException("NOT IMPLEMENTED")
+      case _ => throw new RuntimeException("NOT IMPLEMENTED")
     }
 
   }
