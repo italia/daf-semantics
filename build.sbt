@@ -17,6 +17,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, ApiFirstCore, Ap
 
 scalaVersion in ThisBuild := "2.11.8"
 
+//crossPaths := false
+
 libraryDependencies ++= Seq(
   cache,
   ws,
@@ -28,7 +30,24 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
   "org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.4",
+
+"com.novocode" % "junit-interface" % "0.8",
+"junit" % "junit" % "4.12" % Test,
+  
+  
+"org.eclipse.rdf4j" % "rdf4j-runtime" % "2.2.2",
+"org.eclipse.rdf4j" %  "rdf4j-repository-sail" % "2.2.2",
+"org.eclipse.rdf4j" % "rdf4j-repository-api" % "2.2.2",
+"org.eclipse.rdf4j" % "rdf4j-sail-memory" % "2.2.2",
+"org.eclipse.rdf4j" % "rdf4j-sail-nativerdf" % "2.2.2",
+  
+  
   //"it.awave.kb" % "kb-core" % "0.0.1", // CHECK: see how to point to maven local!
+  
+  //"it.almawave.linkeddata.kb" % "kb-core_2.11" % "0.0.1"  cross CrossVersion.Disabled ,
+  
+  // withSources() withJavadoc() cross CrossVersion.full 
+  
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
   
   //"com.github.dmitraver" %% "play-thymeleaf-plugin" % "1.0"
@@ -39,12 +58,14 @@ libraryDependencies ++= Seq(
 
 
 resolvers ++= Seq(
+  Resolver.mavenLocal,
+  //"Local Maven" at Path.userHome.asFile.toURI.toURL + ".m2/repository"
   "zalando-bintray" at "https://dl.bintray.com/zalando/maven",
   "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases",
   "jeffmay" at "https://dl.bintray.com/jeffmay/maven",
-  Resolver.url("sbt-plugins", url("http://dl.bintray.com/zalando/sbt-plugins"))(Resolver.ivyStylePatterns),
-  Resolver.mavenLocal
+  Resolver.url("sbt-plugins", url("http://dl.bintray.com/zalando/sbt-plugins"))(Resolver.ivyStylePatterns)
 )
+
 
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
