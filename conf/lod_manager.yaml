@@ -27,14 +27,36 @@ paths:
       operationId: "countTriples"
       produces: 
         - "application/json"
-      
       responses: 
         200:
           description: "triples"
           examples: { "triples": 0 }
           schema:
             $ref: "#/definitions/TriplesCount"
-
+      tags: [ stats ]
+      
+  "/triples/{ontoid}": 
+    get: 
+      summary: "number of triples"
+      description: "number of triples"
+      operationId: "countTriplesByOntology"
+      produces: 
+        - "application/json"
+      parameters:
+        - in: path
+          name: ontoid
+          description: the id of ontology 
+          required: true
+          type: string
+          
+      responses: 
+        200:
+          description: "triples"
+          examples: { "triples": 0 }
+          schema:
+            $ref: "#/definitions/TriplesCount"
+      tags: [ stats ]
+      
   "/ontology/{slug}": 
     get: 
       summary: "gets an ontology"
@@ -50,14 +72,12 @@ paths:
           required: true
           type: string
           #default: "foaf"
-          
       responses: 
         200:
           description: "status of operation"
           # examples: { "message": "ontology retrieved" }
           schema:
             type: string
-          
       tags: [ ontologies ] 
       
   # TODO "/ontology/{slug}/triples": 
