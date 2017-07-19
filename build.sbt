@@ -17,7 +17,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, ApiFirstCore, Ap
 
 scalaVersion in ThisBuild := "2.11.8"
 
-//crossPaths := false
+crossPaths := false
 
 libraryDependencies ++= Seq(
   cache,
@@ -31,15 +31,17 @@ libraryDependencies ++= Seq(
   "org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.4",
 
-"com.novocode" % "junit-interface" % "0.8",
-"junit" % "junit" % "4.12" % Test,
-  
-  
+
 "org.eclipse.rdf4j" % "rdf4j-runtime" % "2.2.2",
 "org.eclipse.rdf4j" %  "rdf4j-repository-sail" % "2.2.2",
 "org.eclipse.rdf4j" % "rdf4j-repository-api" % "2.2.2",
 "org.eclipse.rdf4j" % "rdf4j-sail-memory" % "2.2.2",
 "org.eclipse.rdf4j" % "rdf4j-sail-nativerdf" % "2.2.2",
+"com.github.jsonld-java" % "jsonld-java" % "0.10.0",
+  
+"org.scalatest" %% "scalatest" % "2.2.2" % Test,
+"junit" % "junit" % "4.11" % Test,
+"com.novocode" % "junit-interface" % "0.11" % Test,
   
   
   //"it.awave.kb" % "kb-core" % "0.0.1", // CHECK: see how to point to maven local!
@@ -103,8 +105,6 @@ dockerRepository := Option("10.98.74.120:5000")
 //resolvers += "Local Maven Repository" at s"file://${Path.userHome.absolutePath}/.m2/repository"
 
 resolvers += Resolver.mavenLocal // Also use $HOME/.m2/repository
-
-
 
 // WART
 // wartremoverErrors ++= Warts.unsafe
