@@ -9,6 +9,7 @@
 .settings/
 target
 
+
 # Play! #
 logs
 .swagger-codegen-ignore
@@ -41,4 +42,6 @@ server.pid
 *.eml
 /dist/
 .cache
+.cache-main
+.cache-tests
 
