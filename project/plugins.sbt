@@ -15,6 +15,7 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.2.0-M9")
 addSbtPlugin("eu.unicredit" % "sbt-swagger-codegen" % "0.0.9")
 
 addSbtPlugin("org.wartremover" %% "sbt-wartremover" % "2.0.3")
+// addSbtPlugin("org.wartremover" %% "sbt-wartremover" % "2.1.1")
 
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.0")
 

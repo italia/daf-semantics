@@ -20,6 +20,104 @@ produces:
   - "application/json"
 paths: 
 
+  # currently supports only turtle serialization!
+  "/ontology/{prefix}": 
+    get: 
+      summary: "gets an ontology"
+      description: "gets an ontology"
+      operationId: "getOntology"
+      produces: [ "text/plain" ]
+      parameters:
+        - in: path
+          name: prefix
+          description: the prefix for the given ontology
+          required: true
+          type: string
+          #default: "foaf"
+      responses: 
+        200:
+          description: "status of operation"
+          schema:
+            type: string
+      tags: [ ontologies ] 
+  
+
+  # currently supports only turtle serialization!
+  "/sparql": 
+    get: 
+      summary: "redirect to sparql endpoint"
+      description: "redirect to sparql endpoint"
+      operationId: "sparql"
+      produces: 
+        - "text/turtle"
+      responses: 
+        200:
+          description: "prefixes"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Prefix"
+      tags: [ ontologies ]
+
+  "/prefixes": 
+    get: 
+      summary: "a list of used prefixes"
+      description: "a list of used prefixes"
+      operationId: "prefixesList"
+      produces: 
+        - "application/json"
+      responses: 
+        200:
+          description: "prefixes"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Prefix"
+      tags: [ ontologies ]
+
+  "/prefixes/lookup/{prefix}": 
+    get: 
+      summary: "direct prefix lookup"
+      description: "this endpoint return the namespace currently associated with the given prefix"
+      operationId: "prefixDirectLookup"
+      produces: 
+        - "application/json"
+      parameters:
+        - in: path
+          name: prefix
+          description: the defaul prefix associated with a specific ontology
+          required: true
+          type: string
+      responses: 
+        200:
+          description: "prefix/namespace"
+          examples: { "prefix": "foaf", "namespace": "http://xmlns.com/foaf/spec/index.rdf" }
+          schema:
+            $ref: "#/definitions/Prefix"
+      tags: [ ontologies ]
+      
+  "/prefixes/reverse/{namespace}": 
+    get: 
+      summary: "inverse prefix lookup"
+      description: "this endpoint return the prefix currently associated with the given namespace"
+      operationId: "prefixReverseLookup"
+      produces: 
+        - "application/json"
+      parameters:
+        - in: path
+          name: namespace
+          description: the defaul prefix associated with a specific ontology
+          required: true
+          type: string
+      responses: 
+        200:
+          description: "namespace/prefix"
+          examples: { "prefix": "foaf", "namespace": "http://xmlns.com/foaf/spec/index.rdf" }
+          schema:
+            $ref: "#/definitions/Prefix"
+      tags: [ ontologies ]
+
+
   "/triples": 
     get: 
       summary: "number of triples"
@@ -35,7 +133,7 @@ paths:
             $ref: "#/definitions/TriplesCount"
       tags: [ stats ]
       
-  "/triples/{ontoid}": 
+  "/triples/{prefix}": 
     get: 
       summary: "number of triples"
       description: "number of triples"
@@ -44,8 +142,8 @@ paths:
         - "application/json"
       parameters:
         - in: path
-          name: ontoid
-          description: the id of ontology 
+          name: prefix
+          description: the prefix used for an ontology 
           required: true
           type: string
           
@@ -56,63 +154,20 @@ paths:
           schema:
             $ref: "#/definitions/TriplesCount"
       tags: [ stats ]
-      
-  "/ontology/{slug}": 
-    get: 
-      summary: "gets an ontology"
-      description: "gets an ontology"
-      operationId: "getOntology"
-      produces: 
-        - "text/turtle"
-        - "application/rdf+xml"
-      parameters:
-        - in: path
-          name: slug
-          description: the id for the new ontology
-          required: true
-          type: string
-          #default: "foaf"
-      responses: 
-        200:
-          description: "status of operation"
-          # examples: { "message": "ontology retrieved" }
-          schema:
-            type: string
-      tags: [ ontologies ] 
-      
-  # TODO "/ontology/{slug}/triples": 
-
-  
-  # NOTE: this endpoint can be used as a small reference
-  "/time/now": 
-    get: 
-      summary: "returns the current time"
-      description: "returns the current time"
-      operationId: "getCurrentTime"
-      produces: 
-        - "application/json"
-      responses: 
-        200:
-          description: "the current time"
-          examples: { "id": 3333, "time": "2017-06-28 11:12:00" }
-          schema: 
-            $ref: "#/definitions/Time"
-      tags: [ test ] 
 
 definitions: 
 
-  Time: 
+  Prefix: 
     type: "object"
     required: 
-      - "id"
-      - "time"
+      - "prefix"
+      - "namespace"
     properties: 
-      id: 
-        type: "integer"
-        format: "int64"
-      time: 
+      prefix: 
         type: "string"
-
+      namespace: 
+        type: "string"
+        
   TriplesCount: 
     type: "object"
     required: 

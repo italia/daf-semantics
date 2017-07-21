@@ -45,3 +45,6 @@ server.pid
 .cache-main
 .cache-tests
 
+# extra #
+NO__lib
+

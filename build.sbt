@@ -20,42 +20,38 @@ scalaVersion in ThisBuild := "2.11.8"
 crossPaths := false
 
 libraryDependencies ++= Seq(
-  cache,
-  ws,
-  filters,
-  "org.webjars" % "swagger-ui" % "3.0.7",
-  specs2 % Test,
-  "org.scalacheck" %% "scalacheck" % "1.12.4" % "test",
-  "me.jeffmay" %% "play-json-tests" % "1.5.0" % Test,
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
-  "org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
-  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.4",
-
+	cache,
+	ws,
+	filters,
+	"org.webjars" % "swagger-ui" % "3.0.7",
+	specs2 % Test,
+	"org.scalacheck" %% "scalacheck" % "1.12.4" % "test",
+	"me.jeffmay" %% "play-json-tests" % "1.5.0" % Test,
+	"org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
+	"org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
+	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.4",
 
 "org.eclipse.rdf4j" % "rdf4j-runtime" % "2.2.2",
 "org.eclipse.rdf4j" %  "rdf4j-repository-sail" % "2.2.2",
 "org.eclipse.rdf4j" % "rdf4j-repository-api" % "2.2.2",
 "org.eclipse.rdf4j" % "rdf4j-sail-memory" % "2.2.2",
 "org.eclipse.rdf4j" % "rdf4j-sail-nativerdf" % "2.2.2",
-"com.github.jsonld-java" % "jsonld-java" % "0.10.0",
+"com.github.jsonld-java" % "jsonld-java" % "0.9.0",
+
   
 "org.scalatest" %% "scalatest" % "2.2.2" % Test,
 "junit" % "junit" % "4.11" % Test,
 "com.novocode" % "junit-interface" % "0.11" % Test,
   
   
-  //"it.awave.kb" % "kb-core" % "0.0.1", // CHECK: see how to point to maven local!
+  // "it.awave.kb" % "kb-core" % "0.0.1", // CHECK: see how to point to maven local!
   
-  //"it.almawave.linkeddata.kb" % "kb-core_2.11" % "0.0.1"  cross CrossVersion.Disabled ,
+  // "it.almawave.linkeddata.kb" % "kb-core_2.11" % "0.0.1"  cross CrossVersion.Disabled ,
   
   // withSources() withJavadoc() cross CrossVersion.full 
   
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
-  
-  //"com.github.dmitraver" %% "play-thymeleaf-plugin" % "1.0"
-  //"org.mongodb" %% "casbah" % "3.1.1", //,
-  //"net.caoticode.dirwatcher" %% "dir-watcher" % "0.1.0"
-  //"it.teamdigitale" %% "ingestion-module" % "0.1.0" exclude("org.apache.avro", "avro") 
+ 
 )
 
 

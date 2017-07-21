@@ -1,11 +1,11 @@
 
-import play.api.mvc.{ Action, Controller }
+import play.api.mvc.{Action,Controller}
 
 import play.api.data.validation.Constraint
 
 import play.api.i18n.MessagesApi
 
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
 
 import de.zalando.play.controllers._
 
@@ -20,69 +20,23 @@ import javax.inject._
 import java.util.Date
 import play.Logger
 import scala.concurrent.Future
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import it.gov.daf.lodmanager.service.ServiceRegistry
 import modules.KBModuleBase
 import modules.KBModule
+import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import com.fasterxml.jackson.databind.ObjectMapper
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 /**
@@ -91,78 +45,112 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
  */
 
 package lod_manager.yaml {
-  // ----- Start of unmanaged code area for package Lod_managerYaml
-
+    // ----- Start of unmanaged code area for package Lod_managerYaml
+    
+  import scala.collection.JavaConversions._
+  import scala.collection.JavaConverters._
   import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
-  // ----- End of unmanaged code area for package Lod_managerYaml
-  class Lod_managerYaml @Inject() (
-      // ----- Start of unmanaged code area for injections Lod_managerYaml
+    // ----- End of unmanaged code area for package Lod_managerYaml
+    class Lod_managerYaml @Inject() (
+        // ----- Start of unmanaged code area for injections Lod_managerYaml
 
       kb: KBModuleBase,
 
-      // ----- End of unmanaged code area for injections Lod_managerYaml
-      val messagesApi: MessagesApi,
-      lifecycle: ApplicationLifecycle,
-      config: ConfigurationProvider) extends Lod_managerYamlBase {
-    // ----- Start of unmanaged code area for constructor Lod_managerYaml
+        // ----- End of unmanaged code area for injections Lod_managerYaml
+        val messagesApi: MessagesApi,
+        lifecycle: ApplicationLifecycle,
+        config: ConfigurationProvider
+    ) extends Lod_managerYamlBase {
+        // ----- Start of unmanaged code area for constructor Lod_managerYaml
 
-    // ----- End of unmanaged code area for constructor Lod_managerYaml
-    val countTriples = countTriplesAction { _ =>
-      // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriples
-      val kbrepo = kb.kbrepo
-      lazy val triples = kbrepo.triplesCount()
+        // ----- End of unmanaged code area for constructor Lod_managerYaml
+        val countTriplesByOntology = countTriplesByOntologyAction { (prefix: String) =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
+            val kbrepo = kb.kbrepo
 
-      CountTriples200(Future {
-        TriplesCount("foaf", triples)
-      })
-      // ----- End of unmanaged code area for action  Lod_managerYaml.countTriples
-    }
-    val countTriplesByOntology = countTriplesByOntologyAction { (ontoid: String) =>
-      // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
-      val kbrepo = kb.kbrepo
-      //      lazy val triples = kbrepo.triplesCount("http://xmlns.com/foaf/spec/index.rdf") // TODO: add an inverse prefix lookup
-
-      lazy val triples = kbrepo.triplesCount("memory://graph/") // TODO: add an inverse prefix lookup
+      val namespace = kbrepo.prefixes().get(prefix).get
+      lazy val triples = kbrepo.count(namespace)
 
       CountTriplesByOntology200(Future {
-        TriplesCount("foaf", triples)
+        TriplesCount(prefix, triples)
       })
+            // ----- End of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
+        }
+        val prefixesList = prefixesListAction {  _ =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixesList
+            val kbrepo = kb.kbrepo
+      lazy val prefixes = kbrepo.prefixes().toSeq.map(item => Prefix(item._1, item._2))
 
-      //      NotImplementedYet
-      // ----- End of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
-    }
-    val getOntology = getOntologyAction { (slug: String) =>
-      // ----- Start of unmanaged code area for action  Lod_managerYaml.getOntology
-      //      val onto = ServiceRegistry.kbRepository.getOntology(slug)
+      PrefixesList200(Future {
+        prefixes
+      })
+            // ----- End of unmanaged code area for action  Lod_managerYaml.prefixesList
+        }
+        val getOntology = getOntologyAction { (prefix: String) =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.getOntology
+            val kbrepo = kb.kbrepo
 
-      val kbrepo = kb.kbrepo
+      val namespace = kbrepo.prefixes().get(prefix).get
 
-      // TODO: add inverse prefix lookup! (instead of using slug)
+      // TODO: we need a policy for using named graphs / context...
       val query = s"""
-        SELECT ?concept ?prp
-        WHERE {
+      SELECT * 
+      WHERE {
           ?subject a ?concept .
-          ?subject ?prp [] .
-          # FILTER (REGEX(STR(?concept), '${slug}', 'i'))
-        } 
+      }
       """
 
-      val result = kbrepo.execute_query(query) // TEST - TODO: add a properrepresentation
-      GetOntology200(result.toList.mkString("\n"))
-      // ----- End of unmanaged code area for action  Lod_managerYaml.getOntology
-    }
-    val getCurrentTime = getCurrentTimeAction { _ =>
-      // ----- Start of unmanaged code area for action  Lod_managerYaml.getCurrentTime
-      val now = new Date()
+      logger.debug(s"""SPARQL> execute query\n${query}""")
 
-      Logger.info(s"${this.HOST}/time/now: ${now}")
+      // TODO: check play/json or install jackson/scala module
+      val json_mapper = new ObjectMapper
+      val json_writer = json_mapper.writerWithDefaultPrettyPrinter()
 
-      GetCurrentTime200(Future {
-        Time(1111, now.toString)
+      val result = kbrepo.execute_query(query)
+
+      GetOntology200(Future {
+        result.mkString("\n")
       })
-      // ----- End of unmanaged code area for action  Lod_managerYaml.getCurrentTime
-    }
+            // ----- End of unmanaged code area for action  Lod_managerYaml.getOntology
+        }
+        val sparql = sparqlAction {  _ =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.sparql
+            NotImplementedYet
+            // ----- End of unmanaged code area for action  Lod_managerYaml.sparql
+        }
+        val countTriples = countTriplesAction {  _ =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriples
+            val kbrepo = kb.kbrepo
+      lazy val triples = kbrepo.count()
 
-  }
+      CountTriples200(Future {
+        TriplesCount("_ALL_", triples)
+      })
+            // ----- End of unmanaged code area for action  Lod_managerYaml.countTriples
+        }
+        val prefixReverseLookup = prefixReverseLookupAction { (namespace: String) =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixReverseLookup
+            val kbrepo = kb.kbrepo
+      lazy val prefixes = kbrepo.prefixes().map { item => (item._2, item._1) }
+
+      val _prefix = prefixes.get(namespace).get
+      PrefixReverseLookup200(Future {
+        Prefix(_prefix, namespace)
+      })
+            // ----- End of unmanaged code area for action  Lod_managerYaml.prefixReverseLookup
+        }
+        val prefixDirectLookup = prefixDirectLookupAction { (prefix: String) =>  
+            // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixDirectLookup
+            val kbrepo = kb.kbrepo
+      lazy val prefixes = kbrepo.prefixes()
+
+      val _namespace = prefixes.get(prefix).get
+      PrefixDirectLookup200(Future {
+        Prefix(prefix, _namespace)
+      })
+            // ----- End of unmanaged code area for action  Lod_managerYaml.prefixDirectLookup
+        }
+    
+    }
 }

@@ -10,11 +10,10 @@ import scala.io.Source
 import scala.concurrent.ExecutionContext
 import org.slf4j.LoggerFactory
 import java.nio.file.Paths
-import check.DummyRepo
-import it.almawave.linkeddata.kb.RDFRepo
 
 import scala.collection.JavaConverters._
 import scala.collection.JavaConversions._
+import it.almawave.kb.RDFRepository
 
 /*
  * REMOVE: module for manual experiments / testing
@@ -26,8 +25,7 @@ class OnStartupModule {
   def start(
     app: Application,
     env: Environment,
-    configuration: Configuration
-  )(implicit ec: ExecutionContext) {
+    configuration: Configuration)(implicit ec: ExecutionContext) {
 
     Logger.info("#### OnStartupModule.START")
 
@@ -44,13 +42,16 @@ class OnStartupModule {
 
     // TODO: check logging!
 
+    //    val repo: RDFRepo = RDFRepo.inMemory()
+
     @Inject
-    val repo: RDFRepo = RDFRepo.inMemory()
+    val repo = RDFRepository.memory()
+
     // TEST val repo = new DummyRepo
     repo.start()
     repo.importFrom(dir_ontologies.toString()) // CHECK: evaluate using Paths
 
-    val triples = repo.triplesCount()
+    val triples = repo.count()
     Logger.info(s"loaded ${triples} triples...")
 
     // CHECK: how to use repo.shutdown?

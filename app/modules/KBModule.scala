@@ -13,8 +13,9 @@ import play.api.Environment
 import play.api.Configuration
 import scala.concurrent.ExecutionContext
 import play.api.Logger
-import it.almawave.linkeddata.kb.RDFRepo
+//import it.almawave.linkeddata.kb.RDFRepo
 import it.gov.daf.lodmanager.utility.ConfigHelper
+import it.almawave.kb.RDFRepository
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule
@@ -24,14 +25,15 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
   import scala.concurrent.ExecutionContext.Implicits.global
 
-  lazy val kbrepo = RDFRepo.inMemory("RDF_CACHE") // CHECK HERE 
+  //  lazy val kbrepo = RDFRepo.inMemory("RDF_CACHE") // CHECK HERE 
+
+  lazy val kbrepo = RDFRepository.memory() // CHECK HERE
 
   @Inject
   def onStart(
     app: Application,
     env: Environment,
-    configuration: Configuration
-  )(implicit ec: ExecutionContext) {
+    configuration: Configuration)(implicit ec: ExecutionContext) {
 
     val conf = configuration.getConfig("kb").get.underlying
     Logger.info("KBModuleBase.config")
@@ -48,7 +50,7 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     kbrepo.importFrom(rdf_folder)
 
     // CHECK the initial (total) triples count
-    val triples = kbrepo.triplesCount()
+    val triples = kbrepo.count()
     Logger.info(s"KBModuleBase: ${triples} triples loaded")
 
   }
