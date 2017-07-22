@@ -44,10 +44,9 @@ libraryDependencies ++= Seq(
 "com.novocode" % "junit-interface" % "0.11" % Test,
   
   
+  // DISABLED: now copied source internally. CHECK sub-modules?
   // "it.awave.kb" % "kb-core" % "0.0.1", // CHECK: see how to point to maven local!
-  
   // "it.almawave.linkeddata.kb" % "kb-core_2.11" % "0.0.1"  cross CrossVersion.Disabled ,
-  
   // withSources() withJavadoc() cross CrossVersion.full 
   
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
@@ -100,6 +99,7 @@ dockerRepository := Option("10.98.74.120:5000")
 // resolver for local maven repository
 //resolvers += "Local Maven Repository" at s"file://${Path.userHome.absolutePath}/.m2/repository"
 
+// CHECK: maven local artifacts does not conforms to expected scala version specific name
 resolvers += Resolver.mavenLocal // Also use $HOME/.m2/repository
 
 // WART

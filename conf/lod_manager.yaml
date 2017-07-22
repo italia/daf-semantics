@@ -59,6 +59,7 @@ paths:
               $ref: "#/definitions/Prefix"
       tags: [ ontologies ]
 
+
   "/prefixes": 
     get: 
       summary: "a list of used prefixes"
@@ -73,7 +74,7 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Prefix"
-      tags: [ ontologies ]
+      tags: [ catalog ]
 
   "/prefixes/lookup/{prefix}": 
     get: 
@@ -94,7 +95,7 @@ paths:
           examples: { "prefix": "foaf", "namespace": "http://xmlns.com/foaf/spec/index.rdf" }
           schema:
             $ref: "#/definitions/Prefix"
-      tags: [ ontologies ]
+      tags: [ catalog ]
       
   "/prefixes/reverse/{namespace}": 
     get: 
@@ -115,7 +116,7 @@ paths:
           examples: { "prefix": "foaf", "namespace": "http://xmlns.com/foaf/spec/index.rdf" }
           schema:
             $ref: "#/definitions/Prefix"
-      tags: [ ontologies ]
+      tags: [ catalog ]
 
 
   "/triples": 

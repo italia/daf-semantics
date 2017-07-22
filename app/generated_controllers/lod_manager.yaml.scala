@@ -24,7 +24,6 @@ import it.gov.daf.lodmanager.service.ServiceRegistry
 import modules.KBModuleBase
 import modules.KBModule
 import play.api.libs.json.Json
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import com.fasterxml.jackson.databind.ObjectMapper
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
@@ -46,7 +45,7 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-    
+            
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
   import play.api.libs.concurrent.Execution.Implicits.defaultContext

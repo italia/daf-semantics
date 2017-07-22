@@ -25,11 +25,19 @@ import org.eclipse.rdf4j.rio.RDFFormat
 import org.eclipse.rdf4j.model.Resource
 import org.eclipse.rdf4j.query.TupleQuery
 import org.eclipse.rdf4j.query.TupleQueryResult
+import modules.FileDatastore
 
 /*
+ * This is a first naive implementation for providing a basic API over SPARQL.
+ * THe idea is to have methods for add/remove ontologies, ask informations, and so on.
+ * 
+ * TODO: adopt a complete LDP engine, add to that the embedded implementation.
  * TODO: evaluate specific implementation
  * 
- * CHECK: usage of future for results
+ * TODO: refactorization: move SPARQL functions to a specific component 
+ * TODO: encapsulates logic for handling Files. FileDatastore?
+ * 
+ * CHECK: usage of Future for results?
  */
 object RDFRepository {
 
@@ -38,7 +46,11 @@ object RDFRepository {
   }
 
   def memory() = {
-    val repo = new SailRepository(new MemoryStore)
+
+    // CHECK: how to handle contexts properly
+
+    val mem = new MemoryStore
+    val repo = new SailRepository(mem)
     new RDFRepository(repo)
   }
 
@@ -90,9 +102,12 @@ class RDFRepository(repository: Repository) {
   System.setProperty("org.eclipse.rdf4j.repository.debug", "false")
 
   def start() {
+
     logger.info(s"start RDF repository")
+
     if (!repo.isInitialized())
       repo.initialize()
+
   }
 
   def stop() {
@@ -101,6 +116,7 @@ class RDFRepository(repository: Repository) {
       repo.shutDown()
   }
 
+  // helper function
   def loadRDF(rdfDocument: URI, context: String) = {
 
     val conn = repo.getConnection
@@ -160,6 +176,8 @@ class RDFRepository(repository: Repository) {
     result
 
   }
+
+  def getOntology(ontology_uri: String, format: RDFFormat): String = ???
 
   // gest a list of all graphs
   def graphs() = {
@@ -263,8 +281,10 @@ class RDFRepository(repository: Repository) {
 
     val query = s"""
       SELECT (COUNT(*) AS ?triples)
+      FROM <${context}> 
       WHERE {
-        GRAPH <${context}> { ?s ?p ?O }
+        # GRAPH <${context}> { ?s ?p ?O }
+        ?s ?p ?O 
       }  
     """
     val size = conn.prepareTupleQuery(SPARQL, query)
@@ -305,18 +325,17 @@ class RDFRepository(repository: Repository) {
 
     logger.debug(s"SPARQL> import RDF from ${base_path.toUri()}")
 
-    Files.walk(base_path).iterator().toStream
-      .filter(_.toFile().isFile())
-      .filter(_.toString().matches(".*\\.(owl|rdf|ttl|nt)"))
+    val fs = new FileDatastore(rdf_folder)
+
+    fs.list("owl", "rdf", "ttl", "nt")
       .foreach {
-        p =>
-          val uri = p.toUri().normalize()
+        uri =>
+
           logger.info(s"importing ${uri}")
-
           val format = Rio.getParserFormatForFileName(uri.toString()).get
-          //          this.addRDF(uri, format, uri.toString())
-
+          // this.addRDF(uri, format, uri.toString())
           this.loadRDF(uri, uri.toString())
+
       }
 
   }
@@ -450,19 +469,7 @@ class RDFRepository(repository: Repository) {
 
 }
 
-class StatementCounter extends AbstractRDFHandler {
-
-  var count = 0
-
-  override def handleStatement(st: Statement) {
-    count += 1
-  }
-
-  def counted(): Int = count
-
-}
-
-object PREFIXES {
+private object PREFIXES {
 
   import org.eclipse.rdf4j.model.vocabulary._
   import scala.collection.JavaConverters._
