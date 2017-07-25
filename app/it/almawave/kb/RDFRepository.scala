@@ -26,6 +26,7 @@ import org.eclipse.rdf4j.model.Resource
 import org.eclipse.rdf4j.query.TupleQuery
 import org.eclipse.rdf4j.query.TupleQueryResult
 import modules.FileDatastore
+import scala.io.Source
 
 /*
  * This is a first naive implementation for providing a basic API over SPARQL.

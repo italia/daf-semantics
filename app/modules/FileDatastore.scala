@@ -5,12 +5,11 @@ import java.net.URI
 import org.slf4j.LoggerFactory
 import java.nio.file.Files
 
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import org.junit.Test
-import org.junit.Assert
 import java.nio.file.Path
 import java.net.URL
+
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 class FileDatastore(val base: String) {
 
@@ -76,19 +75,19 @@ object MainFileDatastore extends App {
 
 }
 
-class FileDatastoreTest {
-
-  @Test
-  def test_local_relative_files {
-    var fs = new FileDatastore("ontologies")
-    Assert.assertTrue(fs.list("owl", "ttl").size > 0)
-  }
-
-  @Test
-  def test_remote_files {
-    var fs = new FileDatastore("file:///C:/Users/Al.Serafini/repos/DAF/lod_manager/ontologies/mibact/cultural-ON.owl")
-    Assert.assertTrue(fs.list("rdf").size > 0)
-  }
-
-}
+//class FileDatastoreTest {
+//
+//  @Test
+//  def test_local_relative_files {
+//    var fs = new FileDatastore("ontologies")
+//    Assert.assertTrue(fs.list("owl", "ttl").size > 0)
+//  }
+//
+//  @Test
+//  def test_remote_files {
+//    var fs = new FileDatastore("file:///C:/Users/Al.Serafini/repos/DAF/lod_manager/ontologies/mibact/cultural-ON.owl")
+//    Assert.assertTrue(fs.list("rdf").size > 0)
+//  }
+//
+//}
 

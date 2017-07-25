@@ -5,11 +5,7 @@ import javax.inject.Inject
 import com.google.inject.{ AbstractModule, Singleton }
 import play.api.inject.ApplicationLifecycle
 import scala.concurrent.Future
-import modules.OnStartupModule
-import modules.KBModuleBase
-import modules.KBModule
-
-//CHECK: import it.gov.daf.catalogmanager.listeners.{IngestionListener, IngestionListenerImpl}
+import modules._
 
 @Singleton
 class Global @Inject() (lifecycle: ApplicationLifecycle) {

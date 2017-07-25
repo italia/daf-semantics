@@ -38,6 +38,20 @@ $ sbt run
 - [ ] publish `kb-core` on github / bitbucket or as sub-module
 - [ ] add `kb-core` dependency on sbt 
 - [ ] add `RDF4J` dependencies on sbt (if needed)
+- [ ] proper configuration of JUnit for sbt
 - [ ] more test coverage for simple example HTTP requests
+- [ ] RDF4J connection pool, with implicit connection as curry method
 
+
+### RDF4J connections (IDEA)
+
+An idea could be rewriting methods as curried, in order to add implicit connection, such as:
+
+```
+def action(params...)(implicit conn:RepositoryConnection){
+	...
+}
+```
+
+this way we could avoid open/close a connection every time, instead maintaining a connection pool
 
