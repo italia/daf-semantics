@@ -8,14 +8,14 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 
 1. local publish of dependencies (`kb-core`)
 
-~~At the moment the wrapper for the triplestore(s) is published as a jar dependency, using the `lib` folder:
+~~At the moment the wrapper for the triplestore(s) is published as a jar dependency, using the `lib` folder:~~
 
 ~~```
 [lod_manager]
 ├───/lib
 │   ├───eclipse-rdf4j-2.2.1-onejar.jar
 │   └───kb-core-0.0.1.jar
-```
+```~~
 
 Copy the library under `/lib` before compilation (NOTE: the libraries should be managed too by sbt).
 
