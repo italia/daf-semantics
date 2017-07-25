@@ -1,16 +1,18 @@
-package modules
+package it.almawave.kb
 
 import java.nio.file.Paths
 import java.net.URI
 import org.slf4j.LoggerFactory
 import java.nio.file.Files
-
 import java.nio.file.Path
-import java.net.URL
-
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
 
+/*
+ * draft for an helper class for handling files.
+ * The idea is to encapsulate the logic for file access: read, save etc,
+ * enabling later usage of HDFS and so on...
+ */
 class FileDatastore(val base: String) {
 
   // TODO: see how to connect this to HDFS or similar
@@ -75,19 +77,4 @@ object MainFileDatastore extends App {
 
 }
 
-//class FileDatastoreTest {
-//
-//  @Test
-//  def test_local_relative_files {
-//    var fs = new FileDatastore("ontologies")
-//    Assert.assertTrue(fs.list("owl", "ttl").size > 0)
-//  }
-//
-//  @Test
-//  def test_remote_files {
-//    var fs = new FileDatastore("file:///C:/Users/Al.Serafini/repos/DAF/lod_manager/ontologies/mibact/cultural-ON.owl")
-//    Assert.assertTrue(fs.list("rdf").size > 0)
-//  }
-//
-//}
 

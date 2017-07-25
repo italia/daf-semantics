@@ -18,47 +18,49 @@ consumes:
   - "application/json"
 produces: 
   - "application/json"
+
+
+# ERRORS
+#  '400':
+#     description: Bad Operation
+#   '401':
+#     description: Unauthorized
+#    '404':
+#      description: Forbidden
+# default:
+#   description: unexpected error
+#   schema:
+#     $ref: '#/definitions/Error'
+  
 paths: 
 
-  # currently supports only turtle serialization!
-  "/ontology/{prefix}": 
-    get: 
-      summary: "gets an ontology"
-      description: "gets an ontology"
-      operationId: "getOntology"
-      produces: [ "text/plain" ]
+  "/kb":
+    post:
+      summary: A request invocation
+      operationId: invokeUsingPOST
+      #consumes:
+      #  - application/turtle
+      #produces:
+      #  - application/json
       parameters:
-        - in: path
-          name: prefix
-          description: the prefix for the given ontology
+        - name: context
+          in: header
+          description: the context where adding the document
           required: true
           type: string
-          #default: "foaf"
-      responses: 
-        200:
-          description: "status of operation"
+        - in: body
+          name: document
+          description: the docment to be added
+          required: true
           schema:
             type: string
-      tags: [ ontologies ] 
-  
-
-  # currently supports only turtle serialization!
-  "/sparql": 
-    get: 
-      summary: "redirect to sparql endpoint"
-      description: "redirect to sparql endpoint"
-      operationId: "sparql"
-      produces: 
-        - "text/turtle"
-      responses: 
-        200:
-          description: "prefixes"
+      responses:
+        '200':
+          description: OK
           schema:
-            type: array
-            items:
-              $ref: "#/definitions/Prefix"
-      tags: [ ontologies ]
-
+            type: string
+      tags: [test, ontology]
+  
 
   "/prefixes": 
     get: 
@@ -179,4 +181,15 @@ definitions:
         type: "string"
       triples: 
         type: "integer"
+        
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
 

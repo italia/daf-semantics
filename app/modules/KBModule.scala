@@ -15,7 +15,7 @@ import scala.concurrent.ExecutionContext
 import play.api.Logger
 //import it.almawave.linkeddata.kb.RDFRepo
 import it.gov.daf.lodmanager.utility.ConfigHelper
-import it.almawave.kb.RDFRepository
+import it.almawave.kb.old.RDFRepository
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule
@@ -24,8 +24,6 @@ trait KBModule
 class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule {
 
   import scala.concurrent.ExecutionContext.Implicits.global
-
-  //  lazy val kbrepo = RDFRepo.inMemory("RDF_CACHE") // CHECK HERE 
 
   lazy val kbrepo = RDFRepository.memory() // CHECK HERE
 

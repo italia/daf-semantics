@@ -1,6 +1,4 @@
-
-
-package it.almawave.kb
+package it.almawave.kb.old
 
 import java.net.URI
 import org.junit.After
@@ -9,10 +7,6 @@ import org.junit.Before
 import org.junit.Test
 import java.nio.file.Paths
 import java.io.ByteArrayInputStream
-import org.junit.Rule
-import org.junit.rules.TestWatcher
-import org.junit.runner.Description
-import org.slf4j.LoggerFactory
 import org.junit.rules._
 import java.io.InputStream
 

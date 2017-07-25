@@ -1,4 +1,4 @@
-package it.almawave.kb
+package it.almawave.kb.old
 
 import java.io.ByteArrayInputStream
 import java.net.URI

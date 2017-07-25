@@ -1,4 +1,4 @@
-package it.almawave.kb
+package it.almawave.kb.old
 
 import org.eclipse.rdf4j.repository.sail.SailRepository
 import org.eclipse.rdf4j.sail.memory.MemoryStore
@@ -10,23 +10,17 @@ import org.eclipse.rdf4j.query.QueryLanguage
 import java.util.{ ArrayList => JArrayList }
 import org.eclipse.rdf4j.model.Namespace
 import java.util.ArrayList
-import org.eclipse.rdf4j.query.QueryResults
 import org.eclipse.rdf4j.model.IRI
 import org.eclipse.rdf4j.rio.Rio
-import org.eclipse.rdf4j.model.Statement
-import org.eclipse.rdf4j.rio.helpers.AbstractRDFHandler
 import java.nio.file.Paths
-import java.nio.file.Files
 import org.eclipse.rdf4j.repository.sparql.SPARQLRepository
 import org.eclipse.rdf4j.common.iteration.Iterations
-import org.eclipse.rdf4j.IsolationLevels
 import java.io.InputStream
 import org.eclipse.rdf4j.rio.RDFFormat
-import org.eclipse.rdf4j.model.Resource
 import org.eclipse.rdf4j.query.TupleQuery
 import org.eclipse.rdf4j.query.TupleQueryResult
-import modules.FileDatastore
-import scala.io.Source
+import it.almawave.kb.FileDatastore
+import it.almawave.kb.RDFHelper._
 
 /*
  * This is a first naive implementation for providing a basic API over SPARQL.
@@ -182,8 +176,6 @@ class RDFRepository(repository: Repository) {
 
   // gest a list of all graphs
   def graphs() = {
-
-    import it.almawave.kb.Rdf4jAdapters._
 
     val conn = repo.getConnection
 
