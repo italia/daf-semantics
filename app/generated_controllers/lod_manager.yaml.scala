@@ -72,7 +72,8 @@ package lod_manager.yaml {
     }
     val prefixesList = prefixesListAction { _ =>
       // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixesList
-      val prefixes = kbrepo.prefixes.list().toList.map(item => Prefix(item._1, item._2))
+      val prefixes = kbrepo.prefixes.list().toList
+        .map(item => Prefix(item._1, item._2))
 
       PrefixesList200(Future {
         prefixes
@@ -82,7 +83,6 @@ package lod_manager.yaml {
     val countTriples = countTriplesAction { _ =>
       // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriples
       val triples = kbrepo.store.size()
-
       CountTriples200(Future {
         TriplesCount("_ALL_", triples)
       })
@@ -101,7 +101,6 @@ package lod_manager.yaml {
     val prefixDirectLookup = prefixDirectLookupAction { (prefix: String) =>
       // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixDirectLookup
       lazy val prefixes = kbrepo.prefixes.list()
-
       val _namespace = prefixes.get(prefix).get
       PrefixDirectLookup200(Future {
         Prefix(prefix, _namespace)
@@ -122,6 +121,18 @@ package lod_manager.yaml {
 
       NotImplementedYet
       // ----- End of unmanaged code area for action  Lod_managerYaml.invokeUsingPOST
+    }
+    val contextsList = contextsListAction { _ =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.contextsList
+      val vf = SimpleValueFactory.getInstance // TODO: refactorization!
+      val _contexts = kbrepo.store.contexts()
+        .map { cx =>
+          Context(cx, kbrepo.store.size(vf.createIRI(cx)))
+        }
+      ContextsList200(Future {
+        _contexts
+      })
+      // ----- End of unmanaged code area for action  Lod_managerYaml.contextsList
     }
 
   }

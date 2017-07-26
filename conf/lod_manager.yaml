@@ -61,7 +61,22 @@ paths:
             type: string
       tags: [test]
   
-
+  "/contexts": 
+    get: 
+      summary: "a list of used contexts"
+      description: "a list of used contexts"
+      operationId: "contextsList"
+      produces: 
+        - "application/json"
+      responses: 
+        200:
+          description: "contexts"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Context"
+      tags: [ catalog ]
+  
   "/prefixes": 
     get: 
       summary: "a list of used prefixes"
@@ -170,7 +185,19 @@ definitions:
         type: "string"
       namespace: 
         type: "string"
-        
+
+  Context: 
+    type: "object"
+    required: 
+      - "context"
+      - "triples"
+    properties: 
+      context: 
+        type: "string"
+      triples: 
+        type: "integer"
+
+  # TODO: rewrite!
   TriplesCount: 
     type: "object"
     required: 
@@ -181,7 +208,7 @@ definitions:
         type: "string"
       triples: 
         type: "integer"
-        
+
   Error:
     required:
       - code
