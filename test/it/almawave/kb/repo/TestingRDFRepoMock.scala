@@ -34,7 +34,7 @@ class TestingRDFRepoMock {
       .
     """
 
-  val rdf_doc_artists = Rio.parse(new FileInputStream("ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE)
+  val rdf_doc_artists = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE)
 
   val rdf_doc_simple = Rio.parse(new StringReader(doc_example), "http://example.org/", RDFFormat.TURTLE)
 
@@ -198,7 +198,7 @@ class TestingRDFRepoMock {
 
   @Test
   def test_import() {
-    mock.helper.importFrom("ontologies")
+    mock.helper.importFrom("data/ontologies")
     val vf = SimpleValueFactory.getInstance
     val size = mock.store.size(vf.createIRI("http://xmlns.com/foaf/0.1/"))
     println("SIZE: " + size)

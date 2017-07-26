@@ -13,9 +13,9 @@ import play.api.Environment
 import play.api.Configuration
 import scala.concurrent.ExecutionContext
 import play.api.Logger
-//import it.almawave.linkeddata.kb.RDFRepo
 import it.gov.daf.lodmanager.utility.ConfigHelper
 import it.almawave.kb.repo.RDFRepoMock
+import scala.concurrent.ExecutionContext.Implicits.global
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule
@@ -23,14 +23,11 @@ trait KBModule
 @Singleton
 class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule {
 
-  import scala.concurrent.ExecutionContext.Implicits.global
-
-  //  lazy val kbrepo = RDFRepository.memory() // CHECK HERE
-
   import it.almawave.kb.repo._
 
   val kbrepo = RDFRepository.memory()
 
+  // when application starts...
   @Inject
   def onStart(
     app: Application,
@@ -38,12 +35,10 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     configuration: Configuration)(implicit ec: ExecutionContext) {
 
     val conf = configuration.getConfig("kb").get.underlying
-    Logger.info("KBModuleBase.config")
-    Logger.info(ConfigHelper.pretty(conf))
+    Logger.info("KBModule.config")
+    Logger.debug("KBModule.using configuration:\n" + ConfigHelper.pretty(conf))
 
-    val rdf_folder = conf.getString("cache")
-
-    Logger.info("KBModuleBase.START....")
+    Logger.info("KBModule.START....")
 
     // this is needed for ensure proper connection(s) etc
     kbrepo.start()
@@ -53,22 +48,23 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     kbrepo.prefixes.add(kbrepo.prefixes.DEFAULT.toList: _*)
 
     // importing from local files
+    val rdf_folder = conf.getString("cache")
     kbrepo.helper.importFrom(rdf_folder)
 
     // CHECK the initial (total) triples count
     val triples = kbrepo.store.size()
-    Logger.info(s"KBModuleBase: ${triples} triples loaded")
+    Logger.info(s"KBModule: ${triples} triples loaded")
 
   }
 
-  // TODO:
+  // when application stops...
   lifecycle.addStopHook({ () =>
 
     Future.successful {
 
-      // this is useful for saving files, closing connection ,etc
+      // this is useful for saving files, closing connections, release indexes, etc
       kbrepo.stop()
-      Logger.info("KBModuleBase.STOP....")
+      Logger.info("KBModule.STOP....")
 
     }
 

@@ -8,15 +8,17 @@ import scala.collection.JavaConverters._
 import it.almawave.kb.repo.RDFRepository
 
 object MainOntoMeta extends App {
-  
-  
+
   val repo = RDFRepository.memory()
   repo.start()
-  
-  repo.helper.importFrom("ontologies")
-  
+
+  repo.helper.importFrom("data/ontologies")
+
+  val contexts = repo.store.contexts()
+  println("#### CONTEXTS\n" + contexts.mkString("\n"))
+
   repo.stop()
-  
+
   System.exit(0)
 
   val uri = Paths.get("ontologies/agid/CPSV-AP_IT/CPSV-AP_IT.owl").normalize().toUri()

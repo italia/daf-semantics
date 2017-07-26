@@ -38,7 +38,7 @@ class FileDatastore(val base: String) {
       if (!path.toFile().exists()) {
         Files.copy(url.openStream(), path)
       } else {
-        println(s"KB> ${name} already cached in ${path}!")
+        logger.debug(s"KB> ${name} already cached in ${path}!")
       }
 
       path
@@ -74,36 +74,12 @@ class FileDatastore(val base: String) {
     val file_name = file.getFileName.toString().replaceAll("(.*)\\..*", "$1")
     val file_metadata = Paths.get(dir.toString(), s"${file_name}.metadata")
 
-//    println("IMPORT.CHECK.....")
-//    println("SOURCE.FILE: " + file)
-//    println("SOURCE.URI: " + uri)
-//    println("file_name: " + file_name)
-//    println("file_metadata: " + file_metadata)
-//    println()
-    
     var conf = ConfigFactory.empty()
     if (Files.exists(file_metadata)) {
-
-//      println("META OK! " + file_metadata)
       conf = conf.withFallback(ConfigFactory.parseURL(file_metadata.toUri().toURL()))
-
-      println(conf)
     }
 
     conf
-  }
-
-}
-
-object MainFileDatastore extends App {
-
-  val fs = new FileDatastore("ontologies")
-
-  fs.cache("foaf", "http://xmlns.com/foaf/spec/index.rdf")
-
-  val files = fs.list("owl", "rdf")
-  files.foreach { uri =>
-    println("\n" + uri)
   }
 
 }

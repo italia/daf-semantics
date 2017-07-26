@@ -10,10 +10,11 @@ import com.typesafe.config.ConfigFactory
 
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
+import java.io.File
 
 class FileDatastoreTest {
 
-  val fs = new FileDatastore("ontologies")
+  val fs = new FileDatastore("data/ontologies")
 
   @Test
   def test_local_relative_files {
@@ -22,7 +23,7 @@ class FileDatastoreTest {
 
   @Test
   def test_local_uri() {
-    val foaf_local_uri = new URI("file:///C:/Users/Al.Serafini/repos/DAF/lod_manager/ontologies/foaf/foaf.rdf")
+    val foaf_local_uri = Paths.get("data/ontologies/foaf/foaf.rdf").toAbsolutePath().normalize().toUri()
     val list = fs.list("owl", "ttl", "rdf")
     Assert.assertTrue(list.contains(foaf_local_uri))
   }
@@ -37,7 +38,7 @@ class FileDatastoreTest {
     Assert.assertEquals(ConfigFactory.empty(), meta_no)
 
     // get metadata
-    val uri = new URI("file:///C:/Users/Al.Serafini/repos/DAF/lod_manager/ontologies/foaf/foaf.rdf")
+    val uri = Paths.get("data/ontologies/foaf/foaf.rdf").toAbsolutePath().normalize().toUri()
     val meta = fs.getMetadata(uri)
     Assert.assertEquals("foaf", meta.getString("prefix"))
     Assert.assertEquals("http://xmlns.com/foaf/0.1/", meta.getString("uri"))
@@ -46,3 +47,17 @@ class FileDatastoreTest {
   }
 
 }
+
+object MainFileDatastore extends App {
+
+  val fs = new FileDatastore("data/ontologies")
+
+  fs.cache("foaf", "http://xmlns.com/foaf/spec/index.rdf")
+
+  val files = fs.list("owl", "rdf")
+  files.foreach { uri =>
+    println("\n" + uri)
+  }
+
+}
+

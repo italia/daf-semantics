@@ -273,13 +273,6 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
 
       var size = conn.size(contexts: _*) // CHECK: blank nodes!
 
-      println(s"CHECKING SIZE ${contexts.mkString("|")}: " + size)
-
-      // CHECK for consistencies, with unit tests!
-      //      val size2 = this.statements(null, null, null, false, contexts: _*).size
-      //      val size2 =  conn.getStatements(null, null, null, false, contexts: _*).size
-      //      val size3 = this.statements(null, null, null, false).size
-
       conn.close()
       size
     }
@@ -396,23 +389,27 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
             val format = Rio.getParserFormatForFileName(uri.toString()).get
             val doc = Rio.parse(uri.toURL().openStream(), uri.toString(), format)
 
+            // adds all the namespaces from the file
             val doc_namespaces = doc.getNamespaces.map { ns => (ns.getPrefix, ns.getName) }.toList
             _self.prefixes.add(doc_namespaces: _*)
 
             val meta = fs.getMetadata(uri)
 
-            println("IMPORT.META - " + ConfigHelper.pretty(meta))
-            println("LOCAL SOURCE: " + uri)
-            println("\n")
-
             if (meta.hasPath("prefix")) {
+
+              // adds the default prefix/namespace pair for this document
+              val prefix = meta.getString("prefix")
+              val namespace = meta.getString("uri")
+              _self.prefixes.add((prefix, namespace))
 
               val contexts_list = meta.getStringList("contexts")
               val contexts = contexts_list.map { cx => vf.createIRI(cx) }
 
-              //              println("import " + uri)
               logger.info(s"importing ${uri} in context ${contexts_list(0)}")
+
+              // adds the document to the default graph (no context!)
               _self.store.add(doc)
+              // adds the document to the contexts provided in .metadata
               _self.store.add(doc, contexts: _*)
 
             } else {
