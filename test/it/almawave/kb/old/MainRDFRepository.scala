@@ -2,6 +2,7 @@ package it.almawave.kb.old
 
 import java.io.ByteArrayInputStream
 import java.net.URI
+import it.almawave.kb.repo.RDFRepository
 
 object MainRDFRepository extends App {
 
@@ -13,15 +14,22 @@ object MainRDFRepository extends App {
       <http://testing/subject-01> <http://testing/predicate-01> <http://testing/object-01>
     """.getBytes)
 
-  repo.importFrom("ontologies")
-  
-  repo.addRDF(bais, baseURI, "N-TRIPLES", "http://testing/graph-01")
+  repo.helper.importFrom("ontologies")
+
+  //  repo.store.addRDF(bais, baseURI, "N-TRIPLES", "http://testing/graph-01")
 
   // TODO: verify how to clean all
 
-  println(repo.count("http://testing/graph-01"))
+  //  println(repo.store.size("http://testing/graph-01"))
+
+  //  repo.store.graphs()
+
+  repo.prefixes.set(Map("foaf" -> "http://xmlns.com/foaf/spec/index.rdf"))
+
+  val namespaces = repo.prefixes.list()
   
-  repo.graphs()
+  println("#### NAMESPACES")
+  println(namespaces.mkString("\n"))
 
   repo.stop()
 

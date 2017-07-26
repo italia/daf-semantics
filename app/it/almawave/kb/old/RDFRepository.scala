@@ -34,49 +34,6 @@ import it.almawave.kb.RDFHelper._
  * 
  * CHECK: usage of Future for results?
  */
-object RDFRepository {
-
-  def remote(endpoint: String) = {
-    new RDFRepository(new SPARQLRepository(endpoint, endpoint))
-  }
-
-  def memory() = {
-
-    // CHECK: how to handle contexts properly
-
-    val mem = new MemoryStore
-    val repo = new SailRepository(mem)
-    new RDFRepository(repo)
-  }
-
-  // TODO: config
-  def memory(dir_cache: String = "target/data/rdf_cache") = {
-
-    val dataDir = Paths.get(dir_cache).normalize().toAbsolutePath().toFile()
-    if (!dataDir.exists())
-      dataDir.mkdirs()
-    val mem = new MemoryStore()
-    mem.setDataDir(dataDir)
-    mem.setSyncDelay(1000L)
-    mem.setPersist(false)
-    mem.setConnectionTimeOut(1000) // TODO: set a good timeout!
-
-    // IDEA: see how to trace statements added by inferencing
-    // CHECK val inferencer = new DedupingInferencer(new ForwardChainingRDFSInferencer(new DirectTypeHierarchyInferencer(mem)))
-    // SEE CustomGraphQueryInferencer
-
-    val repo = new SailRepository(mem)
-    new RDFRepository(repo)
-  }
-
-  /* 
-  TODO:
-  def virtuoso() = {
-    new VirtuosoRepository(s"jdbc:virtuoso://${host}:${port}/charset=UTF-8/log_enable=2", username, password)
-  }
-  */
-
-}
 
 // TODO: export to a trait
 class RDFRepository(repository: Repository) {
@@ -311,28 +268,6 @@ class RDFRepository(repository: Repository) {
   
   */
 
-  // TODO: add a configuration 
-  def importFrom(rdf_folder: String) {
-
-    val base_path = Paths.get(rdf_folder).toAbsolutePath().normalize()
-
-    logger.debug(s"SPARQL> import RDF from ${base_path.toUri()}")
-
-    val fs = new FileDatastore(rdf_folder)
-
-    fs.list("owl", "rdf", "ttl", "nt")
-      .foreach {
-        uri =>
-
-          logger.info(s"importing ${uri}")
-          val format = Rio.getParserFormatForFileName(uri.toString()).get
-          // this.addRDF(uri, format, uri.toString())
-          this.loadRDF(uri, uri.toString())
-
-      }
-
-  }
-
   // TODO: query?
 
   // TODO: RDFHandler
@@ -353,48 +288,6 @@ class RDFRepository(repository: Repository) {
         logger.error(s"error while clear data\n ${ex}")
         conn.rollback()
     }
-    conn.close()
-  }
-
-  def clearPrefixes() = {
-    val conn = repo.getConnection
-    conn.clearNamespaces()
-    conn.close()
-  }
-
-  def prefixes(prefixList: Map[String, String]) {
-    val conn = repo.getConnection
-    conn.clearNamespaces()
-    prefixList.foreach { item => conn.setNamespace(item._1, item._2) }
-    conn.close()
-  }
-
-  def prefixes() = {
-
-    val conn = repo.getConnection
-    val namespaces = conn.getNamespaces
-
-    // TODO: move to an external helper (implicit)
-    val list = new ArrayList[Namespace]
-    while (namespaces.hasNext())
-      list.add(namespaces.next())
-    val it = list.iterator()
-
-    conn.close()
-
-    it.map { ns => (ns.getPrefix, ns.getName) }.toMap
-
-  }
-
-  def addPrefix(prefix: String, namespace: String) {
-    val conn = repo.getConnection
-    conn.setNamespace(prefix, namespace)
-    conn.close()
-  }
-
-  def removePrefix(prefix: String) = {
-    val conn = repo.getConnection
-    conn.removeNamespace(prefix)
     conn.close()
   }
 
@@ -458,40 +351,6 @@ class RDFRepository(repository: Repository) {
 
     conn.close()
 
-  }
-
-}
-
-private object PREFIXES {
-
-  import org.eclipse.rdf4j.model.vocabulary._
-  import scala.collection.JavaConverters._
-
-  val default = Map(
-    OWL.PREFIX -> OWL.NAMESPACE,
-    RDF.PREFIX -> RDF.NAMESPACE,
-    RDFS.PREFIX -> RDFS.NAMESPACE,
-    DC.PREFIX -> DC.NAMESPACE,
-    FOAF.PREFIX -> FOAF.NAMESPACE,
-    SKOS.PREFIX -> SKOS.NAMESPACE,
-    XMLSchema.PREFIX -> XMLSchema.NAMESPACE,
-    FN.PREFIX -> FN.NAMESPACE,
-    "doap" -> DOAP.NAME.toString(),
-    "geo" -> GEO.NAMESPACE,
-    SD.PREFIX -> SD.NAMESPACE)
-
-  def setup(repo: Repository) = {
-
-    // IDEA: add lookup from prefix.cc?
-    val map = PREFIXES.default.asJava
-    val conn = repo.getConnection
-    while (conn.getNamespaces.hasNext()) {
-      val ns = conn.getNamespaces.next()
-      map.put(ns.getPrefix, ns.getName) // IDEA: use URI instead of string?
-    }
-    conn.close()
-
-    map
   }
 
 }
