@@ -7,6 +7,8 @@ import java.nio.file.Files
 import java.nio.file.Path
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
+import com.typesafe.config.ConfigFactory
+import com.typesafe.config.Config
 
 /*
  * draft for an helper class for handling files.
@@ -42,7 +44,7 @@ class FileDatastore(val base: String) {
       path
 
     } catch {
-      case ex =>
+      case ex: Exception =>
         ex.printStackTrace()
 
         var base_path = base
@@ -64,6 +66,21 @@ class FileDatastore(val base: String) {
 
   }
 
+  // this method attemps to find a .metadata file related to the vocabulary
+  def getMetadata(uri: URI): Config = {
+
+    val file = Paths.get(uri)
+    val dir = file.getParent
+    val file_name = file.getFileName.toString().replaceAll("(.*)\\..*", "$1")
+    val file_metadata = Paths.get(dir.toString(), s"${file_name}.metadata")
+
+    var conf = ConfigFactory.empty()
+    if (Files.exists(file_metadata))
+      conf = conf.withFallback(ConfigFactory.parseURL(file_metadata.toUri().toURL()))
+
+    conf
+  }
+
 }
 
 object MainFileDatastore extends App {
@@ -73,7 +90,9 @@ object MainFileDatastore extends App {
   fs.cache("foaf", "http://xmlns.com/foaf/spec/index.rdf")
 
   val files = fs.list("owl", "rdf")
-  files.foreach { x => println(x) }
+  files.foreach { uri =>
+    println("\n" + uri)
+  }
 
 }
 

@@ -34,7 +34,7 @@ produces:
   
 paths: 
 
-  "/kb":
+  "/ontologies":
     post:
       summary: A request invocation
       operationId: invokeUsingPOST
@@ -59,7 +59,7 @@ paths:
           description: OK
           schema:
             type: string
-      tags: [test, ontology]
+      tags: [test]
   
 
   "/prefixes": 

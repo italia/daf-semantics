@@ -44,5 +44,6 @@ $ sbt run
 - [ ] add `kb-core` dependency on sbt 
 - [ ] add `RDF4J` dependencies on sbt (if needed)
 - [ ] more test coverage for simple example HTTP requests
+- [ ] datapackage or similar? at the moment a `.metadata` is used for contexts
 
 

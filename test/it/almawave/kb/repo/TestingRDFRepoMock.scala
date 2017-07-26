@@ -39,7 +39,7 @@ class TestingRDFRepoMock {
   val rdf_doc_simple = Rio.parse(new StringReader(doc_example), "http://example.org/", RDFFormat.TURTLE)
 
   //  var db: Repository = null
-  var mock = new RDFRepoMock
+  var mock = RDFRepository.memory()
 
   @Before()
   def before() {
@@ -194,6 +194,14 @@ class TestingRDFRepoMock {
 
     Assert.assertEquals(mock.store.size(contexts: _*), mock.sparql.query(query).size)
 
+  }
+
+  @Test
+  def test_import() {
+    mock.helper.importFrom("ontologies")
+    val vf = SimpleValueFactory.getInstance
+    val size = mock.store.size(vf.createIRI("http://xmlns.com/foaf/0.1/"))
+    println("SIZE: " + size)
   }
 
 }
