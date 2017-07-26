@@ -48,9 +48,12 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     // this is needed for ensure proper connection(s) etc
     kbrepo.start()
 
-    // this could be delegated to a specific endpoint
+    // reset prefixes to default ones
+    kbrepo.prefixes.clear()
+    kbrepo.prefixes.add(kbrepo.prefixes.DEFAULT.toList: _*)
+
+    // importing from local files
     kbrepo.helper.importFrom(rdf_folder)
-    kbrepo.prefixes.set(kbrepo.prefixes.DEFAULT)
 
     // CHECK the initial (total) triples count
     val triples = kbrepo.store.size()

@@ -24,68 +24,6 @@ import modules.KBModuleBase
 import modules.KBModule
 import play.api.libs.json.Json
 import com.fasterxml.jackson.databind.ObjectMapper
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory
 import org.eclipse.rdf4j.rio.Rio
@@ -93,16 +31,6 @@ import org.eclipse.rdf4j.rio.RDFFormat
 import java.io.StringReader
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -111,11 +39,7 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-            
-  import scala.collection.JavaConversions._
-  import scala.collection.JavaConverters._
-  import play.api.libs.concurrent.Execution.Implicits.defaultContext
-
+    
     // ----- End of unmanaged code area for package Lod_managerYaml
     class Lod_managerYaml @Inject() (
         // ----- Start of unmanaged code area for injections Lod_managerYaml
@@ -135,10 +59,15 @@ package lod_manager.yaml {
         val countTriplesByOntology = countTriplesByOntologyAction { (prefix: String) =>  
             // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
             val namespace = kbrepo.prefixes.list().get(prefix).get
-      println("countTriplesByOntology : " + namespace)
-      // CHECK: it can't work, actually! at the moment local documents are published on a context reflecting path! 
 
-      val triples = kbrepo.store.sizeByContexts(Array(namespace)) // TODO: refactorize
+      Logger.debug("countTriplesByOntology : " + namespace)
+
+      val vf = SimpleValueFactory.getInstance // TODO: refactorize here!
+      val namespace_iri = vf.createIRI(namespace)
+      val triples = kbrepo.store.size(namespace_iri)
+
+      println(">CHECK> countTriplesByOntology ")
+      println(">CHECK>", prefix, namespace, namespace_iri)
 
       CountTriplesByOntology200(Future {
         TriplesCount(prefix, triples)

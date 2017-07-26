@@ -202,6 +202,8 @@ class TestingRDFRepoMock {
     val vf = SimpleValueFactory.getInstance
     val size = mock.store.size(vf.createIRI("http://xmlns.com/foaf/0.1/"))
     println("SIZE: " + size)
+    
+    Assert.assertTrue(size > 0)
   }
 
 }

@@ -74,9 +74,21 @@ class FileDatastore(val base: String) {
     val file_name = file.getFileName.toString().replaceAll("(.*)\\..*", "$1")
     val file_metadata = Paths.get(dir.toString(), s"${file_name}.metadata")
 
+//    println("IMPORT.CHECK.....")
+//    println("SOURCE.FILE: " + file)
+//    println("SOURCE.URI: " + uri)
+//    println("file_name: " + file_name)
+//    println("file_metadata: " + file_metadata)
+//    println()
+    
     var conf = ConfigFactory.empty()
-    if (Files.exists(file_metadata))
+    if (Files.exists(file_metadata)) {
+
+//      println("META OK! " + file_metadata)
       conf = conf.withFallback(ConfigFactory.parseURL(file_metadata.toUri().toURL()))
+
+      println(conf)
+    }
 
     conf
   }

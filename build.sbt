@@ -63,6 +63,12 @@ resolvers ++= Seq(
   Resolver.url("sbt-plugins", url("http://dl.bintray.com/zalando/sbt-plugins"))(Resolver.ivyStylePatterns)
 )
 
+// resolver for local maven repository
+// CHECK: maven local artifacts does not conforms to expected scala version specific name
+// resolvers += "Local Maven Repository" at s"file://${Path.userHome.absolutePath}/.m2/repository"
+resolvers += Resolver.mavenLocal // Also use $HOME/.m2/repository
+
+
 
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
@@ -96,11 +102,6 @@ dockerCommands += ExecCmd("ENTRYPOINT", s"bin/${name.value}", "-Dconfig.file=con
 dockerExposedPorts := Seq(9000)
 dockerRepository := Option("10.98.74.120:5000")
 
-// resolver for local maven repository
-//resolvers += "Local Maven Repository" at s"file://${Path.userHome.absolutePath}/.m2/repository"
-
-// CHECK: maven local artifacts does not conforms to expected scala version specific name
-resolvers += Resolver.mavenLocal // Also use $HOME/.m2/repository
 
 // WART
 // wartremoverErrors ++= Warts.unsafe

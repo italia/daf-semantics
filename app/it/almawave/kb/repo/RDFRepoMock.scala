@@ -3,39 +3,28 @@ package it.almawave.kb.repo
 import java.net.URI
 import java.nio.file.Paths
 
-import scala.collection.JavaConversions.asScalaSet
-
 import org.eclipse.rdf4j.model.IRI
 import org.eclipse.rdf4j.model.Model
 import org.eclipse.rdf4j.model.Resource
 import org.eclipse.rdf4j.model.Value
 import org.eclipse.rdf4j.model.ValueFactory
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory
-import org.eclipse.rdf4j.model.vocabulary.DC
-import org.eclipse.rdf4j.model.vocabulary.DOAP
-import org.eclipse.rdf4j.model.vocabulary.FN
-import org.eclipse.rdf4j.model.vocabulary.FOAF
-import org.eclipse.rdf4j.model.vocabulary.GEO
-import org.eclipse.rdf4j.model.vocabulary.OWL
-import org.eclipse.rdf4j.model.vocabulary.RDF
-import org.eclipse.rdf4j.model.vocabulary.RDFS
-import org.eclipse.rdf4j.model.vocabulary.SD
-import org.eclipse.rdf4j.model.vocabulary.SKOS
-import org.eclipse.rdf4j.model.vocabulary.XMLSchema
+import org.eclipse.rdf4j.model.vocabulary._
 import org.eclipse.rdf4j.query.QueryLanguage
 import org.eclipse.rdf4j.repository.Repository
 import org.eclipse.rdf4j.repository.sail.SailRepository
 import org.eclipse.rdf4j.repository.sparql.SPARQLRepository
 import org.eclipse.rdf4j.rio.Rio
 import org.eclipse.rdf4j.sail.memory.MemoryStore
-import org.slf4j.LoggerFactory
 
 import it.almawave.kb.FileDatastore
 import it.almawave.kb.RDFHelper.RepositoryResultIterator
 import it.almawave.kb.RDFHelper.TupleResultIterator
-import java.nio.file.Files
-import com.typesafe.config.ConfigFactory
-import com.typesafe.config.Config
+import play.Logger
+
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import it.gov.daf.lodmanager.utility.ConfigHelper
 
 object RDFRepository {
 
@@ -53,7 +42,7 @@ object RDFRepository {
   }
 
   // TODO: config
-  def memory(dir_cache: String = "target/data/rdf_cache") = {
+  def memory(dir_cache: String) = {
 
     val dataDir = Paths.get(dir_cache).normalize().toAbsolutePath().toFile()
     if (!dataDir.exists())
@@ -126,7 +115,9 @@ trait RDFRepository {
  */
 class RDFRepoMock(repo: Repository) extends RDFRepository {
 
-  val logger = LoggerFactory.getLogger(this.getClass)
+  //  val logger = LoggerFactory.getLogger(this.getClass)
+
+  val logger = Logger.underlying()
 
   val _self = this
 
@@ -165,21 +156,49 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
       conn.close()
     }
 
-    // set prefixes
-    def set(namespaces: Map[String, String]) {
+    def add(namespaces: (String, String)*) {
       val conn = repo.getConnection
       conn.begin()
       try {
-        conn.clearNamespaces()
         namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
         conn.commit()
       } catch {
         case ex: Exception =>
-          logger.error(s"KB:RDF> cannot update namespaces: ${namespaces}")
+          logger.error(s"KB:RDF> cannot add namespaces: ${namespaces}")
           conn.rollback()
       }
       conn.close()
     }
+
+    def remove(namespaces: (String, String)*) {
+      val conn = repo.getConnection
+      conn.begin()
+      try {
+        namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
+        conn.commit()
+      } catch {
+        case ex: Exception =>
+          logger.error(s"KB:RDF> cannot remove namespaces: ${namespaces}")
+          conn.rollback()
+      }
+      conn.close()
+    }
+
+    // set prefixes
+    //    def set(namespaces: Map[String, String]) {
+    //      val conn = repo.getConnection
+    //      conn.begin()
+    //      try {
+    //        conn.clearNamespaces()
+    //        namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
+    //        conn.commit()
+    //      } catch {
+    //        case ex: Exception =>
+    //          logger.error(s"KB:RDF> cannot update namespaces: ${namespaces}")
+    //          conn.rollback()
+    //      }
+    //      conn.close()
+    //    }
 
     // get prefixes
     def list(): Map[String, String] = {
@@ -253,6 +272,8 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
       val conn = repo.getConnection
 
       var size = conn.size(contexts: _*) // CHECK: blank nodes!
+
+      println(s"CHECKING SIZE ${contexts.mkString("|")}: " + size)
 
       // CHECK for consistencies, with unit tests!
       //      val size2 = this.statements(null, null, null, false, contexts: _*).size
@@ -357,15 +378,12 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
   // TODO: refactorization
   object helper {
 
-    import scala.collection.JavaConversions._
-    import scala.collection.JavaConverters._
-
     // TODO: add a configuration 
     def importFrom(rdf_folder: String) {
 
       val base_path = Paths.get(rdf_folder).toAbsolutePath().normalize()
 
-      logger.debug(s"SPARQL> import RDF from ${base_path.toUri()}")
+      logger.debug(s"KB:RDF> import RDF from ${base_path.toAbsolutePath()}")
 
       val fs = new FileDatastore(rdf_folder)
 
@@ -378,16 +396,23 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
             val format = Rio.getParserFormatForFileName(uri.toString()).get
             val doc = Rio.parse(uri.toURL().openStream(), uri.toString(), format)
 
+            val doc_namespaces = doc.getNamespaces.map { ns => (ns.getPrefix, ns.getName) }.toList
+            _self.prefixes.add(doc_namespaces: _*)
+
             val meta = fs.getMetadata(uri)
+
+            println("IMPORT.META - " + ConfigHelper.pretty(meta))
+            println("LOCAL SOURCE: " + uri)
+            println("\n")
 
             if (meta.hasPath("prefix")) {
 
               val contexts_list = meta.getStringList("contexts")
               val contexts = contexts_list.map { cx => vf.createIRI(cx) }
 
-              println("import " + uri)
+              //              println("import " + uri)
               logger.info(s"importing ${uri} in context ${contexts_list(0)}")
-
+              _self.store.add(doc)
               _self.store.add(doc, contexts: _*)
 
             } else {

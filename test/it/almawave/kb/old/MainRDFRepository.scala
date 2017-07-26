@@ -24,10 +24,10 @@ object MainRDFRepository extends App {
 
   //  repo.store.graphs()
 
-  repo.prefixes.set(Map("foaf" -> "http://xmlns.com/foaf/spec/index.rdf"))
+  repo.prefixes.add(("foaf", "http://xmlns.com/foaf/spec/index.rdf"))
 
   val namespaces = repo.prefixes.list()
-  
+
   println("#### NAMESPACES")
   println(namespaces.mkString("\n"))
 
