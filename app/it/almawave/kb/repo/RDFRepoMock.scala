@@ -400,7 +400,7 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
 
       val base_path = Paths.get(rdf_folder).toAbsolutePath().normalize()
 
-      logger.debug(s"KB:RDF> import RDF from ${base_path.toAbsolutePath()}")
+      logger.debug(s"KB:RDF> importing RDF from ${base_path.toAbsolutePath()}")
 
       val fs = new FileDatastore(rdf_folder)
 

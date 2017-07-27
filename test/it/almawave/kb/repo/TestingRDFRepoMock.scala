@@ -11,6 +11,7 @@ import org.junit.Before
 import org.junit.After
 import org.junit.Assert
 import java.io.StringReader
+import java.io.File
 
 class TestingRDFRepoMock {
 
@@ -34,7 +35,10 @@ class TestingRDFRepoMock {
       .
     """
 
-  val rdf_doc_artists = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE)
+  val dir_base = new File("dist/data/ontologies/").getAbsoluteFile
+  val file_artist = new File(dir_base, "examples/example-data-artists.ttl")
+
+  val rdf_doc_artists = Rio.parse(new FileInputStream(file_artist), base_uri, RDFFormat.TURTLE)
 
   val rdf_doc_simple = Rio.parse(new StringReader(doc_example), "http://example.org/", RDFFormat.TURTLE)
 
@@ -135,10 +139,10 @@ class TestingRDFRepoMock {
     mock.store.clear(contexts: _*)
     Assert.assertEquals(0, mock.store.size(contexts: _*))
 
-    val rdf_doc_01 = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // ALL CONTEXTS!
+    val rdf_doc_01 = Rio.parse(new FileInputStream(file_artist), base_uri, RDFFormat.TURTLE) // ALL CONTEXTS!
     Assert.assertTrue(rdf_doc_01.size() > 0)
 
-    val rdf_doc_02 = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // A SINGLE CONTEXTS!
+    val rdf_doc_02 = Rio.parse(new FileInputStream(file_artist), base_uri, RDFFormat.TURTLE) // A SINGLE CONTEXTS!
     Assert.assertTrue(rdf_doc_02.size() > 0)
 
     val rdf_doc_03 = rdf_doc_artists // NO CONTEXT!
@@ -172,7 +176,7 @@ class TestingRDFRepoMock {
 
   @Test
   def remove_from_context() {
-    val rdf_doc_01 = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // ALL CONTEXTS!
+    val rdf_doc_01 = Rio.parse(new FileInputStream(file_artist), base_uri, RDFFormat.TURTLE) // ALL CONTEXTS!
 
     mock.store.clear()
     mock.store.add(rdf_doc_01, contexts(0))
@@ -213,7 +217,10 @@ class TestingRDFRepoMock {
 
   @Test
   def test_import() {
-    mock.helper.importFrom("data/ontologies")
+
+    println("DIR_BASE: " + dir_base)
+
+    mock.helper.importFrom(dir_base.toString())
     val vf = SimpleValueFactory.getInstance
     val size = mock.store.size(vf.createIRI("http://xmlns.com/foaf/0.1/"))
     println("SIZE: " + size)

@@ -35,6 +35,20 @@ $ sbt clean package
 $ sbt run 
 ```
 
+4. (local) deploy
+
+```
+$ sbt clean dist
+$ unzip -o -d  target/universal/ target/universal/lod-manager-0.0.1.zip
+$ target/universal/lod-manager-0.0.1/bin/lod-manager  -Dconfig.file=./conf/application.conf
+```
+
+**NOTE**: if the application crashed, the pid file whould be deleted before attempting re-run 
+```
+$ rm target/universal/lod-manager-0.0.1/RUNNING_PID 
+```
+
+
 
 * * * 
 

@@ -16,6 +16,9 @@ import play.api.Logger
 import it.gov.daf.lodmanager.utility.ConfigHelper
 import it.almawave.kb.repo.RDFRepoMock
 import scala.concurrent.ExecutionContext.Implicits.global
+import java.nio.file.Paths
+import play.api.Mode
+import java.io.File
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule
@@ -47,9 +50,7 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     kbrepo.prefixes.clear()
     kbrepo.prefixes.add(kbrepo.prefixes.DEFAULT.toList: _*)
 
-    // importing from local files
-    val rdf_folder = conf.getString("cache")
-    kbrepo.helper.importFrom(rdf_folder)
+    kbrepo.helper.importFrom(conf.getString("cache"))
 
     // CHECK the initial (total) triples count
     val triples = kbrepo.store.size()
