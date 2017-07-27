@@ -25,6 +25,10 @@ import play.Logger
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
 import it.gov.daf.lodmanager.utility.ConfigHelper
+import org.eclipse.rdf4j.rio.RDFFormat
+import org.eclipse.rdf4j.model.Statement
+import org.eclipse.rdf4j.model.util.ModelUtil
+import java.net.URL
 
 object RDFRepository {
 
@@ -286,6 +290,17 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
       results.toStream
     }
 
+    // TODO!
+    def add(url: URL, contexts: Resource*) {
+
+      //      val fis = url.openStream()
+      //      //      val ctx = SimpleValueFactory.getInstance.createIRI(_context.trim())
+      //      Rio
+      //      val doc = Rio.parse(fis, "", format, ctxs)
+      //      this.add(doc, ctx)
+      //      fis.close()
+    }
+
     def add(doc: Model, contexts: Resource*) {
 
       // merge the contexts
@@ -297,6 +312,7 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
       try {
         conn.add(doc, ctxs: _*)
         conn.commit()
+        logger.debug(s"KB:RDF> ${doc.size()} triples was added to contexts ${ctxs.mkString(" | ")}")
       } catch {
         case ex: Exception =>
           logger.debug(s"KB:RDF> cannot add RDF data\n${ex}")
@@ -317,6 +333,7 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
       try {
         conn.remove(doc, ctxs: _*)
         conn.commit()
+        logger.debug(s"KB:RDF> ${doc.size()} triples was removed from contexts ${ctxs.mkString(" | ")}")
       } catch {
         case ex: Exception =>
           // CHECK: we could try to remove from every single context
@@ -371,6 +388,13 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
   // TODO: refactorization
   object helper {
 
+    //    def parse(input:InputStream){
+    //      
+    //      val base_uri = ""
+    ////      Rio.parse(input, base_uri, format, contexts)
+    //      
+    //    }
+
     // TODO: add a configuration 
     def importFrom(rdf_folder: String) {
 
@@ -405,10 +429,10 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
               val contexts_list = meta.getStringList("contexts")
               val contexts = contexts_list.map { cx => vf.createIRI(cx) }
 
-              logger.info(s"importing ${uri} in context ${contexts_list(0)}")
+              logger.debug(s"importing ${uri} in context ${contexts_list(0)}")
 
               // adds the document to the default graph (no context!)
-              _self.store.add(doc)
+              // REVIEW: _self.store.add(doc)
               // adds the document to the contexts provided in .metadata
               _self.store.add(doc, contexts: _*)
 

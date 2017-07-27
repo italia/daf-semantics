@@ -1,9 +1,3 @@
-<!-- This is the FOAF formal vocabulary description, expressed using W3C RDFS and OWL markup. foaf/spec version -->
-<!-- For more information about FOAF:                                            -->
-<!--   see the FOAF project homepage, http://www.foaf-project.org/               -->
-<!--   FOAF specification, http://xmlns.com/foaf/spec/                             -->
-<!--                                                                             -->
-<!-- first we introduce a number of RDF namespaces we will be using... -->
 <rdf:RDF 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
@@ -12,6 +6,14 @@
 	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
 	xmlns:wot="http://xmlns.com/wot/0.1/" 
 	xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<!-- This is the FOAF formal vocabulary description, expressed using W3C RDFS and OWL markup. foaf/spec version -->
+<!-- For more information about FOAF:                                            -->
+<!--   see the FOAF project homepage, http://www.foaf-project.org/               -->
+<!--   FOAF specification, http://xmlns.com/foaf/spec/                             -->
+<!--                                                                             -->
+<!-- first we introduce a number of RDF namespaces we will be using... -->
+
 <!-- Here we describe general characteristics of the FOAF vocabulary ('ontology'). -->
   <owl:Ontology rdf:about="http://xmlns.com/foaf/0.1/" dc:title="Friend of a Friend (FOAF) vocabulary" dc:description="The Friend of a Friend (FOAF) RDF vocabulary, described using W3C RDF Schema and the Web Ontology Language." >
   </owl:Ontology>

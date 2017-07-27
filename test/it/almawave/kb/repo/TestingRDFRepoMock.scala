@@ -135,10 +135,10 @@ class TestingRDFRepoMock {
     mock.store.clear(contexts: _*)
     Assert.assertEquals(0, mock.store.size(contexts: _*))
 
-    val rdf_doc_01 = Rio.parse(new FileInputStream("ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // ALL CONTEXTS!
+    val rdf_doc_01 = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // ALL CONTEXTS!
     Assert.assertTrue(rdf_doc_01.size() > 0)
 
-    val rdf_doc_02 = Rio.parse(new FileInputStream("ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // A SINGLE CONTEXTS!
+    val rdf_doc_02 = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // A SINGLE CONTEXTS!
     Assert.assertTrue(rdf_doc_02.size() > 0)
 
     val rdf_doc_03 = rdf_doc_artists // NO CONTEXT!
@@ -168,6 +168,21 @@ class TestingRDFRepoMock {
     mock.store.add(rdf_doc_01)
     Assert.assertEquals(mock.store.size(), rdf_doc_01.size())
 
+  }
+
+  @Test
+  def remove_from_context() {
+    val rdf_doc_01 = Rio.parse(new FileInputStream("data/ontologies/examples/example-data-artists.ttl"), base_uri, RDFFormat.TURTLE) // ALL CONTEXTS!
+
+    mock.store.clear()
+    mock.store.add(rdf_doc_01, contexts(0))
+    mock.store.remove(rdf_doc_01, contexts(0))
+    Assert.assertEquals(0, mock.store.size(contexts(0)))
+
+    mock.store.clear()
+    mock.store.add(rdf_doc_01, contexts(0))
+    mock.store.clear(contexts(0))
+    Assert.assertEquals(0, mock.store.size(contexts(0)))
   }
 
   @Test
@@ -202,7 +217,7 @@ class TestingRDFRepoMock {
     val vf = SimpleValueFactory.getInstance
     val size = mock.store.size(vf.createIRI("http://xmlns.com/foaf/0.1/"))
     println("SIZE: " + size)
-    
+
     Assert.assertTrue(size > 0)
   }
 

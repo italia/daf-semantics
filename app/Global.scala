@@ -33,8 +33,6 @@ class StartModule extends AbstractModule {
 
     Logger.info("\n\nCHECKING: StartModule.configure()")
 
-    // CHECK: bind(classOf[OnStartupModule]).asEagerSingleton()
-
     bind(classOf[KBModule]).to(classOf[KBModuleBase]).asEagerSingleton()
   }
 
