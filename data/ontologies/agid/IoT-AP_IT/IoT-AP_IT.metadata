@@ -1,5 +1,0 @@
-prefix: "iotapit"
-uri: "http://dati.gov.it/ontologies/iot-ap-it/"
-contexts: [
-	"http://dati.gov.it/ontologies/iot-ap-it/"
-]

@@ -1,5 +1,0 @@
-prefix: "cpsvit"
-uri: "http://dati.gov.it/ontologies/cpsv-ap-it/"
-contexts: [
-	"http://dati.gov.it/ontologies/cpsv-ap-it/"
-]
