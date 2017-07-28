@@ -48,6 +48,9 @@ $ target/universal/lod-manager-0.0.1/bin/lod-manager  -Dconfig.file=./conf/appli
 $ rm target/universal/lod-manager-0.0.1/RUNNING_PID 
 ```
 
+5. release
+
+working draft: [0.0.1](https://github.com/seralf/lod_manager/releases/tag/0.0.1)
 
 
 * * * 
@@ -56,8 +59,8 @@ $ rm target/universal/lod-manager-0.0.1/RUNNING_PID
 
 - [ ] publish `kb-core` on github / bitbucket or as sub-module
 - [ ] add `kb-core` dependency on sbt 
-- [ ] add `RDF4J` dependencies on sbt (if needed)
+- [x] add `RDF4J` dependencies on sbt (if needed)
 - [ ] more test coverage for simple example HTTP requests
-- [ ] datapackage or similar? at the moment a `.metadata` is used for contexts
+- [x] ~~datapackage or similar? at the moment~~ a `.metadata` file is used for contexts
 
 
