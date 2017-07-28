@@ -14,7 +14,8 @@ import java.io.File
 
 class FileDatastoreTest {
 
-  val fs = new FileDatastore("data/ontologies")
+  val dir_ontologies = "dist/data/ontologies"
+  val fs = new FileDatastore(dir_ontologies)
 
   @Test
   def test_local_relative_files {
@@ -23,7 +24,7 @@ class FileDatastoreTest {
 
   @Test
   def test_local_uri() {
-    val foaf_local_uri = Paths.get("data/ontologies/foaf/foaf.rdf").toAbsolutePath().normalize().toUri()
+    val foaf_local_uri = Paths.get(dir_ontologies, "foaf/foaf.rdf").toAbsolutePath().normalize().toUri()
     val list = fs.list("owl", "ttl", "rdf")
     Assert.assertTrue(list.contains(foaf_local_uri))
   }
@@ -38,7 +39,7 @@ class FileDatastoreTest {
     Assert.assertEquals(ConfigFactory.empty(), meta_no)
 
     // get metadata
-    val uri = Paths.get("data/ontologies/foaf/foaf.rdf").toAbsolutePath().normalize().toUri()
+    val uri = Paths.get(dir_ontologies, "foaf/foaf.rdf").toAbsolutePath().normalize().toUri()
     val meta = fs.getMetadata(uri)
     Assert.assertEquals("foaf", meta.getString("prefix"))
     Assert.assertEquals("http://xmlns.com/foaf/0.1/", meta.getString("uri"))
@@ -50,7 +51,8 @@ class FileDatastoreTest {
 
 object MainFileDatastore extends App {
 
-  val fs = new FileDatastore("data/ontologies")
+  val dir_ontologies = "dist/data/ontologies"
+  val fs = new FileDatastore(dir_ontologies)
 
   fs.cache("foaf", "http://xmlns.com/foaf/spec/index.rdf")
 
