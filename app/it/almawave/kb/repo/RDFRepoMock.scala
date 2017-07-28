@@ -24,11 +24,14 @@ import play.Logger
 
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
-import it.gov.daf.lodmanager.utility.ConfigHelper
+import it.almawave.kb.ConfigHelper
 import org.eclipse.rdf4j.rio.RDFFormat
 import org.eclipse.rdf4j.model.Statement
 import org.eclipse.rdf4j.model.util.ModelUtil
 import java.net.URL
+import java.net.URLDecoder
+import java.io.FileInputStream
+import java.io.File
 
 object RDFRepository {
 
@@ -188,22 +191,6 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
       conn.close()
     }
 
-    // set prefixes
-    //    def set(namespaces: Map[String, String]) {
-    //      val conn = repo.getConnection
-    //      conn.begin()
-    //      try {
-    //        conn.clearNamespaces()
-    //        namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
-    //        conn.commit()
-    //      } catch {
-    //        case ex: Exception =>
-    //          logger.error(s"KB:RDF> cannot update namespaces: ${namespaces}")
-    //          conn.rollback()
-    //      }
-    //      conn.close()
-    //    }
-
     // get prefixes
     def list(): Map[String, String] = {
 
@@ -288,17 +275,6 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
       conn.close()
 
       results.toStream
-    }
-
-    // TODO!
-    def add(url: URL, contexts: Resource*) {
-
-      //      val fis = url.openStream()
-      //      //      val ctx = SimpleValueFactory.getInstance.createIRI(_context.trim())
-      //      Rio
-      //      val doc = Rio.parse(fis, "", format, ctxs)
-      //      this.add(doc, ctx)
-      //      fis.close()
     }
 
     def add(doc: Model, contexts: Resource*) {
@@ -388,12 +364,22 @@ class RDFRepoMock(repo: Repository) extends RDFRepository {
   // TODO: refactorization
   object helper {
 
-    //    def parse(input:InputStream){
-    //      
-    //      val base_uri = ""
-    ////      Rio.parse(input, base_uri, format, contexts)
-    //      
-    //    }
+    def addFile(rdfName: String, rdfFile: File, context: String) {
+
+      val default_format = RDFFormat.TURTLE
+
+      val _context = URLDecoder.decode(context, "UTF-8")//.replaceAll("\\s+", "+")
+      val format = Rio.getParserFormatForFileName(rdfName).orElse(default_format)
+
+      val fis = new FileInputStream(rdfFile.getAbsoluteFile)
+      val ctx = SimpleValueFactory.getInstance.createIRI(_context.trim())
+
+      // adds the file as an RDF document
+      val doc = Rio.parse(fis, "", format, ctx)
+      _self.store.add(doc, ctx)
+
+      fis.close()
+    }
 
     // TODO: add a configuration 
     def importFrom(rdf_folder: String) {

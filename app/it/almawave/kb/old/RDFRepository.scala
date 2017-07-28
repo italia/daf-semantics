@@ -274,45 +274,6 @@ class RDFRepository(repository: Repository) {
 
   private def vf: ValueFactory = repo.getValueFactory
 
-  // attempt to clear all the repository
-  def clear(contexts: String*) {
-    val ctxs: Seq[IRI] = contexts.map { cx => vf.createIRI(cx) }
-    val conn = repo.getConnection
-    try {
-      conn.begin()
-      logger.error(s"attempt to clear data")
-      conn.clear(ctxs: _*)
-      conn.commit()
-    } catch {
-      case ex: Exception =>
-        logger.error(s"error while clear data\n ${ex}")
-        conn.rollback()
-    }
-    conn.close()
-  }
-
-  // add RDF content
-  def addRDF(input: InputStream, baseURI: URI, format: String, contexts: String*) = {
-    val conn = repo.getConnection
-
-    try {
-
-      val ctxs: Seq[IRI] = contexts.map { cx => vf.createIRI(cx) }
-      val dataFormat = Rio.getParserFormatForMIMEType(format).orElse(RDFFormat.TURTLE)
-
-      conn.begin()
-      conn.add(input, baseURI.toString(), dataFormat, ctxs: _*)
-      conn.commit()
-
-    } catch {
-      case ex: Exception =>
-        logger.debug(s"problems adding triples\n ${ex}")
-        conn.rollback()
-    }
-
-    conn.close()
-  }
-
   // REVIEW: low-level remove
   def removeRDF(rdfDocument: URI, contexts: String*) = {
 

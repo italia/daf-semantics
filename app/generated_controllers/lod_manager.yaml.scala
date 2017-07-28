@@ -29,188 +29,34 @@ import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import play.api.mvc.{Action,Controller}
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.util.Date
-import play.Logger
 import scala.concurrent.Future
+import java.io.File
+import java.io.StringReader
+import java.io.FileInputStream
+import java.nio.file.Paths
+import java.util.Date
+import java.net.URLDecoder
+import javax.inject._
+import play.Logger
+import play.api.libs.json.Json
+import play.api.mvc.{Action,Controller}
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.i18n.MessagesApi
+import play.api.data.validation.Constraint
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.libs.json.Json
 import com.fasterxml.jackson.databind.ObjectMapper
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory
 import org.eclipse.rdf4j.rio.Rio
 import org.eclipse.rdf4j.rio.RDFFormat
-import java.io.StringReader
+import org.eclipse.rdf4j.model.Resource
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
-import java.nio.file.Paths
-import java.io.FileInputStream
-import org.eclipse.rdf4j.model.Resource
-import java.net.URLDecoder
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -219,7 +65,7 @@ import java.net.URLDecoder
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-                                
+            
     // ----- End of unmanaged code area for package Lod_managerYaml
     class Lod_managerYaml @Inject() (
         // ----- Start of unmanaged code area for injections Lod_managerYaml
@@ -239,8 +85,6 @@ package lod_manager.yaml {
         val countTriplesByOntology = countTriplesByOntologyAction { (prefix: String) =>  
             // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
             val namespace = kbrepo.prefixes.list().get(prefix).get
-
-      Logger.debug("countTriplesByOntology : " + namespace)
 
       val vf = SimpleValueFactory.getInstance // TODO: refactorize here!
       val namespace_iri = vf.createIRI(namespace)
@@ -264,34 +108,7 @@ package lod_manager.yaml {
         val addRDFDoc = addRDFDocAction { input: (String, File, String) =>
             val (name, rdfDocument, context) = input
             // ----- Start of unmanaged code area for action  Lod_managerYaml.addRDFDoc
-            //      http%3A%2F%2Fgraph%2Ftest01
-      val _context = URLDecoder.decode(context, "UTF-8").replaceAll("\\s+", "+")
-      val format = Rio.getParserFormatForFileName(name).orElse(RDFFormat.RDFXML)
-
-      //context: <http%3A%2F%2Fgraph%2Ftest01>, decoded as: <http://graph/test01>
-      //DOC: C:\Users\AL033D~1.SER\AppData\Local\Temp\playtemp6071402302519814770\multipartBody2145034799261750291asTemporaryFile
-      //format: Turtle (mimeTypes=text/turtle, application/x-turtle; ext=ttl)
-
-      println("\n\n\n\n")
-      println(s"context: <${context}>, decoded as: <${_context}>")
-      println(s"DOC: ${rdfDocument}")
-      println(s"format: ${format}")
-      println(s"${name}")
-      println("\n\n\n\n")
-
-      //      val doc = Rio.parse(new StringReader(document), "", RDFFormat.TURTLE)
-      //      kbrepo.store.add(doc, ctx)
-      //      InvokeUsingPOST200(Future {
-      //        "{OK}"
-      //      })
-
-      // TODO ---- refactorization! ----
-      val fis = new FileInputStream(rdfDocument)
-      val ctx = SimpleValueFactory.getInstance.createIRI(_context.trim())
-      val doc = Rio.parse(fis, "", format, ctx)
-      kbrepo.store.add(doc, ctx)
-      fis.close()
-      // TODO ---- refactorization! ----
+            kbrepo.helper.addFile(name, rdfDocument, context)
 
       AddRDFDoc200(Future {
         s"""

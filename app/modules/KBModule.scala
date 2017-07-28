@@ -13,7 +13,7 @@ import play.api.Environment
 import play.api.Configuration
 import scala.concurrent.ExecutionContext
 import play.api.Logger
-import it.gov.daf.lodmanager.utility.ConfigHelper
+import it.almawave.kb.ConfigHelper
 import it.almawave.kb.repo.RDFRepoMock
 import scala.concurrent.ExecutionContext.Implicits.global
 import java.nio.file.Paths
