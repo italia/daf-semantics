@@ -42,7 +42,11 @@ libraryDependencies ++= Seq(
 "org.scalatest" %% "scalatest" % "2.2.2" % Test,
 "junit" % "junit" % "4.11" % Test,
 "com.novocode" % "junit-interface" % "0.11" % Test,
-  
+
+// "org.eclipse.rdf4j" % "rdf4j-sail-solr" % "2.2.2", 
+// "org.apache.solr" % "solr-solrj" % "5.1.0", 
+// "org.apache.solr" % "solr-core" % "5.1.0", 
+// TODO: jdk.tools
   
   // DISABLED: now copied source internally. CHECK sub-modules?
   // "it.awave.kb" % "kb-core" % "0.0.1", // CHECK: see how to point to maven local!

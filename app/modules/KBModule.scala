@@ -14,7 +14,7 @@ import play.api.Configuration
 import scala.concurrent.ExecutionContext
 import play.api.Logger
 import it.almawave.kb.ConfigHelper
-import it.almawave.kb.repo.RDFRepoMock
+import it.almawave.kb.repo._
 import scala.concurrent.ExecutionContext.Implicits.global
 import java.nio.file.Paths
 import play.api.Mode
@@ -25,8 +25,6 @@ trait KBModule
 
 @Singleton
 class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule {
-
-  import it.almawave.kb.repo._
 
   val kbrepo = RDFRepository.memory()
 

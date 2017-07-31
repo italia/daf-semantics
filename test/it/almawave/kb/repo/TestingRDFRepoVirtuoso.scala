@@ -13,7 +13,7 @@ import org.junit.Assert
 import java.io.StringReader
 import java.io.File
 
-class TestingRDFRepoMock {
+class TestingRDFRepoVirtuoso {
 
   // TODO: move in config
   System.setProperty("org.eclipse.rdf4j.repository.debug", "true")
@@ -43,7 +43,7 @@ class TestingRDFRepoMock {
   val rdf_doc_simple = Rio.parse(new StringReader(doc_example), "http://example.org/", RDFFormat.TURTLE)
 
   //  var db: Repository = null
-  var mock = RDFRepository.memory()
+  var mock = RDFRepository.virtuoso()
 
   @Before()
   def before() {
@@ -227,113 +227,5 @@ class TestingRDFRepoMock {
 
     Assert.assertTrue(size > 0)
   }
-
-}
-
-object ExamplesContextWithSPARQL extends App {
-
-  //  // ------------- HELPER -------------
-  //
-  //  // TODO: move in helper class
-  //  implicit class TupleResultIterator(result: TupleQueryResult) extends Iterator[BindingSet] {
-  //    def hasNext: Boolean = result.hasNext()
-  //    def next(): BindingSet = result.next()
-  //  }
-  //
-  //  // TODO: move in helper class
-  //  implicit class RepositoryResultIterator[T](result: RepositoryResult[T]) extends Iterator[T] {
-  //    def hasNext: Boolean = result.hasNext()
-  //    def next(): T = result.next()
-  //  }
-  //
-  //  // ------------- HELPER -------------
-  //
-  //  // SEE: http://docs.rdf4j.org/rdf-tutorial/
-  //
-
-  //
-
-  //
-  //  // ----------------------------------------------------------------------------------------------
-  //
-  //  val db: Repository = new SailRepository(new MemoryStore())
-  //  db.initialize();
-  //
-  //  var conn = db.getConnection()
-  //  val vf = conn.getValueFactory // CHECK: providing custom implementation for BN
-  //
-  //  conn.add(model, contexts: _*)
-  //
-  //  conn.close()
-  //  conn = db.getConnection
-  //
-  //  val statements = conn.getStatements(null, null, null, false, contexts: _*)
-  //
-  //  println("\n\n\n\n#### STATEMENTS")
-  //  var count = 0
-  //  while (statements.hasNext()) {
-  //
-  //    val st = statements.next()
-  //    count += 1
-  //    println(count + ": " + st)
-  //
-  //  }
-  //
-  //  println(s"#### ${count} statements")
-  //
-  //  conn.close()
-  //
-  //  conn = db.getConnection
-  //
-  //  // ------------ SPARQL -------------
-  //
-  //  println("\n\n\n\nSPARQL TESTS")
-  //
-  //  // TESTING: DROP GRAPH
-  //  //  val queryDropGraph = s"""
-  //  //    DROP GRAPH <${contexts(0)}>
-  //  //  """
-  //  //  conn.prepareUpdate(QueryLanguage.SPARQL, queryDropGraph).execute()
-  //
-  //  // TESTING: delete
-  //  //  val queryDeleteGraph = s"""
-  //  //  WITH <${contexts(0)}>
-  //  //  DELETE { ?s ?p ?o }
-  //  //  WHERE { ?s ?p ?o } 
-  //  //  """
-  //  //  conn.prepareUpdate(QueryLanguage.SPARQL, queryDeleteGraph).execute()
-  //
-  //  // TESTING: update
-  //  //  val queryDeleteGraph = s"""
-  //  //  WITH <${contexts(0)}>
-  //  //  DELETE { ?s ?p ?o }
-  //  //  INSERT { <http://graph/sub_01> ?p ?o }
-  //  //  WHERE { ?s ?p ?o } 
-  //  //  """
-  //  //  conn.prepareUpdate(QueryLanguage.SPARQL, queryDeleteGraph).execute()
-  //
-  //  val query = s"""
-  //    SELECT * 
-  //    FROM DEFAULT 
-  //    FROM NAMED <${contexts(0)}>
-  //    WHERE {
-  //      GRAPH <${contexts(0)}> {
-  //        ?s ?p ?o
-  //      }
-  //    }
-  //  """
-  //  var i = 0
-  //  val results = conn.prepareTupleQuery(QueryLanguage.SPARQL, query).evaluate()
-  //  while (results.hasNext()) {
-  //    val res = results.next()
-  //    i += 1
-  //    println(i + ": " + res)
-  //  }
-  //  println(s"---- ${i} TOTAL SPARQL results")
-  //
-  //  // ------------ SPARQL -------------  
-  //
-  //  conn.close()
-  //  db.shutDown()
 
 }
