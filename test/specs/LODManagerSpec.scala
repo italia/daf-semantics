@@ -87,6 +87,16 @@ class LODManagerSpec extends Specification {
       }
     }
 
+    // TODO: minimal test for upload
+    // SEE example: 
+    //    "adding RDF document with POST rshould return success" in {
+    //      Post("/upload", HttpEntity(MediaTypes.`multipart/form-data`, """{"filename":"a.wav"}""")) ~>
+    //        sealRoute(uploadRoute) ~> check {
+    //          response.status should be equalTo OK
+    //          responseAs[String] === "..."
+    //        }
+    //    }
+
   }
 
 }
