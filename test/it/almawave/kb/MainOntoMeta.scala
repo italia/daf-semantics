@@ -21,12 +21,9 @@ object MainOntoMeta extends App {
   val prefixes = repo.prefixes.list()
   println("#### PREFIXES\n" + prefixes.mkString("\n"))
 
-  //  val contexts = repo.store.contexts()
-  //  println("#### CONTEXTS\n" + contexts.mkString("\n"))
-
   repo.stop()
 
-  //  System.exit(0)
+  //  System.exit(0) ----
 
   val uri = Paths.get("dist/data/ontologies/agid/CPSV-AP_IT/CPSV-AP_IT.owl").normalize().toUri()
   val format = Rio.getParserFormatForFileName(uri.toString()).get

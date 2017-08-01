@@ -22,12 +22,10 @@ import it.almawave.kb.RDFHelper.RepositoryResultIterator
 import it.almawave.kb.RDFHelper.TupleResultIterator
 import play.Logger
 
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
 import it.almawave.kb.ConfigHelper
 import org.eclipse.rdf4j.rio.RDFFormat
 import org.eclipse.rdf4j.model.Statement
-//import org.eclipse.rdf4j.model.util.ModelUtil
+
 import java.net.URL
 import java.net.URLDecoder
 import java.io.FileInputStream
@@ -35,6 +33,14 @@ import java.io.File
 import org.eclipse.rdf4j.model.Literal
 import org.eclipse.rdf4j.repository.RepositoryConnection
 import virtuoso.rdf4j.driver.VirtuosoRepository
+
+import org.eclipse.rdf4j.sail.memory.model._
+import scala.collection.JavaConversions._
+
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import org.eclipse.rdf4j.model.impl.SimpleIRI
+import org.eclipse.rdf4j.model.impl.NumericLiteral
 
 object RDFRepository {
 
@@ -47,7 +53,7 @@ object RDFRepository {
     // CHECK: how to handle contexts properly
 
     val mem = new MemoryStore
-    val repo = new SailRepository(mem)
+    val repo: Repository = new SailRepository(mem)
     new RDFRepositoryBase(repo)
   }
 
@@ -110,6 +116,9 @@ object RDFRepository {
 
 }
 
+// TODO: refactorization using trait!!
+trait RDFRepository
+
 /**
  *
  * TODO: use an implicit connection
@@ -128,22 +137,28 @@ class RDFRepositoryBase(repo: Repository) {
   // CHECK: providing custom implementation for BN
   var vf: ValueFactory = SimpleValueFactory.getInstance
 
+  // checking if the repository is up. TODO: refactoring to a method
+  def check(): Boolean = {
+    val result = try {
+      val _conn = repo.getConnection
+      _conn.close()
+      true
+    } catch {
+      case ex: Exception =>
+        ex.printStackTrace()
+        logger.error(s"error attempting connection to repository") // TODO: config with url
+        false
+    }
+    println("???? CHECKING ???? " + result)
+    result 
+  }
+
   def start() {
 
     if (!repo.isInitialized())
       repo.initialize()
 
-    // checking if the repository is up. TODO: refactoring to a method
-    try {
-      val _conn = repo.getConnection
-      println(".................")
-      _conn.close()
-    } catch {
-      case ex: Exception =>
-        ex.printStackTrace()
-        logger.error(s"error attempting connection to repository") // TODO: config with url
-        System.exit(1) // cannot start application!
-    }
+    this.check()
 
     vf = repo.getValueFactory
   }
@@ -227,18 +242,27 @@ class RDFRepositoryBase(repo: Repository) {
 
   }
 
+  def connection = repo.getConnection
+
   /*
    * this component can be seen as an RDF datastore abstraction
    */
   object store {
 
     def clear(contexts: Resource*) {
-
       val conn = repo.getConnection
       conn.begin()
 
       try {
-        conn.clear(contexts: _*)
+        if (contexts.size > 0) {
+          conn.clear(contexts: _*)
+        } else {
+          // delete each contexts
+          conn.clear(null)
+          conn.clear()
+          val _contexts = conn.getContextIDs.toList
+          conn.clear(_contexts: _*)
+        }
         conn.commit()
       } catch {
         case ex: Exception =>
@@ -247,8 +271,31 @@ class RDFRepositoryBase(repo: Repository) {
       }
 
       conn.close()
-
     }
+
+    //    @Deprecated
+    //    def __clear(contexts: Resource*) {
+    //
+    //      val conn = repo.getConnection
+    //      conn.begin()
+    //
+    //      println(s"\n\nCONTEXTS\n [ ${contexts.mkString(" | ")} ]")
+    //
+    //      try {
+    //
+    //        conn.clear(contexts: _*)
+    //
+    //        conn.commit()
+    //
+    //      } catch {
+    //        case ex: Exception =>
+    //          logger.error(s"KB:RDF> cannot clear contexts: ${contexts.mkString(", ")}")
+    //          conn.rollback()
+    //      }
+    //
+    //      conn.close()
+    //
+    //    }
 
     def contexts(): Seq[String] = {
 
@@ -261,15 +308,22 @@ class RDFRepositoryBase(repo: Repository) {
     }
 
     // TODO: refactorize / merge the two signatures!
-    def sizeByContexts(contexts: Seq[String]): Long = {
-      val ctxs = contexts.map { cx => vf.createIRI(cx) }.toList
-      this.size(ctxs: _*)
-    }
+    //    def sizeByContexts(contexts: Seq[String]): Long = {
+    //      val ctxs = contexts.map { cx => vf.createIRI(cx) }.toList
+    //      this.size(ctxs: _*)
+    //    }
 
     def size(contexts: Resource*): Long = {
       val conn = repo.getConnection
 
-      var size = conn.size(contexts: _*) // CHECK: blank nodes!
+      val size = if (contexts.size > 0)
+        conn.size(contexts: _*)
+      else {
+        conn.size(null)
+        //        conn.clear()
+      }
+
+      //      var size = conn.size(contexts: _*) // CHECK: blank nodes!
 
       conn.close()
       size
@@ -310,7 +364,9 @@ class RDFRepositoryBase(repo: Repository) {
     def remove(doc: Model, contexts: Resource*) {
 
       // merge the contexts
-      val ctxs = doc.contexts().toSeq.union(contexts.toSeq).distinct
+      //      val ctxs = doc.contexts().toSeq.union(contexts.toSeq).distinct
+
+      val ctxs = contexts
 
       val conn = repo.getConnection()
       conn.begin()
@@ -336,9 +392,6 @@ class RDFRepositoryBase(repo: Repository) {
    */
   object sparql {
 
-    import org.eclipse.rdf4j.sail.memory.model._
-    import scala.collection.JavaConversions._
-
     def query(query: String): Seq[Map[String, Object]] = {
 
       val conn = repo.getConnection
@@ -355,7 +408,9 @@ class RDFRepositoryBase(repo: Repository) {
             val value = binding.getValue match {
               case literal: MemLiteral => literal.stringValue()
               case iri: MemIRI         => new URI(iri.stringValue())
+              case iri: SimpleIRI      => new URI(iri.stringValue())
               case bnode: MemBNode     => bnode.toString()
+              case other               => other.toString()
             }
 
             (name, value)
