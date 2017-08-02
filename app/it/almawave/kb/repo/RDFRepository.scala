@@ -41,6 +41,7 @@ import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
 import org.eclipse.rdf4j.model.impl.SimpleIRI
 import org.eclipse.rdf4j.model.impl.NumericLiteral
+import com.typesafe.config.ConfigFactory
 
 object RDFRepository {
 
@@ -137,11 +138,14 @@ class RDFRepositoryBase(repo: Repository) {
   // CHECK: providing custom implementation for BN
   var vf: ValueFactory = SimpleValueFactory.getInstance
 
-  // checking if the repository is up. TODO: refactoring to a method
-  def check(): Boolean = {
-    val result = try {
+  // checking if the repository is up.
+  def isAlive(): Boolean = {
+    try {
+      if (!repo.isInitialized())
+        repo.initialize()
       val _conn = repo.getConnection
       _conn.close()
+      repo.shutDown()
       true
     } catch {
       case ex: Exception =>
@@ -149,16 +153,12 @@ class RDFRepositoryBase(repo: Repository) {
         logger.error(s"error attempting connection to repository") // TODO: config with url
         false
     }
-    println("???? CHECKING ???? " + result)
-    result 
   }
 
   def start() {
 
     if (!repo.isInitialized())
       repo.initialize()
-
-    this.check()
 
     vf = repo.getValueFactory
   }
@@ -320,10 +320,7 @@ class RDFRepositoryBase(repo: Repository) {
         conn.size(contexts: _*)
       else {
         conn.size(null)
-        //        conn.clear()
       }
-
-      //      var size = conn.size(contexts: _*) // CHECK: blank nodes!
 
       conn.close()
       size
@@ -428,12 +425,18 @@ class RDFRepositoryBase(repo: Repository) {
   // TODO: refactorization
   object helper {
 
+    // TODO: refactorize configurations
+    private val _conf = ConfigFactory.parseString("""
+      import.formats = [ "owl", "rdf", "ttl", "nt" ]
+    """)
+
+    val default_format = RDFFormat.TURTLE
+
     def addFile(rdfName: String, rdfFile: File, context: String) {
 
-      val default_format = RDFFormat.TURTLE
-
-      val _context = URLDecoder.decode(context, "UTF-8") //.replaceAll("\\s+", "+")
-      val format = Rio.getParserFormatForFileName(rdfName).orElse(default_format)
+      val _context = URLDecoder.decode(context, "UTF-8")
+      val format = Rio.getParserFormatForFileName(rdfName)
+        .orElse(default_format)
 
       val fis = new FileInputStream(rdfFile.getAbsoluteFile)
       val ctx = SimpleValueFactory.getInstance.createIRI(_context.trim())
@@ -454,13 +457,14 @@ class RDFRepositoryBase(repo: Repository) {
 
       val fs = new FileDatastore(rdf_folder)
 
-      fs.list("owl", "rdf", "ttl", "nt")
+      fs.list(_conf.getStringList("import.formats"): _*) // TODO: configuration
         .foreach {
           uri =>
 
             // CHECK: how to put an ontology in the right context? SEE: configuration
 
             val format = Rio.getParserFormatForFileName(uri.toString()).get
+
             val doc = Rio.parse(uri.toURL().openStream(), uri.toString(), format)
 
             // adds all the namespaces from the file
@@ -485,12 +489,9 @@ class RDFRepositoryBase(repo: Repository) {
 
               logger.debug(s"importing ${uri} in context ${contexts_list(0)}")
 
-              // adds the document to the default graph (no context!)
-              //               REVIEW: 
-              //              _self.store.add(doc)
-
               // adds the document to the contexts provided in .metadata
               _self.store.add(doc, contexts: _*)
+              _self.store.add(doc) // also publish to the default context
 
             } else {
               logger.warn(s"skipping import of ${uri}: missing meta!")

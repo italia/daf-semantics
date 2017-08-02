@@ -26,7 +26,8 @@ trait KBModule
 @Singleton
 class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule {
 
-  val kbrepo = RDFRepository.memory()
+  //  val kbrepo = RDFRepository.memory()
+  val kbrepo = RDFRepository.virtuoso()
 
   // when application starts...
   @Inject
@@ -51,8 +52,9 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     kbrepo.helper.importFrom(conf.getString("cache"))
 
     // CHECK the initial (total) triples count
-    val triples = kbrepo.store.size()
-    Logger.info(s"KBModule: ${triples} triples loaded")
+    var triples = kbrepo.store.size()
+
+    Logger.info(s"KBModule> ${triples} triples loaded")
 
   }
 
