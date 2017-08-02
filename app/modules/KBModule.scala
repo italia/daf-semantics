@@ -26,6 +26,7 @@ trait KBModule
 @Singleton
 class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule {
 
+  // TODO: SPI per dev / prod
   //  val kbrepo = RDFRepository.memory()
   val kbrepo = RDFRepository.virtuoso()
 
