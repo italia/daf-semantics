@@ -1,8 +1,7 @@
 package it.almawave.kb.repo
 
+// a simple main as an example
 object MainRDFRepository extends App {
-
-  // TODO: add sparql endpoint
 
   val repo = RDFRepository.memory()
   repo.start()
@@ -11,10 +10,12 @@ object MainRDFRepository extends App {
 
   val results = repo.sparql.query("SELECT * WHERE { ?subject a ?concept }")
 
-  results.foreach {
-    item =>
-      println(item)
-  }
+  results
+    .toStream
+    .foreach {
+      item =>
+        println(item)
+    }
 
   repo.stop()
 }

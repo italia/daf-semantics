@@ -46,8 +46,6 @@ import play.twirl.api.Content
 import play.api.test.Helpers._
 import play.api.libs.json.JsObject
 
-//import scala.util.parsing.json.JSONObject
-
 @RunWith(classOf[JUnitRunner])
 class LODManagerSpec extends Specification {
 

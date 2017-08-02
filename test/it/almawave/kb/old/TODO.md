@@ -1,1 +1,0 @@
-finish refactorization, then drop this package and its classes!

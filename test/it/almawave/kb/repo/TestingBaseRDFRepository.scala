@@ -1,6 +1,7 @@
 package it.almawave.kb.repo
 
 import java.io.FileInputStream
+
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory
@@ -45,12 +46,9 @@ abstract class TestingBaseRDFRepository {
   @Before()
   def before() {
 
-    val up = mock.check()
-    println("ASSUME? " + up)
+    org.junit.Assume.assumeTrue(mock.isAlive())
 
-    Assume.assumeTrue(false)
     mock.start()
-
     mock.store.clear()
   }
 

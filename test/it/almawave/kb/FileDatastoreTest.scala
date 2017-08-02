@@ -56,7 +56,7 @@ object MainFileDatastore extends App {
 
   fs.cache("foaf", "http://xmlns.com/foaf/spec/index.rdf")
 
-  val files = fs.list("owl", "rdf")
+  val files = fs.list("owl", "rdf", "ttl")
   files.foreach { uri =>
     println("\n" + uri)
   }
