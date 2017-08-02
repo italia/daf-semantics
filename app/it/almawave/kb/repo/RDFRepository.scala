@@ -155,6 +155,11 @@ class RDFRepositoryBase(repo: Repository) {
     }
   }
 
+  private def loggingException(msg: String, ex: Throwable) {
+    logger.error(msg)
+    throw new RDFRepositoryException(msg, ex)
+  }
+
   def start() {
 
     try {
