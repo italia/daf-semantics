@@ -52,6 +52,10 @@ paths:
           required: true
           description: the RDF document to add
         - in: formData
+          name: prefix
+          type: string
+          required: true
+        - in: formData
           name: context
           type: string
           required: true
@@ -234,6 +238,7 @@ definitions:
         type: "integer"
 
   Error:
+    type: "object"
     required:
       - code
       - message

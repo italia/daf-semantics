@@ -89,6 +89,36 @@ import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
+import play.api.mvc.{ Action, Controller }
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{ Action, Controller }
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{ Action, Controller }
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
@@ -117,6 +147,7 @@ import org.eclipse.rdf4j.model.Resource
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
+import javax.xml.crypto.URIDereferencer
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -143,7 +174,6 @@ package lod_manager.yaml {
     // ----- End of unmanaged code area for constructor Lod_managerYaml
     val countTriplesByOntology = countTriplesByOntologyAction { (prefix: String) =>
       // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
-
       val namespace = kbrepo.prefixes.list().get(prefix)
 
       val vf = SimpleValueFactory.getInstance // TODO: refactorize here!
@@ -166,14 +196,15 @@ package lod_manager.yaml {
       })
       // ----- End of unmanaged code area for action  Lod_managerYaml.prefixesList
     }
-    val addRDFDoc = addRDFDocAction { input: (String, File, String) =>
-      val (name, rdfDocument, context) = input
+    val addRDFDoc = addRDFDocAction { input: (String, File, String, String) =>
+      val (name, rdfDocument, prefix, context) = input
       // ----- Start of unmanaged code area for action  Lod_managerYaml.addRDFDoc
-      kbrepo.helper.addFile(name, rdfDocument, context)
+      val _context = URLDecoder.decode(context, "UTF-8")
+      kbrepo.helper.addFile(name, rdfDocument, prefix, _context)
 
       AddRDFDoc200(Future {
         s"""
-          "message": "the document ${rdfDocument.toString()} was correctly added to context ${context}"
+          "message": "the document ${rdfDocument.toString()} was correctly added to context ${prefix}:${context}"
         """
       })
 

@@ -439,7 +439,7 @@ class RDFRepositoryBase(repo: Repository) {
 
     val default_format = RDFFormat.TURTLE
 
-    def addFile(rdfName: String, rdfFile: File, context: String) {
+    def addFile(rdfName: String, rdfFile: File, prefix: String, context: String) {
 
       TryLog {
 
@@ -452,6 +452,10 @@ class RDFRepositoryBase(repo: Repository) {
 
         // adds the file as an RDF document
         val doc = Rio.parse(fis, "", format, ctx)
+
+        // trying to register a default prefix:namespace pair for context
+        _self.prefixes.add((prefix, context))
+        // add the RDF document to the given context
         _self.store.add(doc, ctx)
 
         fis.close()
