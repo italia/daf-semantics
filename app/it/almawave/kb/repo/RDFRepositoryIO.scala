@@ -1,4 +1,4 @@
-package it.almawave.kb.repo
+package it.almawave.kb.repo.wrappers
 
 import org.slf4j.LoggerFactory
 import com.typesafe.config.ConfigFactory
@@ -17,8 +17,9 @@ import java.net.URI
 import com.typesafe.config.Config
 import java.nio.file.StandardCopyOption
 import java.nio.file.Path
+import it.almawave.kb.repo.RDFRepositoryBase
 
-protected class RDFRepositoryIO(kbrepo: RDFRepositoryBase) {
+class RDFRepositoryIO(kbrepo: RDFRepositoryBase) {
 
   implicit val logger = LoggerFactory.getLogger(this.getClass)
 

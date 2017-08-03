@@ -20,7 +20,7 @@ import com.typesafe.config.ConfigFactory
 import it.almawave.kb.utils.RDF4JAdapters.StringContextAdapter
 import it.almawave.kb.utils.TryHandlers.TryLog
 import virtuoso.rdf4j.driver.VirtuosoRepository
-//import it.almawave.kb.RDFHelper
+import it.almawave.kb.repo.wrappers.RDFRepositoryIO
 
 object RDFRepository {
 

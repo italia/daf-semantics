@@ -1,11 +1,9 @@
 package it.almawave.kb.repo
 
 import scala.util.Try
-
 import org.slf4j.LoggerFactory
 import org.eclipse.rdf4j.repository.Repository
 import org.eclipse.rdf4j.query.QueryLanguage
-
 import it.almawave.kb.utils.TryHandlers._
 import it.almawave.kb.utils.RDF4JAdapters._
 
