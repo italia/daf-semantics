@@ -1,4 +1,4 @@
-package it.almawave.kb
+package it.almawave.kb.utils
 
 import org.eclipse.rdf4j.model.Model
 import org.eclipse.rdf4j.rio.RDFFormat
@@ -17,10 +17,18 @@ import org.eclipse.rdf4j.sail.memory.model.MemBNode
 import org.eclipse.rdf4j.model.ValueFactory
 import org.eclipse.rdf4j.model.IRI
 
-object RDFHelper {
+object RDF4JAdapters {
 
-  def toIRIs(vf: ValueFactory, contexts: String*): Seq[IRI] = {
-    contexts.map { cx => vf.createIRI(cx) }
+  implicit class StringContextAdapter(context: String) {
+    def toIRI(implicit vf: ValueFactory = SimpleValueFactory.getInstance): IRI = {
+      vf.createIRI(context)
+    }
+  }
+
+  implicit class StringContextListAdapter(contexts: Seq[String]) {
+    def toIRIList(implicit vf: ValueFactory = SimpleValueFactory.getInstance): Seq[IRI] = {
+      contexts.map { cx => vf.createIRI(cx) }
+    }
   }
 
   def prettyPrint(doc: Model, out: OutputStream, format: RDFFormat = RDFFormat.TURTLE) = ???
@@ -36,7 +44,9 @@ object RDFHelper {
   }
 
   implicit class BindingSetMapAdapter(bs: BindingSet) {
+
     def toMap(): Map[String, Object] = {
+
       val names = bs.getBindingNames
       names.map { n =>
 
@@ -53,6 +63,7 @@ object RDFHelper {
         (name, value)
       }.toMap
     }
+
   }
 
 }

@@ -15,6 +15,8 @@ import java.io.StringReader
 import java.io.File
 import org.junit.Assume
 
+import it.almawave.kb.utils.RDF4JAdapters._
+
 /*
  * basic tests for the RDFRepository instances
  */
@@ -33,9 +35,10 @@ abstract class TestingBaseRDFRepository {
   """
 
   val vf = SimpleValueFactory.getInstance
-  val ctxs = List(vf.createIRI("http://localhost"), vf.createIRI("http://graph"))
+  //  val ctxs = List(vf.createIRI("http://localhost"), vf.createIRI("http://graph"))
+  val ctxs = List("http://localhost", "http://graph")
 
-  val docWithContexts = Rio.parse(new StringReader(doc_example), base_uri, RDFFormat.TURTLE, ctxs: _*)
+  val docWithContexts = Rio.parse(new StringReader(doc_example), base_uri, RDFFormat.TURTLE, ctxs.toIRIList: _*)
   val docNoContexts = Rio.parse(new StringReader(doc_example), base_uri, RDFFormat.TURTLE)
 
   val dir_base = new File("dist/data/ontologies/").getAbsoluteFile
@@ -161,9 +164,8 @@ abstract class TestingBaseRDFRepository {
   @Test
   def test_import() {
 
-    mock.helper.importFrom(dir_base.toString())
-    val foaf_context = SimpleValueFactory.getInstance.createIRI("http://xmlns.com/foaf/0.1/")
-
+    mock.io.importFrom(dir_base.toString())
+    val foaf_context = "http://xmlns.com/foaf/0.1/"
     val foaf_size = mock.store.size(foaf_context)
     Assert.assertTrue(foaf_size.isSuccess)
     Assert.assertEquals(631, foaf_size.get)

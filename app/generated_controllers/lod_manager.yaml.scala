@@ -119,6 +119,26 @@ import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
+import play.api.mvc.{ Action, Controller }
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{ Action, Controller }
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
@@ -176,9 +196,9 @@ package lod_manager.yaml {
       // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
       val namespace = kbrepo.prefixes.list().get(prefix)
 
-      val vf = SimpleValueFactory.getInstance // TODO: refactorize here!
-      val namespace_iri = vf.createIRI(namespace)
-      val triples = kbrepo.store.size(namespace_iri).get
+      //      val vf = SimpleValueFactory.getInstance // TODO: refactorize here!
+      //      val namespace_iri = vf.createIRI(namespace)
+      val triples = kbrepo.store.size(namespace).get
 
       CountTriplesByOntology200(Future {
         TriplesCount(prefix, triples)
@@ -200,7 +220,7 @@ package lod_manager.yaml {
       val (name, rdfDocument, prefix, context) = input
       // ----- Start of unmanaged code area for action  Lod_managerYaml.addRDFDoc
       val _context = URLDecoder.decode(context, "UTF-8")
-      kbrepo.helper.addFile(name, rdfDocument, prefix, _context)
+      kbrepo.io.addFile(name, rdfDocument, prefix, _context)
 
       AddRDFDoc200(Future {
         s"""
@@ -213,8 +233,8 @@ package lod_manager.yaml {
     }
     val removeRDFDoc = removeRDFDocAction { (context: String) =>
       // ----- Start of unmanaged code area for action  Lod_managerYaml.removeRDFDoc
-      val ctx = SimpleValueFactory.getInstance.createIRI(context.trim())
-      kbrepo.store.clear(ctx)
+      //      val ctx = SimpleValueFactory.getInstance.createIRI(context.trim())
+      kbrepo.store.clear(context)
       RemoveRDFDoc200(Future {
         s"""
           "message": "all the triples in the context ${context} were deleted correctly"
@@ -254,7 +274,8 @@ package lod_manager.yaml {
       val vf = SimpleValueFactory.getInstance // TODO: refactorization!
       val _contexts = kbrepo.store.contexts().get
         .map { cx =>
-          Context(cx, kbrepo.store.size(vf.createIRI(cx)).get)
+          //          Context(cx, kbrepo.store.size(vf.createIRI(cx)).get)
+          Context(cx, kbrepo.store.size(cx).get)
         }
       ContextsList200(Future {
         _contexts

@@ -16,7 +16,7 @@ object MainOntoMeta extends App {
 
   repo.start()
 
-  repo.helper.importFrom("dist/data/ontologies")
+  repo.io.importFrom("dist/data/ontologies")
 
   val prefixes = repo.prefixes.list()
   println("#### PREFIXES\n" + prefixes.get.mkString("\n"))

@@ -72,7 +72,7 @@ object MainVirtuoso extends App {
 
   val kb = RDFRepository.virtuoso()
   kb.start()
-  kb.helper.importFrom("dist/data/ontologies")
+  kb.io.importFrom("dist/data/ontologies")
   kb.stop()
 
 }

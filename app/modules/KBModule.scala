@@ -50,7 +50,7 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     kbrepo.prefixes.clear()
     kbrepo.prefixes.add(kbrepo.prefixes.DEFAULT.toList: _*)
 
-    kbrepo.helper.importFrom(conf.getString("cache"))
+    kbrepo.io.importFrom(conf.getString("cache"))
 
     // CHECK the initial (total) triples count
     var triples = kbrepo.store.size()

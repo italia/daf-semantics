@@ -6,11 +6,12 @@ object MainRDFRepository extends App {
   val repo = RDFRepository.memory()
   repo.start()
 
-  repo.helper.importFrom("dist/data/ontologies")
+  repo.io.importFrom("dist/data/ontologies")
 
   val results = repo.sparql.query("SELECT * WHERE { ?subject a ?concept }")
 
   results
+    .get
     .toStream
     .foreach {
       item =>

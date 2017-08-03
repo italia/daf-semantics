@@ -5,9 +5,8 @@ import scala.util.Failure
 import scala.util.Success
 import org.slf4j.Logger
 
-object TryHelpers {
+object TryHandlers {
 
-  // SEE: https://stackoverflow.com/questions/20632250/how-can-i-express-finally-equivalent-for-a-scalas-try
   implicit class TryHasFinally[T](val value: Try[T]) extends AnyVal {
 
     import scala.util.control.NonFatal
