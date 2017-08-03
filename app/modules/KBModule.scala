@@ -13,7 +13,7 @@ import play.api.Environment
 import play.api.Configuration
 import scala.concurrent.ExecutionContext
 import play.api.Logger
-import it.almawave.kb.ConfigHelper
+import it.almawave.kb.utils.ConfigHelper
 import it.almawave.kb.repo._
 import scala.concurrent.ExecutionContext.Implicits.global
 import java.nio.file.Paths
@@ -27,8 +27,8 @@ trait KBModule
 class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule {
 
   // TODO: SPI per dev / prod
-  //  val kbrepo = RDFRepository.memory()
-  val kbrepo = RDFRepository.virtuoso()
+  val kbrepo = RDFRepository.memory()
+  //  val kbrepo = RDFRepository.virtuoso()
 
   // when application starts...
   @Inject
@@ -37,11 +37,11 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     env: Environment,
     configuration: Configuration)(implicit ec: ExecutionContext) {
 
-    val conf = configuration.getConfig("kb").get.underlying
-    Logger.info("KBModule.config")
-    Logger.debug("KBModule.using configuration:\n" + ConfigHelper.pretty(conf))
+    kbrepo.configuration(configuration.getConfig("kb").get.underlying)
+    val conf = kbrepo.configuration()
 
     Logger.info("KBModule.START....")
+    Logger.debug("KBModule using configuration:\n" + ConfigHelper.pretty(conf))
 
     // this is needed for ensure proper connection(s) etc
     kbrepo.start()

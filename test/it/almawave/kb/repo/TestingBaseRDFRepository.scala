@@ -15,6 +15,9 @@ import java.io.StringReader
 import java.io.File
 import org.junit.Assume
 
+/*
+ * basic tests for the RDFRepository instances
+ */
 abstract class TestingBaseRDFRepository {
 
   val base_uri = "http://local/graph/"
@@ -61,7 +64,7 @@ abstract class TestingBaseRDFRepository {
   def size_when_empty() {
 
     mock.store.clear()
-    val _size = mock.store.size()
+    val _size = mock.store.size().get
     Assert.assertEquals(0, _size)
 
   }
@@ -69,9 +72,9 @@ abstract class TestingBaseRDFRepository {
   @Test
   def size_when_docWithContexts_added_with_contexts() {
 
-    val size_before = mock.store.size()
+    val size_before = mock.store.size().get
     mock.store.add(docWithContexts, ctxs: _*)
-    val size_after = mock.store.size(ctxs: _*)
+    val size_after = mock.store.size(ctxs: _*).get
     Assert.assertEquals(docWithContexts.size(), size_after - size_before)
 
   }
@@ -79,9 +82,9 @@ abstract class TestingBaseRDFRepository {
   @Test
   def size_when_docWithNoContext_added_with_contexts() {
 
-    val size_before = mock.store.size()
+    val size_before = mock.store.size().get
     mock.store.add(docNoContexts, ctxs: _*)
-    val size_after = mock.store.size(ctxs: _*)
+    val size_after = mock.store.size(ctxs: _*).get
     Assert.assertEquals(docNoContexts.size() * ctxs.size, size_after - size_before)
 
   }
@@ -89,9 +92,9 @@ abstract class TestingBaseRDFRepository {
   @Test
   def size_when_docWithNoContexts_added_no_contexts() {
 
-    val size_before = mock.store.size()
+    val size_before = mock.store.size().get
     mock.store.add(docNoContexts)
-    val size_after = mock.store.size()
+    val size_after = mock.store.size().get
     Assert.assertEquals(docNoContexts.size(), size_after - size_before)
 
   }
@@ -99,9 +102,9 @@ abstract class TestingBaseRDFRepository {
   @Test
   def size_when_docWithContexts_added_no_contexts() {
 
-    val size_before = mock.store.size()
+    val size_before = mock.store.size().get
     mock.store.add(docWithContexts)
-    val size_after = mock.store.size(ctxs: _*)
+    val size_after = mock.store.size(ctxs: _*).get
     Assert.assertEquals(docWithContexts.size(), size_after - size_before)
 
   }
@@ -113,7 +116,7 @@ abstract class TestingBaseRDFRepository {
 
     mock.store.add(docWithContexts, ctxs: _*)
 
-    val contexts_list = mock.store.contexts()
+    val contexts_list = mock.store.contexts().get
 
     Assert.assertEquals(expected_list.size, contexts_list.size)
 
@@ -143,12 +146,15 @@ abstract class TestingBaseRDFRepository {
     """
 
     println(s"SPARQL> executing query:\n${query}")
-    val results = mock.sparql.query(query)
-    // TODO: extends test on triples content
+    val results = mock.sparql.query(query).get
+
     val size = results.size
     println(s"SPARQL> ${size} TOTAL SPARQL results")
 
-    Assert.assertEquals(mock.store.size(ctxs: _*), mock.sparql.query(query).size)
+    val contexts_size = mock.store.size(ctxs: _*).get
+    println(s"SPARQL> ${contexts_size} contexts")
+
+    Assert.assertEquals(contexts_size, size)
 
   }
 
@@ -157,8 +163,10 @@ abstract class TestingBaseRDFRepository {
 
     mock.helper.importFrom(dir_base.toString())
     val foaf_context = SimpleValueFactory.getInstance.createIRI("http://xmlns.com/foaf/0.1/")
+
     val foaf_size = mock.store.size(foaf_context)
-    Assert.assertEquals(631, foaf_size)
+    Assert.assertTrue(foaf_size.isSuccess)
+    Assert.assertEquals(631, foaf_size.get)
 
   }
 
@@ -167,12 +175,12 @@ abstract class TestingBaseRDFRepository {
 
     mock.store.add(docNoContexts, ctxs(0))
     mock.store.remove(docNoContexts, ctxs(0))
-    Assert.assertEquals(0, mock.store.size(ctxs(0)))
+    Assert.assertEquals(0, mock.store.size(ctxs(0)).get)
 
     mock.store.clear()
     mock.store.add(docNoContexts, ctxs(0))
     mock.store.clear(ctxs(0))
-    Assert.assertEquals(0, mock.store.size(ctxs(0)))
+    Assert.assertEquals(0, mock.store.size(ctxs(0)).get)
   }
 
 }

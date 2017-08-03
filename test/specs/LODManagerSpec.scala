@@ -23,9 +23,6 @@ import org.junit.runner.RunWith
 import scala.concurrent.{ Await, Future }
 import scala.concurrent.duration.Duration
 
-//import org.specs2.Specification
-//import org.specs2.mutable.Specification
-
 import play.api.test._
 import play.api.http.Status
 import play.api.Application
@@ -36,8 +33,7 @@ import org.specs2.runner.JUnitRunner
 //import org.specs2.Specification
 import org.specs2.mutable.Specification
 import play.api.libs.json.Json
-import it.almawave.kb.ConfigHelper
-import it.almawave.kb.JSONHelper
+import it.almawave.kb.utils.ConfigHelper
 
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._

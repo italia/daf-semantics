@@ -22,7 +22,7 @@ import it.almawave.kb.RDFHelper.RepositoryResultIterator
 import it.almawave.kb.RDFHelper.TupleResultIterator
 import play.Logger
 
-import it.almawave.kb.ConfigHelper
+import it.almawave.kb.utils.ConfigHelper
 import org.eclipse.rdf4j.rio.RDFFormat
 import org.eclipse.rdf4j.model.Statement
 
@@ -42,8 +42,21 @@ import scala.collection.JavaConverters._
 import org.eclipse.rdf4j.model.impl.SimpleIRI
 import org.eclipse.rdf4j.model.impl.NumericLiteral
 import com.typesafe.config.ConfigFactory
+import scala.util.Try
+import com.typesafe.config.Config
+import it.almawave.kb.utils.TryWith
+import scala.util.Success
+import scala.util.Failure
+import scala.util.Random
+import org.eclipse.rdf4j.query.BindingSet
+
+import it.almawave.kb.RDFHelper._
+import it.almawave.kb.utils.TryHelpers.TryLog
+import org.slf4j.LoggerFactory
 
 object RDFRepository {
+
+  val logger = LoggerFactory.getLogger(this.getClass)
 
   def remote(endpoint: String) = {
     new RDFRepositoryBase(new SPARQLRepository(endpoint, endpoint))
@@ -123,137 +136,138 @@ trait RDFRepository
  *
  * CHECK: finally (handle connection to be closed) and/or connection pool
  * 	the idea could be encapsulating default behaviours in Try{} object as much as possible
+ *  SEE (example): https://codereview.stackexchange.com/questions/79267/scala-trywith-that-closes-resources-automatically
  *
+ * TODO: import codebase of Configuration wrapper
+ *
+ * IDEA: default usage of TryLog, wrapper for external Java API
  */
 class RDFRepositoryBase(repo: Repository) {
 
-  // CHECK: val logger = LoggerFactory.getLogger(this.getClass)
+  //  val logger = Logger.underlying()
 
-  val logger = Logger.underlying()
+  implicit val logger = LoggerFactory.getLogger(this.getClass)
 
   val _self = this
 
   // CHECK: providing custom implementation for BN
   var vf: ValueFactory = SimpleValueFactory.getInstance
 
+  private var conf = ConfigFactory.empty()
+
+  def configuration(configuration: Config) = {
+    conf = conf.withFallback(configuration)
+  }
+
+  def configuration(): Config = conf
+
   // checking if the repository is up.
   def isAlive(): Boolean = {
-    try {
 
-      if (!repo.isInitialized())
-        repo.initialize()
-      val _conn = repo.getConnection
-      _conn.close()
+    TryLog {
+
+      if (!repo.isInitialized()) repo.initialize()
+      repo.getConnection.close()
       repo.shutDown()
       true
 
-    } catch {
-      case ex: Exception =>
-        val err_msg = s"KB:RDF> error attempting connection to repository"
-        logger.error(err_msg)
-        false
-    }
-  }
+    }("repository is not reachable!").isSuccess
 
-  private def loggingException(msg: String, ex: Throwable) {
-    logger.error(msg)
-    throw new RDFRepositoryException(msg, ex)
   }
 
   def start() {
 
-    try {
+    TryLog {
 
       if (!repo.isInitialized())
         repo.initialize()
 
       vf = repo.getValueFactory
 
-    } catch {
-      case ex: Exception =>
-        val err_msg = s"KB:RDF> cannot start repository!"
-        logger.error(err_msg)
-        throw new RDFRepositoryException(err_msg, ex)
-    }
+    }(s"KB:RDF> cannot start repository!")
 
   }
 
   def stop() {
 
-    try {
+    TryLog {
+
       if (repo.isInitialized())
         repo.shutDown()
-    } catch {
-      case ex: Exception =>
-        val err_msg = s"KB:RDF> cannot stop repository!"
-        logger.error(err_msg)
-        throw new RDFRepositoryException(err_msg, ex)
-    }
+
+    }(s"KB:RDF> cannot stop repository!")
 
   }
 
   object prefixes {
 
+    //        implicit val logger = Logger.underlying()
+    implicit val logger = LoggerFactory.getLogger(this.getClass)
+
     def clear() = {
+
       val conn = repo.getConnection
       conn.begin()
-      try {
+
+      TryLog {
+
         conn.clearNamespaces()
         conn.commit()
-      } catch {
-        case ex: Exception =>
-          conn.rollback()
-          val err_msg = s"KB:RDF> error while removing namespaces!"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+
+      }(s"KB:RDF> error while removing namespaces!")
+
       conn.close()
+
     }
 
     def add(namespaces: (String, String)*) {
+
       val conn = repo.getConnection
       conn.begin()
-      try {
+
+      TryLog {
+
         namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
         conn.commit()
-      } catch {
-        case ex: Exception =>
-          conn.rollback()
-          val err_msg = s"KB:RDF> cannot add namespaces: ${namespaces}"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+
+      }(s"KB:RDF> cannot add namespaces: ${namespaces}")
+
       conn.close()
+
     }
 
     def remove(namespaces: (String, String)*) {
+
       val conn = repo.getConnection
       conn.begin()
-      try {
+
+      TryLog {
+
         namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
         conn.commit()
-      } catch {
-        case ex: Exception =>
-          conn.rollback()
-          val err_msg = s"KB:RDF> cannot remove namespaces: ${namespaces}"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+
+      }(s"KB:RDF> cannot remove namespaces: ${namespaces}")
+
       conn.close()
+
     }
 
     // get prefixes
-    def list(): Map[String, String] = {
+    def list(): Try[Map[String, String]] = {
 
       val conn = repo.getConnection
 
-      val namespaces = conn.getNamespaces.toList
-        .map { ns => (ns.getPrefix, ns.getName) }
-        .toMap
+      val results = TryLog {
 
-      conn.close()
+        conn.getNamespaces.toList
+          .map { ns => (ns.getPrefix, ns.getName) }
+          .toMap
 
-      namespaces
+      }("cannot retrieve a list of prefixes")
+
+      conn.close
+
+      results
 
     }
 
@@ -266,24 +280,25 @@ class RDFRepositoryBase(repo: Repository) {
       SKOS.PREFIX -> SKOS.NAMESPACE,
       XMLSchema.PREFIX -> XMLSchema.NAMESPACE,
       FN.PREFIX -> FN.NAMESPACE,
-      "doap" -> DOAP.NAME.toString(),
+      "doap" -> DOAP.NAME.toString(), // SEE: pull request
       "geo" -> GEO.NAMESPACE,
       SD.PREFIX -> SD.NAMESPACE)
 
   }
-
-  def connection = repo.getConnection
 
   /*
    * this component can be seen as an RDF datastore abstraction
    */
   object store {
 
+    implicit val logger = LoggerFactory.getLogger(this.getClass)
+
     def clear(contexts: Resource*) {
+
       val conn = repo.getConnection
       conn.begin()
 
-      try {
+      TryLog {
 
         if (contexts.size > 0) {
           conn.clear(contexts: _*)
@@ -296,47 +311,39 @@ class RDFRepositoryBase(repo: Repository) {
         }
         conn.commit()
 
-      } catch {
-        case ex: Exception =>
-          conn.rollback()
-          val err_msg = s"KB:RDF> cannot clear contexts: ${contexts.mkString(", ")}"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+      }(s"KB:RDF> cannot clear contexts: ${contexts.mkString(", ")}")
 
       conn.close()
     }
 
-    def contexts(): Seq[String] = {
+    def contexts(): Try[Seq[String]] = {
 
       val conn = repo.getConnection
 
-      var results: Seq[String] = Nil
+      var results = TryLog {
 
-      try {
+        conn.getContextIDs.map { ctx => ctx.stringValue() }.toList
 
-        results = conn.getContextIDs.map { ctx => ctx.stringValue() }.toList
-
-      } catch {
-        case ex: Exception =>
-          val err_msg = s"KB:RDF> cannot retrieve contexts list"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+      }(s"KB:RDF> cannot retrieve contexts list")
 
       conn.close()
 
       results
     }
 
-    def size(contexts: Resource*): Long = {
+    def size(contexts: Resource*): Try[Long] = {
+
       val conn = repo.getConnection
 
-      val size = if (contexts.size > 0)
-        conn.size(contexts: _*)
-      else {
-        conn.size(null)
-      }
+      val size = TryLog {
+
+        if (contexts.size > 0)
+          conn.size(contexts: _*)
+        else {
+          conn.size(null)
+        }
+
+      }(s"can't obtain size for contexts: ${contexts.mkString(" | ")}")
 
       conn.close()
       size
@@ -345,11 +352,17 @@ class RDFRepositoryBase(repo: Repository) {
     def statements(s: Resource, p: IRI, o: Value, inferred: Boolean, contexts: Resource*) = {
 
       val conn = repo.getConnection
-      // CHECK: not efficient!
-      val results = conn.getStatements(null, null, null, false, contexts: _*).toList
+
+      // CHECK: not efficient! (reference to stream head!)
+      val results = TryLog {
+
+        conn.getStatements(null, null, null, false, contexts: _*).toStream
+
+      }(s"cannot get statements for ${contexts.mkString(" | ")}")
+
       conn.close()
 
-      results.toStream
+      results
 
     }
 
@@ -358,19 +371,13 @@ class RDFRepositoryBase(repo: Repository) {
       val conn = repo.getConnection()
       conn.begin()
 
-      try {
+      TryLog {
 
         conn.add(doc, contexts: _*)
         conn.commit()
         logger.debug(s"KB:RDF> ${doc.size()} triples was added to contexts ${contexts.mkString(" | ")}")
 
-      } catch {
-        case ex: Exception =>
-          conn.rollback()
-          val err_msg = s"KB:RDF> cannot add RDF data\n${ex} in ${contexts.mkString("|")}"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+      }(s"KB:RDF> cannot add RDF data in ${contexts.mkString("|")}")
 
       conn.close()
     }
@@ -380,19 +387,13 @@ class RDFRepositoryBase(repo: Repository) {
       val conn = repo.getConnection()
       conn.begin()
 
-      try {
+      TryLog {
 
         conn.remove(doc, contexts: _*)
         conn.commit()
         logger.debug(s"KB:RDF> ${doc.size()} triples was removed from contexts ${contexts.mkString(" | ")}")
 
-      } catch {
-        case ex: Exception =>
-          conn.rollback()
-          val err_msg = s"KB:RDF> cannot remove RDF data\n${ex}"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+      }(s"KB:RDF> cannot remove RDF data")
 
       conn.close()
     }
@@ -404,30 +405,21 @@ class RDFRepositoryBase(repo: Repository) {
    */
   object sparql {
 
-    def query(query: String): Seq[Map[String, Object]] = {
+    implicit val logger = LoggerFactory.getLogger(this.getClass)
+
+    def query(query: String): Try[Seq[Map[String, Object]]] = {
 
       val conn = repo.getConnection
-      // CHECK: not efficient!
-      val results = conn.prepareTupleQuery(QueryLanguage.SPARQL, query)
-        .evaluate()
-        .toList
-        .map { bs =>
-          val names = bs.getBindingNames
-          names.map { n =>
 
-            val binding = bs.getBinding(n)
-            val name = binding.getName
-            val value = binding.getValue match {
-              case literal: MemLiteral => literal.stringValue()
-              case iri: MemIRI         => new URI(iri.stringValue())
-              case iri: SimpleIRI      => new URI(iri.stringValue())
-              case bnode: MemBNode     => bnode.toString()
-              case other               => other.toString()
-            }
+      val results = TryLog {
 
-            (name, value)
-          }.toMap
-        }
+        // CHECK: not efficient!
+        conn.prepareTupleQuery(QueryLanguage.SPARQL, query)
+          .evaluate()
+          .toList
+          .map(_.toMap())
+
+      }(s"SPARQL> cannot execute query ${query}")
 
       // TODO: handler
       conn.close()
@@ -449,7 +441,8 @@ class RDFRepositoryBase(repo: Repository) {
 
     def addFile(rdfName: String, rdfFile: File, context: String) {
 
-      try {
+      TryLog {
+
         val _context = URLDecoder.decode(context, "UTF-8")
         val format = Rio.getParserFormatForFileName(rdfName)
           .orElse(default_format)
@@ -462,12 +455,8 @@ class RDFRepositoryBase(repo: Repository) {
         _self.store.add(doc, ctx)
 
         fis.close()
-      } catch {
-        case ex: Exception =>
-          val err_msg = s"KB:RDF> cannot add RDF file: ${rdfFile}"
-          logger.error(err_msg)
-          throw new RDFRepositoryException(err_msg, ex)
-      }
+
+      }(s"KB:RDF> cannot add RDF file: ${rdfFile}")
 
     }
 
@@ -528,4 +517,5 @@ class RDFRepositoryBase(repo: Repository) {
 
 }
 
-class RDFRepositoryException(message: String, cause: Throwable) extends RuntimeException 
+class RDFRepositoryException(message: String, cause: Throwable) extends RuntimeException
+
