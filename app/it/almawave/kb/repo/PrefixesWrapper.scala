@@ -13,66 +13,48 @@ class PrefixesHelper(repo: Repository) {
 
   def clear() = {
 
-    val conn = repo.getConnection
-    conn.begin()
-
-    TryLog {
+    RepositoryAction(repo) { conn =>
 
       conn.clearNamespaces()
-      conn.commit()
 
     }(s"KB:RDF> error while removing namespaces!")
 
-    conn.close()
+    //    conn.close()
 
   }
 
   def add(namespaces: (String, String)*) {
 
-    val conn = repo.getConnection
-    conn.begin()
-
-    TryLog {
+    RepositoryAction(repo) { conn =>
 
       namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
       conn.commit()
 
     }(s"KB:RDF> cannot add namespaces: ${namespaces}")
 
-    conn.close()
-
   }
 
   def remove(namespaces: (String, String)*) {
 
-    val conn = repo.getConnection
-    conn.begin()
-
-    TryLog {
+    RepositoryAction(repo) { conn =>
 
       namespaces.foreach { pair => conn.setNamespace(pair._1, pair._2) }
       conn.commit()
 
     }(s"KB:RDF> cannot remove namespaces: ${namespaces}")
 
-    conn.close()
-
   }
 
   // get prefixes
   def list(): Try[Map[String, String]] = {
 
-    val conn = repo.getConnection
-
-    val results = TryLog {
+    val results = RepositoryAction(repo) { conn =>
 
       conn.getNamespaces.toList
         .map { ns => (ns.getPrefix, ns.getName) }
         .toMap
 
     }("cannot retrieve a list of prefixes")
-
-    conn.close
 
     results
 

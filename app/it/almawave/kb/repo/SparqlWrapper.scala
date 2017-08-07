@@ -16,9 +16,7 @@ class SPARQLHelper(repo: Repository) {
 
   def query(query: String): Try[Seq[Map[String, Object]]] = {
 
-    val conn = repo.getConnection
-
-    val results = TryLog {
+    val results = RepositoryAction(repo) { conn =>
 
       // CHECK: not efficient!
       conn.prepareTupleQuery(QueryLanguage.SPARQL, query)
@@ -27,9 +25,6 @@ class SPARQLHelper(repo: Repository) {
         .map(_.toMap())
 
     }(s"SPARQL> cannot execute query ${query}")
-
-    // TODO: handler
-    conn.close()
 
     results
   }

@@ -19,10 +19,7 @@ class StoreHelper(repo: Repository) {
 
   def clear(contexts: String*) {
 
-    val conn = repo.getConnection
-    conn.begin()
-
-    TryLog {
+    RepositoryAction(repo) { conn =>
 
       if (contexts.size > 0) {
         conn.clear(contexts.toIRIList: _*)
@@ -37,29 +34,22 @@ class StoreHelper(repo: Repository) {
 
     }(s"KB:RDF> cannot clear contexts: ${contexts.mkString(", ")}")
 
-    conn.close()
   }
 
   def contexts(): Try[Seq[String]] = {
 
-    val conn = repo.getConnection
-
-    var results = TryLog {
+    var results = RepositoryAction(repo) { conn =>
 
       conn.getContextIDs.map { ctx => ctx.stringValue() }.toList
 
     }(s"KB:RDF> cannot retrieve contexts list")
-
-    conn.close()
 
     results
   }
 
   def size(contexts: String*): Try[Long] = {
 
-    val conn = repo.getConnection
-
-    val size = TryLog {
+    val size = RepositoryAction(repo) { conn =>
 
       if (contexts.size > 0)
         conn.size(contexts.toIRIList: _*)
@@ -69,22 +59,17 @@ class StoreHelper(repo: Repository) {
 
     }(s"can't obtain size for contexts: ${contexts.mkString(" | ")}")
 
-    conn.close()
     size
   }
 
   def statements(s: Resource, p: IRI, o: Value, inferred: Boolean, contexts: String*) = {
 
-    val conn = repo.getConnection
-
     // CHECK: not efficient! (reference to stream head!)
-    val results = TryLog {
+    val results = RepositoryAction(repo) { conn =>
 
       conn.getStatements(null, null, null, false, contexts.toIRIList: _*).toStream
 
     }(s"cannot get statements for ${contexts.mkString(" | ")}")
-
-    conn.close()
 
     results
 
@@ -92,10 +77,7 @@ class StoreHelper(repo: Repository) {
 
   def add(doc: Model, contexts: String*) {
 
-    val conn = repo.getConnection()
-    conn.begin()
-
-    TryLog {
+    RepositoryAction(repo) { conn =>
 
       conn.add(doc, contexts.toIRIList: _*)
       conn.commit()
@@ -103,15 +85,11 @@ class StoreHelper(repo: Repository) {
 
     }(s"KB:RDF> cannot add RDF data in ${contexts.mkString("|")}")
 
-    conn.close()
   }
 
   def remove(doc: Model, contexts: String*) {
 
-    val conn = repo.getConnection()
-    conn.begin()
-
-    TryLog {
+    RepositoryAction(repo) { conn =>
 
       conn.remove(doc, contexts.toIRIList: _*)
       conn.commit()
@@ -119,7 +97,6 @@ class StoreHelper(repo: Repository) {
 
     }(s"KB:RDF> cannot remove RDF data")
 
-    conn.close()
   }
 
 }
