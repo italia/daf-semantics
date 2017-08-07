@@ -15,6 +15,7 @@ import java.net.URL
 import org.eclipse.rdf4j.rio.RDFFormat
 import it.almawave.kb.utils.TryHandlers.RepositoryAction
 import scala.util.Try
+import scala.collection.mutable.ListBuffer
 
 // esempio per testing costrutti try/log etc
 object TestingBlock extends App {
@@ -38,21 +39,23 @@ object TestingBlock extends App {
 
       logger.info("this is a generic log")
 
-      //TESTING ERRORS: throw new RuntimeException("some problem here!")
+      // TESTING ERRORS: throw new RuntimeException("some problem here!")
 
       val res = conn.getContextIDs
-      val list = new ArrayList[Resource]
+      val buffer = ListBuffer[Resource]()
+
       while (res.hasNext()) {
-        list.add(res.next())
+        buffer += res.next()
       }
 
-      list
+      buffer.toList
 
   }("there was an error...")
 
-  println(results.get)
+  val contexts: List[String] = results.get
 
-  //  conn.close()
+  println("RESULTS")
+  println(contexts.mkString(" | "))
 
   // --------------
 

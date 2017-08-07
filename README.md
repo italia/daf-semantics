@@ -57,9 +57,24 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 	working draft: [0.0.1](https://github.com/seralf/lod_manager/releases/tag/0.0.1)
 
 
-* * * 
+* * *
 
-# Try + transaction handling + error messages 
+### adapters for RDF4J collections
+
+The object `it.almawave.kb.utils.RDF4JAdapters` contains some adapters which may be useful for working with RDF4J collections in a simpler way.
+
++ `StringContextAdapter` can be used for writing conversions like:
+`val context:Resource = "http://graph".toIRI`
++ `StringContextListAdapter` it's the same on collections, and can be used for writing conversions like:
+`val contexts:Array[Resource] = Array("http://graph").toIRIList`
++ `RepositoryResultIterator` and `TupleResultIterator` are useful for handling results from query as Scala collections, without having to write `while(...)` code.
++ `BindingSetMapAdapter` adds a `toMap` conversion method, useful for writings things like:
+```
+val bs: BindingSet = ...
+val map: Map[String, Object] = bs.toMap()
+```
+
+### Try + transaction handling + error messages
 
 It's possible to simplify the code used for interacting with the underling RDF4J Repository instance, focusing on the actual code, using the `RepositoryAction` construct like in the following example:
 
@@ -93,7 +108,7 @@ def clear_all() {
 
 * * *
 
-## TODO 
+## TODO
 
 - [ ] publish `kb-core` on github / bitbucket or as sub-module
 - [ ] add `kb-core` dependency on sbt
