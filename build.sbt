@@ -29,7 +29,7 @@ libraryDependencies ++= Seq(
 	"me.jeffmay" %% "play-json-tests" % "1.5.0" % Test,
 	"org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
 	"org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
-	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.4",
+	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.1",
 
 "org.eclipse.rdf4j" % "rdf4j-runtime" % "2.2.2",
 "org.eclipse.rdf4j" %  "rdf4j-repository-sail" % "2.2.2",

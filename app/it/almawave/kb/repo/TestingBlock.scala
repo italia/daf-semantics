@@ -24,8 +24,6 @@ object TestingBlock extends App {
   val repo: Repository = new SailRepository(new MemoryStore)
   repo.initialize()
 
-  // --------------
-
   val results = RepositoryAction(repo) {
 
     conn =>
@@ -56,8 +54,6 @@ object TestingBlock extends App {
 
   println("RESULTS")
   println(contexts.mkString(" | "))
-
-  // --------------
 
   repo.shutDown()
 }
