@@ -59,6 +59,40 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 
 * * * 
 
+# Try + transaction handling + error messages 
+
+It's possible to simplify the code used for interacting with the underling RDF4J Repository instance, focusing on the actual code, using the `RepositoryAction` construct like in the following example:
+
+```
+import it.almawave.kb.utils.TryHandlers._
+
+...
+
+implicit val logger = LoggerFactory.getLogger(this.getClass)
+
+val repo:Repository = ...
+
+// a method clearing all the triples!
+def clear_all() {
+
+	RepositoryAction(repo) { conn =>
+
+	// some code using connection object, like for example:
+	conn.clear()
+
+	}(s"cannot clear all the triples for some reason!}")
+
+}
+
+```
+
+**NOTE**:
++ the open/close connection actions are handled by the `RepositoryAction` itself 
++ the provided error message will be used internally both for logging on the chosen logger, and for handling Exception in the usual `Try/Failure` way.
+
+
+* * *
+
 ## TODO 
 
 - [ ] publish `kb-core` on github / bitbucket or as sub-module
@@ -70,5 +104,8 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 - [ ] refactoring JUnit tests for engine part: virtuoso wrapper
 - [ ] more test coverage for simple example HTTP requests (specs2)
 - [x] ~~datapackage or similar? at the moment~~ a `.metadata` file is used for contexts
+- [x] ~~creating a simple construct for dealing with transactions~~. Done: see `TryHandlers.RepositoryAction[X]`
+
+
 
 

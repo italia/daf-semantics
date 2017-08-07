@@ -56,6 +56,7 @@ object TryHandlers {
 
     def apply[R](repo: Repository)(conn_action: (RepositoryConnection => Any))(msg_err: String)(implicit logger: Logger) = {
 
+      // NOTE: we could imagine using a connection pool here
       val _conn = repo.getConnection
 
       _conn.begin()
