@@ -29,13 +29,13 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 
 2. compile / package
 
-	```
+	```bash
 	$ sbt clean package
 	```
 
 3. run
 
-	```
+	```bash
 	$ sbt run 
 	```
 
@@ -48,7 +48,8 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 	```
 
 	**NOTE**: if the application crashed, the pid file whould be deleted before attempting re-run 
-	```
+	
+	```bash
 	$ rm target/universal/lod-manager-0.0.1/RUNNING_PID 
 	```
 
@@ -78,7 +79,7 @@ val map: Map[String, Object] = bs.toMap()
 
 It's possible to simplify the code used for interacting with the underling RDF4J Repository instance, focusing on the actual code, using the `RepositoryAction` construct like in the following example:
 
-```
+```scala
 import it.almawave.kb.utils.TryHandlers._
 
 ...
