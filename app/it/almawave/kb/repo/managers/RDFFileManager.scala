@@ -1,4 +1,4 @@
-package it.almawave.kb.repo.wrappers
+package it.almawave.kb.repo.managers
 
 import org.slf4j.LoggerFactory
 import com.typesafe.config.ConfigFactory
@@ -19,7 +19,7 @@ import java.nio.file.StandardCopyOption
 import java.nio.file.Path
 import it.almawave.kb.repo.RDFRepositoryBase
 
-class RDFRepositoryIO(kbrepo: RDFRepositoryBase) {
+class RDFFileManager(kbrepo: RDFRepositoryBase) {
 
   implicit val logger = LoggerFactory.getLogger(this.getClass)
 
@@ -106,41 +106,6 @@ class RDFRepositoryIO(kbrepo: RDFRepositoryBase) {
       }
 
   }
-
-  //  @Deprecated
-  //  def cache(name: String, doc_path: String) {
-  //
-  //    val base_path: Path = try {
-  //
-  //      val uri = URI.create(doc_path).normalize()
-  //      val url = uri.toURL()
-  //
-  //      val path = Paths.get(base, name, uri.getPath.substring(uri.getPath.lastIndexOf("/")))
-  //
-  //      val dir = path.toFile().getParentFile
-  //      if (!dir.exists()) dir.mkdirs()
-  //
-  //      if (!path.toFile().exists()) {
-  //        Files.copy(url.openStream(), path)
-  //      } else {
-  //        logger.debug(s"KB> ${name} already cached in ${path}!")
-  //      }
-  //
-  //      path
-  //
-  //    } catch {
-  //      case ex: Exception =>
-  //        ex.printStackTrace()
-  //
-  //        var base_path = base
-  //
-  //        if (base.startsWith("file:/"))
-  //          base_path = base.replaceFirst("^.*(/.*)$", "$1")
-  //
-  //        Paths.get(base_path).toAbsolutePath().normalize()
-  //
-  //    }
-  //  }
 
   def copy(source: Path, destination: Path) {
     Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING)

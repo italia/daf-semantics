@@ -1,4 +1,4 @@
-package it.almawave.kb.repo
+package it.almawave.kb.repo.managers
 
 import scala.util.Try
 import org.slf4j.LoggerFactory
@@ -13,7 +13,7 @@ import it.almawave.kb.utils.RDF4JAdapters._
 /*
  * this component can be seen as an RDF datastore abstraction
  */
-class StoreHelper(repo: Repository) {
+class RDFStoreManager(repo: Repository) {
 
   implicit val logger = LoggerFactory.getLogger(this.getClass)
 
@@ -38,7 +38,7 @@ class StoreHelper(repo: Repository) {
 
   def contexts(): Try[Seq[String]] = {
 
-    var results = RepositoryAction(repo) { conn =>
+    val results = RepositoryAction(repo) { conn =>
 
       conn.getContextIDs.map { ctx => ctx.stringValue() }.toList
 

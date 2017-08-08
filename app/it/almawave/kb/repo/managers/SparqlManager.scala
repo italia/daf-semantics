@@ -1,4 +1,4 @@
-package it.almawave.kb.repo
+package it.almawave.kb.repo.managers
 
 import scala.util.Try
 import org.slf4j.LoggerFactory
@@ -10,7 +10,7 @@ import it.almawave.kb.utils.RDF4JAdapters._
 /*
  * this part can be seen as a sparql datastore abstraction
  */
-class SPARQLHelper(repo: Repository) {
+class SPARQLManager(repo: Repository) {
 
   implicit val logger = LoggerFactory.getLogger(this.getClass)
 

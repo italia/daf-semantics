@@ -1,4 +1,4 @@
-package it.almawave.kb.repo
+package it.almawave.kb.repo.managers
 
 import scala.util.Try
 import org.eclipse.rdf4j.model.vocabulary._
@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 import it.almawave.kb.utils.TryHandlers._
 import it.almawave.kb.utils.RDF4JAdapters._
 
-class PrefixesHelper(repo: Repository) {
+class PrefixesManager(repo: Repository) {
 
   implicit val logger = LoggerFactory.getLogger(this.getClass)
 
@@ -18,8 +18,6 @@ class PrefixesHelper(repo: Repository) {
       conn.clearNamespaces()
 
     }(s"KB:RDF> error while removing namespaces!")
-
-    //    conn.close()
 
   }
 

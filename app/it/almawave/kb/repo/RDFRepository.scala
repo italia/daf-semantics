@@ -20,7 +20,10 @@ import com.typesafe.config.ConfigFactory
 import it.almawave.kb.utils.RDF4JAdapters.StringContextAdapter
 import it.almawave.kb.utils.TryHandlers.TryLog
 import virtuoso.rdf4j.driver.VirtuosoRepository
-import it.almawave.kb.repo.wrappers.RDFRepositoryIO
+import it.almawave.kb.repo.managers.RDFFileManager
+import it.almawave.kb.repo.managers.RDFStoreManager
+import it.almawave.kb.repo.managers.PrefixesManager
+import it.almawave.kb.repo.managers.SPARQLManager
 
 object RDFRepository {
 
@@ -165,12 +168,12 @@ class RDFRepositoryBase(repo: Repository) {
 
   }
 
-  val prefixes = new PrefixesHelper(repo)
+  val prefixes = new PrefixesManager(repo)
 
-  val store = new StoreHelper(repo)
+  val store = new RDFStoreManager(repo)
 
-  val sparql = new SPARQLHelper(repo)
+  val sparql = new SPARQLManager(repo)
 
-  val io = new RDFRepositoryIO(this)
+  val io = new RDFFileManager(this)
 
 }
