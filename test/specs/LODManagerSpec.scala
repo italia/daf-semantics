@@ -52,10 +52,10 @@ class LODManagerSpec extends Specification {
     "call kb/v1/contexts to obtain a list of contexts" in {
       new WithServer(app = application, port = 9999) {
         WsTestClient.withClient { implicit client =>
+
           val response: WSResponse = Await.result[WSResponse](
-            client
-              .url(s"http://localhost:${port}/kb/v1/contexts").
-              execute, Duration.Inf)
+            client.url(s"http://localhost:${port}/kb/v1/contexts").execute,
+            Duration.Inf)
 
           response.status must be equalTo Status.OK
           response.json.as[Seq[JsObject]].size must be > 0
@@ -67,10 +67,10 @@ class LODManagerSpec extends Specification {
     "call kb/v1/contexts ensuring all contexts have triples" in {
       new WithServer(app = application, port = 9999) {
         WsTestClient.withClient { implicit client =>
+
           val response: WSResponse = Await.result[WSResponse](
-            client
-              .url(s"http://localhost:${port}/kb/v1/contexts").
-              execute, Duration.Inf)
+            client.url(s"http://localhost:${port}/kb/v1/contexts").execute,
+            Duration.Inf)
 
           val json_list = response.json.as[Seq[JsObject]]
           forall(json_list)((_) must not beNull)
@@ -80,16 +80,6 @@ class LODManagerSpec extends Specification {
         }
       }
     }
-
-    // TODO: minimal test for upload
-    // SEE example: 
-    //    "adding RDF document with POST rshould return success" in {
-    //      Post("/upload", HttpEntity(MediaTypes.`multipart/form-data`, """{"filename":"a.wav"}""")) ~>
-    //        sealRoute(uploadRoute) ~> check {
-    //          response.status should be equalTo OK
-    //          responseAs[String] === "..."
-    //        }
-    //    }
 
   }
 
