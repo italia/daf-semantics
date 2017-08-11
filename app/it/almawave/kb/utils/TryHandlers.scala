@@ -13,8 +13,11 @@ import java.util.ArrayList
 import scala.collection.mutable.ListBuffer
 import org.eclipse.rdf4j.model.Statement
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory
+import org.slf4j.LoggerFactory
 
 object TryHandlers {
+
+  import org.slf4j.Logger
 
   /*
    * SEE:
@@ -34,8 +37,23 @@ object TryHandlers {
     }
   }
 
-  // CHECK: use this method for avoiding complexity in transactions...
-  def usingInTransaction[A, C <: { def begin(): Unit; def commit(): Unit; def rollback(): Unit }](connection: C)(action: C => A): Try[A] = {
+  // IDEA
+  def logErrors[A](logger: Logger)(action: Logger => A)(implicit msg: String = ""): Try[A] = {
+
+    Try {
+      action(logger)
+    } match {
+      case Success(s) =>
+        Success(s)
+      case Failure(ex) =>
+        logger.debug(s"${msg}\n${ex}")
+        Failure(ex)
+    }
+
+  }
+
+  // REVIEW: try using this method for avoiding complexity in transactions...
+  def doInTransaction[A, C <: { def begin(): Unit; def commit(): Unit; def rollback(): Unit }](connection: C)(action: C => A): Try[A] = {
 
     connection.begin()
     Try {
@@ -49,23 +67,6 @@ object TryHandlers {
         Failure(f)
     }
 
-  }
-
-  // IDEA...
-  usingInTransaction(new MemoryStore().getConnection) {
-    conn =>
-      val vf = SimpleValueFactory.getInstance
-      conn.addStatement(vf.createIRI("http://sub_01"), vf.createIRI("http://prp_01"), vf.createLiteral("obj_01"))
-  }
-
-  // IDEA...
-  val elements = using(new MemoryStore().getConnection) { conn =>
-    val list = new ListBuffer[Statement]
-    val results = conn.getStatements(null, null, null, false)
-    while (results.hasNext()) {
-      list += results.next()
-    }
-    list.toStream
   }
 
   implicit class TryHasFinally[T](val value: Try[T]) extends AnyVal {
@@ -140,5 +141,52 @@ object TryHandlers {
     }
 
   }
+
+}
+
+object MainExamples extends App {
+
+  import it.almawave.kb.utils.TryHandlers._
+  import play.Logger
+
+  //  val logger = LoggerFactory.getLogger(this.getClass)
+  val logger = Logger.underlying()
+
+  using(new PrintWriter("sample.txt")) { out =>
+    out.println("hellow world!")
+  }
+
+  logErrors(logger) {
+    logger =>
+      println("vediamo...")
+  }
+
+  val repo = new MemoryStore()
+  repo.initialize()
+
+  using(repo.getConnection) {
+
+    conn =>
+      // IDEA...
+      doInTransaction(conn) {
+        conn =>
+          val vf = SimpleValueFactory.getInstance
+          conn.addStatement(vf.createIRI("http://sub_01"), vf.createIRI("http://prp_01"), vf.createLiteral("obj_01"))
+      }
+
+  }
+
+  // IDEA...
+  val elements = using(repo.getConnection) { conn =>
+    val list = new ListBuffer[Statement]
+    val results = conn.getStatements(null, null, null, false)
+    while (results.hasNext()) {
+      list += results.next()
+    }
+    list.toStream
+  }
+  println(elements.mkString("|"))
+
+  repo.shutDown()
 
 }
