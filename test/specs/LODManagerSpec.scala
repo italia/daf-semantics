@@ -41,11 +41,37 @@ import scala.collection.JavaConverters._
 import play.twirl.api.Content
 import play.api.test.Helpers._
 import play.api.libs.json.JsObject
+import play.api.libs.ws.WS
 
 @RunWith(classOf[JUnitRunner])
 class LODManagerSpec extends Specification {
 
   def application: Application = GuiceApplicationBuilder().build()
+
+  "the swagger API" should {
+
+    "expose the specification file" in {
+      new WithServer(app = application, port = 9999) {
+        WsTestClient.withClient { implicit client =>
+
+          val response = Await.result(client.url(s"http://localhost:${port}/spec/lod_manager.yaml")
+              .withHeaders(("Accept", "application/yaml"))
+              .execute, Duration.Inf)
+
+          response.status must be equalTo Status.OK
+          response.body.size must be > 0
+
+          val json = response.json.as[JsObject]
+          println("JSON: " + json)
+          
+          response.json.as[JsObject].keys.size must be > 0
+
+          //          response.body must contain("host: localhost:9000")
+        }
+      }
+    }
+
+  }
 
   "The lod-manager" should {
 

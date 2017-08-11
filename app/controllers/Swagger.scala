@@ -49,6 +49,7 @@ class Swagger extends Controller {
 
   private def getSpec(yamlPath: String) = {
     val yamlFile = Option(getClass.getClassLoader.getResource(yamlPath))
+    // TODO: close the stream
     val yamlStr = yamlFile map { yaml => Source.fromURL(yaml).getLines().mkString("\n") }
     val javaMap = yamlStr map { new Yaml().load(_).asInstanceOf[util.Map[Any, Any]] }
     javaMap
