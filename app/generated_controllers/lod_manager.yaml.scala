@@ -52,7 +52,6 @@ import java.io.File
 import play.api.mvc.{Action,Controller}
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
@@ -179,10 +178,59 @@ import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
 import scala.concurrent.Future
 import java.io.File
 import java.io.StringReader
@@ -197,17 +245,23 @@ import play.api.mvc.{Action,Controller}
 import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
 import play.api.i18n.MessagesApi
 import play.api.data.validation.Constraint
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import modules.KBModuleBase
 import modules.KBModule
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.eclipse.rdf4j.rio.Rio
 import org.eclipse.rdf4j.rio.RDFFormat
 import org.eclipse.rdf4j.model.Resource
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory
+import modules.KBModuleBase
+import scala.concurrent.Future
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
-import javax.xml.crypto.URIDereferencer
+import java.net.URLDecoder
+import java.io.File
+import play.api.i18n.MessagesApi
+import play.api.inject.ConfigurationProvider
+import play.api.inject.ApplicationLifecycle
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import com.google.inject.Inject
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -216,7 +270,9 @@ import javax.xml.crypto.URIDereferencer
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-                    
+        
+  //  import lod_manager.Error
+
     // ----- End of unmanaged code area for package Lod_managerYaml
     class Lod_managerYaml @Inject() (
         // ----- Start of unmanaged code area for injections Lod_managerYaml
@@ -237,13 +293,20 @@ package lod_manager.yaml {
             // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
             val namespace = kbrepo.prefixes.list().get(prefix)
 
-      //      val vf = SimpleValueFactory.getInstance // TODO: refactorize here!
-      //      val namespace_iri = vf.createIRI(namespace)
-      val triples = kbrepo.store.size(namespace).get
+      kbrepo.store.size(namespace) match {
 
-      CountTriplesByOntology200(Future {
-        TriplesCount(prefix, triples)
-      })
+        case Success(triples) =>
+          CountTriplesByOntology200(Future {
+            TriplesCount(prefix, triples)
+          })
+
+        case Failure(err) =>
+          val err_msg = s"cannot count triples for prefix ${prefix}"
+          CountTriplesByOntology400(Future {
+            Error(err_msg, s"${err}")
+          })
+
+      }
             // ----- End of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
         }
         val prefixesList = prefixesListAction {  _ =>  
@@ -261,15 +324,24 @@ package lod_manager.yaml {
             val (name, rdfDocument, prefix, context) = input
             // ----- Start of unmanaged code area for action  Lod_managerYaml.addRDFDoc
             val _context = URLDecoder.decode(context, "UTF-8")
-      kbrepo.io.addFile(name, rdfDocument, prefix, _context)
 
-      AddRDFDoc200(Future {
-        s"""
-          "message": "the document ${rdfDocument.toString()} was correctly added to context ${prefix}:${context}"
-        """
-      })
+      Try {
+        kbrepo.io.addFile(name, rdfDocument, prefix, _context)
+      } match {
 
-      //      NotImplementedYet
+        case Success(ee) =>
+          AddRDFDoc200(Future {
+            s"""
+            "message": "the document ${rdfDocument.toString()} was correctly added to context ${prefix}:${context}"
+          """
+          })
+
+        case Failure(gg) =>
+
+          NotImplementedYet
+        //          AddRDFDoc400(Future { Error("", "") })
+
+      }
             // ----- End of unmanaged code area for action  Lod_managerYaml.addRDFDoc
         }
         val removeRDFDoc = removeRDFDocAction { (context: String) =>  
@@ -312,7 +384,7 @@ package lod_manager.yaml {
         }
         val contextsList = contextsListAction {  _ =>  
             // ----- Start of unmanaged code area for action  Lod_managerYaml.contextsList
-            val vf = SimpleValueFactory.getInstance // TODO: refactorization!
+            //      val vf = SimpleValueFactory.getInstance // TODO: refactorization!
       val _contexts = kbrepo.store.contexts().get
         .map { cx =>
           //          Context(cx, kbrepo.store.size(vf.createIRI(cx)).get)

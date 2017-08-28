@@ -25,7 +25,7 @@ libraryDependencies ++= Seq(
 	filters,
 	"org.webjars" % "swagger-ui" % "3.0.7",
 	specs2 % Test,
-	"org.scalacheck" %% "scalacheck" % "1.12.4" % "test",
+	"org.scalacheck" %% "scalacheck" % "1.12.4" % Test,
 	"me.jeffmay" %% "play-json-tests" % "1.5.0" % Test,
 	"org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
 	"org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
@@ -56,6 +56,10 @@ libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
  
 )
+
+//dependencyOverrides ++= Set(
+//	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.1"
+//)
 
 
 resolvers ++= Seq(

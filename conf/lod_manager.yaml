@@ -61,19 +61,18 @@ paths:
           required: true
           description: the context used for the addition of the RDF document
       responses:
-        '200':
+        200:
           description: OK
           schema:
             type: string
-        default:
+        500:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
       tags: [test]
   
-  # CRUD
   "/ontologies/remove":
-    get:
+    post:
       summary: adds an RDF document
       operationId: removeRDFDoc
       parameters:
@@ -83,10 +82,14 @@ paths:
           required: true
           description: the context used for the addition of the RDF document
       responses:
-        '200':
+        200:
           description: OK
           schema:
             type: string
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
       tags: [test]
   
   "/contexts": 
@@ -103,6 +106,10 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Context"
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
       tags: [ catalog ]
   
   "/prefixes": 
@@ -119,6 +126,10 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Prefix"
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
       tags: [ catalog ]
 
   "/prefixes/lookup": 
@@ -140,6 +151,10 @@ paths:
           examples: { "prefix": "foaf", "namespace": "http://xmlns.com/foaf/spec/index.rdf" }
           schema:
             $ref: "#/definitions/Prefix"
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
       tags: [ catalog ]
       
   "/prefixes/reverse": 
@@ -161,6 +176,10 @@ paths:
           examples: { "prefix": "foaf", "namespace": "http://xmlns.com/foaf/spec/index.rdf" }
           schema:
             $ref: "#/definitions/Prefix"
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
       tags: [ catalog ]
 
 
@@ -177,6 +196,10 @@ paths:
           examples: { "triples": 0 }
           schema:
             $ref: "#/definitions/TriplesCount"
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
       tags: [ stats ]
       
   "/triples/{prefix}": 
@@ -199,6 +222,10 @@ paths:
           examples: { "triples": 0 }
           schema:
             $ref: "#/definitions/TriplesCount"
+        400:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
       tags: [ stats ]
 
 definitions: 
@@ -240,11 +267,10 @@ definitions:
   Error:
     type: "object"
     required:
-      - code
       - message
+      - description
     properties:
-      code:
-        type: integer
-        format: int32
       message:
+        type: string
+      description:
         type: string
