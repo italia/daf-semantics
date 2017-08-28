@@ -64,7 +64,7 @@ paths:
         200:
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/ResultMessage'
         500:
           description: unexpected error
           schema:
@@ -85,8 +85,8 @@ paths:
         200:
           description: OK
           schema:
-            type: string
-        500:
+            $ref: '#/definitions/ResultMessage'
+        400:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
@@ -215,7 +215,6 @@ paths:
           description: the prefix used for an ontology 
           required: true
           type: string
-          
       responses: 
         200:
           description: "triples"
@@ -264,6 +263,14 @@ definitions:
       triples: 
         type: "integer"
 
+  ResultMessage:
+    type: "object"
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  
   Error:
     type: "object"
     required:
