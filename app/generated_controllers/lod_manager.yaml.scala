@@ -169,6 +169,16 @@ import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
@@ -206,7 +216,7 @@ import javax.xml.crypto.URIDereferencer
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-                
+                    
     // ----- End of unmanaged code area for package Lod_managerYaml
     class Lod_managerYaml @Inject() (
         // ----- Start of unmanaged code area for injections Lod_managerYaml
