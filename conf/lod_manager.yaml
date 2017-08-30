@@ -18,24 +18,11 @@ consumes:
   - "application/json"
 produces: 
   - "application/json"
-
-
-# ERRORS
-#  '400':
-#     description: Bad Operation
-#   '401':
-#     description: Unauthorized
-#    '404':
-#      description: Forbidden
-# default:
-#   description: unexpected error
-#   schema:
-#     $ref: '#/definitions/Error'
   
 paths: 
 
   # CRUD
-  "/ontologies/add":
+  "/ontologies":
     post:
       summary: adds an RDF document
       consumes:
@@ -43,7 +30,7 @@ paths:
       operationId: addRDFDoc
       parameters:
         - in: formData
-          name: name
+          name: fileName
           type: string
           required: true
         - in: formData
@@ -71,9 +58,8 @@ paths:
             $ref: '#/definitions/Error'
       tags: [test]
   
-  "/ontologies/remove":
-    post:
-      summary: adds an RDF document
+    delete:
+      summary: deletes an RDF document
       operationId: removeRDFDoc
       parameters:
         - in: query
