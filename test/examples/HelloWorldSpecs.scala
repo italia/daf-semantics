@@ -1,4 +1,4 @@
-package specs
+package examples
 
 import org.specs2.Specification
 import org.junit.runner.RunWith
