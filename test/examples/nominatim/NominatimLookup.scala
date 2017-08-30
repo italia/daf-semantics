@@ -1,4 +1,4 @@
-package it.almawave.kb.external
+package examples.nominatim
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Await

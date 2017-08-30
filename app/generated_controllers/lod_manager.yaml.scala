@@ -1,337 +1,4 @@
 
-import play.api.mvc.{ Action, Controller }
-
-import play.api.data.validation.Constraint
-
-import play.api.i18n.MessagesApi
-
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-
-import de.zalando.play.controllers._
-
-import PlayBodyParsing._
-
-import PlayValidations._
-
-import scala.util._
-
-import javax.inject._
-
-import java.io.File
-
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import play.api.mvc.{ Action, Controller }
-import play.api.data.validation.Constraint
-import play.api.i18n.MessagesApi
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.util._
-import javax.inject._
-import java.io.File
-import de.zalando.play.controllers._
-import PlayBodyParsing._
-import PlayValidations._
-import scala.concurrent.Future
-import java.io.File
-import java.io.StringReader
-import java.io.FileInputStream
-import java.nio.file.Paths
-import java.util.Date
-import java.net.URLDecoder
-import javax.inject._
-import play.Logger
-import play.api.libs.json.Json
-import play.api.mvc.{ Action, Controller }
-import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
-import play.api.i18n.MessagesApi
-import play.api.data.validation.Constraint
-import modules.KBModuleBase
-import modules.KBModule
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.eclipse.rdf4j.rio.Rio
-import org.eclipse.rdf4j.rio.RDFFormat
-import org.eclipse.rdf4j.model.Resource
-import modules.KBModuleBase
-import scala.concurrent.Future
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-import java.net.URLDecoder
-import java.io.File
-import play.api.i18n.MessagesApi
-import play.api.inject.ConfigurationProvider
-import play.api.inject.ApplicationLifecycle
-import play.api.libs.concurrent.Execution.Implicits.defaultContext
-import com.google.inject.Inject
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -341,7 +8,29 @@ import com.google.inject.Inject
 package lod_manager.yaml {
   // ----- Start of unmanaged code area for package Lod_managerYaml
 
-  //  import lod_manager.Error
+  import play.api.mvc.{ Action, Controller }
+  import play.api.data.validation.Constraint
+  import play.api.i18n.MessagesApi
+  import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
+  import play.Logger
+  import play.api.libs.json.Json
+  import play.api.libs.concurrent.Execution.Implicits.defaultContext
+  import de.zalando.play.controllers._
+  import com.google.inject.Inject
+
+  import PlayBodyParsing._
+  import PlayValidations._
+
+  import scala.collection.JavaConversions._
+  import scala.collection.JavaConverters._
+  import scala.concurrent.Future
+  import scala.util._
+
+  import java.io.File
+  import java.net.URLDecoder
+
+  import modules.KBModuleBase
+  import modules.KBModule
 
   // ----- End of unmanaged code area for package Lod_managerYaml
   class Lod_managerYaml @Inject() (
@@ -388,6 +77,7 @@ package lod_manager.yaml {
     }
     val addRDFDoc = addRDFDocAction { input: (String, File, String, String) =>
       val (name, rdfDocument, prefix, context) = input
+
       // ----- Start of unmanaged code area for action  Lod_managerYaml.addRDFDoc
       val _context = URLDecoder.decode(context, "UTF-8")
       Try {
@@ -402,6 +92,7 @@ package lod_manager.yaml {
           val msg = s"""the document ${rdfDocument.toString()} cannot be added to context ${prefix}:${context}"""
           AddRDFDoc500(Future { Error(msg, s"${err}") })
       }
+
       // ----- End of unmanaged code area for action  Lod_managerYaml.addRDFDoc
     }
     val removeRDFDoc = removeRDFDocAction { (context: String) =>
@@ -413,11 +104,11 @@ package lod_manager.yaml {
           RemoveRDFDoc200(Future {
             ResultMessage(msg)
           })
-        //          NotImplementedYet
+
         case Failure(err) =>
           val msg = s"""the triples in the context ${context} cannot be removed"""
           RemoveRDFDoc400(Future { Error(msg, s"${err}") })
-        //          NotImplementedYet
+
       }
       // ----- End of unmanaged code area for action  Lod_managerYaml.removeRDFDoc
     }
