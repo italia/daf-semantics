@@ -21,6 +21,19 @@ produces:
   
 paths: 
 
+  # STANBOL TEST
+  "/ontonethub/ontologies":
+    get:
+      summary: "testing ontonethub API: retrieves the list of ontologies"
+      operationId: ontonethubGetOntologiesList
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/OntologyList'
+            
+      tags: [ontonethub]
+
   # CRUD
   "/ontologies":
     post:
@@ -214,6 +227,28 @@ paths:
       tags: [ stats ]
 
 definitions: 
+
+  OntologyList:
+    type: array
+    items:
+      $ref: '#/definitions/Ontology'
+      
+  Ontology:
+    type: object
+    required: 
+      - name
+      - prefix
+      - base_uri
+      - description
+    properties: 
+      name:
+        type: "string"
+      prefix:
+        type: "string"
+      base_uri:
+        type: "string"
+      description:
+        type: "string"
 
   Prefix: 
     type: "object"
