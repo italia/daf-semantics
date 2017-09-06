@@ -112,16 +112,16 @@ def clear_all() {
 ## TODO
 
 - [ ] publish `kb-core` on github / bitbucket or as sub-module
-- [ ] add `kb-core` dependency on sbt
+- [ ] add `kb-core` dependency on sbt - move core to external library
 - [x] add `RDF4J` dependencies on sbt
-- [ ] add `virtoso` dependencies on sbt
+- [x] add `virtoso` dependencies on sbt
 - [x] add `virtoso` jar on sbt/lib
-- [ ] refactoring JUnit tests for engine part: memory
-- [ ] refactoring JUnit tests for engine part: virtuoso wrapper
+- [x] refactoring JUnit tests for engine part: memory
+- [x] refactoring JUnit tests for engine part: virtuoso wrapper
 - [ ] more test coverage for simple example HTTP requests (specs2)
 - [x] ~~datapackage or similar? at the moment~~ a `.metadata` file is used for contexts
 - [x] ~~creating a simple construct for dealing with transactions~~. Done: see `TryHandlers.RepositoryAction[X]`
-
+- [ ] review / refactor the response from services, using more meaningful data structures
 
 
 

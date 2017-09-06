@@ -30,6 +30,8 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
   val kbrepo = RDFRepository.memory()
   //  val kbrepo = RDFRepository.virtuoso()
 
+  val ontonethub = OntonethubClient
+
   // when application starts...
   @Inject
   def onStart(
