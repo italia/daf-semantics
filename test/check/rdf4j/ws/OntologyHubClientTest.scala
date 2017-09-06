@@ -69,23 +69,25 @@ class OntologyHubClientTest {
 
     ontonethub.crud.clear()
 
+    // VERIFY how to rewrite here...
+    //    val id = for {
+    //      _id <- ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
+    //      status <- ontonethub.lookup.status(_id)
+    //    } yield _id
+
     val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    //      .map { x =>
-    //        val list = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
-    //        println("\n\nontonethub - list of ids")
-    //        println(list.mkString(" | "))
-    //        list
-    //      }
 
     val id = Await.result(add_fut, Duration.Inf)
     println("ADDED: " + id)
 
-    println("\n")
+    val status = Await.result(ontonethub.lookup.status(id), Duration.Inf)
+    println("STATUS: " + status)
 
-    val ok = Await.result(ontonethub.lookup.status(id), Duration.Inf)
-    //    val json = JSONHelper.read(ok.body)
+    val ids = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
+    println(s"IDS list: [${ids.mkString(" | ")}]")
 
-    println(ok)
+    Assert.assertTrue(ids.contains(id))
+    Assert.assertEquals(1, ids.size)
 
   }
 

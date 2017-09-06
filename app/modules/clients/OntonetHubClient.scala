@@ -41,7 +41,6 @@ class OntonethubClient(ws: WSClient) {
       list_uris.map {
         list =>
           list.map { node =>
-            println("NODE: " + node)
             val uri = node
             uri.substring(uri.lastIndexOf("/") + 1)
           }
