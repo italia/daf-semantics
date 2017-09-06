@@ -13,6 +13,7 @@ import scala.util.Failure
 import scala.concurrent.duration.Duration
 import scala.concurrent.Await
 import akka.dispatch.Futures
+import scala.util.Try
 
 object OntonethubClient {
 
@@ -27,6 +28,7 @@ class OntonethubClient(ws: WSClient) {
   import scala.collection.JavaConverters._
   import scala.concurrent.ExecutionContext.Implicits._
 
+  // TODO: export configurations
   val host = "localhost"
   val port = 8000
   val FOLLOW_REDIRECTS = true
@@ -39,6 +41,7 @@ class OntonethubClient(ws: WSClient) {
       list_uris.map {
         list =>
           list.map { node =>
+            println("NODE: " + node)
             val uri = node
             uri.substring(uri.lastIndexOf("/") + 1)
           }
@@ -58,9 +61,12 @@ class OntonethubClient(ws: WSClient) {
         }
     }
 
-    // returns a list of ontology uris from ontonethub
-    def find_id_by_prefix(prefix: String) = {
-      Await.result(ids_for_prefixes, Duration.Inf).get(prefix)
+    // returns the id for the given prefix
+    def find_id_by_prefix(prefix: String): Try[String] = {
+      val map: Map[String, String] = Await.result(ids_for_prefixes, Duration.Inf)
+      Try {
+        map.get(prefix).get
+      }
     }
 
     // returns a list of (prefix, id) pair 
@@ -83,20 +89,25 @@ class OntonethubClient(ws: WSClient) {
 
     }
 
-    //    def find_ontology_by_prefix(prefix: String) = {
-    //
-    //      val params = Map("name" -> prefix)
-    //        .map(item => s"${item._1}=${item._2}")
-    //        .mkString("&")
-    //
-    //      ws.url(urls.find_ontologies)
-    //        .withFollowRedirects(FOLLOW_REDIRECTS)
-    //        .withHeaders(("accept", "application/json"))
-    //        .withHeaders(("content-type", "application/x-www-form-urlencoded"))
-    //        .post(params)
-    //        .map { res => res.body }
-    //
-    //    }
+    // check thr current status of the job for uploading the ontology
+    def status(ontologyID: String): Future[String] = {
+      ws.url(urls.job_status(ontologyID))
+        .withFollowRedirects(FOLLOW_REDIRECTS)
+        .get()
+        .flatMap { response =>
+          response.status match {
+            case 200 =>
+              val json = JSONHelper.read(response.body)
+              json.get("status").textValue() match {
+                case "finished" => Future.successful(s"ontology ${ontologyID} has been correctly uploaded")
+                case "aborted"  => Future.failed(new Exception(response.body))
+                case "running"  => status(ontologyID)
+              }
+            case 404 => Future.failed(new ResourceNotExistsException(s"the ${ontologyID} resource does not exists!"))
+            case _   => Future.failed(new Exception(response.body))
+          }
+        }
+    }
 
   }
 
@@ -118,6 +129,7 @@ class OntonethubClient(ws: WSClient) {
       val ids: List[String] = Await.result(lookup.list_ids, Duration.Inf)
       ids.foreach { id =>
         Await.result(crud.delete_by_id(id), Duration.Inf)
+        val status = Await.result(lookup.status(id), Duration.Inf)
       }
     }
 
@@ -144,6 +156,7 @@ class OntonethubClient(ws: WSClient) {
             val json = JSONHelper.read(response.body)
             val _id: String = json.get("ontologyId").textValue()
             Future.successful(_id)
+          // lookup.status(_id)
           case 409 => Future.failed(new ResourceAlreadyExistsException(s"the ${prefix} resource already exists!"))
           case _   => Future.failed(new Exception(response.body))
         }
@@ -170,6 +183,8 @@ class OntonethubClient(ws: WSClient) {
   }
 
   object urls {
+
+    def job_status(ontologyID: String) = s"http://${host}:${port}/stanbol//jobs/${ontologyID}"
 
     // list of all the ontologies
     def ontologies_list = s"http://${host}:${port}/stanbol/ontonethub/ontologies"

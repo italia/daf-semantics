@@ -36,6 +36,15 @@ class OntologyHubClientTest {
 
   var ontonethub: OntonethubClient = null
 
+  // example data
+  //  val filePath = "C:/Users/Al.Serafini/awavedev/workspace_playground/kb-core-experiments/ontologies/foaf/foaf.rdf"
+  val filePath = "dist/data/ontologies/foaf/foaf.rdf"
+  val fileName = "foaf.rdf"
+  val fileMime = "application/rdf+xml"
+  val description = "foaf ontology"
+  val prefix = "foaf"
+  val uri = "http://foaf.org/"
+
   @Before
   def before() {
     client.start()
@@ -44,16 +53,40 @@ class OntologyHubClientTest {
 
   @After
   def after() {
-    // ontonethub.crud.clear()
+    //    ontonethub.crud.clear()
     client.stop()
+  }
+
+  //  @Test
+  def clear() {
+    ontonethub.crud.clear()
+    val list = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
+    Assert.assertEquals(0, list.size)
   }
 
   @Test
   def list_ontologies_ids() {
-    val list_fut = ontonethub.lookup.list_ids
-    val list = Await.result(list_fut, Duration.Inf)
-    println("\n\nontonethub - list of ids")
-    println(list.mkString(" | "))
+
+    ontonethub.crud.clear()
+
+    val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
+    //      .map { x =>
+    //        val list = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
+    //        println("\n\nontonethub - list of ids")
+    //        println(list.mkString(" | "))
+    //        list
+    //      }
+
+    val id = Await.result(add_fut, Duration.Inf)
+    println("ADDED: " + id)
+
+    println("\n")
+
+    val ok = Await.result(ontonethub.lookup.status(id), Duration.Inf)
+    //    val json = JSONHelper.read(ok.body)
+
+    println(ok)
+
   }
 
   @Test
@@ -64,25 +97,17 @@ class OntologyHubClientTest {
     println(list.mkString(" | "))
   }
 
-  @Test
+  //  @Test
   def add_new_ontology() {
 
-    val filePath = "C:/Users/Al.Serafini/awavedev/workspace_playground/kb-core-experiments/ontologies/foaf/foaf.rdf"
-    val fileName = "foaf.rdf"
-    val fileMime = "application/rdf+xml"
-    val description = "foaf ontology"
-    val prefix = "foaf"
-    val uri = "http://foaf.org/"
-
     val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-
     println("\n\nontonethub - add new ontology")
     val add_res = Await.result(add_fut, Duration.Inf)
     println("ADD ONTOLOGY: " + add_res)
 
   }
 
-  @Test
+  //  @Test
   def delete_ontology_by_id() = {
     val ids: List[String] = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
     val _id = ids.head
@@ -93,7 +118,7 @@ class OntologyHubClientTest {
     println(del_res)
   }
 
-  @Test
+  //  @Test
   def find_id_by_prefix() {
     val _prefix = "foaf"
     println(s"\n\nontonethub - find ontology id by prefix ${_prefix}")
@@ -101,7 +126,7 @@ class OntologyHubClientTest {
     println(_id)
   }
 
-  // DISABLED @Test
+  //  @Test
   def add_remove_ontology() {
 
     val filePath = "C:/Users/Al.Serafini/awavedev/workspace_playground/kb-core-experiments/ontologies/foaf/foaf.rdf"
