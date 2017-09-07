@@ -20,7 +20,7 @@ import it.almawave.kb.utils.RDF4JAdapters._
 /*
  * basic tests for the RDFRepository instances
  */
-abstract class OLDTestingBaseRDFRepository {
+abstract class TestingBaseRDFRepository {
 
   val base_uri = "http://local/graph/"
 

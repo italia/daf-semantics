@@ -7,7 +7,6 @@ import org.junit.Ignore
 import scala.util.Try
 import it.almawave.kb.utils.ServerChecker
 import org.slf4j.LoggerFactory
-import specs.TestingBaseRDFRepository
 
 //@Ignore
 class TestingVirtuoso extends TestingBaseRDFRepository {

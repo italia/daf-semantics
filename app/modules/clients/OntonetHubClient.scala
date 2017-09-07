@@ -1,4 +1,4 @@
-package modules
+package modules.clients
 
 import it.almawave.kb.utils.JSONHelper
 import play.api.libs.ws.WSClient
@@ -34,6 +34,16 @@ class OntonethubClient(ws: WSClient) {
   val port = 8000
   val FOLLOW_REDIRECTS = true
   val PAUSE = 1000
+
+  def status():Boolean = {
+    val ok = ws.url(urls.status)
+      .withFollowRedirects(FOLLOW_REDIRECTS)
+      .get()
+      .map { response =>
+        (response.status == 200) && response.body.contains("OntoNetHub")
+      }
+    Await.result(ok, Duration.Inf)
+  }
 
   // this object encapsulates various types of lookup
   object lookup {
@@ -92,12 +102,15 @@ class OntonethubClient(ws: WSClient) {
             case 200 =>
               val json = JSONHelper.read(response.body)
               json.get("status").textValue() match {
+                // once an action has beeen requested, we have to check its status inside the JSON object
                 case "finished" => Future.successful(s"ontology ${ontologyID} has been correctly uploaded")
                 case "aborted"  => Future.failed(new Exception(response.body))
                 case "running" =>
+                  // we introduce a pause to avoid too much requests
                   Thread.sleep(PAUSE)
                   status(ontologyID)
               }
+            // if the resource id does not exists yet, we have to handle anHTTP error 
             case 404 => Future.failed(new ResourceNotExistsException(s"the ${ontologyID} resource does not exists!"))
             case _   => Future.failed(new Exception(response.body))
           }
@@ -143,6 +156,7 @@ class OntonethubClient(ws: WSClient) {
         .withFollowRedirects(FOLLOW_REDIRECTS)
         .post(add_src)
 
+      // preparing results, with a minimal error handling
       res.flatMap { response =>
         response.status match {
           case 200 =>
@@ -204,6 +218,8 @@ class OntonethubClient(ws: WSClient) {
     def add_ontology() = s"http://${host}:${port}/stanbol/ontonethub/ontology"
 
     def delete_ontology(onto_id: String) = s"http://${host}:${port}/stanbol/ontonethub/ontology/${onto_id}"
+
+    def status = s"http://${host}:${port}/stanbol/ontonethub/"
 
   }
 

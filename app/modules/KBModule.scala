@@ -19,6 +19,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import java.nio.file.Paths
 import play.api.Mode
 import java.io.File
+import modules.clients.OntonethubClient
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule

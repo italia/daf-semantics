@@ -5,7 +5,6 @@ import akka.stream.ActorMaterializer
 import play.api.libs.ws._
 import play.api.libs.ws.ahc.AhcWSClient
 import scala.concurrent.Future
-import modules.OntonethubClient
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
@@ -28,12 +27,18 @@ import org.junit.Test
 import org.junit.Assert
 import clients.HTTPClient
 import scala.util.Try
-import modules.ResourceAlreadyExistsException
+import org.junit.BeforeClass
+import org.junit.Assume
+import org.slf4j.LoggerFactory
+import modules.clients.ResourceAlreadyExistsException
+import modules.clients.OntonethubClient
 
 /**
  * TODO: FIX and expand tests
  */
 class OntologyHubClientTest {
+
+  val logger = LoggerFactory.getLogger(this.getClass)
 
   import scala.concurrent.ExecutionContext.Implicits._
 
@@ -71,16 +76,16 @@ class OntologyHubClientTest {
   @Test
   def add_status_list() {
 
-    println("\n\nontonethub - add / status / list")
+    logger.debug("\n\nontonethub - add / status / list")
 
     // adds an ontology
     val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
     val id = Await.result(add_fut, Duration.Inf)
-    println("ADDED: " + id)
+    logger.debug("ADDED: " + id)
 
     // verify the ontology has been added
     val ids = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
-    println(s"IDS list: [${ids.mkString(" | ")}]")
+    logger.debug(s"IDS list: [${ids.mkString(" | ")}]")
 
     Assert.assertTrue(ids.contains(id))
     Assert.assertEquals(1, ids.size)
@@ -90,7 +95,7 @@ class OntologyHubClientTest {
   @Test(expected = classOf[ResourceAlreadyExistsException])
   def add_duplicated() {
 
-    println("\n\nontonethub - add duplicated")
+    logger.debug("\n\nontonethub - add duplicated")
 
     // adds
     var add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
@@ -103,7 +108,7 @@ class OntologyHubClientTest {
   @Test
   def add_remove_by_id() = {
 
-    println("\n\nontonethub - add / remove ontology")
+    logger.debug("\n\nontonethub - add / remove ontology")
 
     var id: String = null
 
@@ -111,7 +116,7 @@ class OntologyHubClientTest {
     try {
       val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
       id = Await.result(add_fut, Duration.Inf)
-      println(s"ADD ontology: ${id}")
+      logger.debug(s"ADD ontology: ${id}")
     } catch {
       case ex: Throwable => Assert.fail("error in adding ontology" + ex)
     }
@@ -119,7 +124,7 @@ class OntologyHubClientTest {
     // status
     try {
       val status = Await.result(ontonethub.lookup.status(id), Duration.Inf)
-      println("STATUS: " + status)
+      logger.debug("STATUS: " + status)
     } catch {
       case ex: Throwable => Assert.fail("error getting status for ${id}" + ex)
     }
@@ -128,7 +133,7 @@ class OntologyHubClientTest {
     try {
       val del_fut = ontonethub.crud.delete_by_id(id)
       val del_res = Await.result(del_fut, Duration.Inf)
-      println(s"REMOVE ontology: ${id}")
+      logger.debug(s"REMOVE ontology: ${id}")
     } catch {
       case ex: Throwable => Assert.fail("error in adding ontology" + ex)
     }
@@ -138,17 +143,34 @@ class OntologyHubClientTest {
   @Test
   def find_id_by_prefix() {
 
-    println(s"\n\nontonethub - find ontology id by prefix ${prefix}")
+    logger.debug(s"\n\nontonethub - find ontology id by prefix ${prefix}")
 
     val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
     val id = Await.result(add_fut, Duration.Inf)
-    println(s"ADDED: ${id}")
+    logger.debug(s"ADDED: ${id}")
 
     val find_fut = ontonethub.lookup.find_id_by_prefix(prefix)
     val found_id = Await.result(find_fut, Duration.Inf)
-    println(found_id)
+    logger.debug(found_id)
 
     Assert.assertEquals(id, found_id)
+  }
+
+}
+
+// check if the service is up, for integration
+object OntologyHubClientTest {
+
+  val logger = LoggerFactory.getLogger(this.getClass)
+
+  @BeforeClass
+  def check_before() {
+    val client = HTTPClient
+    client.start()
+    val ontonethub = OntonethubClient.create(client.ws)
+    Assume.assumeTrue(ontonethub.status())
+    client.stop()
+    logger.info("Ontonethub is UP! [TESTING...]")
   }
 
 }

@@ -1316,7 +1316,45 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import modules.OntonethubClient
+import modules.clients.OntonethubClient
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.Logger
+import play.api.libs.json.Json
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import de.zalando.play.controllers._
+import com.google.inject.Inject
+import PlayBodyParsing._
+import PlayValidations._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import scala.concurrent.Future
+import scala.util._
+import java.io.File
+import java.net.URLDecoder
+import modules.KBModuleBase
+import modules.KBModule
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.Logger
+import play.api.libs.json.Json
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import de.zalando.play.controllers._
+import com.google.inject.Inject
+import PlayBodyParsing._
+import PlayValidations._
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
+import scala.concurrent.Future
+import scala.util._
+import java.io.File
+import java.net.URLDecoder
+import modules.KBModuleBase
+import modules.KBModule
 import play.api.mvc.{Action,Controller}
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
@@ -1591,7 +1629,7 @@ import modules.KBModule
 
 package lod_manager.yaml {
     // ----- Start of unmanaged code area for package Lod_managerYaml
-                                        
+                                                
   import play.api.mvc.{ Action, Controller }
   import play.api.data.validation.Constraint
   import play.api.i18n.MessagesApi
