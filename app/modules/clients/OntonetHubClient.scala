@@ -12,7 +12,6 @@ import scala.util.Success
 import scala.util.Failure
 import scala.concurrent.duration.Duration
 import scala.concurrent.Await
-import akka.dispatch.Futures
 import scala.util.Try
 
 object OntonethubClient {
@@ -21,7 +20,9 @@ object OntonethubClient {
 
 }
 
-// TODO: refactorization, after local testing
+/*
+ * TODO: refactorization, after local testing
+ */
 class OntonethubClient(ws: WSClient) {
 
   import scala.collection.JavaConversions._
@@ -32,6 +33,7 @@ class OntonethubClient(ws: WSClient) {
   val host = "localhost"
   val port = 8000
   val FOLLOW_REDIRECTS = true
+  val PAUSE = 1000
 
   // this object encapsulates various types of lookup
   object lookup {
@@ -61,11 +63,8 @@ class OntonethubClient(ws: WSClient) {
     }
 
     // returns the id for the given prefix
-    def find_id_by_prefix(prefix: String): Try[String] = {
-      val map: Map[String, String] = Await.result(ids_for_prefixes, Duration.Inf)
-      Try {
-        map.get(prefix).get
-      }
+    def find_id_by_prefix(prefix: String): Future[String] = {
+      ids_for_prefixes.map { map => map.get(prefix).get }
     }
 
     // returns a list of (prefix, id) pair 
@@ -79,16 +78,11 @@ class OntonethubClient(ws: WSClient) {
           .map { res => JSONHelper.read(res.body) }
           .map { json => (json.get("name").asText(), json.get("id").asText()) }
       }
-
-      val ex = scala.concurrent.ExecutionContext.Implicits.global
-      Futures.sequence(futures, ex)
-        .map {
-          ops => ops.toMap
-        }
+      Future.sequence(futures).map(_.toMap)
 
     }
 
-    // check thr current status of the job for uploading the ontology
+    // check thr current status of the job after crud operations
     def status(ontologyID: String): Future[String] = {
       ws.url(urls.job_status(ontologyID))
         .withFollowRedirects(FOLLOW_REDIRECTS)
@@ -100,7 +94,9 @@ class OntonethubClient(ws: WSClient) {
               json.get("status").textValue() match {
                 case "finished" => Future.successful(s"ontology ${ontologyID} has been correctly uploaded")
                 case "aborted"  => Future.failed(new Exception(response.body))
-                case "running"  => status(ontologyID)
+                case "running" =>
+                  Thread.sleep(PAUSE)
+                  status(ontologyID)
               }
             case 404 => Future.failed(new ResourceNotExistsException(s"the ${ontologyID} resource does not exists!"))
             case _   => Future.failed(new Exception(response.body))
@@ -124,12 +120,10 @@ class OntonethubClient(ws: WSClient) {
 
     }
 
-    def clear() {
-      val ids: List[String] = Await.result(lookup.list_ids, Duration.Inf)
-      ids.foreach { id =>
-        Await.result(crud.delete_by_id(id), Duration.Inf)
-        val status = Await.result(lookup.status(id), Duration.Inf)
-      }
+    // deletes all the loaded ontologies
+    def clear() = {
+      val results = lookup.list_ids.map { ids => ids.map { id => crud.delete_by_id(id) } }
+      Await.result(results, Duration.Inf)
     }
 
     // adds an ontology
@@ -154,8 +148,10 @@ class OntonethubClient(ws: WSClient) {
           case 200 =>
             val json = JSONHelper.read(response.body)
             val _id: String = json.get("ontologyId").textValue()
-            Future.successful(_id)
-          // lookup.status(_id)
+            for {
+              ok <- Future.successful(_id)
+              status <- lookup.status(_id)
+            } yield ok
           case 409 => Future.failed(new ResourceAlreadyExistsException(s"the ${prefix} resource already exists!"))
           case _   => Future.failed(new Exception(response.body))
         }
@@ -164,14 +160,19 @@ class OntonethubClient(ws: WSClient) {
     }
 
     // deletes an ontology, by id
-    def delete_by_id(ontology_id: String): Future[String] = {
+    def delete_by_id(ontologyID: String): Future[String] = {
 
-      ws.url(urls.delete_ontology(ontology_id))
+      ws.url(urls.delete_ontology(ontologyID))
         .withFollowRedirects(FOLLOW_REDIRECTS)
         .delete()
         .flatMap { res =>
           res.status match {
-            case 200 => Future.successful(s"ontology with id ${ontology_id} deleted")
+            case 200 =>
+              for {
+                ok <- Future.successful(s"ontology with id ${ontologyID} deleted")
+                status <- lookup.status(ontologyID)
+              } yield ontologyID
+
             case 404 => Future.failed(new ResourceNotExistsException)
             case _   => Future.failed(new Exception(res.body))
           }

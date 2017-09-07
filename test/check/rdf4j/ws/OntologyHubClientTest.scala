@@ -27,7 +27,12 @@ import org.junit.After
 import org.junit.Test
 import org.junit.Assert
 import clients.HTTPClient
+import scala.util.Try
+import modules.ResourceAlreadyExistsException
 
+/**
+ * TODO: FIX and expand tests
+ */
 class OntologyHubClientTest {
 
   import scala.concurrent.ExecutionContext.Implicits._
@@ -37,7 +42,6 @@ class OntologyHubClientTest {
   var ontonethub: OntonethubClient = null
 
   // example data
-  //  val filePath = "C:/Users/Al.Serafini/awavedev/workspace_playground/kb-core-experiments/ontologies/foaf/foaf.rdf"
   val filePath = "dist/data/ontologies/foaf/foaf.rdf"
   val fileName = "foaf.rdf"
   val fileMime = "application/rdf+xml"
@@ -53,11 +57,11 @@ class OntologyHubClientTest {
 
   @After
   def after() {
-    //    ontonethub.crud.clear()
+    ontonethub.crud.clear()
     client.stop()
   }
 
-  //  @Test
+  @Test
   def clear() {
     ontonethub.crud.clear()
     val list = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
@@ -65,24 +69,16 @@ class OntologyHubClientTest {
   }
 
   @Test
-  def list_ontologies_ids() {
+  def add_status_list() {
 
-    ontonethub.crud.clear()
+    println("\n\nontonethub - add / status / list")
 
-    // VERIFY how to rewrite here...
-    //    val id = for {
-    //      _id <- ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    //      status <- ontonethub.lookup.status(_id)
-    //    } yield _id
-
+    // adds an ontology
     val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-
     val id = Await.result(add_fut, Duration.Inf)
     println("ADDED: " + id)
 
-    val status = Await.result(ontonethub.lookup.status(id), Duration.Inf)
-    println("STATUS: " + status)
-
+    // verify the ontology has been added
     val ids = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
     println(s"IDS list: [${ids.mkString(" | ")}]")
 
@@ -91,63 +87,68 @@ class OntologyHubClientTest {
 
   }
 
+  @Test(expected = classOf[ResourceAlreadyExistsException])
+  def add_duplicated() {
+
+    println("\n\nontonethub - add duplicated")
+
+    // adds
+    var add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
+    var id = Await.result(add_fut, Duration.Inf)
+    // adds again
+    add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
+    id = Await.result(add_fut, Duration.Inf)
+  }
+
   @Test
-  def list_ontologies_uris() {
-    val list_fut = ontonethub.lookup.list_uris
-    val list = Await.result(list_fut, Duration.Inf)
-    println("\n\nontonethub - list of ontologies")
-    println(list.mkString(" | "))
+  def add_remove_by_id() = {
+
+    println("\n\nontonethub - add / remove ontology")
+
+    var id: String = null
+
+    // add
+    try {
+      val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
+      id = Await.result(add_fut, Duration.Inf)
+      println(s"ADD ontology: ${id}")
+    } catch {
+      case ex: Throwable => Assert.fail("error in adding ontology" + ex)
+    }
+
+    // status
+    try {
+      val status = Await.result(ontonethub.lookup.status(id), Duration.Inf)
+      println("STATUS: " + status)
+    } catch {
+      case ex: Throwable => Assert.fail("error getting status for ${id}" + ex)
+    }
+
+    // remove
+    try {
+      val del_fut = ontonethub.crud.delete_by_id(id)
+      val del_res = Await.result(del_fut, Duration.Inf)
+      println(s"REMOVE ontology: ${id}")
+    } catch {
+      case ex: Throwable => Assert.fail("error in adding ontology" + ex)
+    }
+
   }
 
-  //  @Test
-  def add_new_ontology() {
-
-    val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    println("\n\nontonethub - add new ontology")
-    val add_res = Await.result(add_fut, Duration.Inf)
-    println("ADD ONTOLOGY: " + add_res)
-
-  }
-
-  //  @Test
-  def delete_ontology_by_id() = {
-    val ids: List[String] = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
-    val _id = ids.head
-    println(s"\n\nontonethub - delete ontology by id: ${_id}")
-    val del_fut = ontonethub.crud.delete_by_id(_id)
-    del_fut.onFailure { case ex: Throwable => println(ex) }
-    val del_res = Await.result(del_fut, Duration.Inf)
-    println(del_res)
-  }
-
-  //  @Test
+  @Test
   def find_id_by_prefix() {
-    val _prefix = "foaf"
-    println(s"\n\nontonethub - find ontology id by prefix ${_prefix}")
-    val _id = ontonethub.lookup.find_id_by_prefix(_prefix).get
-    println(_id)
-  }
 
-  //  @Test
-  def add_remove_ontology() {
+    println(s"\n\nontonethub - find ontology id by prefix ${prefix}")
 
-    val filePath = "C:/Users/Al.Serafini/awavedev/workspace_playground/kb-core-experiments/ontologies/foaf/foaf.rdf"
-    val fileName = "example.rdf"
-    val fileMime = "application/rdf+xml"
-    val description = "foaf ontology"
-
-    val prefix = "example_024"
-    val uri = "http://example.org/"
-
-    println("\n\nontonethub - add/remove ontology")
     val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    var ID = Await.result(add_fut, Duration.Inf) // VERIFY...
+    val id = Await.result(add_fut, Duration.Inf)
+    println(s"ADDED: ${id}")
 
-    println("NEW ID: " + ID)
+    val find_fut = ontonethub.lookup.find_id_by_prefix(prefix)
+    val found_id = Await.result(find_fut, Duration.Inf)
+    println(found_id)
 
-    val del_fut = ontonethub.crud.delete_by_id(ID)
-    val del_res = Await.result(del_fut, Duration.Inf)
-    println(s"the resource with id ${del_res} was correctly added and remove!")
+    Assert.assertEquals(id, found_id)
   }
 
 }
