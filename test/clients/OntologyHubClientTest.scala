@@ -1,32 +1,14 @@
-package check.rdf4j.ws
+package clients
 
-import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
 import play.api.libs.ws._
-import play.api.libs.ws.ahc.AhcWSClient
-import scala.concurrent.Future
-
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
-
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
-
-import it.almawave.kb.utils.JSONHelper
-import akka.stream.scaladsl.Source
-import play.api.mvc.MultipartFormData.DataPart
-import scala.util.Success
-import scala.util.Failure
-import play.api.mvc.MultipartFormData.FilePart
-import java.io.File
-import akka.stream.scaladsl.FileIO
-import java.nio.file.Paths
 import org.junit.Before
 import org.junit.After
 import org.junit.Test
 import org.junit.Assert
-import clients.HTTPClient
-import scala.util.Try
 import org.junit.BeforeClass
 import org.junit.Assume
 import org.slf4j.LoggerFactory

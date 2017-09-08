@@ -1,11 +1,11 @@
 
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 
 import play.api.data.validation.Constraint
 
 import play.api.i18n.MessagesApi
 
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 
 import de.zalando.play.controllers._
 
@@ -19,330 +19,330 @@ import javax.inject._
 
 import java.io.File
 
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import de.zalando.play.controllers._
 import PlayBodyParsing._
 import PlayValidations._
 import scala.util._
 import javax.inject._
 import java.io.File
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -358,10 +358,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -377,10 +377,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -396,10 +396,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -415,10 +415,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -434,10 +434,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -453,10 +453,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -472,10 +472,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -491,10 +491,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -510,10 +510,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -529,10 +529,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -550,10 +550,10 @@ import modules.KBModuleBase
 import modules.KBModule
 import java.net.URL
 import java.net.URI
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -569,10 +569,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -588,10 +588,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -607,10 +607,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -626,10 +626,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -645,10 +645,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -664,10 +664,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -683,10 +683,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -702,10 +702,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -721,10 +721,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -740,10 +740,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -759,10 +759,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -778,10 +778,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -797,10 +797,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -816,10 +816,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -835,10 +835,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -854,10 +854,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -877,10 +877,10 @@ import play.api.libs.ws.WSClient
 import scala.concurrent.Await
 import play.api.libs.ws.WSResponse
 import scala.concurrent.duration.Duration
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -896,10 +896,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -915,10 +915,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -934,10 +934,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -953,10 +953,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -972,10 +972,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -991,10 +991,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1010,10 +1010,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1029,10 +1029,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1048,10 +1048,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1067,10 +1067,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1086,10 +1086,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1105,10 +1105,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1124,10 +1124,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1143,10 +1143,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1162,10 +1162,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1181,10 +1181,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1201,10 +1201,10 @@ import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
 import com.fasterxml.jackson.databind.ObjectMapper
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1220,10 +1220,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1239,10 +1239,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1258,10 +1258,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1277,10 +1277,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1297,10 +1297,10 @@ import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
 import it.almawave.kb.utils.JSONHelper
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1317,10 +1317,10 @@ import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
 import modules.clients.OntonethubClient
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1336,10 +1336,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1355,10 +1355,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1374,10 +1374,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1393,10 +1393,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1412,10 +1412,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1431,10 +1431,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1450,10 +1450,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1469,10 +1469,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1488,10 +1488,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1507,10 +1507,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1526,10 +1526,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1545,10 +1545,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1564,10 +1564,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1583,10 +1583,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1602,10 +1602,10 @@ import java.io.File
 import java.net.URLDecoder
 import modules.KBModuleBase
 import modules.KBModule
-import play.api.mvc.{Action,Controller}
+import play.api.mvc.{ Action, Controller }
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
-import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import play.api.inject.{ ApplicationLifecycle, ConfigurationProvider }
 import play.Logger
 import play.api.libs.json.Json
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
@@ -1628,8 +1628,8 @@ import modules.KBModule
  */
 
 package lod_manager.yaml {
-    // ----- Start of unmanaged code area for package Lod_managerYaml
-                                                
+  // ----- Start of unmanaged code area for package Lod_managerYaml
+
   import play.api.mvc.{ Action, Controller }
   import play.api.data.validation.Constraint
   import play.api.i18n.MessagesApi
@@ -1654,19 +1654,18 @@ package lod_manager.yaml {
   import modules.KBModuleBase
   import modules.KBModule
 
-    // ----- End of unmanaged code area for package Lod_managerYaml
-    class Lod_managerYaml @Inject() (
-        // ----- Start of unmanaged code area for injections Lod_managerYaml
+  // ----- End of unmanaged code area for package Lod_managerYaml
+  class Lod_managerYaml @Inject() (
+      // ----- Start of unmanaged code area for injections Lod_managerYaml
 
       kb: KBModuleBase,
       ws: WSClient,
 
-        // ----- End of unmanaged code area for injections Lod_managerYaml
-        val messagesApi: MessagesApi,
-        lifecycle: ApplicationLifecycle,
-        config: ConfigurationProvider
-    ) extends Lod_managerYamlBase {
-        // ----- Start of unmanaged code area for constructor Lod_managerYaml
+      // ----- End of unmanaged code area for injections Lod_managerYaml
+      val messagesApi: MessagesApi,
+      lifecycle: ApplicationLifecycle,
+      config: ConfigurationProvider) extends Lod_managerYamlBase {
+    // ----- Start of unmanaged code area for constructor Lod_managerYaml
 
     // wrapper for triplestore
     val kbrepo = kb.kbrepo
@@ -1674,10 +1673,10 @@ package lod_manager.yaml {
     // wrapper for stanbol / ontonethub
     val ontonethub: OntonethubClient = OntonethubClient.create(ws)
 
-        // ----- End of unmanaged code area for constructor Lod_managerYaml
-        val ontonethubGetOntologiesList = ontonethubGetOntologiesListAction {  _ =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.ontonethubGetOntologiesList
-            val response: WSResponse = Await.result[WSResponse](
+    // ----- End of unmanaged code area for constructor Lod_managerYaml
+    val ontonethubGetOntologiesList = ontonethubGetOntologiesListAction { _ =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.ontonethubGetOntologiesList
+      val response: WSResponse = Await.result[WSResponse](
         ws.url(ontonethub.urls.ontologies_list).get(), Duration.Inf)
 
       val list: Seq[Ontology] = JSONHelper.read(response.body)
@@ -1691,11 +1690,11 @@ package lod_manager.yaml {
       OntonethubGetOntologiesList200(Future {
         list
       })
-            // ----- End of unmanaged code area for action  Lod_managerYaml.ontonethubGetOntologiesList
-        }
-        val countTriplesByOntology = countTriplesByOntologyAction { (prefix: String) =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
-            val namespace = kbrepo.prefixes.list().get(prefix)
+      // ----- End of unmanaged code area for action  Lod_managerYaml.ontonethubGetOntologiesList
+    }
+    val countTriplesByOntology = countTriplesByOntologyAction { (prefix: String) =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
+      val namespace = kbrepo.prefixes.list().get(prefix)
 
       kbrepo.store.size(namespace) match {
         case Success(triples) =>
@@ -1708,40 +1707,40 @@ package lod_manager.yaml {
             Error(err_msg, s"${err}")
           })
       }
-            // ----- End of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
-        }
-        val prefixesList = prefixesListAction {  _ =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixesList
-            val prefixes = kbrepo.prefixes.list().get
+      // ----- End of unmanaged code area for action  Lod_managerYaml.countTriplesByOntology
+    }
+    val prefixesList = prefixesListAction { _ =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixesList
+      val prefixes = kbrepo.prefixes.list().get
         .toList
         .map(item => Prefix(item._1, item._2))
 
       PrefixesList200(Future {
         prefixes
       })
-            // ----- End of unmanaged code area for action  Lod_managerYaml.prefixesList
-        }
-        val prefixDirectLookup = prefixDirectLookupAction { (prefix: String) =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixDirectLookup
-            lazy val prefixes = kbrepo.prefixes.list()
+      // ----- End of unmanaged code area for action  Lod_managerYaml.prefixesList
+    }
+    val prefixDirectLookup = prefixDirectLookupAction { (prefix: String) =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixDirectLookup
+      lazy val prefixes = kbrepo.prefixes.list()
       val _namespace = prefixes.get(prefix)
       PrefixDirectLookup200(Future {
         Prefix(prefix, _namespace)
       })
-            // ----- End of unmanaged code area for action  Lod_managerYaml.prefixDirectLookup
-        }
-        val countTriples = countTriplesAction {  _ =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriples
-            val triples = kbrepo.store.size()
+      // ----- End of unmanaged code area for action  Lod_managerYaml.prefixDirectLookup
+    }
+    val countTriples = countTriplesAction { _ =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.countTriples
+      val triples = kbrepo.store.size()
       CountTriples200(Future {
         TriplesCount("_ALL_", triples.get)
       })
-            // ----- End of unmanaged code area for action  Lod_managerYaml.countTriples
-        }
-        val addRDFDoc = addRDFDocAction { input: (String, File, String, String) =>
-            val (fileName, rdfDocument, prefix, context) = input
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.addRDFDoc
-            val _context = URLDecoder.decode(context, "UTF-8")
+      // ----- End of unmanaged code area for action  Lod_managerYaml.countTriples
+    }
+    val addRDFDoc = addRDFDocAction { input: (String, File, String, String) =>
+      val (fileName, rdfDocument, prefix, context) = input
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.addRDFDoc
+      val _context = URLDecoder.decode(context, "UTF-8")
 
       Try {
         val context_uri = URI.create(_context) // check problems parsing URI for context
@@ -1757,11 +1756,11 @@ package lod_manager.yaml {
 
           AddRDFDoc500(Future { Error(msg, s"${err}") })
       }
-            // ----- End of unmanaged code area for action  Lod_managerYaml.addRDFDoc
-        }
-        val removeRDFDoc = removeRDFDocAction { (context: String) =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.removeRDFDoc
-            Try { kbrepo.store.clear(context) } match {
+      // ----- End of unmanaged code area for action  Lod_managerYaml.addRDFDoc
+    }
+    val removeRDFDoc = removeRDFDocAction { (context: String) =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.removeRDFDoc
+      Try { kbrepo.store.clear(context) } match {
 
         case Success(_) =>
           val msg = s"""all the triples in the context ${context} were deleted correctly"""
@@ -1774,20 +1773,20 @@ package lod_manager.yaml {
           RemoveRDFDoc400(Future { Error(msg, s"${err}") })
 
       }
-            // ----- End of unmanaged code area for action  Lod_managerYaml.removeRDFDoc
-        }
-        val prefixReverseLookup = prefixReverseLookupAction { (namespace: String) =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixReverseLookup
-            val prefixes = kbrepo.prefixes.list().get.map(item => (item._2, item._1))
+      // ----- End of unmanaged code area for action  Lod_managerYaml.removeRDFDoc
+    }
+    val prefixReverseLookup = prefixReverseLookupAction { (namespace: String) =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.prefixReverseLookup
+      val prefixes = kbrepo.prefixes.list().get.map(item => (item._2, item._1))
       val _prefix = prefixes.get(namespace).get
       PrefixReverseLookup200(Future {
         Prefix(_prefix, namespace)
       }) // FIX encode/decode!
-            // ----- End of unmanaged code area for action  Lod_managerYaml.prefixReverseLookup
-        }
-        val contextsList = contextsListAction {  _ =>  
-            // ----- Start of unmanaged code area for action  Lod_managerYaml.contextsList
-            val _contexts = kbrepo.store.contexts().get
+      // ----- End of unmanaged code area for action  Lod_managerYaml.prefixReverseLookup
+    }
+    val contextsList = contextsListAction { _ =>
+      // ----- Start of unmanaged code area for action  Lod_managerYaml.contextsList
+      val _contexts = kbrepo.store.contexts().get
         .map { cx =>
           //          Context(cx, kbrepo.store.size(vf.createIRI(cx)).get)
           Context(cx, kbrepo.store.size(cx).get)
@@ -1795,8 +1794,8 @@ package lod_manager.yaml {
       ContextsList200(Future {
         _contexts
       })
-            // ----- End of unmanaged code area for action  Lod_managerYaml.contextsList
-        }
-    
+      // ----- End of unmanaged code area for action  Lod_managerYaml.contextsList
     }
+
+  }
 }
