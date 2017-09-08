@@ -14,15 +14,19 @@ import org.junit.Assume
 import org.slf4j.LoggerFactory
 import modules.clients.ResourceAlreadyExistsException
 import modules.clients.OntonethubClient
+
+import play.Logger
+
 import it.almawave.kb.utils.TryHandlers
 import it.almawave.kb.utils.TryHandlers._
 
 /**
- * TODO: FIX and expand tests
+ * TODO: FIX and expand tests coverage
  */
 class OntologyHubClientTest {
 
-  val logger = LoggerFactory.getLogger(this.getClass)
+  //  val logger = LoggerFactory.getLogger(this.getClass)
+  val logger = Logger.underlying()
 
   import scala.concurrent.ExecutionContext.Implicits._
 
@@ -83,12 +87,11 @@ class OntologyHubClientTest {
     logger.debug("\n\nontonethub - add / status / list")
 
     // adds an ontology
-    val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    val id = Await.result(add_fut, Duration.Inf)
-    logger.debug("ADDED: " + id)
+    val id = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri).await
+    logger.debug(s"added ontology with prefix and ${prefix} with id: ${id}")
 
     // verify the ontology has been added
-    val ids = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
+    val ids = ontonethub.lookup.list_ids.await
     logger.debug(s"IDS list: [${ids.mkString(" | ")}]")
 
     Assert.assertTrue(ids.contains(id))
@@ -102,11 +105,10 @@ class OntologyHubClientTest {
     logger.debug("\n\nontonethub - add duplicated")
 
     // adds
-    var add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    var id = Await.result(add_fut, Duration.Inf)
-    // adds again
-    add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    id = Await.result(add_fut, Duration.Inf)
+    var id = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri).await
+    // adds again!
+    id = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri).await
+
   }
 
   @Test
@@ -118,29 +120,51 @@ class OntologyHubClientTest {
 
     // add
     try {
-      val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-      id = Await.result(add_fut, Duration.Inf)
+      id = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri).await
       logger.debug(s"ADD ontology: ${id}")
     } catch {
-      case ex: Throwable => Assert.fail("error in adding ontology" + ex)
+      case ex: Throwable => Assert.fail("error in adding ontology\n" + ex)
     }
 
     // status
     try {
-      val status = Await.result(ontonethub.lookup.status(id), Duration.Inf)
-      logger.debug("STATUS: " + status)
+      val status = ontonethub.lookup.status(id).await
+      logger.debug(s"checking status for ${id}: ${status}")
     } catch {
-      case ex: Throwable => Assert.fail("error getting status for ${id}" + ex)
+      case ex: Throwable => Assert.fail(s"error getting status for ${id}\n" + ex)
     }
 
     // remove
     try {
-      val del_fut = ontonethub.crud.delete_by_id(id)
-      val del_res = Await.result(del_fut, Duration.Inf)
-      logger.debug(s"REMOVE ontology: ${id}")
+      val del_id = ontonethub.crud.delete_by_id(id).await
+      logger.debug(s"the ontology with id: ${id} was correctly removed")
     } catch {
       case ex: Throwable => Assert.fail("error in adding ontology" + ex)
     }
+
+  }
+
+  @Test
+  def find() {
+
+    println("\n\n FIND RESULTS: ")
+
+    //  IDEA  ontonethub.crud.find("citta")
+    //  curl 
+    //    -H  "accept: application/json" 
+    //    -H  "content-type: application/x-www-form-urlencoded" 
+    //    -X POST "http://localhost:8000/stanbol/ontonethub/ontologies/find" 
+    //    -d "name=foaf"
+
+    // adds an ontology
+    val id = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri).await
+    logger.debug(s"added ontology with prefix and ${prefix} with id: ${id}")
+
+    // find...
+
+    val results = ontonethub.crud.find("name", 10, "").await
+    println("RESULTS: ")
+    println(results)
 
   }
 

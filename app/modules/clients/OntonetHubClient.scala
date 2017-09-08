@@ -16,6 +16,8 @@ import scala.concurrent.Await
 import it.almawave.kb.utils.TryHandlers
 import it.almawave.kb.utils.TryHandlers._
 import scala.concurrent.Awaitable
+import com.fasterxml.jackson.databind.ObjectMapper
+import java.lang.Float
 
 object OntonethubClient {
 
@@ -138,6 +140,30 @@ class OntonethubClient(ws: WSClient) {
   // this object encapsulates the methods for CRUD operations
   object crud {
 
+    def find(query: String, limit: Int = 10, lang: String = "") = {
+
+      // CHECK: Play.application().configuration().getString("sms.service.url"
+
+      ws.url(urls.find())
+        .withFollowRedirects(FOLLOW_REDIRECTS)
+        .withHeaders(("accept", "application/json"))
+        .withHeaders(("content-type", "application/x-www-form-urlencoded"))
+        .post(s"name=${query}&limit=${limit}&lang=${lang}")
+        // REVIEW here: currently disabled for handling response as is
+        //        .map { response =>
+        //          println(response.body)
+        //          println(FindParser.parse(response.body))
+        //          response
+        //        }
+        .map { response =>
+          response.status match {
+            case 200 => FindParser.parse(response.body)
+            case _   => List()
+          }
+        }
+
+    }
+
     // retrieves the content (source) of an ontology
     def get(ontologyID: String, mime: String = "text/turtle"): Future[String] = {
 
@@ -220,10 +246,10 @@ class OntonethubClient(ws: WSClient) {
     def ontologies_list = s"http://${host}:${port}/stanbol/ontonethub/ontologies"
 
     // find lookup url
-    def find_ontologies() = s"http://${host}:${port}/stanbol/ontonethub/ontologies/find"
+    def find() = s"http://${host}:${port}/stanbol/ontonethub/ontologies/find"
 
     // search on ontology, by ontology id
-    def find_by_ontology_id(ontologyID: String) = s"http://${host}:${port}/stanbol/ontonethub/ontology/${ontologyID}/find"
+    def find_by_id(ontologyID: String) = s"http://${host}:${port}/stanbol/ontonethub/ontology/${ontologyID}/find"
 
     // ontology metadata
     def ontology_metadata(ontologyID: String) = s"http://${host}:${port}/stanbol/ontonethub/ontology/${ontologyID}"
