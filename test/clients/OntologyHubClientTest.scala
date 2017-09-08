@@ -14,6 +14,8 @@ import org.junit.Assume
 import org.slf4j.LoggerFactory
 import modules.clients.ResourceAlreadyExistsException
 import modules.clients.OntonethubClient
+import it.almawave.kb.utils.TryHandlers
+import it.almawave.kb.utils.TryHandlers._
 
 /**
  * TODO: FIX and expand tests
@@ -53,6 +55,26 @@ class OntologyHubClientTest {
     ontonethub.crud.clear()
     val list = Await.result(ontonethub.lookup.list_ids, Duration.Inf)
     Assert.assertEquals(0, list.size)
+  }
+
+  @Test
+  def find_id_by_prefix() {
+
+    logger.debug(s"\n\nontonethub - find ontology id by prefix ${prefix}")
+
+    val id = ontonethub.crud
+      .add(filePath, fileName, fileMime, description, prefix, uri)
+      .await
+
+    logger.debug(s"added ontology with prefix: ${prefix} and id: ${id}")
+
+    val found_id = ontonethub.lookup
+      .find_id_by_prefix(prefix)
+      .await
+
+    logger.debug(s"found ontology with id: ${found_id}")
+
+    Assert.assertEquals(id, found_id)
   }
 
   @Test
@@ -122,22 +144,6 @@ class OntologyHubClientTest {
 
   }
 
-  @Test
-  def find_id_by_prefix() {
-
-    logger.debug(s"\n\nontonethub - find ontology id by prefix ${prefix}")
-
-    val add_fut = ontonethub.crud.add(filePath, fileName, fileMime, description, prefix, uri)
-    val id = Await.result(add_fut, Duration.Inf)
-    logger.debug(s"ADDED: ${id}")
-
-    val find_fut = ontonethub.lookup.find_id_by_prefix(prefix)
-    val found_id = Await.result(find_fut, Duration.Inf)
-    logger.debug(found_id)
-
-    Assert.assertEquals(id, found_id)
-  }
-
 }
 
 // check if the service is up, for integration
@@ -150,7 +156,7 @@ object OntologyHubClientTest {
     val client = HTTPClient
     client.start()
     val ontonethub = OntonethubClient.create(client.ws)
-    Assume.assumeTrue(ontonethub.status())
+    Assume.assumeTrue(ontonethub.status().await)
     client.stop()
     logger.info("Ontonethub is UP! [TESTING...]")
   }

@@ -11,8 +11,11 @@ import akka.stream.scaladsl.FileIO
 import scala.util.Success
 import scala.util.Failure
 import scala.concurrent.duration.Duration
-import scala.concurrent.Await
 import scala.util.Try
+import scala.concurrent.Await
+import it.almawave.kb.utils.TryHandlers
+import it.almawave.kb.utils.TryHandlers._
+import scala.concurrent.Awaitable
 
 object OntonethubClient {
 
@@ -20,7 +23,11 @@ object OntonethubClient {
 
 }
 
-/*
+/**
+ * This is a Client for wrapping OntonetHub component (based on Stanbol).
+ * The idea behind it is to expose simple API for simpler interaction and integration
+ * of OntonetHub/Stanbol with the other components handling semantics (triplestores...)
+ *
  * TODO: refactorization, after local testing
  */
 class OntonethubClient(ws: WSClient) {
@@ -29,20 +36,19 @@ class OntonethubClient(ws: WSClient) {
   import scala.collection.JavaConverters._
   import scala.concurrent.ExecutionContext.Implicits._
 
-  // TODO: export configurations
+  // TODO: export the configurations
   val host = "localhost"
   val port = 8000
   val FOLLOW_REDIRECTS = true
   val PAUSE = 1000
 
-  def status():Boolean = {
-    val ok = ws.url(urls.status)
+  def status(): Future[Boolean] = {
+    ws.url(urls.status)
       .withFollowRedirects(FOLLOW_REDIRECTS)
       .get()
       .map { response =>
         (response.status == 200) && response.body.contains("OntoNetHub")
       }
-    Await.result(ok, Duration.Inf)
   }
 
   // this object encapsulates various types of lookup
@@ -59,40 +65,50 @@ class OntonethubClient(ws: WSClient) {
       }
     }
 
-    // returns a list of ontology ids
+    /**
+     * returns a list of ontology ids
+     */
     def list_uris: Future[List[String]] = {
       ws.url(urls.ontologies_list)
         .withFollowRedirects(FOLLOW_REDIRECTS)
         .get()
         .map { response =>
-          JSONHelper.read(response.body).toList
-            .map { node =>
-              node.asText()
-            }
+          JSONHelper.read(response.body).toList.map(_.asText())
         }
     }
 
-    // returns the id for the given prefix
+    /**
+     * returns the id for the given prefix
+     */
     def find_id_by_prefix(prefix: String): Future[String] = {
       ids_for_prefixes.map { map => map.get(prefix).get }
     }
 
-    // returns a list of (prefix, id) pair 
+    /**
+     * returns a list of (prefix, id) pair
+     */
     private def ids_for_prefixes() = {
 
-      val list = Await.result(list_ids, Duration.Inf)
-      val futures = list.map { onto_id =>
-        ws.url(urls.ontology_metadata(onto_id))
-          .withFollowRedirects(FOLLOW_REDIRECTS)
-          .get()
-          .map { res => JSONHelper.read(res.body) }
-          .map { json => (json.get("name").asText(), json.get("id").asText()) }
+      list_ids.flatMap { ids_list =>
+
+        // for each ontology: retrieves the name associated with id
+        val temp = ids_list.map { onto_id =>
+          ws.url(urls.ontology_metadata(onto_id))
+            .withFollowRedirects(FOLLOW_REDIRECTS)
+            .get()
+            .map { res => JSONHelper.read(res.body) }
+            .map { json => (json.get("name").asText(), json.get("id").asText()) }
+        }
+
+        Future.sequence(temp).map(_.toMap)
+
       }
-      Future.sequence(futures).map(_.toMap)
 
     }
 
-    // check thr current status of the job after crud operations
+    /**
+     * checking the current status of the job after crud operations
+     */
     def status(ontologyID: String): Future[String] = {
       ws.url(urls.job_status(ontologyID))
         .withFollowRedirects(FOLLOW_REDIRECTS)
