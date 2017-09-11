@@ -24,6 +24,8 @@ import it.almawave.linkeddata.kb.repo.managers.RDFFileManager
 import it.almawave.linkeddata.kb.repo.managers.RDFStoreManager
 import it.almawave.linkeddata.kb.repo.managers.PrefixesManager
 import it.almawave.linkeddata.kb.repo.managers.SPARQLManager
+import it.almawave.linkeddata.kb.utils.TryHandlers.FutureWithLog
+import scala.concurrent.Future
 
 object RDFRepository {
 
@@ -131,16 +133,16 @@ class RDFRepositoryBase(repo: Repository) {
   def configuration(): Config = conf
 
   // checking if the repository is up.
-  def isAlive(): Boolean = {
+  def isAlive(): Future[Boolean] = {
 
-    TryLog {
+    FutureWithLog {
 
       if (!repo.isInitialized()) repo.initialize()
       repo.getConnection.close()
       repo.shutDown()
       true
 
-    }("repository is not reachable!").isSuccess
+    }("repository is not reachable!")
 
   }
 

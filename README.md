@@ -1,6 +1,6 @@
 
-lod_manager
-===============
+semantic_repository
+====================
 
 SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf) 
 
@@ -8,18 +8,12 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 
 1. local publish of dependencies
 
-	1.1. `kb-core`
-
-	find a better way to manage the engine part as an external library: for example it could be helpful to have a specific git repository, using a standard sbt dependency in order to import the jar.
-	This way the engine could be more easily re-used for other services such as validators, etc.
-	At the moment the "engine" code base have been merged into the main repository, for simplicity.
-
 	1.2. virtuoso JDBC / RDF4J jar
 
 	The dependencies for virtuoso integration are currently not yet published on the maven central, so they are linked using the convetional `lib` folder in the sbt project:
 
 	```
-	[lod_manager]
+	[semantic_repository]
 	├───/lib
 	│   ├───virtjdbc4_2.jar
 	│   └───virt_rdf4j.jar
@@ -43,19 +37,19 @@ SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf)
 
 	```
 	$ sbt clean dist
-	$ unzip -o -d  target/universal/ target/universal/lod-manager-0.0.1.zip
-	$ target/universal/lod-manager-0.0.1/bin/lod-manager  -Dconfig.file=./conf/application.conf
+	$ unzip -o -d  target/universal/ target/universal/semantic_repository-0.1.0.zip
+	$ target/universal/semantic_repository-0.1.0/bin/semantic-repository  -Dconfig.file=./conf/application.conf
 	```
 
 	**NOTE**: if the application crashed, the pid file whould be deleted before attempting re-run 
 	
 	```bash
-	$ rm target/universal/lod-manager-0.0.1/RUNNING_PID 
+	$ rm target/universal/semantic_repository-0.1.0/RUNNING_PID 
 	```
 
 5. release
 
-	working draft: [0.0.1](https://github.com/seralf/lod_manager/releases/tag/0.0.1)
+	working draft: [0.0.1](https://github.com/seralf/semantic_repository/releases/tag/0.1.0)
 
 
 * * *
@@ -111,6 +105,7 @@ def clear_all() {
 
 ## TODO
 
+- [ ] move TryLog to FutureWithLog
 - [ ] switch to new name conventions: `semantic_*`, merge into main daf.
 	NOTE: consider using `git subtree` for the local fork
 - [ ] publish `kb-core` (changing name conventions) on github / bitbucket or as sub-module
