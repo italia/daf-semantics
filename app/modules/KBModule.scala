@@ -13,13 +13,14 @@ import play.api.Environment
 import play.api.Configuration
 import scala.concurrent.ExecutionContext
 import play.api.Logger
-import it.almawave.kb.utils.ConfigHelper
-import it.almawave.kb.repo._
+import it.almawave.linkeddata.kb.utils.ConfigHelper
+import it.almawave.linkeddata.kb.repo._
 import scala.concurrent.ExecutionContext.Implicits.global
 import java.nio.file.Paths
 import play.api.Mode
 import java.io.File
 import modules.clients.OntonethubClient
+import it.almawave.linkeddata.kb.repo.RDFRepository
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule

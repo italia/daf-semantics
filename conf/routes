@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET         /spec/lod_manager.yaml   controllers.Swagger.swaggerSpec(name="lod_manager.yaml")
+GET         /spec/semantic_repository.yaml   controllers.Swagger.swaggerSpec(name="semantic_repository.yaml")
 
 #GET         /list_specs     controllers.Swagger.listSpecs
 
@@ -17,7 +17,7 @@ GET         /favicon.ico    controllers.Assets.versioned(path="/public/swagger-u
 GET         /api/*file      controllers.Assets.versioned(path="/public/swagger-ui", file: Asset)
 
 
-->          /kb/v1           lod_manager.yaml.Routes
+->          /kb/v1           semantic_repository.yaml.Routes
 
 ### NoDocs ###
 GET         /docs/swagger-ui/*file    controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)

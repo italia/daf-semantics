@@ -5,13 +5,16 @@ import de.zalando.play.generator.sbt.ApiFirstPlayScalaCodeGenerator.autoImport.p
 import play.sbt.routes.RoutesKeys.routesGenerator
 import sbt.Keys.resolvers
 
-organization in ThisBuild := "it.gov.daf"
+organization in ThisBuild := "it.almawave"
 
-name := "lod-manager"
+name := "semantic-repository"
 
-version in ThisBuild := "0.0.1"
+version in ThisBuild := "0.1.0"
 
 val playVersion = "2.5.14"
+
+// default port
+PlayKeys.playDefaultPort := 8888
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, ApiFirstCore, ApiFirstPlayScalaCodeGenerator, ApiFirstSwaggerParser)
 
