@@ -111,7 +111,9 @@ def clear_all() {
 
 ## TODO
 
-- [ ] publish `kb-core` on github / bitbucket or as sub-module
+- [ ] switch to new name conventions: `semantic_*`, merge into main daf.
+	NOTE: consider using `git subtree` for the local fork
+- [ ] publish `kb-core` (changing name conventions) on github / bitbucket or as sub-module
 - [ ] add `kb-core` dependency on sbt - move core to external library
 - [x] add `RDF4J` dependencies on sbt
 - [x] add `virtoso` dependencies on sbt
@@ -121,6 +123,9 @@ def clear_all() {
 - [ ] more test coverage for simple example HTTP requests (specs2)
 - [x] ~~datapackage or similar? at the moment~~ a `.metadata` file is used for contexts
 - [x] ~~creating a simple construct for dealing with transactions~~. Done: see `TryHandlers.RepositoryAction[X]`
+- [ ] review repository wrapper code base
+- [ ] review ontonethub wrapper code base
+- [ ] review local filestorage code base
 - [ ] review / refactor the response from services, using more meaningful data structures
 
 
