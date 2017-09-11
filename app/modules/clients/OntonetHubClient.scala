@@ -143,21 +143,16 @@ class OntonethubClient(ws: WSClient) {
     def find(query: String, limit: Int = 10, lang: String = "") = {
 
       // CHECK: Play.application().configuration().getString("sms.service.url"
+      // DISABLED: OntonethubFindParser.parse(response.body)
 
       ws.url(urls.find())
         .withFollowRedirects(FOLLOW_REDIRECTS)
         .withHeaders(("accept", "application/json"))
         .withHeaders(("content-type", "application/x-www-form-urlencoded"))
         .post(s"name=${query}&limit=${limit}&lang=${lang}")
-        // REVIEW here: currently disabled for handling response as is
-        //        .map { response =>
-        //          println(response.body)
-        //          println(FindParser.parse(response.body))
-        //          response
-        //        }
         .map { response =>
           response.status match {
-            case 200 => FindParser.parse(response.body)
+            case 200 => OntonethubFindParser.parse(response.body)
             case _   => List()
           }
         }

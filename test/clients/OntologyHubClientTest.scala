@@ -170,18 +170,25 @@ class OntologyHubClientTest {
 
 }
 
-// check if the service is up, for integration
+/**
+ *  checking if the service is up, for integration
+ */
 object OntologyHubClientTest {
 
   val logger = LoggerFactory.getLogger(this.getClass)
 
-  @BeforeClass
-  def check_before() {
+  def ontonethub_is_running = {
     val client = HTTPClient
     client.start()
     val ontonethub = OntonethubClient.create(client.ws)
-    Assume.assumeTrue(ontonethub.status().await)
+    val check = ontonethub.status().await
     client.stop()
+    check
+  }
+
+  @BeforeClass
+  def check_before() {
+    Assume.assumeTrue(ontonethub_is_running)
     logger.info("Ontonethub is UP! [TESTING...]")
   }
 

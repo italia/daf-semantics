@@ -10,8 +10,12 @@ case class Result(id: String, label: String, score: Float) {
   override def toString = s"${id}, ${label}, ${score}"
 }
 
-// a facility object for parsing results 
-object FindParser {
+/**
+ * 	NOTE: currently disabled
+ *  this is a facility object for parsing results.
+ *  TODO: check if we need to re-module the JSON model result here 
+ */
+object OntonethubFindParser {
 
   val json_mapper = new ObjectMapper
   val json_reader = json_mapper.reader

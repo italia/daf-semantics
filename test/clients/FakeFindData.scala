@@ -10,13 +10,13 @@ import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
 import java.lang.Float
 import scala.math.Ordering.FloatOrdering
-import modules.clients.FindParser
+import modules.clients.OntonethubFindParser
 
 object MainFakeFind extends App {
 
   val data = FakeFind.request.await
 
-  val results = FindParser.parse(data)
+  val results = OntonethubFindParser.parse(data)
 
   println(results.mkString("\n"))
 }
