@@ -1,4 +1,6 @@
-package it.almawave.kb.repo
+package it.almawave.linkeddata.kb.repo
+
+import it.almawave.linkeddata.kb.repo.RDFRepository;
 
 // a simple main as an example
 object MainRDFRepository extends App {

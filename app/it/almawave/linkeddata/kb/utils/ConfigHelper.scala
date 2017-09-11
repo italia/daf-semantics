@@ -1,4 +1,4 @@
-package it.almawave.kb.utils
+package it.almawave.linkeddata.kb.utils
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigRenderOptions

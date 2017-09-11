@@ -1,6 +1,6 @@
 package check.rdf4j
 
-import it.almawave.kb.repo.RDFRepositoryBase
+import it.almawave.linkeddata.kb.repo.RDFRepositoryBase
 import org.eclipse.rdf4j.repository.sail.SailRepository
 import org.eclipse.rdf4j.repository.Repository
 import org.eclipse.rdf4j.sail.memory.MemoryStore

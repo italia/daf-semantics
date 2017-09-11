@@ -1,21 +1,14 @@
-package it.almawave.kb.repo
+package it.almawave.linkeddata.kb
 
 import org.eclipse.rdf4j.sail.memory.MemoryStore
 import org.eclipse.rdf4j.repository.sail.SailRepository
-
-import org.slf4j.LoggerFactory
 import play.Logger
-import org.eclipse.rdf4j.repository.RepositoryConnection
-
 import org.eclipse.rdf4j.repository.Repository
-import it.almawave.kb.utils.TryHandlers.TryLog
-import java.util.ArrayList
 import org.eclipse.rdf4j.model.Resource
 import java.net.URL
 import org.eclipse.rdf4j.rio.RDFFormat
-import it.almawave.kb.utils.TryHandlers.RepositoryAction
-import scala.util.Try
 import scala.collection.mutable.ListBuffer
+import it.almawave.linkeddata.kb.repo.RepositoryAction
 
 // esempio per testing costrutti try/log etc
 object TestingBlock extends App {

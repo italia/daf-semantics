@@ -1,4 +1,4 @@
-package it.almawave.kb.repo
+package it.almawave.linkeddata.kb.repo
 
 import org.eclipse.rdf4j.rio.helpers.AbstractRDFHandler
 import org.eclipse.rdf4j.model.Statement

@@ -1,4 +1,4 @@
-package it.almawave.kb.repo
+package it.almawave.linkeddata.kb.repo
 
 import java.io.FileInputStream
 
@@ -15,7 +15,9 @@ import java.io.StringReader
 import java.io.File
 import org.junit.Assume
 
-import it.almawave.kb.utils.RDF4JAdapters._
+import it.almawave.linkeddata.kb.utils.RDF4JAdapters._
+import it.almawave.linkeddata.kb.repo.RDFRepository;
+import it.almawave.linkeddata.kb.repo.RDFRepositoryBase
 
 /*
  * basic tests for the RDFRepository instances

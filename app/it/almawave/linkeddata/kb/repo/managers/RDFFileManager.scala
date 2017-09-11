@@ -1,4 +1,4 @@
-package it.almawave.kb.repo.managers
+package it.almawave.linkeddata.kb.repo.managers
 
 import org.slf4j.LoggerFactory
 import com.typesafe.config.ConfigFactory
@@ -10,14 +10,14 @@ import java.io.FileInputStream
 import java.nio.file.Paths
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
-import it.almawave.kb.utils.TryHandlers._
-import it.almawave.kb.utils.RDF4JAdapters._
+import it.almawave.linkeddata.kb.utils.TryHandlers._
+import it.almawave.linkeddata.kb.utils.RDF4JAdapters._
 import java.nio.file.Files
 import java.net.URI
 import com.typesafe.config.Config
 import java.nio.file.StandardCopyOption
 import java.nio.file.Path
-import it.almawave.kb.repo.RDFRepositoryBase
+import it.almawave.linkeddata.kb.repo.RDFRepositoryBase
 
 class RDFFileManager(kbrepo: RDFRepositoryBase) {
 

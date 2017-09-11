@@ -1,4 +1,4 @@
-package it.almawave.kb.repo
+package it.almawave.linkeddata.kb.repo
 
 import java.io.File
 import java.io.FileInputStream
@@ -17,13 +17,13 @@ import org.eclipse.rdf4j.sail.memory.MemoryStore
 import org.slf4j.LoggerFactory
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
-import it.almawave.kb.utils.RDF4JAdapters.StringContextAdapter
-import it.almawave.kb.utils.TryHandlers.TryLog
+import it.almawave.linkeddata.kb.utils.RDF4JAdapters.StringContextAdapter
+import it.almawave.linkeddata.kb.utils.TryHandlers.TryLog
 import virtuoso.rdf4j.driver.VirtuosoRepository
-import it.almawave.kb.repo.managers.RDFFileManager
-import it.almawave.kb.repo.managers.RDFStoreManager
-import it.almawave.kb.repo.managers.PrefixesManager
-import it.almawave.kb.repo.managers.SPARQLManager
+import it.almawave.linkeddata.kb.repo.managers.RDFFileManager
+import it.almawave.linkeddata.kb.repo.managers.RDFStoreManager
+import it.almawave.linkeddata.kb.repo.managers.PrefixesManager
+import it.almawave.linkeddata.kb.repo.managers.SPARQLManager
 
 object RDFRepository {
 
@@ -144,7 +144,7 @@ class RDFRepositoryBase(repo: Repository) {
 
   }
 
-  def start() {
+  def start() = {
 
     TryLog {
 

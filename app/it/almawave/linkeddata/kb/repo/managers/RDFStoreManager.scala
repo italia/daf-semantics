@@ -1,4 +1,4 @@
-package it.almawave.kb.repo.managers
+package it.almawave.linkeddata.kb.repo.managers
 
 import scala.util.Try
 import org.slf4j.LoggerFactory
@@ -7,8 +7,9 @@ import org.eclipse.rdf4j.model.Value
 import org.eclipse.rdf4j.model.IRI
 import org.eclipse.rdf4j.model.Resource
 import org.eclipse.rdf4j.model.Model
-import it.almawave.kb.utils.TryHandlers._
-import it.almawave.kb.utils.RDF4JAdapters._
+import it.almawave.linkeddata.kb.utils.TryHandlers._
+import it.almawave.linkeddata.kb.utils.RDF4JAdapters._
+import it.almawave.linkeddata.kb.repo.RepositoryAction
 
 /*
  * this component can be seen as an RDF datastore abstraction

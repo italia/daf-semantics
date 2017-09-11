@@ -1,4 +1,4 @@
-package it.almawave.kb.utils
+package it.almawave.linkeddata.kb.utils
 
 import org.eclipse.rdf4j.model.Model
 import org.eclipse.rdf4j.rio.RDFFormat

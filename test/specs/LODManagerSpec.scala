@@ -33,7 +33,7 @@ import org.specs2.runner.JUnitRunner
 //import org.specs2.Specification
 import org.specs2.mutable.Specification
 import play.api.libs.json.Json
-import it.almawave.kb.utils.ConfigHelper
+import it.almawave.linkeddata.kb.utils.ConfigHelper
 
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._

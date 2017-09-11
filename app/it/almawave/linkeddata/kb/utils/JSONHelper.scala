@@ -1,4 +1,4 @@
-package it.almawave.kb.utils
+package it.almawave.linkeddata.kb.utils
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.JsonNode

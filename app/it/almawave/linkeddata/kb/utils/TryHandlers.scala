@@ -1,4 +1,4 @@
-package it.almawave.kb.utils
+package it.almawave.linkeddata.kb.utils
 
 import scala.util.Try
 import scala.util.Failure
@@ -86,6 +86,25 @@ object TryHandlers {
       }
   }
 
+  object FutureWithLog {
+
+    def apply[X](block: => X)(msg_err: String)(implicit logger: Logger): Future[X] = {
+
+      try {
+
+        Future.successful { block }
+
+      } catch {
+
+        case ex: Throwable =>
+          logger.error(s"${msg_err}\n${ex}")
+          Future.failed(ex)
+
+      }
+
+    }
+  }
+
   /**
    * this object could be used for simplyfing handling of loggin/exceptions while getting results of an operation
    * if a logger is already used in the caller context, it will be used
@@ -123,48 +142,11 @@ object TryHandlers {
 
   }
 
-  /*
-   * this could be useful for simplifying code: 
-   * 	+ default connection handling (open/close)
-   * 	+ default transaction handling
-   */
-  object RepositoryAction {
-
-    def apply[R](repo: Repository)(conn_action: (RepositoryConnection => Any))(msg_err: String)(implicit logger: Logger) = {
-
-      // NOTE: we could imagine using a connection pool here
-      val _conn = repo.getConnection
-
-      _conn.begin()
-
-      val results: Try[R] = try {
-
-        val success = Success(conn_action(_conn))
-        _conn.commit()
-        success.asInstanceOf[Try[R]]
-
-      } catch {
-
-        case ex: Throwable =>
-          val failure = Failure(ex)
-          _conn.rollback()
-          logger.info(msg_err)
-          failure
-
-      }
-
-      _conn.close()
-
-      results
-    }
-
-  }
-
 }
 
 object MainExamples extends App {
 
-  import it.almawave.kb.utils.TryHandlers._
+  import it.almawave.linkeddata.kb.utils.TryHandlers._
   import play.Logger
 
   //  val logger = LoggerFactory.getLogger(this.getClass)

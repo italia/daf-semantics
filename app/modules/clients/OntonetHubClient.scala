@@ -1,6 +1,6 @@
 package modules.clients
 
-import it.almawave.kb.utils.JSONHelper
+import it.almawave.linkeddata.kb.utils.JSONHelper
 import play.api.libs.ws.WSClient
 import scala.concurrent.Future
 import java.nio.file.Paths
@@ -13,8 +13,8 @@ import scala.util.Failure
 import scala.concurrent.duration.Duration
 import scala.util.Try
 import scala.concurrent.Await
-import it.almawave.kb.utils.TryHandlers
-import it.almawave.kb.utils.TryHandlers._
+import it.almawave.linkeddata.kb.utils.TryHandlers
+import it.almawave.linkeddata.kb.utils.TryHandlers._
 import scala.concurrent.Awaitable
 import com.fasterxml.jackson.databind.ObjectMapper
 import java.lang.Float

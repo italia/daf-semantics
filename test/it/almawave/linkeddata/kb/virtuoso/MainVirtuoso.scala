@@ -1,10 +1,10 @@
-package it.almawave.kb.virtuoso
+package it.almawave.linkeddata.kb.virtuoso
 
 import virtuoso.rdf4j.driver.VirtuosoRepository
 import org.eclipse.rdf4j.rio.RDFFormat
 import java.io.File
 import org.eclipse.rdf4j.query.QueryLanguage
-import it.almawave.kb.repo.RDFRepository
+import it.almawave.linkeddata.kb.repo.RDFRepository
 
 /*
  * testing local virtuoso connection, via JDBC

@@ -1,13 +1,13 @@
-package it.almawave.kb.repo.managers
+package it.almawave.linkeddata.kb.repo.managers
 
 import org.eclipse.rdf4j.model.IRI
 import org.eclipse.rdf4j.query.QueryLanguage
 import org.slf4j.LoggerFactory
 import org.eclipse.rdf4j.repository.Repository
-import it.almawave.kb.utils.TryHandlers.RepositoryAction
 import scala.util.Try
-import it.almawave.kb.utils.TryHandlers.TryLog
+import it.almawave.linkeddata.kb.utils.TryHandlers.TryLog
 import java.lang.Long
+import it.almawave.linkeddata.kb.repo.RepositoryAction
 
 /*
  *  IDEA: an helper class for CRUD using SPARQL

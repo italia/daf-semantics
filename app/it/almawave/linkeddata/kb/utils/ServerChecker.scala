@@ -1,4 +1,4 @@
-package it.almawave.kb.utils
+package it.almawave.linkeddata.kb.utils
 
 import scala.util.Try
 import java.net.Socket

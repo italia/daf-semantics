@@ -1,12 +1,15 @@
-package it.almawave.kb.repo
+package it.almawave.linkeddata.kb.repo
 
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Assume
 import org.junit.Ignore
 import scala.util.Try
-import it.almawave.kb.utils.ServerChecker
+import it.almawave.linkeddata.kb.utils.ServerChecker
+import it.almawave.linkeddata.kb.repo.RDFRepository;
+
 import org.slf4j.LoggerFactory
+import it.almawave.linkeddata.kb.repo.RDFRepositoryBase
 
 //@Ignore
 class TestingVirtuoso extends TestingBaseRDFRepository {
