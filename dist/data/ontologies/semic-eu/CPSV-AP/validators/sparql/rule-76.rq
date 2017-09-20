@@ -1,0 +1,20 @@
+# Rule_ID:76
+# @title [FormalOrganization] The foaf:name property should be a literal
+# @tag FormalOrganization
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a org:FormalOrganization.
+	 ?s foaf:name ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (foaf:name AS ?p).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (76 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The foaf:name property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+   

@@ -1,0 +1,12 @@
+# Rule_ID:127
+# @title [Catalog Record] dct:issued has a maximum cardinality of 1 for dcat:Catalog Record
+# @tag Catalog Record
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT ("CatalogRecord" AS ?Class_Name) (127 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:issued has a maximum cardinality of 1 for dcat:CatalogRecord" AS ?Rule_Description) (concat("The dcat:CatalogRecord ", str(?s)," has more than 1 dct:issued.") AS ?Message) ?s
+WHERE {
+  ?s a dcat:CatalogRecord.
+  ?s dct:issued ?mod.
+} GROUP BY ?s 
+  HAVING (COUNT( ?s) > 1)

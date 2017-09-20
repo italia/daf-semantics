@@ -1,0 +1,19 @@
+# Rule_ID:197
+# @title [Standard] dct:identifier is a required property for Standard
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a dcatapit:Standard.
+     FILTER(!EXISTS {?s dct:identifier ?identifier}).
+     BIND (rdf:type AS ?p).
+     BIND (dcatapit:Standard AS ?o).
+     BIND ("Standard" AS ?Class_Name).
+     BIND (197 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:identifier is a required property for Standard." AS ?Rule_Description).
+     BIND (concat("The Standard  ",IF(isBlank(?s),"@blank_node",str(?s))," does not have the required dct:identifier property.") AS ?Message).
+   }
+

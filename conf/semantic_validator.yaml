@@ -1,0 +1,162 @@
+swagger: "2.0"
+info: 
+  version: "1.0.0"
+  title: "Swagger TEST"
+  description: "Testing OpenAPI"
+  termsOfService: "http://swagger.io/terms/"
+  contact: 
+    name: "Swagger API Team"
+    email: "apiteam@swagger.io"
+  license: 
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: localhost:9000
+basePath: /validator
+schemes: 
+  - "http"
+consumes:
+  - "application/rdf+xml"
+  - "text/trtle"
+produces: 
+  - "application/json"
+paths: 
+  /validate: 
+    post: 
+      summary: "valida un documento"
+      consumes:
+        - multipart/form-data
+      description: "valida un documento RDF secondo un certo validatore"
+      operationId: "doValidation"
+      parameters:
+      - in: formData
+        name: name
+        type: string
+        required: true
+      - in: formData
+        name: rdfDocument
+        type: file
+        required: true
+        description: documento RDF da validare
+      - in: formData
+        name: validator
+        type: string
+        required: true
+        description: l'identificativo del validatore da usare  
+      - in: formData
+        name: rdfsinf
+        type: boolean
+        required: true
+        description: indica se usare o meno l'inferenza RDFS    
+      responses: 
+        200:
+          description: "risultato della validazione"
+          examples: { "result": "OK", "time": "2017-06-28 11:12:00" }
+          schema: 
+            $ref: "#/definitions/Validation"
+  /validators: 
+    get:
+      summary: "lista dei validatori disponibili"
+      description: "ritorna la lista dei validatori configurati"
+      operationId: "getValidators"
+      responses:
+        200:
+          description: "lista dei validatori"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Validator"
+definitions: 
+  Validation: 
+    type: "object"
+    required: 
+      - "result"
+      - "time"
+      - "message"
+      - "errors"
+      - "warnings"
+    properties: 
+      result: 
+        description: "risultato della validazione"  
+        type: "string"
+        enum: ["OK", "KO"]
+      time:
+        description: "timestamp della validazione"  
+        type: "string"
+      message:
+        description: "messagio ritornato dalla validazione"  
+        type: "string"  
+      errors:
+        description: "numero di errori rilevati dalla validazione"  
+        type: "integer"  
+      warnings:
+        description: "numero di warnings rilevati dalla validazione"  
+        type: "integer"  
+      detail:
+        type: "array"
+        items:
+          $ref: "#/definitions/ValidationDetail"
+  Validator:
+    type: "object"
+    required: 
+      - "id"
+      - "name"
+      - "description"
+      - "publisher"
+      - "ontology"
+      - "type"
+    properties: 
+      id: 
+        description: "identificativo del validatore da usare in fase di validazione"
+        type: "string"
+      name: 
+        description: "nome del validatore"    
+        type: "string"
+      description: 
+        description: "descrizione estesa del validatore"    
+        type: "string"
+      publisher: 
+        description: "pubblicatore dell'ontologia controllata dal validatore"     
+        type: "string"
+      ontology: 
+        description: "nome dell'ontologia controllata dal validatore"                  
+        type: "string"
+      type: 
+        description: "tipo di validatore (es: sparql, shacl)"                  
+        type: "string"
+  ValidationDetail: 
+    type: "object"
+    required: 
+      - "className"
+      - "ruleID"
+      - "ruleSeverity"
+      - "ruleDescription"
+      - "ruleMessage"
+      - "subject"
+      - "predicate"
+      - "object"
+    properties: 
+      className: 
+        description: "Classe a cui si riferisce la regola"  
+        type: "string"
+      ruleID:
+        description: "Identificativo numerico della regola"  
+        type: "integer"
+      ruleSeverity:
+        description: "Livello di severità della regola"  
+        type: "string"
+        enum: [error, warning]
+      ruleDescription:
+        description: "Descrizione della regola"  
+        type: "string"
+      ruleMessage:
+        description: "Messaggio associato alla regola"  
+        type: "string"
+      subject:
+        description: "soggetto"  
+        type: "string"
+      predicate:
+        description: "predicato"  
+        type: "string"
+      object:
+        description: "oggetto"  
+        type: "string"

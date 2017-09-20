@@ -1,0 +1,20 @@
+# Rule_ID:43
+# @title [Dataset] dcat:contactPoint should be a dcatapit:Organization
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Dataset.
+  ?s dcat:contactPoint ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dcatapit:Organization}).
+  BIND (dcat:contactPoint AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (43 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:contactPoint should be a dcatapit:Organization." AS ?Rule_Description).
+  BIND (concat("The dcat:contactPoint ",IF(isBlank(?o),"@blank_node",str(?o))," is not a dcatapit:Organization.") AS ?Message).
+}

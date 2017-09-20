@@ -1,0 +1,12 @@
+# Rule_ID:188
+# @title [Distribution] dcat:accessURL has a maximum cardinality of 1 for Distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT DISTINCT ("Distribution" AS ?Class_Name) (188 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dcat:accessURL has maximum cardinality of 1 for Distribution." AS ?Rule_Description) (concat("The dcatapit:Distribution ",IF(isBlank(?s),"@blank_node",str(?s))," has more than 1 dcat:accessURL.") AS ?Message) 
+   WHERE {
+     ?s a dcatapit:Distribution.
+     ?s dcat:accessURL ?aurl.
+   } GROUP BY ?s 
+  HAVING (COUNT( ?aurl) > 1)

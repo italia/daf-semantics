@@ -1,0 +1,20 @@
+# Rule_ID:144
+# @title [Catalog Record] dct:conformsTo is a recommended property for Catalog Record
+# @tag  Catalog Record
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:CatalogRecord.
+  FILTER(!(EXISTS { ?s dct:conformsTo ?desc})).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:CatalogRecord AS ?o).
+  BIND ("CatalogRecord" AS ?Class_Name).
+  BIND (144 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dct:conformsTo is a recommended property for Catalog Record." AS ?Rule_Description).
+  BIND (concat("The dcat:CatalogRecord ",str(?o)," does not have a dct:conformsTo property.") AS ?Message).
+}

@@ -1,0 +1,13 @@
+# Rule_ID:118
+# @title [Licence Document] dct:type has a maximum cardinality of 1 for dcatapit:LicenseDocument
+# @tag licensedocument
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ("License Document" AS ?Class_Name) (118 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has a maximum cardinality of 1 for dcatapit:LicenseDocument" AS ?Rule_Description) (concat("dcatapit:LicenseDocument ", IF(isBlank(?s),"@blank_node",str(?s))," has more than 1 dct:type") AS ?Message) ?s
+WHERE {
+   ?s a dcatapit:LicenseDocument.
+   ?s dct:type ?lic.
+} GROUP BY ?s 
+  HAVING (COUNT( ?s) > 1)

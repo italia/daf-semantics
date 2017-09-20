@@ -1,0 +1,15 @@
+# Rule_ID:203
+# @title [Organization] dcatapit:Organization does not exist
+# @tag Organization
+
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  FILTER(!EXISTS {?s a dcatapit:Organization}).
+  BIND ("Organization" AS ?Class_Name).
+  BIND (203 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dcatapit:Organization does not exist." AS ?Rule_Description).
+  BIND (concat("The recommended class dcatapit:Organization does not exist.") AS ?Message).
+}

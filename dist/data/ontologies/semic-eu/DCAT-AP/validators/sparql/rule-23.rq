@@ -1,0 +1,13 @@
+# Rule_ID:23
+# @title [Catalog] dct:license has a maximum cardinality of 1 for Catalog
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ("Catalog" AS ?Class_Name) (23 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:license has a maximum cardinality of 1." AS ?Rule_Description) (concat("The dcat:Catalog ", str(?s)," has more than 1 dct:license.") AS ?Message) ?s
+WHERE {
+   ?s a dcat:Catalog.
+   ?s dct:license ?lic.
+} GROUP BY ?s 
+  HAVING (COUNT( ?s) > 1)

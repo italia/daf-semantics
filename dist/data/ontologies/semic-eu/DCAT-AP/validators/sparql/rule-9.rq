@@ -1,0 +1,14 @@
+# Rule_ID:9
+# @title [Catalog] dct:publisher has maximum cardinality of 1 for Catalog
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ("Catalog" AS ?Class_Name) (9 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:publisher has maximum cardinality of 1 for Catalog." AS ?Rule_Description) (concat("The dcat:Catalog ",str(?s)," has more than 1 dct:publisher.") AS ?Message) ?s
+   WHERE {
+     ?s a dcat:Catalog.
+     ?s dct:publisher ?pub.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)

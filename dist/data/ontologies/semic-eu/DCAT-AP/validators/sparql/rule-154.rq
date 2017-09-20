@@ -1,0 +1,20 @@
+# Rule_ID:154
+# @title [Dataset] dct:provenance should be a dct:ProvenanceStatement
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:provenance ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dct:ProvenanceStatement}).
+  BIND (dct:provenance AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (154 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:provenance should be a dct:ProvenanceStatementt." AS ?Rule_Description).
+  BIND (concat("The dcat:Dataset ",str(?s)," has a ",str(?o)," which is not a dct:ProvenanceStatement.") AS ?Message).
+}

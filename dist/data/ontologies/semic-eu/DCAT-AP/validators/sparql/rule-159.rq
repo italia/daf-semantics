@@ -1,0 +1,20 @@
+# Rule_ID:159
+# @title [Distribution] foaf:page should be a foaf:Document
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Distribution.
+  ?s foaf:page ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a foaf:Document}).
+  BIND (foaf:page AS ?p).
+  BIND ("Ditribution" AS ?Class_Name).
+  BIND (159 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("foaf:page should be a foaf:Document." AS ?Rule_Description).
+  BIND (concat("The foaf:page ",str(?o)," is not a foaf:Document.") AS ?Message).
+}

@@ -1,0 +1,20 @@
+# Rule_ID:100
+# @title [PeriodOfTime] cv:startDateTime should be a xsd:date
+# @tag PeriodOfTime
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:PeriodOfTime.
+	 ?s cv:startDateTime ?o.
+     FILTER(!EXISTS {?o a xsd:date}).
+     BIND (cv:startDateTime AS ?p).
+     BIND ("PeriodOfTime" AS ?Class_Name).
+     BIND (100 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:startDateTime should be a xsd:date." AS ?Rule_Description).
+     BIND (concat("cv:PeriodOfTime ",str(?s)," does not have a cv:startDateTime property of type xsd:date.") AS ?Message).
+   }
+	 

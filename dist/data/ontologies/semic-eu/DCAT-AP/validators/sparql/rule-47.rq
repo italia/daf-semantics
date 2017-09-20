@@ -1,0 +1,19 @@
+# Rule_ID:47
+# @title [Dataset] dcat:keyword is a recommended property for Dataset
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  FILTER(!(EXISTS { ?s dcat:keyword ?key})).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:Dataset AS ?o).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (47 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dcat:keyword is a recommended property for Dataset." AS ?Rule_Description).
+  BIND (concat("The dcat:Dataset ",str(?o)," does not have a dcat:keyword property.") AS ?Message).
+}

@@ -1,0 +1,20 @@
+# Rule_ID:58
+# @title [FormalFramework] The adms:adms-status property should be a literal
+# @tag FormalFramework
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s adms:adms-status ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (adms:adms-status AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (58 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The adms:adms-status property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+   

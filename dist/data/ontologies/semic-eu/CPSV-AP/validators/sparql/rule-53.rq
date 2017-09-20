@@ -1,0 +1,20 @@
+# Rule_ID:53
+# @title [FormalFramework] The eli:id_local property should be a literal
+# @tag FormalFramework
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s eli:id_local ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (eli:id_local AS ?p).
+     BIND ("FormalFramework" AS ?Class_Name).
+     BIND (53 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The eli:id_local property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+   

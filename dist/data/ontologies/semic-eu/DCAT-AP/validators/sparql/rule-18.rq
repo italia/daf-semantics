@@ -1,0 +1,18 @@
+# Rule_ID:18
+# @title [Catalog] dct:language is a recommended property for Catalog
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Catalog.
+  FILTER(!EXISTS {?s dct:language ?o.}).
+  BIND (dct:language AS ?p).
+  BIND ("Catalog" AS ?Class_Name).
+  BIND (18 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dct:language is a recommended property for Catalog." AS ?Rule_Description).
+  BIND (concat("The dcat:Catalog ",str(?s)," does not have the property dct:language.") AS ?Message).
+}

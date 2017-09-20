@@ -1,0 +1,19 @@
+# Rule_ID:80
+# @title [Distribution] dcat:accessURL should be a resource
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+WHERE {
+  ?s a dcatapit:Distribution.
+  ?s dcat:accessURL ?o.
+  FILTER(!isURI(?o)).
+  BIND (dcat:accessURL AS ?p).
+  BIND ("Distribution" AS ?Class_Name).
+  BIND (80 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:accessURL should be a resource." AS ?Rule_Description).
+  BIND (concat("The dcat:accessURL ",IF(isBlank(?o),"@blank_node",str(?o))," is not a resource.") AS ?Message).
+}

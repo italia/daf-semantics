@@ -1,0 +1,19 @@
+# Rule_ID:212
+# @title [Organization] vcard:hasURL should be a resource
+# @tag Organization
+
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+WHERE {
+  ?s a dcatapit:Organization.
+  ?s vcard:hasURL ?o.
+  FILTER(!isURI(?o)).
+  BIND (vcard:hasURL AS ?p).
+  BIND ("Organization" AS ?Class_Name).
+  BIND (212 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("vcard:hasURL should be a resource." AS ?Rule_Description).
+  BIND (concat("The vcard:hasURL ",IF(isBlank(?o),"@blank_node",str(?o))," is not a resource.") AS ?Message).
+}
