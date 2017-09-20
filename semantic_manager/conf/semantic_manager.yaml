@@ -1,0 +1,163 @@
+swagger: "2.0"
+
+info: 
+  version: "0.1.0"
+  title: "testing..."
+  description: "semantic_manager api"
+  termsOfService: "http://swagger.io/terms/"
+  contact: 
+    name: "swagger"
+    email: "apiteam@swagger.io"
+    url: https://github.com/.../semantic_repository
+
+host: localhost:9000
+
+basePath: /kb/v1
+
+paths: 
+
+
+  "/ontologies": 
+  
+    get: 
+      summary: "the list of the registered ontologies"
+      description: "the list of the registered ontologies"
+      operationId: "listOntologies"
+      produces: 
+        - "application/json"
+      responses: 
+        200:
+          description: "ontologies list"
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OntologyMeta'
+          #type: object
+          #additionalProperties: true
+          
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  "/ontologies/properties/find": 
+  
+    get: 
+      summary: "find properties for front-end process"
+      description: "find properties for front-end process"
+      operationId: "findProperties"
+      produces: 
+        - "application/json"
+      parameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+        - name: lang
+          in: query
+          type: string
+          required: false
+        - name: limit
+          in: query
+          type: integer
+          description: The numbers of items to return
+      responses:
+        200:
+          description: "list of properties"
+          schema:
+            type: array
+            items:
+              $ref : '#/definitions/OntonetHubProperty'     
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+ 
+definitions: 
+
+  Error:
+    type: "object"
+    required:
+      - message
+    properties:
+      message:
+        type: string
+
+  RDFObject:
+    type: "object"
+    required:
+      - uri
+      - label
+    properties:
+      uri:
+        type: string
+      label:
+        type: string
+  
+  OntonetHubProperty:
+    type: "object"
+    required:
+      - uri
+      - label
+      - refersTo
+    properties:
+      uri:
+        type: string
+      label:
+        type: string
+      refersTo:
+        type: string
+      inOntology:
+        $ref: '#/definitions/RDFObject'
+      inConcept:
+        $ref: '#/definitions/RDFObject'
+      raw:
+        type: string
+        
+    
+  OntologyMeta:
+    type: "object"
+    required:
+      - ontologyID
+      - ontologySource
+      - ontologyName
+      - ontologyDescription
+      - ontologyIRI
+      - owlClasses
+      - objectProperties
+      - datatypeProperties
+      - annotationProperties
+      - individuals
+      - importedOntologies
+    properties:
+      ontologyID:
+        type: string
+      ontologySource:
+        type: string
+      ontologyName:
+        type: string
+      ontologyDescription:
+        type: string
+      ontologyIRI:
+        type: string
+      owlClasses:
+        type: integer
+        format: int32
+      objectProperties:
+        type: integer
+        format: int32
+      datatypeProperties:
+        type: integer
+        format: int32
+      annotationProperties:
+        type: integer
+        format: int32
+      individuals:
+        type: integer
+        format: int32        
+      importedOntologies:
+        type: integer
+        format: int32
+
