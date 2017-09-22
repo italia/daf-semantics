@@ -12,24 +12,42 @@ import scala.concurrent.ExecutionContext
 import scala.concurrent.Future
 import play.Logger
 import clients.OntonetHubClient
+import com.typesafe.config.ConfigFactory
+import com.typesafe.config.ConfigRenderOptions
 
 @ImplementedBy(classOf[ClientsModuleBase])
 trait ClientsModule
 
 @Singleton
 class ClientsModuleBase @Inject() (lifecycle: ApplicationLifecycle,
-                                   ws: WSClient) extends ClientsModule {
+                                   ws: WSClient,
+                                   configuration: Configuration) extends ClientsModule {
 
-  val ontonethub = new OntonetHubClient(ws)
+  val conf_clients = configuration.underlying
+    .getConfig("clients")
+
+  val ontonethub_config = conf_clients.getConfig("ontonethub")
+
+  // TODO: verify if default configurations are needed here
+  val ontonethub = new OntonetHubClient(ws, ontonethub_config)
+
+  // TESTING ................................................
+  val options = ConfigRenderOptions.concise()
+    .setComments(false).setOriginComments(false)
+    .setFormatted(true).setJson(true)
+  val json = ontonethub_config.root().render(options)
+  // TESTING ................................................
 
   // when application starts...
   @Inject
   def onStart(
     app: Application,
-    env: Environment,
-    configuration: Configuration)(implicit ec: ExecutionContext) {
+    env: Environment)(implicit ec: ExecutionContext) {
 
     Logger.info("ClientsModuleBase START")
+
+    println("\n\n\n\n\n\n")
+    println(json)
 
   }
 

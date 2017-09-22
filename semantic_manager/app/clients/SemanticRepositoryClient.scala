@@ -1,4 +1,4 @@
-package review.repository
+package clients
 
 import play.api.libs.ws.WSClient
 import scala.concurrent.Future

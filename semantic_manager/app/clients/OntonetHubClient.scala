@@ -6,7 +6,6 @@ import play.api.libs.ws.WSClient
 import play.api.libs.json.JsString
 import utilities.JSONHelper
 import scala.concurrent.Future
-import semantic_manager.yaml.OntonetHubProperty
 import akka.stream.scaladsl.Source
 import java.io.File
 import play.api.mvc.MultipartFormData.DataPart
@@ -15,25 +14,40 @@ import akka.stream.scaladsl.FileIO
 
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
-import semantic_manager.yaml.OntologyMeta
 import com.fasterxml.jackson.databind.JsonNode
 import play.api.libs.json.Json
+import com.typesafe.config.Config
+import com.typesafe.config.ConfigFactory
+
+import play.api.libs.json.JsNumber
+import scala.util.Try
+import com.typesafe.config.ConfigResolveOptions
+import com.typesafe.config.ConfigRenderOptions
+import com.typesafe.config.ConfigParseOptions
+import com.fasterxml.jackson.databind.ObjectMapper
+import semantic_manager.yaml.OntologyMeta
+import semantic_manager.yaml.OntonetHubProperty
 
 /**
  * TODO: add request logger
  *
  * CHECK: see how to de-couple the OntonetHubProperty case class produced automatically,
  * from the the case class needed for returning the results
+ *
+ * TODO:
+ * 	- check parameters order in case class created from swagger
+ * 	- de-coupling models from swagger models (SEE: OntonetHubClient.models)
  */
-class OntonetHubClient(ws: WSClient) {
+class OntonetHubClient(ws: WSClient, conf: Config = OntonetHubClient.DEFAULT_CONFIG) {
 
   import scala.concurrent.ExecutionContext.Implicits._
+  import OntonetHubClient.models._
 
   implicit def toList(root: JsLookupResult): List[JsValue] = root.as[List[JsValue]]
 
-  val (host, port) = ("localhost", 8000)
-  val FOLLOW_REDIRECTS = true
-  val PAUSE = 1000
+  val (host, port) = (conf.getString("host"), conf.getLong("port"))
+  val FOLLOW_REDIRECTS = conf.getBoolean("follow_redirects")
+  val PAUSE = conf.getLong("pause")
 
   /**
    * this method can be used to check if the ontonethub service is running
@@ -47,16 +61,10 @@ class OntonetHubClient(ws: WSClient) {
       }
   }
 
-  // REVIEW
-  // returns a list of ontology uris from ontonethub
-  //    def list_ids: Future[List[String]] = {
-  //  def list_ids = {
-  //    list_ontologies.map {
-  //      list => list.map { _.get("ontologyID").asText() }
-  //    }
-  //  }
+  val json_mapper = new ObjectMapper
+  val json_reader = json_mapper.reader()
 
-  def find_property(query: String, lang: String = "", limit: Int = 4) = {
+  def find_property(query: String, lang: String = "", limit: Int = 10) = {
 
     ws.url(s"http://${host}:${port}/stanbol/ontonethub/ontologies/find")
       .withHeaders(("accept", "application/json"))
@@ -66,10 +74,29 @@ class OntonetHubClient(ws: WSClient) {
       .map { res => res.json.\("results").toList }
       .map { list =>
         list.map { item =>
-          val uri = item.\("id").get.as[JsString].value
-          val label = item.\("rdfLabel").toList.head.\("value").get.as[JsString].value
-          val refersTo = item.\("dafLabel").toList.head.\("value").get.as[JsString].value
-          OntonetHubProperty(refersTo, uri, label, None, None, None)
+
+          val id = Try { item.\("id").get.as[JsString].value }.getOrElse("")
+          val dafLabel = Try { item.\("dafLabel").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+          val label = Try { item.\("label").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+          val comment = Try { item.\("comment").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+          //  DISABLED val dafId = Try { item.\("dafId").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+          val score = Try { item.\("score").toList.head.\("value").get.as[JsNumber].value.toDouble }.getOrElse(0.0)
+          val class_label = Try { item.\("label.class").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+          val class_comment = Try { item.\("comment.class").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+          val ontology_label = Try { item.\("label.ontology").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+          val ontology_comment = Try { item.\("comment.ontology").toList.head.\("value").get.as[JsString].value }.getOrElse("")
+
+          OntonetHubProperty(
+            dafLabel,
+            ontology_comment,
+            comment,
+            ontology_label,
+            id,
+            score.toString(),
+            label: String,
+            class_label,
+            class_comment)
+
         }
       }
   }
@@ -163,15 +190,40 @@ class OntonetHubClient(ws: WSClient) {
 
   /**
    * returns a list of ontology ids
+   * TODO:	avoid using directly the case class models generated from swagger here.
+   * 				an idea could be using something like CaseClass.tupled()
    */
   def list_ontologies = {
+
+    import play.api.libs.json.Reads._
+
+    implicit val ontoJsonFormat = Json.format[OntologyMeta]
     ws.url(s"http://${host}:${port}/stanbol/ontonethub/ontologies")
-      .withFollowRedirects(FOLLOW_REDIRECTS)
       .get()
-      .map { res => res.json.as[List[JsValue]] }
-    //      .map { response =>
-    //        JSONHelper.read(response.body).elements().toList
-    //      }
+      // CHECK: de-coupling models from swagger case classes
+      //      .map(_.json.as[Array[Ontology]])
+      .map { res => res.json.as[Array[OntologyMeta]] }
   }
 
 }
+
+object OntonetHubClient {
+
+  val DEFAULT_CONFIG = ConfigFactory.parseString("""
+    host: localhost
+  	port: 8000
+  	follow_redirects: true
+  	pause: 1000
+	""")
+
+  object models {
+
+    case class FindResult(id: String, dafLabel: String, label: String, comment: String, score: String, class_label: String, class_comment: String, ontology_label: String, ontology_comment: String)
+
+    case class Ontology(objectProperties: Int, ontologyDescription: String, ontologyIRI: String, ontologySource: String, importedOntologies: Int, owlClasses: Int, datatypeProperties: Int, ontologyName: String, individuals: Int, ontologyID: String, annotationProperties: Int)
+
+  }
+
+}
+
+

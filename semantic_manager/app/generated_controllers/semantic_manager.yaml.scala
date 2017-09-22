@@ -29,6 +29,17 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import play.api.libs.json.JsLookupResult
 import clients.OntonetHubClient
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import modules.ClientsModuleBase
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -37,12 +48,14 @@ import clients.OntonetHubClient
 
 package semantic_manager.yaml {
     // ----- Start of unmanaged code area for package Semantic_managerYaml
-    
+                    
     // ----- End of unmanaged code area for package Semantic_managerYaml
     class Semantic_managerYaml @Inject() (
         // ----- Start of unmanaged code area for injections Semantic_managerYaml
 
       ws: WSClient,
+      clients: ClientsModuleBase,
+
         // ----- End of unmanaged code area for injections Semantic_managerYaml
         val messagesApi: MessagesApi,
         lifecycle: ApplicationLifecycle,
@@ -50,51 +63,33 @@ package semantic_manager.yaml {
     ) extends Semantic_managerYamlBase {
         // ----- Start of unmanaged code area for constructor Semantic_managerYaml
 
+    import OntonetHubClient.models._
+    val ontonethub = clients.ontonethub
+
         // ----- End of unmanaged code area for constructor Semantic_managerYaml
         val listOntologies = listOntologiesAction {  _ =>  
             // ----- Start of unmanaged code area for action  Semantic_managerYaml.listOntologies
-            //      val ontonethub = new OntonetHubClient(ws)
-      //      ontonethub.list_ontologies.map { 
-      //        list => list.as[List[OntologyMeta]]
-      //      }
+            val hub_config = config.get.underlying.getConfig("clients.ontonethub")
 
-      implicit val ontoJsonFormat = Json.format[OntologyMeta]
-      ws.url("http://localhost:8000/stanbol/ontonethub/ontologies")
-        .get()
-        .map(_.json.as[Array[OntologyMeta]])
+      ontonethub.list_ontologies
+        // IDEA for de-coupling from swagger
+        //        .map { list => list.map { item => Ontology.unapply(item).get } } 
+        //        .map { list => list.map(item => OntologyMeta.tupled(item)) }
         .flatMap { list => ListOntologies200(list) }
         .recoverWith { case err: Throwable => ListOntologies500(Error(err.getMessage)) }
             // ----- End of unmanaged code area for action  Semantic_managerYaml.listOntologies
         }
-        val findProperties = findPropertiesAction { input: (String, OntonetHubPropertyRaw, OntologiesPropertiesFindGetLimit) =>
+        val findProperties = findPropertiesAction { input: (String, OntologiesPropertiesFindGetLang, OntologiesPropertiesFindGetLimit) =>
             val (query, lang, limit) = input
             // ----- Start of unmanaged code area for action  Semantic_managerYaml.findProperties
-            implicit def toList(root: JsLookupResult): List[JsValue] = root.as[List[JsValue]]
-
-      val hub = new OntonetHubClient(ws)
-
-      val future = hub.find_property(query, lang.getOrElse(""), limit.getOrElse(BigInt.int2bigInt(0)).toInt)
-
-      FindProperties200(future)
+            ontonethub.find_property(query, lang.getOrElse(""), limit.getOrElse(BigInt.int2bigInt(10)).toInt)
+        // de-coupling from swagger
+        //        .map { list => list.map { item => FindResult.unapply(item).get } }
+        //        .map { list => list.map { item => OntonetHubProperty.tupled(item) } }
+        .flatMap { item => FindProperties200(item) }
         .recoverWith { case err: Throwable => FindProperties500(Error(err.getMessage)) }
             // ----- End of unmanaged code area for action  Semantic_managerYaml.findProperties
         }
-    
-     // Dead code for absent methodSemantic_managerYaml.addOntologyByPrefix
-     /*
-      // ----- Start of unmanaged code area for action  Semantic_managerYaml.addOntologyByPrefix
-      NotImplementedYet
-      // ----- End of unmanaged code area for action  Semantic_managerYaml.addOntologyByPrefix
-     */
-
-    
-     // Dead code for absent methodSemantic_managerYaml.deleteOntologyByPrefix
-     /*
-      // ----- Start of unmanaged code area for action  Semantic_managerYaml.deleteOntologyByPrefix
-      NotImplementedYet
-      // ----- End of unmanaged code area for action  Semantic_managerYaml.deleteOntologyByPrefix
-     */
-
     
     }
 }

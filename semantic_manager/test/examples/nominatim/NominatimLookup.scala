@@ -8,10 +8,21 @@ import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.JsonNode
+import clients.HTTPClient
 
 // SEE: Prefix.cc Lookup - http://prefix.cc/foaf.file.json
 
 class NominatimLookup {
+
+  val http = HTTPClient
+
+  def start() {
+    http.start()
+  }
+
+  def stop() {
+    http.stop()
+  }
 
   def nominatim(address: String) = {
 
@@ -27,24 +38,16 @@ class NominatimLookup {
       "extratags" -> "1",
       "namedetails" -> "1").toList
 
-    implicit val system = ActorSystem()
-    implicit val materializer = ActorMaterializer()
-
-    val wsClient = AhcWSClient()
-
-    val ret = wsClient.url(url)
+    val ret = http.ws.url(url)
       .withQueryString(parameters: _*)
       .get()
       .map { response =>
-
         response.status match {
           case 200 => response.body
           case _   => "{}"
         }
 
       }
-      .andThen { case _ => wsClient.close() }
-      .andThen { case _ => system.terminate() }
 
     ret
 
@@ -57,12 +60,13 @@ object MainNominatimLookup extends App {
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
 
-  val client = new NominatimLookup
+  val nominatim = new NominatimLookup
+  nominatim.start()
 
   val json_mapper = new ObjectMapper
   val json_reader = json_mapper.reader()
 
-  val result = Await.ready(client.nominatim("135 pilkington avenue, birmingham"), Duration.Inf)
+  val result = Await.ready(nominatim.nominatim("135 pilkington avenue, birmingham"), Duration.Inf)
     .value.get.get
 
   val json_list: List[JsonNode] = json_reader.readTree(result).elements().toList
@@ -81,6 +85,8 @@ object MainNominatimLookup extends App {
   } else {
     println("cannot find results...")
   }
+
+  nominatim.stop()
 
 }
 
