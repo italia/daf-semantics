@@ -100,22 +100,34 @@ definitions:
     type: "object"
     required:
       - uri
+      - reference
       - label
-      - refersTo
+      - description
+      - score
+      - ontology_name
+      - ontology_description
+      - concept_name
+      - concept_description
     properties:
       uri:
         type: string
+      reference:
+        type: string
       label:
         type: string
-      refersTo:
+      description:
         type: string
-      inOntology:
-        $ref: '#/definitions/RDFObject'
-      inConcept:
-        $ref: '#/definitions/RDFObject'
-      raw:
+      score:
         type: string
-        
+      ontology_name:
+        type: string
+      ontology_description:
+        type: string
+      concept_name:
+        type: string
+      concept_description:
+        type: string
+
     
   OntologyMeta:
     type: "object"

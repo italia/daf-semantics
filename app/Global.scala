@@ -32,8 +32,6 @@ class StartModule extends AbstractModule {
 
   def configure() = {
 
-    Logger.info("\n\nCHECKING: StartModule.configure()")
-
     bind(classOf[ClientsModule]).to(classOf[ClientsModuleBase]).asEagerSingleton()
   }
 

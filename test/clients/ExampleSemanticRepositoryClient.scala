@@ -1,9 +1,9 @@
 package clients
 
-import review.repository.SemanticRepositoryClient
 import java.io.File
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
+import clients.HTTPClient
 
 object ExampleSemanticRepositoryClient extends App {
 

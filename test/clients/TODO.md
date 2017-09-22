@@ -1,3 +1,10 @@
 
 
-TODO: add repositoryTest
+TODO: 
+
++ review / refactorization of OntonetHubClient
++ add repositoryTest
++ review of repository client
+
+
+
