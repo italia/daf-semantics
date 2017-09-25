@@ -1,0 +1,20 @@
+# Rule_ID:209
+# @title [Organization] vcard:hasEmail is a required property for Organization
+# @tag Organization
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Organization.
+  FILTER(!EXISTS {?s vcard:hasEmail ?name}).
+  BIND (rdf:type AS ?p).
+  BIND (dcatapit:Organization AS ?o).
+  BIND ("Organization" AS ?Class_Name).
+  BIND (209 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("vcard:hasEmail is a required property for Organization." AS ?Rule_Description).
+  BIND (concat("The dcatapit:Organization ",IF(isBlank(?s),"@blank_node",str(?s))," does not have a vcard:hasEmail property.") AS ?Message).
+}

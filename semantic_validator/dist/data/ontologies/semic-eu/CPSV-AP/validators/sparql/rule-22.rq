@@ -1,0 +1,20 @@
+# Rule_ID:22
+# @title [Agent] The dct:title property should be a literal
+# @tag Agent
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a foaf:Agent.
+     ?s dct:title ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dct:title AS ?p).
+     BIND ("Agent" AS ?Class_Name).
+     BIND (22 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dct:title property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }
+	 

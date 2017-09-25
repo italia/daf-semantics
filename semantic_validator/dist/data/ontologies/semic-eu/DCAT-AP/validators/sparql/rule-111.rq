@@ -1,0 +1,14 @@
+# Rule_ID:111
+# @title [Distribution] dct:modified has a maximum cardinality of 1 for Distribution
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ("Distribution" AS ?Class_Name) (111 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:modified has maximum cardinality of 1 for Distribution." AS ?Rule_Description) (concat("The dcat:Distribution ",str(?s)," has more than 1 dct:modified.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Distribution AS ?o)
+   WHERE {
+     ?s a dcat:Distribution.
+     ?s dct:modified ?rig.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?rig) > 1)

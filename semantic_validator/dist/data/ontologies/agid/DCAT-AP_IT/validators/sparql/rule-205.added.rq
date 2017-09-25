@@ -1,0 +1,20 @@
+# Rule_ID:205
+# @title [Organization] vcard:fn is a required property for Organization
+# @tag Organization
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Organization.
+  FILTER(!EXISTS {?s vcard:fn ?name}).
+  BIND (rdf:type AS ?p).
+  BIND (dcatapit:Organization AS ?o).
+  BIND ("Organization" AS ?Class_Name).
+  BIND (205 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("vcard:fn is a required property for Organization." AS ?Rule_Description).
+  BIND (concat("The dcatapit:Organization ",IF(isBlank(?s),"@blank_node",str(?s))," does not have a vcard:fn property.") AS ?Message).
+}

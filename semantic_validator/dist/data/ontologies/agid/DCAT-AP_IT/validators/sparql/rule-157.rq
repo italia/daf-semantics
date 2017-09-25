@@ -1,0 +1,20 @@
+# Rule_ID:157
+# @title [Dataset] dct:source should be a dcatapit:Dataset
+# @tag dataset
+
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Dataset.
+  ?s dct:source ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dcatapit:Dataset}).
+  BIND (dct:source AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (157 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:source should be a dcatapit:Dataset." AS ?Rule_Description).
+  BIND (concat("The dcatapit:Dataset ",IF(isBlank(?s),"@blank_node",str(?s))," has a ",IF(isBlank(?o),"@blank_node",str(?o))," which is not a dcatapit:Dataset.") AS ?Message).
+}

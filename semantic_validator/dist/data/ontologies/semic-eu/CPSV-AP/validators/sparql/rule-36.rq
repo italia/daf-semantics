@@ -1,0 +1,14 @@
+# Rule_ID:36
+# @title [BusinessEvent] dct:description has maximum cardinality of 1 for BusinessEvent
+# @tag BusinessEvent
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ("BusinessEvent" AS ?Class_Name) (36 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:description has maximum cardinality of 1 for BusinessEvent." AS ?Rule_Description) (concat("The cv:BusinessEvent ",str(?s)," has more than 1 dct:description.") AS ?Message) ?s (dct:description AS ?p) (sample(?desc) AS ?o)
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:description ?desc.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+   

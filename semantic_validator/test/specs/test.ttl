@@ -1,0 +1,102 @@
+@prefix schema: <http://schema.org/> .
+@prefix adms:  <http://www.w3.org/ns/adms#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/distribution/1662>
+        a                 dcatapit:Distribution , dcat:Distribution ;
+        dct:format        <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+        dct:license       <https://api.smartdatanet.it/metadataapi/api/dcat/license/CCBY> ;
+        dcat:accessURL    <https://userportal.smartdatanet.it/userportal/#/dataexplorer/detail/regpie/AlberghiRtaO_1662> ;
+        dcat:downloadURL  <https://api.smartdatanet.it/api/AlberghiRtaO_1662/download/1662/all> .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/agent/01995120019>
+        a               dcatapit:Agent , foaf:Agent ;
+        dct:identifier  "01995120019" ;
+        dct:type        <http://purl.org/adms/publishertype/Company> ;
+        foaf:name       "CSI PIEMONTE" .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/catalog/datasetcatalog>
+        a                   dcatapit:Catalog , dcat:Catalog ;
+        dct:description     "Catalogo Smart Data Piemonte"@it ;
+        dct:language        <http://publications.europa.eu/resource/authority/language/ITA> ;
+        dct:modified        "2017-08-10"^^xsd:date ;
+        dct:publisher       <https://api.smartdatanet.it/metadataapi/api/dcat/agent/01995120019> ;
+        dct:title           "CATALOGO SMART DATA"@it ;
+        dcat:dataset        <https://api.smartdatanet.it/metadataapi/api/dcat/dataset/ScuolePiemon12824> , <https://api.smartdatanet.it/metadataapi/api/dcat/dataset/AlberghiRtaO16622> ;
+        dcat:themeTaxonomy  <http://publications.europa.eu/resource/authority/data-theme> ;
+        foaf:homepage       <http://userportal.smartdatanet.it> .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/agent/rpiemon>
+        a               dcatapit:Agent , foaf:Agent ;
+        dct:identifier  "r_piemon" ;
+        foaf:name       "Regione Piemonte" .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/dataset/AlberghiRtaO16622>
+        a                       dcat:Dataset , dcatapit:Dataset ;
+        dct:accrualPeriodicity  <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
+        dct:creator             <https://api.smartdatanet.it/metadataapi/api/dcat/agent/rpiemon> ;
+        dct:description         "Elenco delle strutture ricettive di tipo \"Alberghi e residenze turistiche alberghiere\" che hanno dato il consenso alla diffusione in open data delle caratteristiche delle strutture."@it ;
+        dct:identifier          "AlberghiRtaO_1662_2" ;
+        dct:modified            "2016-12-31"^^xsd:date ;
+        dct:publisher           <https://api.smartdatanet.it/metadataapi/api/dcat/agent/01995120019> ;
+        dct:rightsHolder        <https://api.smartdatanet.it/metadataapi/api/dcat/agent/rpiemon> ;
+        dct:subject             <http://eurovoc.europa.eu/4470> ;
+        dct:title               "Alberghi  RTA opendata - caratteristiche"@it ;
+        owl:versionInfo         "2" ;
+        dcat:contactPoint       <https://api.smartdatanet.it/metadataapi/api/dcat/vcard/CSIPiemonte> ;
+        dcat:distribution       <https://api.smartdatanet.it/metadataapi/api/dcat/distribution/1662> ;
+        dcat:keyword            "Struttura" , "Turistico" , "Vacanze" , "Residenza" , "Turismo" , "Albergo" ;
+        dcat:theme              <http://publications.europa.eu/resource/authority/data-theme/EDUC> .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/vcard/CSIPiemonte>
+        a               vcard:Kind , vcard:Organization ;
+        vcard:fn        "CSI-Piemonte" ;
+        vcard:hasEmail  <mailto:riuso@dati.piemonte.it> .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/agent/RegionePiemonte>
+        a               dcatapit:Agent , foaf:Agent ;
+        dct:identifier  "Regione Piemonte" ;
+        dct:type        <http://purl.org/adms/publishertype/Company> ;
+        foaf:name       "Regione Piemonte" .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+        a       skos:Concept.
+		
+<https://api.smartdatanet.it/metadataapi/api/dcat/license/CCBY>
+        a                dcatapit:LicenseDocument , dct:LicenseDocument ;
+        dct:type         <http://purl.org/adms/licencetype/Attribution> ;
+        owl:versionInfo  "2.5" ;
+        foaf:name        "CC BY" .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/distribution/1282>
+        a                 dcatapit:Distribution , dcat:Distribution ;
+        dct:format        <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+        dct:license       <https://api.smartdatanet.it/metadataapi/api/dcat/license/CCBY> ;
+        dcat:accessURL    <https://userportal.smartdatanet.it/userportal/#/dataexplorer/detail/regpie/ScuolePiemon_1282> ;
+        dcat:downloadURL  <https://api.smartdatanet.it/api/ScuolePiemon_1282/download/1282/all> .
+
+<https://api.smartdatanet.it/metadataapi/api/dcat/dataset/ScuolePiemon12824>
+        a                       dcat:Dataset , dcatapit:Dataset ;
+        dct:accrualPeriodicity  <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
+        dct:creator             <https://api.smartdatanet.it/metadataapi/api/dcat/agent/01995120019> ;
+        dct:description         "La base dati riusabile regionale raccoglie i dati di tutte le scuole di ogni ordine e grado con aggiornamenti annuali.\n\n\nI dati sono riferiti a:\n\n\n\n* Scuole d'infanzia,\n\n* Scuole primarie,\n\n* Scuole secondarie I grado,\n\n* Scuole secondarie II grado\n\n\n\n\n\nLe informazioni riportano per le scuole distribuite sui comuni piemontesi, la natura giuridica, l'appartenenza ad eventuali comunità (montane o collinari), gli indirizzi e i recapiti telefonici di riferimento."@it ;
+        dct:identifier          "ScuolePiemon_1282_4" ;
+        dct:modified            "2016-06-10"^^xsd:date ;
+        dct:publisher           <https://api.smartdatanet.it/metadataapi/api/dcat/agent/01995120019> ;
+        dct:rightsHolder        <https://api.smartdatanet.it/metadataapi/api/dcat/agent/RegionePiemonte> ;
+        dct:title               "Scuole Piemontesi"@it ;
+        owl:versionInfo         "4" ;
+        dcat:contactPoint       <https://api.smartdatanet.it/metadataapi/api/dcat/vcard/CSIPiemonte> ;
+        dcat:distribution       <https://api.smartdatanet.it/metadataapi/api/dcat/distribution/1282> ;
+        dcat:keyword            "Studente" , "Asilo" , "Scuola" ;
+        dcat:theme              <http://publications.europa.eu/resource/authority/data-theme/EDUC> .

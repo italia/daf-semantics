@@ -1,0 +1,19 @@
+# Rule_ID:122
+# @title [PublicService] The dcat:keyword property should be a literal
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:PublicService.
+     ?s dcat:keyword ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (dcat:keyword AS ?p).
+     BIND ("PublicService" AS ?Class_Name).
+     BIND (122 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The dcat:keyword property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }

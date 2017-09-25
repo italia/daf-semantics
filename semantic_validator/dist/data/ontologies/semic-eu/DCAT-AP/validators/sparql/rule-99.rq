@@ -1,0 +1,13 @@
+# Rule_ID:99
+# @title [Catalog] dct:isPartOf has maximum cardinality of 1 for Catalog
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ("Catalog" AS ?Class_Name) (99 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:isPartOf has maximum cardinality of 1 for Catalog." AS ?Rule_Description) (concat("The dcat:Catalog ", str(?s)," has more than 1 dct:isPartOf.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Catalog AS ?o)
+WHERE {
+  ?s a dcat:Catalog.
+  ?s dct:isPartOf ?typ.
+} GROUP BY ?s 
+  HAVING (COUNT( ?typ) > 1)

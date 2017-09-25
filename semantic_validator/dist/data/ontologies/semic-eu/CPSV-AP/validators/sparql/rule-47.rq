@@ -1,0 +1,21 @@
+# Rule_ID:47
+# @title [Cost] The cv:isDefinedBy property should be a org:FormalOrganization
+# @tag Cost
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Cost.
+     ?s cv:isDefinedBy ?o.
+     ?o ?pred ?fo.
+     FILTER(!EXISTS {?o a org:FormalOrganization}).
+     BIND (cv:isDefinedBy AS ?p).
+     BIND ("Cost" AS ?Class_Name).
+     BIND (47 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The cv:isDefinedBy property should be a org:FormalOrganization." AS ?Rule_Description).
+     BIND (concat("cv:Cost ",str(?s)," does not have a cv:isDefinedBy property of type org:FormalOrganization.") AS ?Message).
+   }
+   

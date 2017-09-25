@@ -1,0 +1,49 @@
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+###  http://www.w3.org/2006/vcard/ns#hasEmail
+###	 vcard:hasEmail rdf:type owl:ObjectProperty ;
+###	                rdfs:domain dcatapit:Organization ;
+###	                rdfs:range vcard:Email ;
+###	                rdfs:comment "Proprietà utilizzata per specificare l'indirizzo email primario da utilizzare nelle comunicazioni con l'oggetto (nel contesto DCAT_AP IT l'oggetto è il dipartimento/ufficio identificato come punto di contatto stabile per un dataset).  Si raccomanda di utilizzare e-mail istituzionali riferibili all’ufficio/servizio/UO e non alla singola persona."@it ,
+###	                             "To specify the primary electronic mail address for communications with the contact point of the dataset."@en ;
+###	                rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;
+###	                rdfs:label "ha email"@it ,
+###	                           "has email"@en .
+
+###  http://www.w3.org/2006/vcard/ns#Kind
+vcard:Kind rdf:type owl:Class ;
+           rdfs:comment "A description following the vCard specification, e.g. to provide telephone number and  e-mail address, for instance, for a contact point."@en ,
+                        "E' la classe definita nelle specifiche vCard utilizzata per definire un punto di contatto che include per esempio un indirizzo email, un numero di telefono un URL di riferimento."@it ;
+           rdfs:isDefinedBy vcard: ;
+           rdfs:label "Contact Point"@en ,
+                      "Punto di contatto"@it .
+					  
+###  http://dati.gov.it/onto/dcatapit#Organization
+dcatapit:Organization rdf:type owl:Class ;
+              rdfs:subClassOf vcard:Organization ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:hasEmail ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass vcard:Email
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:hasTelephone ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass vcard:TelephoneType
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:hasURL ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty vcard:fn ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ;
+              rdfs:comment "An object representing an organization. An organization is a single entity, and might represent a business or government, a department or division within a business or government, a club, an association, or the like."@en ,
+                           "Una singola entità che potrebbe rappresentare un’impresa o un organismo governativo, un dipartimento, una divisione, una unità all'interno di un'azienda o di governo, un gruppo, un’associazione, o simili."@it ;
+              rdfs:isDefinedBy <http://dati.gov.it/onto/dcatapit> ;
+              rdfs:label "Organization"@en ,
+                         "Organizzazione"@it .
+

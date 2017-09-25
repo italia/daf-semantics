@@ -1,0 +1,15 @@
+# Rule_ID:114
+# @title [Dataset] dcatapit:Dataset does not exist
+# @tag dataset
+
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+WHERE {
+  FILTER(!EXISTS {?s a dcatapit:Dataset}).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (114 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcatapit:Dataset does not exist." AS ?Rule_Description).
+  BIND (concat("The mandatory class dcatapit:Dataset does not exist.") AS ?Message).
+}

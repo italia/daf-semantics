@@ -1,0 +1,14 @@
+# Rule_ID:195
+# @title [LicenseDocument] owl:versionInfo has maximum cardinality of 1 for LicenseDocument
+# @tag LicenseDocument
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ("LicenseDocument" AS ?Class_Name) (195 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("owl:versionInfo has maximum cardinality of 1 for LicenseDocument." AS ?Rule_Description) (concat("The LicenseDocument ",IF(isBlank(?s),"@blank_node",str(?s))," has more than 1 owl:versionInfo.") AS ?Message) ?s (rdf:type AS ?p) (dcatapit:LicenseDocument AS ?o)
+WHERE {
+  ?s a dcatapit:LicenseDocument.
+  ?s owl:versionInfo ?vi.
+} GROUP BY ?s 
+  HAVING (COUNT( ?vi) > 1)

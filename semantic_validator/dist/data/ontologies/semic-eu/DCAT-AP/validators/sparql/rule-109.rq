@@ -1,0 +1,14 @@
+# Rule_ID:109
+# @title [Distribution] adms:status has maximum cardinality of 1 for Distribution
+# @tag distribution
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ("Distribution" AS ?Class_Name) (109 AS ?Rule_ID) ("warning" AS ?Rule_Severity) ("adms:status has maximum cardinality of 1 for Distribution." AS ?Rule_Description) (concat("The dcat:Distribution ",str(?s)," has more than 1 adms:status property.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Distribution AS ?o)
+WHERE {
+  ?s a dcat:Distribution.
+  ?s adms:status ?stat.
+} GROUP BY ?s
+  HAVING (COUNT( ?stat) > 1)

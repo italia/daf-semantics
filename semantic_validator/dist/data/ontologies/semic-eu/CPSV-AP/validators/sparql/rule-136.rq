@@ -1,0 +1,17 @@
+# Rule_ID:136
+# @title [PublicService] cv:hasInput is a required property for Public Service
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p
+   WHERE {
+     ?s a cv:PublicService.
+     FILTER(!EXISTS {?s cv:hasInput ?inp}).
+     BIND (cv:hasInput AS ?p).
+     BIND ("PublicService" AS ?Class_Name).
+     BIND (136 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:hasInput is a required property for Public Service." AS ?Rule_Description).
+     BIND (concat("The cv:PublicService ",str(?s)," does not have a cv:hasInput property.") AS ?Message).
+   }

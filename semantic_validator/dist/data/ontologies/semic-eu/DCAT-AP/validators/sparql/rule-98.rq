@@ -1,0 +1,15 @@
+# Rule_ID:98
+# @title [Agent] dct:type has maximum cardinality of 1 for Agent
+# @tag agent
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ("Agent" AS ?Class_Name) (98 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:type has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The dcat:Agent ", str(?s)," has more than 1 dct:type.") AS ?Message) ?s (rdf:type AS ?p) (foaf:Agent AS ?o)
+WHERE {
+   ?s a foaf:Agent.
+   ?s dct:type ?type.
+} GROUP BY ?s 
+  HAVING (COUNT( ?type) > 1)
+

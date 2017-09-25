@@ -1,0 +1,19 @@
+# Rule_ID:160
+# @title [Distribution] dct:language should be a dct:LinguisticSystem
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Distribution.
+  ?s dct:language ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dct:LinguisticSystem}).
+  BIND ("Distribution" AS ?Class_Name).
+  BIND (160 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:language should be a dct:LinguisticSystem." AS ?Rule_Description).
+  BIND (concat("The dct:language ",str(?o)," is not a dct:LinguisticSystem.") AS ?Message).
+}

@@ -1,0 +1,13 @@
+# Rule_ID:51
+# @title [Cost] cv:currency has maximum cardinality of 1 for cv:Cost
+# @tag Cost
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ("Cost" AS ?Class_Name) (51 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:currency has maximum cardinality of 1 for cv:Cost." AS ?Rule_Description) (concat("The cv:Cost ",str(?s)," has more than 1 cv:currency.") AS ?Message) ?s (cv:currency AS ?p) (sample(?cur) AS ?o)
+   WHERE {
+     ?s a cv:Cost.
+     ?s cv:currency ?cur.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+   

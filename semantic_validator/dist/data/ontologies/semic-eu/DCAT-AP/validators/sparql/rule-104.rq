@@ -1,0 +1,20 @@
+# Rule_ID:104
+# @title [Dataset] dct:type should be a skos:Concept
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:type as ?p) ?o 
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:type ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a skos:Concept}).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (104 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:type should be a skos:Concept." AS ?Rule_Description).
+  BIND (concat("dcat:Dataset ",str(?s)," does not have a dct:type property of type skos:Concept.") AS ?Message).
+}

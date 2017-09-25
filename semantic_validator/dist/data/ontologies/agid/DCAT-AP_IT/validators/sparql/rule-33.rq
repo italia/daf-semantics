@@ -1,0 +1,19 @@
+# Rule_ID:33
+# @title [Catalog] dct:modified has maximum cardinality of 1 for Catalog
+# @tag catalog
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ("Catalog" AS ?Class_Name) 
+       (33 AS ?Rule_ID) 
+	   ("error" AS ?Rule_Severity) 
+	   ("dct:modified has maximum cardinality of 1 for Catalog." AS ?Rule_Description) 
+	   (concat("The dcatapit:Catalog ", IF(isBlank(?s),"@blank_node",str(?s))," has more than 1 dct:modified.") AS ?Message) 
+	   ?s
+WHERE {
+  ?s a dcatapit:Catalog.
+  ?s dct:modified ?modified
+} GROUP BY ?s 
+  HAVING (COUNT( ?s) > 1)

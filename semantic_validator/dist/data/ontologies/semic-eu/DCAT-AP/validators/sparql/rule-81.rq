@@ -1,0 +1,20 @@
+# Rule_ID:81
+# @title [Distribution] dct:description is a recommended property for Distribution
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+WHERE {
+  ?s a dcat:Distribution.
+  FILTER(!(EXISTS { ?s dct:description ?desc})).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:Distribution AS ?o).
+  BIND ("Distribution" AS ?Class_Name).
+  BIND (81 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dct:description is a recommended property for Distribution." AS ?Rule_Description).
+  BIND (concat("The dcat:Distribution ",str(?s)," does not have a dct:description property.") AS ?Message).
+}

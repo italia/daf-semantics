@@ -1,0 +1,18 @@
+# Rule_ID:48
+# @title [Dataset] dcat:keyword should be a literal
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dcat:keyword ?o.
+  FILTER(!isLiteral(?o)).
+  BIND (dcat:keyword AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (48 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:keyword should be a literal." AS ?Rule_Description).
+  BIND (concat("The dcat:keyword ",str(?o)," is not a literal.") AS ?Message).
+}

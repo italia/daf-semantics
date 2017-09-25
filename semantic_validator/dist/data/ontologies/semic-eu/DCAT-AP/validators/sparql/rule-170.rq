@@ -1,0 +1,17 @@
+# Rule_ID:170
+# @title [Licence Document] dct:type is a required property for Licence Document
+# @tag licensedocument
+
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dct:LicenseDocument.
+  FILTER(!EXISTS {?s dct:type ?label}).
+  BIND (dct:type AS ?p).
+  BIND ("Licence Document" AS ?Class_Name).
+  BIND (170 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:type is a required property for Licence Document." AS ?Rule_Description).
+  BIND (concat("The dct:LicenseDocument ",str(?o)," does not have a dct:type property.") AS ?Message).
+}
