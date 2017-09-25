@@ -1,0 +1,20 @@
+# Rule_ID:12
+# @title [Catalog] dct:title is a required property for Catalog
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+   ?s a dcat:Catalog.
+   FILTER(!(EXISTS { ?s dct:title ?title})).
+   BIND (rdf:type AS ?p).
+   BIND (dcat:Catalog AS ?o).
+   BIND ("Catalog" AS ?Class_Name).
+   BIND (12 AS ?Rule_ID).
+   BIND ("error" AS ?Rule_Severity).
+   BIND ("dct:title is a required property for Catalog." AS ?Rule_Description).
+   BIND (concat("The Catalog ", str(?o)," does not have a dct:title.") AS ?Message).
+}

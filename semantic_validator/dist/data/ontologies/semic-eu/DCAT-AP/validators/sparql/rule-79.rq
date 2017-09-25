@@ -1,0 +1,19 @@
+# Rule_ID:79
+# @title [Distribution] dcat:accessURL is a required property for Distribution
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+WHERE {
+  ?s a dcat:Distribution.
+  FILTER(!(EXISTS { ?s dcat:accessURL ?desc})).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:Distribution AS ?o).
+  BIND ("Distribution" AS ?Class_Name).
+  BIND (79 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:accessURL is a required property for Distribution." AS ?Rule_Description).
+  BIND (concat("The dcat:Distribution ",str(?s)," does not have a dcat:accessURL property.") AS ?Message).
+}

@@ -1,0 +1,18 @@
+# Rule_ID:124
+# @title [PublicService] The cv:processingTime property should be a literal
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:PublicService.
+     ?s cv:processingTime ?o.
+     FILTER(!isLiteral(?o)).
+     BIND (cv:processingTime AS ?p).
+     BIND ("PublicService" AS ?Class_Name).
+     BIND (124 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The cv:processingTime property should be a literal." AS ?Rule_Description).
+     BIND (concat("The property ",str(?p)," is not a literal.") AS ?Message).
+   }

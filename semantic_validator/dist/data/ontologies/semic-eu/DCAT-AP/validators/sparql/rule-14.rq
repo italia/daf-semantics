@@ -1,0 +1,20 @@
+# Rule_ID:14
+# @title [Catalog] foaf:homepage is a recommended property for Catalog
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Catalog.
+  FILTER(!(EXISTS { ?s foaf:homepage ?homepage})).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:Catalog AS ?o).
+  BIND ("Catalog" AS ?Class_Name).
+  BIND (14 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("foaf:homepage is a recommended property for Catalog." AS ?Rule_Description).
+  BIND ("The dcat:Catalog " + str(?o) + " does not have a foaf:homepage." AS ?Message).
+}

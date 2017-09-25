@@ -1,0 +1,20 @@
+# Rule_ID:90
+# @title [Distribution] dcat:downloadURL should be a resource
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+WHERE {
+  ?s a dcatapit:Distribution.
+  ?s dcat:downloadURL ?o.
+  FILTER(!isURI(?o)).
+  BIND (dcat:downloadURL AS ?p).
+  BIND ("Distribution" AS ?Class_Name).
+  BIND (90 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:downloadURL should be a resource." AS ?Rule_Description).
+  BIND (concat("The dcat:downloadURL ",IF(isBlank(?o),"@blank_node",str(?o))," is not a resource.") AS ?Message).
+}
+

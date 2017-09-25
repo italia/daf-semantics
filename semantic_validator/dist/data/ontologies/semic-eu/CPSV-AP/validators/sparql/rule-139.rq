@@ -1,0 +1,18 @@
+# Rule_ID:139
+# @title [PublicService] cv:follows should be a cv:Rule
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a cv:PublicService.
+     ?s cv:follows ?o.
+     ?o ?p ?val.
+     FILTER(!EXISTS {?o a cv:Rule}).
+     BIND ("PublicService" AS ?Class_Name).
+     BIND (139 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:follows should be a cv:Rule." AS ?Rule_Description).
+     BIND (concat("cv:PublicService ",str(?s)," does not have a cv:follows property of type cv:Rule.") AS ?Message).
+   }

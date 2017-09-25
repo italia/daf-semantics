@@ -1,0 +1,20 @@
+# Rule_ID:169
+# @title [Category] skos:prefLabel is a required property for Category
+# @tag category
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?dat a dcat:Dataset.
+  ?dat dcat:theme ?s.
+  ?s a skos:Concept.
+  FILTER(!EXISTS {?s skos:prefLabel ?o}).
+  BIND (skos:prefLabel AS ?p).
+  BIND ("Category" AS ?Class_Name).
+  BIND (169 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("skos:prefLabel is a required property for Category." AS ?Rule_Description).
+  BIND (concat("The Category ",str(?o)," does not have a skos:prefLabel property.") AS ?Message).
+}

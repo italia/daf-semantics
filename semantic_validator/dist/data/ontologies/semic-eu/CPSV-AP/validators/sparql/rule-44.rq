@@ -1,0 +1,21 @@
+# Rule_ID:44
+# @title [Channel] The cv:ownedBy property should be a org:FormalOrganization
+# @tag Channel
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:Channel.
+     ?s cv:ownedBy ?o.
+     ?o ?pred ?own.
+     FILTER(!EXISTS {?o a org:FormalOrganization}).
+     BIND (cv:ownedBy AS ?p).
+     BIND ("Channel" AS ?Class_Name).
+     BIND (44 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("The cv:ownedBy property should be a org:FormalOrganization." AS ?Rule_Description).
+     BIND (concat("cv:Channel ",str(?s)," does not have a cv:ownedBy property of type org:FormalOrganization.") AS ?Message).
+   }
+   

@@ -1,0 +1,20 @@
+# Rule_ID:43
+# @title [Dataset] dcat:contactPoint should be a vcard:Kind
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dcat:contactPoint ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a vcard:Kind}).
+  BIND (dcat:contactPoint AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (43 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:contactPoint should be a vcard:Kind." AS ?Rule_Description).
+  BIND (concat("The dcat:contactPoint ",str(?p)," is not a vcard:Kind.") AS ?Message).
+}

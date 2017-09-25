@@ -1,0 +1,13 @@
+# Rule_ID:17
+# @title [Address] locn:postName has maximum cardinality of 1 for Address
+# @tag Address
+
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+SELECT ("Address" AS ?Class_Name) (17 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("locn:postName has maximum cardinality of 1 for Address." AS ?Rule_Description) (concat("The locn:Address ",str(?s)," has more than 1 locn:postName.") AS ?Message) ?s (locn:postName AS ?p) (sample(?postn) AS ?o)
+   WHERE {
+     ?s a locn:Address.
+     ?s locn:postName ?postn.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+	 

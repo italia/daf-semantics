@@ -1,0 +1,12 @@
+# Rule_ID:145
+# @title [PublicService] cv:hasCompetentAuthority has maximum cardinality of 1 for Public Service
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ("PublicService" AS ?Class_Name) (145 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:hasCompetentAuthority has maximum cardinality of 1 for Public Service." AS ?Rule_Description) (concat("The cv:PublicService ",str(?s)," has more than 1 cv:hasCompetentAuthority.") AS ?Message) ?s (cv:hasCompetentAuthority AS ?p) (sample(?ca) AS ?o)
+   WHERE {
+     ?s a cv:PublicService.
+     ?s cv:hasCompetentAuthority ?ca.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)

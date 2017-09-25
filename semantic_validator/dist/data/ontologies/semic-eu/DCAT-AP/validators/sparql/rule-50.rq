@@ -1,0 +1,14 @@
+# Rule_ID:50
+# @title [Dataset] dct:publisher has maximum cardinality of 1 for Dataset
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ("Dataset" AS ?Class_Name) (50 AS ?Rule_ID) ("warning" AS ?Rule_Severity) ("dct:publisher has maximum cardinality of 1 for Dataset." AS ?Rule_Description) (concat("The dcat:Dataset ",str(?s)," has more than 1 dct:publisher property.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Dataset AS ?o)
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:publisher ?pub.
+} GROUP BY ?s
+  HAVING (COUNT( ?pub) > 1)

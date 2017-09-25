@@ -1,0 +1,15 @@
+# Rule_ID:163
+# @title [Distribution] dcat:Distribution does not exist
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  FILTER(!EXISTS {?s a dcat:Distribution}).
+  BIND ("Distribution" AS ?Class_Name).
+  BIND (163 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dcat:Distribution does not exist." AS ?Rule_Description).
+  BIND (concat("The recommended class dcat:Distribution does not exist.") AS ?Message).
+}

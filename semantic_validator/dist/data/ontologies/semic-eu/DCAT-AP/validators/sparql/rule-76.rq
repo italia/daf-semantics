@@ -1,0 +1,14 @@
+# Rule_ID:76
+# @title [Dataset] owl:versionInfo has maximum cardinality of 1 for Dataset
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ("Dataset" AS ?Class_Name) (76 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("owl:versionInfo has maximum cardinality of 1 for Dataset." AS ?Rule_Description) (concat("The dcat:Dataset ",str(?s)," has more than 1 owl:versionInfo.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Dataset AS ?o)
+WHERE {
+  ?s a dcat:Dataset.
+  ?s owl:versionInfo ?version.
+} GROUP BY ?s 
+  HAVING (COUNT( ?version) > 1)

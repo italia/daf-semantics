@@ -1,0 +1,14 @@
+# Rule_ID:105
+# @title [Distribution] spdx:checksum has a maximum cardinality of 1 for Distribution
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX spdx: <http://spdx.org/rdf/terms#>
+
+SELECT ("Distribution" AS ?Class_Name) (105 AS ?Rule_ID) ("warning" AS ?Rule_Severity) ("spdx:checksum has maximum cardinality of 1 for Distribution." AS ?Rule_Description) (concat("The dcat:Distribution ",str(?s)," has more than 1 spdx:checksum.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Distribution AS ?o)
+   WHERE {
+     ?s a dcat:Distribution.
+     ?s spdx:checksum ?checksum.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?checksum) > 1)

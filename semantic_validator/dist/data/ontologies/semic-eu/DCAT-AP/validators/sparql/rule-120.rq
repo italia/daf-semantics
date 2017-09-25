@@ -1,0 +1,19 @@
+# Rule_ID:120
+# @title [Catalog Record] dct:modified is a required property for Catalog Record
+# @tag Catalog Record
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:CatalogRecord.
+  FILTER(!EXISTS {?s dct:modified ?name}).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:CatalogRecord AS ?o).
+  BIND ("CatalogRecord" AS ?Class_Name).
+  BIND (120 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:modified is a required property for Catalog Record." AS ?Rule_Description).
+  BIND (concat("The dcat:CatalogRecord ",str(?s)," does not have a dct:modified property.") AS ?Message).
+}

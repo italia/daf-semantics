@@ -1,0 +1,20 @@
+# Rule_ID:53
+# @title [Dataset] dcat:theme is a required property for Dataset
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a dcatapit:Dataset.
+     FILTER(!(EXISTS { ?s dcat:theme ?theme})).
+     BIND (rdf:type AS ?p).
+     BIND (dcatapit:Dataset AS ?o).
+     BIND ("Dataset" AS ?Class_Name).
+     BIND (53 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dcat:theme is a required property for Dataset." AS ?Rule_Description).
+     BIND (concat("The dcatapit:Dataset ",IF(isBlank(?s),"@blank_node",str(?s))," does not have the required dcat:theme property.") AS ?Message).
+   }

@@ -1,0 +1,14 @@
+# Rule_ID:158
+# @title [Distribution] dct:byteSize has a maximum cardinality of 1 for Distribution
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ("Distribution" AS ?Class_Name) (158 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:byteSize has maximum cardinality of 1 for Distribution." AS ?Rule_Description) (concat("The dcat:Distribution ",str(?s)," has more than 1 dct:byteSize.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Distribution AS ?o)
+   WHERE {
+     ?s a dcat:Distribution.
+     ?s dct:byteSize ?lic.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?lic) > 1)

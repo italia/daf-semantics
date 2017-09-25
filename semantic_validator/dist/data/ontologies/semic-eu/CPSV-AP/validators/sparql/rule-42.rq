@@ -1,0 +1,13 @@
+# Rule_ID:42
+# @title [BusinessEvent] cv:processingTime has maximum cardinality of 1 for cv:BusinessEvent
+# @tag BusinessEvent
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ("BusinessEvent" AS ?Class_Name) (42 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:processingTime has maximum cardinality of 1 for cv:BusinessEvent." AS ?Rule_Description) (concat("The cv:BusinessEvent ",str(?s)," has more than 1 cv:processingTime.") AS ?Message) ?s (cv:processingTime AS ?p) (sample(?proctime) AS ?o)
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s cv:processingTime ?proctime.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+   

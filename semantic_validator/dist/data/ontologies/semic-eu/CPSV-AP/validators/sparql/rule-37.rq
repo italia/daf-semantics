@@ -1,0 +1,21 @@
+# Rule_ID:37
+# @title [BusinessEvent] dct:language should be a dct:LinguisticSystem
+# @tag BusinessEvent
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a cv:BusinessEvent.
+     ?s dct:language ?o.
+     ?o ?pred ?lan.
+     FILTER(!EXISTS {?o a dct:LinguisticSystem}).
+     BIND (dct:language AS ?p).
+     BIND ("BusinessEvent" AS ?Class_Name).
+     BIND (37 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:language should be a dct:LinguisticSystem." AS ?Rule_Description).
+     BIND (concat("cv:BusinessEvent ",str(?s)," does not have a dct:language property of type dct:LinguisticSystem.") AS ?Message).
+   }
+   

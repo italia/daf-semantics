@@ -1,0 +1,11 @@
+# Rule_ID:142
+# @title [PublicService] cv:hasFormalFramework has maximum cardinality of 1 for Public Service
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ("PublicService" AS ?Class_Name) (142 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:hasFormalFramework has maximum cardinality of 1 for Public Service." AS ?Rule_Description) (concat("The cv:PublicService ",str(?s)," has more than 1 cv:hasFormalFramework.") AS ?Message) ?s (cv:hasFormalFramework AS ?p) (sample(?ff) AS ?o)
+   WHERE {
+     ?s a cv:PublicService.
+     ?s cv:hasFormalFramework ?ff.
+   } GROUP BY ?s 

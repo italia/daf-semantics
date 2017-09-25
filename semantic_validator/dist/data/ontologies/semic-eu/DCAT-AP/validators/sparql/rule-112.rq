@@ -1,0 +1,15 @@
+# Rule_ID:112
+# @title [Catalog] dcat:Catalog does not exist
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  FILTER(!EXISTS {?s a dcat:Catalog}).
+  BIND ("Catalog" AS ?Class_Name).
+  BIND (112 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:Catalog does not exist." AS ?Rule_Description).
+  BIND (concat("The mandatory class dcat:Catalog does not exist.") AS ?Message).
+}

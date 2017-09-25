@@ -1,0 +1,20 @@
+# Rule_ID:49
+# @title [Dataset] dct:publisher is a recommended property for Dataset
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  FILTER(!(EXISTS { ?s dct:publisher ?pub})).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:Dataset AS ?o).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (49 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dct:publisher is a recommended property for Dataset." AS ?Rule_Description).
+  BIND (concat("The dcat:Dataset ",str(?o)," does not have a dct:publisher property.") AS ?Message).
+}
