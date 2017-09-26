@@ -12,7 +12,7 @@ class Global @Inject() (lifecycle: ApplicationLifecycle) {
 
   @Inject
   def onStart() {
-    Logger.info("#### Application STOP")
+    Logger.info("#### Application START")
   }
 
   // REVIEW here
@@ -30,9 +30,6 @@ class Global @Inject() (lifecycle: ApplicationLifecycle) {
 class StartModule extends AbstractModule {
 
   def configure() = {
-
-    Logger.info("\n\nCHECKING: StartModule.configure()")
-
     bind(classOf[KBModule]).to(classOf[KBModuleBase]).asEagerSingleton()
   }
 

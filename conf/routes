@@ -4,6 +4,8 @@
 
 GET         /spec/semantic_repository.yaml   controllers.Swagger.swaggerSpec(name="semantic_repository.yaml")
 
+#GET         /spec/ontologies_api.yaml   controllers.Swagger.swaggerSpec(name="ontologies_api.yaml")
+
 #GET         /list_specs     controllers.Swagger.listSpecs
 
 GET         /               controllers.Assets.versioned(path="/public/swagger-ui", file: Asset = "index.html")

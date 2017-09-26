@@ -41,15 +41,12 @@ class RDFFileManager(kbrepo: RDFRepositoryBase) {
 
       contexts.foreach { context =>
 
-        Try {
+        val _context = URLDecoder.decode(context, "UTF-8")
 
-          val _context = URLDecoder.decode(context, "UTF-8")
+        val doc = Rio.parse(fis, context, format, context.toIRI)
 
-          val doc = Rio.parse(fis, context, format, context.toIRI)
-
-          // adding the RDF document to the given context
-          kbrepo.store.add(doc, context)
-        }
+        // adding the RDF document to the given context
+        kbrepo.store.add(doc, context)
 
       }
 

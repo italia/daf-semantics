@@ -68,6 +68,7 @@ paths:
       summary: deletes an RDF document
       operationId: removeRDFDoc
       parameters:
+      # TODO: remove by prefix instead!
         - in: query
           name: context
           type: string
@@ -84,6 +85,8 @@ paths:
             $ref: '#/definitions/Error'
       tags: [test]
       
+  
+  
    
   
   "/contexts": 

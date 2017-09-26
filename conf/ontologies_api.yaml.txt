@@ -1,0 +1,60 @@
+swagger: "2.0"
+info: 
+  version: "0.1.0"
+  title: "semantic repository"
+  description: "semantic_repository api"
+  termsOfService: "http://swagger.io/terms/"
+  contact: 
+    name: "swagger"
+    email: "apiteam@swagger.io"
+    url: https://github.com/seralf/semantic_repository
+    
+  license: 
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    
+host: localhost:8888
+basePath: /kb/v1
+schemes: 
+  - "http"
+consumes: 
+  - "application/json"
+produces: 
+  - "application/json"
+  
+paths: 
+  
+  "/vocabularies/{name}.json": 
+    get: 
+      summary: "the vocabulary dataset"
+      description: "the vocabulary dataset"
+      operationId: "vocabularyDataset"
+      parameters:
+        - in: path
+          name: name
+          type: string
+          required: true
+      produces: 
+        - "application/json"
+      responses: 
+        200:
+          description: "the vocabulary dataset"
+          schema:
+            type: string
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions: 
+
+  Error:
+    type: "object"
+    required:
+      - message
+      - description
+    properties:
+      message:
+        type: string
+      description:
+        type: string

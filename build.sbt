@@ -34,6 +34,7 @@ libraryDependencies ++= Seq(
 	"org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
 	"org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
 	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.1",
+	//"com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.9.1",
 
 "org.eclipse.rdf4j" % "rdf4j-runtime" % "2.2.2",
 "org.eclipse.rdf4j" %  "rdf4j-repository-sail" % "2.2.2",

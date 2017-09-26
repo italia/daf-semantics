@@ -26,8 +26,9 @@ class SPARQLManager(repo: Repository) {
       // CHECK: not efficient!
       conn.prepareTupleQuery(QueryLanguage.SPARQL, query)
         .evaluate()
-        .toList
+        .toStream
         .map(_.toMap())
+        .toList
 
     }(s"SPARQL> cannot execute query ${query}")
 
