@@ -1,5 +1,0 @@
-prefix: "clvapit"
-uri: "http://dati.gov.it/ontologies/clvapit/"
-contexts: [
-	"http://dati.gov.it/ontologies/clvapit/"
-]

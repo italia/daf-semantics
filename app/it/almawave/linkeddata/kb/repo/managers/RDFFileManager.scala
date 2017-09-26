@@ -18,6 +18,7 @@ import com.typesafe.config.Config
 import java.nio.file.StandardCopyOption
 import java.nio.file.Path
 import it.almawave.linkeddata.kb.repo.RDFRepositoryBase
+import scala.util.Try
 
 class RDFFileManager(kbrepo: RDFRepositoryBase) {
 
@@ -30,8 +31,39 @@ class RDFFileManager(kbrepo: RDFRepositoryBase) {
 
   val default_format = RDFFormat.TURTLE
 
+  // simple method for adding RDF File(s)
+  def addRDFFile(rdfFile: File, mimeFormat: String, contexts: String*) {
+
+    TryLog {
+
+      val format = Rio.getParserFormatForMIMEType(mimeFormat).orElse(default_format)
+      val fis = new FileInputStream(rdfFile.getAbsoluteFile)
+
+      contexts.foreach { context =>
+
+        Try {
+
+          val _context = URLDecoder.decode(context, "UTF-8")
+
+          val doc = Rio.parse(fis, context, format, context.toIRI)
+
+          // adding the RDF document to the given context
+          kbrepo.store.add(doc, context)
+        }
+
+      }
+
+      fis.close()
+
+    }(s"KB:RDF> cannot add RDF file: ${rdfFile}")
+
+  }
+
   /**
    * adding an RDF file (ontology/vocabulary)
+   *
+   * TODO: split into two methods: addOntology/Vocabulary, addRDFDocument
+   *
    */
   def addFile(rdfName: String, rdfFileFromInput: File, prefix: String, context: String) {
 
@@ -44,10 +76,13 @@ class RDFFileManager(kbrepo: RDFRepositoryBase) {
       val fis = new FileInputStream(rdfFileFromInput.getAbsoluteFile)
 
       // adds the file as an RDF document
-      val doc = Rio.parse(fis, "", format, context.toIRI)
+      // val doc = Rio.parse(fis, "", format, context.toIRI)
+      val doc = Rio.parse(fis, context, format, context.toIRI)
 
       // trying to register a default prefix:namespace pair for context
-      kbrepo.prefixes.add((prefix, context))
+      if (prefix != null)
+        kbrepo.prefixes.add((prefix, context))
+
       // add the RDF document to the given context
       kbrepo.store.add(doc, context)
 

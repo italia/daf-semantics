@@ -16,6 +16,8 @@ import org.eclipse.rdf4j.model.impl.SimpleIRI
 import org.eclipse.rdf4j.sail.memory.model.MemBNode
 import org.eclipse.rdf4j.model.ValueFactory
 import org.eclipse.rdf4j.model.IRI
+import java.util.LinkedHashSet
+import java.util.LinkedHashMap
 
 object RDF4JAdapters {
 
@@ -47,7 +49,9 @@ object RDF4JAdapters {
 
     def toMap(): Map[String, Object] = {
 
+      // CHECK: key order
       val names = bs.getBindingNames
+
       names.map { n =>
 
         val binding = bs.getBinding(n)
