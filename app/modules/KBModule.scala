@@ -21,6 +21,10 @@ import play.api.Mode
 import java.io.File
 import it.almawave.linkeddata.kb.repo.RDFRepository
 import com.typesafe.config.ConfigFactory
+import it.gov.daf.semantics.api.OntologyAPI
+import it.gov.daf.semantics.api.VocabularyAPI
+import it.gov.daf.semantics.api.VocabularyAPIFactory
+import it.gov.daf.semantics.api.OntologyAPIFactory
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule
@@ -30,6 +34,12 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
   // TODO: SPI per dev / prod
   val kbrepo = RDFRepository.memory()
+
+  // OntologyAPI service
+  val ontologyAPI = new OntologyAPIFactory()
+
+  // VocabularyAPI service
+  val vocabularyAPI = new VocabularyAPIFactory()
 
   // when application starts...
   @Inject
@@ -66,12 +76,24 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
     Logger.info(s"KBModule> ${triples} triples loaded")
 
+    // starting OntologyAPI service
+    ontologyAPI.start()
+
+    // starting VocabularyAPI service
+    vocabularyAPI.start()
+
   }
 
   // when application stops...
   lifecycle.addStopHook({ () =>
 
     Future.successful {
+
+      // stopping VocabularyAPI service
+      vocabularyAPI.start()
+
+      // stopping OntologyAPI service
+      ontologyAPI.stop()
 
       // this is useful for saving files, closing connections, release indexes, etc
       kbrepo.stop()

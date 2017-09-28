@@ -12,7 +12,7 @@ import scala.util.Try
 /*
  * NOTE: at the moment this is only a prototype!
  */
-class VocabularyAPI(conf: Config = VocabularyAPI.DEFAULT_CONFIG.getConfig("Istat-Classificazione-08-Territorio")) {
+class VocabularyAPI(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG.getConfig("Istat-Classificazione-08-Territorio")) {
 
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
@@ -87,6 +87,21 @@ class VocabularyAPI(conf: Config = VocabularyAPI.DEFAULT_CONFIG.getConfig("Istat
 
   def extract_data(parameters: Map[String, Object] = Map.empty) = {
 
+    val oname = conf.getString("vocabulary.ontology.name")
+
+    extract_data_map(parameters).map {
+      _.map { el =>
+        val key = el._1
+        val value = el._2
+        val path = oname + key.substring(key.indexOf(oname) + oname.length()).replace("_", ".")
+        (key, value)
+      }.toMap
+    }
+
+  }
+
+  def extract_data_map(parameters: Map[String, Object] = Map.empty) = {
+
     val query = parse_query(parameters).get
 
     val oname = conf.getString("vocabulary.ontology.name")
@@ -99,21 +114,51 @@ class VocabularyAPI(conf: Config = VocabularyAPI.DEFAULT_CONFIG.getConfig("Istat
         // fixing name
         _.toList.map { el => (el._1.replace(oprefix, oname), el._2) }.toMap
       }
-//      .map {
-//        // hack for avoid . in field names (no way to use them in swagger/api-first!)
-//        _.toList.map { el => (el._1.replaceAll("_", "."), el._2) }.toMap
-//      }
       .toList
 
   }
 
   def extract_keys(parameters: Map[String, Object] = Map.empty) = {
-    extract_data(parameters).flatMap { item => item.keySet }.distinct
+    extract_data_map(parameters).flatMap { item => item.keySet }.distinct
   }
 
 }
 
-object VocabularyAPI {
+class VocabularyAPIFactory(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG) {
+
+  import scala.collection.JavaConversions._
+  import scala.collection.JavaConverters._
+
+  val logger = Logger.underlying()
+
+  // getting the list of configured vocabularies
+  val names = conf.root().keySet().toList
+
+  // NOTE: for the prototype there is only an instance!
+  var items: Map[String, VocabularyAPI] = Map()
+
+  def start() {
+
+    logger.debug(s"starting VocabularyAPI Factory)")
+
+    // initializing each micro-repository
+    items = names.map { name => (name, new VocabularyAPI(conf.getConfig(name))) }.toMap
+    // starting each micro-repository
+    items.foreach { _._2.start() }
+
+  }
+
+  def stop() {
+
+    logger.debug(s"stopping VocabularyAPI Factory)")
+    // stopping each micro-repository
+    items.foreach { _._2.stop() }
+
+  }
+
+}
+
+object VocabularyAPIFactory {
 
   // NOTE: this is only a prototype!!
   // TODO: load from file! 

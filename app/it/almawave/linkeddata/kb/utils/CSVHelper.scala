@@ -31,20 +31,22 @@ class CSVHelper(
   /**
    * writing CSV to the provided OutputStream
    */
-  def writeToOutputStream(dataset: List[Map[String, Object]], out: OutputStream) = {
+  def writeToOutputStream(dataset: List[List[Map[String, Object]]], out: OutputStream) = {
 
     if (!dataset.isEmpty) {
 
-      val header = mapToHeader(dataset.head)
-
-      out.write(header.mkString(CELL_DELIMITER).getBytes)
-      out.write('\n')
-
-      dataset.tail.foreach { line =>
-        val row = mapToRow(line)
-        out.write(row.mkString(CELL_DELIMITER).getBytes)
-        out.write('\n')
-      }
+//      val header = mapToHeader(dataset.head.)
+//      println("HEADER: " + header)
+//      
+//
+//      out.write(header.mkString(CELL_DELIMITER).getBytes)
+//      out.write('\n')
+//
+//      dataset.tail.foreach { line =>
+//        val row = mapToRow(line)
+//        out.write(row.mkString(CELL_DELIMITER).getBytes)
+//        out.write('\n')
+//      }
 
     }
 

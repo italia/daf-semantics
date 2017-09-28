@@ -24,7 +24,74 @@ produces:
   
 paths: 
 
-  # CRUD
+  # TODO: verificare config per client da repo daf
+  
+  "/vocabularies/{name}/properties": 
+    get: 
+      summary: "a vocabulary dataset"
+      description: "a vocabulary dataset"
+      operationId: "propertiesHierarchyList"
+      produces: 
+        - "application/json"
+      parameters:
+        - name: name
+          in: path
+          description: "the name of a vocabulary"
+          required: true
+          type: string
+        - name: lang
+          in: query
+          description: the language used for exporting vocabulary data
+          required: true
+          type: string
+      responses: 
+        200:
+          description: "vocabulary data"
+          schema:
+            #type: string
+            type: array
+            items:
+              $ref: '#/definitions/PropertyHierarchy'
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags: [ POC ] 
+
+
+  "/vocabularies/{name}": 
+    get: 
+      summary: "a vocabulary dataset"
+      description: "a vocabulary dataset"
+      operationId: "vocabularyDataset"
+      produces: 
+        - "application/json"
+      parameters:
+        - name: name
+          in: path
+          description: "the name of a vocabulary"
+          required: true
+          type: string
+        - name: lang
+          in: query
+          description: the language used for exporting vocabulary data
+          required: true
+          type: string
+      responses: 
+        200:
+          description: "vocabulary data"
+          schema:
+            #type: string
+            type: array
+            items:
+              $ref: '#/definitions/VocabularyItem'
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags: [ POC ]  
+  
+
   "/ontologies":
   
     post:
@@ -60,7 +127,7 @@ paths:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
-      tags: [test]
+      tags: [CRUD]
 
 
   "/ontologies/remove":
@@ -83,11 +150,8 @@ paths:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
-      tags: [test]
-      
+      tags: [CRUD]
   
-  
-   
   
   "/contexts": 
     get: 
@@ -139,7 +203,7 @@ paths:
       parameters:
         - in: query
           name: prefix
-          description: the defaul prefix associated with a specific ontology
+          description: the default prefix associated with a specific ontology
           required: true
           type: string
       responses: 
@@ -225,6 +289,61 @@ paths:
       tags: [ stats ]
 
 definitions: 
+
+  # HACK: we have to find a general purpose method for mapping generic different models here
+  # only for prototype....................
+
+  VocabularyItem:
+    type: array
+    items:
+      $ref: '#/definitions/VocabularyItemValue'
+
+  VocabularyItemValue:
+    type: object
+    required: 
+      - key
+      - value
+    properties: 
+      key:
+        type: "string"
+      value:
+        type: "string"
+
+
+  PropertyHierarchy:
+    type: object
+    required: 
+      - vocabulary
+      - path
+      - hierarchy_flat
+      - hierarchy
+    properties: 
+      vocabulary:
+        type: "string"
+      path:
+        type: "string"
+      hierarchy_flat:
+        type: "string"
+      hierarchy:
+        type: "string"
+        # schema:
+        #  type: "array"
+        #  items:
+        #    $ref: '#/definitions/PropertyHierarchyLevel' 
+
+  PropertyHierarchyLevel:
+    type: object
+    required: 
+      - class
+      - level
+    properties: 
+      class:
+        type: "string"
+      level:
+        type: "integer"
+
+  
+  # only for prototype....................  
 
   OntologyList:
     type: array

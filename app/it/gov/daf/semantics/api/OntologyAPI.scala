@@ -11,7 +11,7 @@ import scala.io.Source
 import play.Logger
 import it.almawave.linkeddata.kb.utils.JSONHelper
 
-class OntologyAPI(conf: Config = OntologyAPI.DEFAULT_CONFIG.getConfig("clvapit")) {
+class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("clvapit")) {
 
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
@@ -47,19 +47,15 @@ class OntologyAPI(conf: Config = OntologyAPI.DEFAULT_CONFIG.getConfig("clvapit")
 
   // loads ontology file
   private def load_ontology_file() {
+
     val fileName = conf.getString("ontology.file")
     val mime = Rio.getParserFormatForFileName(fileName).get.getDefaultMIMEType
     val rdf_file = Paths.get(fileName).normalize().toAbsolutePath().toFile()
-    //    println("\n\n\n FILE? " + rdf_file)
 
     val contexts = conf.getStringList("ontology.contexts")
-    //    println("\n\n\n contexts? " + contexts)
 
     logger.debug(s"loading vocabulary ${onto_name} in ${contexts.mkString(" | ")}")
     repo.io.addRDFFile(rdf_file, mime, contexts: _*)
-
-    //    val triples = repo.store.size(contexts: _*).get
-    //    println("\n\nTRIPLES: " + triples)
 
   }
 
@@ -70,6 +66,7 @@ class OntologyAPI(conf: Config = OntologyAPI.DEFAULT_CONFIG.getConfig("clvapit")
     this.injectParameters(query_template, map)
   }
   private def query_placeholder(name: String) = """${""" + name + """}"""
+
   /*
    * refactorize to more general parameters handler, importing the Configuration library
    */
@@ -98,13 +95,13 @@ class OntologyAPI(conf: Config = OntologyAPI.DEFAULT_CONFIG.getConfig("clvapit")
 
   }
 
-  def extract_hierarchy_properties(parameters: Map[String, Object], properties: List[String] = List()) = {
-
-    println("CHECK: " + extract_hierarchy(parameters))
+  def extract_hierarchy_properties(
+    parameters: Map[String, Object],
+    properties: List[String] = List()): List[Map[String, Object]] = {
 
     val hierarchy_elements = extract_hierarchy(parameters)
       .sortBy { map => map.get("rank").get.asInstanceOf[String] }
-      .map { map => map.get("id").get }
+      .map { map => map.get("id").get.asInstanceOf[String] }
 
     // TODO: fix the _ with .
     properties.map { prop =>
@@ -117,7 +114,7 @@ class OntologyAPI(conf: Config = OntologyAPI.DEFAULT_CONFIG.getConfig("clvapit")
       val concept_hierarchy = hierarchy_elements.slice(0, hierarchy_elements.indexOf(concept_name) + 1)
 
       // recostruct the related part of the hierarchy
-      val hierarchy_tree = concept_hierarchy
+      val hierarchy_tree: List[Map[String, Any]] = concept_hierarchy
         .zipWithIndex
         .map { item => Map("class" -> item._1, "level" -> item._2) }
 
@@ -141,7 +138,41 @@ class OntologyAPI(conf: Config = OntologyAPI.DEFAULT_CONFIG.getConfig("clvapit")
 
 }
 
-object OntologyAPI {
+class OntologyAPIFactory(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG) {
+
+  import scala.collection.JavaConversions._
+  import scala.collection.JavaConverters._
+
+  val logger = Logger.underlying()
+
+  // getting the list of configured ontologies
+  val names = conf.root().keySet().toList
+
+  // NOTE: for the prototype there is only an instance!
+  var items: Map[String, OntologyAPI] = Map()
+
+  def start() {
+
+    logger.debug(s"starting OntologyAPIFactory Factory)")
+
+    // initializing each micro-repository
+    items = names.map { name => (name, new OntologyAPI(conf.getConfig(name))) }.toMap
+    // starting each micro-repository
+    items.foreach { _._2.start() }
+
+  }
+
+  def stop() {
+
+    logger.debug(s"stopping OntologyAPIFactory Factory)")
+    // stopping each micro-repository
+    items.foreach { _._2.stop() }
+
+  }
+
+}
+
+object OntologyAPIFactory {
 
   // NOTE: this is only a prototype!!
   // TODO: load from file! 
