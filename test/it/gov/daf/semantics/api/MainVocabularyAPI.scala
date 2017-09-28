@@ -4,12 +4,13 @@ import it.almawave.linkeddata.kb.utils.JSONHelper
 import org.slf4j.LoggerFactory
 import play.Logger
 import it.almawave.linkeddata.kb.utils.CSVHelper
+import com.typesafe.config.ConfigFactory
 
 object MainVocabularyAPI extends App {
 
   val logger = Logger.underlying()
 
-  val ontofactory = new VocabularyAPIFactory()
+  val ontofactory = new VocabularyAPIFactory(TEST_CONFIG)
   ontofactory.start()
 
   val ontoapi = ontofactory.items("Istat-Classificazione-08-Territorio")
@@ -33,6 +34,23 @@ object MainVocabularyAPI extends App {
   logger.debug("\n\nKEYS: {}", keys.mkString(" | "))
 
   ontofactory.stop()
+
+  def TEST_CONFIG = ConfigFactory.parseString("""
+  
+  Istat-Classificazione-08-Territorio {
+  
+    vocabulary.name: "Istat-Classificazione-08-Territorio"
+		
+		vocabulary.ontology.name: "CLV-AP_IT"
+		vocabulary.ontology.prefix: "clvapit"
+    
+    vocabulary.file: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio.ttl"
+    # mime: "text/turtle"
+    vocabulary.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
+        
+    vocabulary.query.csv: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
+
+  }""")
 
 }
 

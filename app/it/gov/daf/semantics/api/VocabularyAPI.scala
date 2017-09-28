@@ -171,11 +171,11 @@ object VocabularyAPIFactory {
 		vocabulary.ontology.name: "CLV-AP_IT"
 		vocabulary.ontology.prefix: "clvapit"
     
-    vocabulary.file: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio.ttl"
+    vocabulary.file: "./data/vocabularies/Istat-Classificazione-08-Territorio.ttl"
     # mime: "text/turtle"
     vocabulary.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
         
-    vocabulary.query.csv: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
+    vocabulary.query.csv: "./data/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
 
   }
 

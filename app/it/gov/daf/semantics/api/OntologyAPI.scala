@@ -177,11 +177,11 @@ object OntologyAPIFactory {
     ontology.name: "CLV-AP_IT"
 		ontology.prefix: "clvapit"
     
-    ontology.file: "./dist/data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.ttl"
+    ontology.file: "./data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.ttl"
     
     ontology.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
         
-    ontology.query.hierarchy: "./dist/data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.hierarchy.sparql"
+    ontology.query.hierarchy: "./data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.hierarchy.sparql"
 
   }
 
