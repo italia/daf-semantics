@@ -1,103 +1,102 @@
 package it.almawave.linkeddata.kb.repo
 
+import org.eclipse.rdf4j.repository.sail.SailRepository
+import org.eclipse.rdf4j.sail.memory.MemoryStore
+import org.eclipse.rdf4j.repository.Repository
 import java.io.File
+import scala.util.Try
+import org.eclipse.rdf4j.rio.Rio
 import java.io.FileInputStream
 import java.net.URLDecoder
-import java.nio.file.Paths
-import scala.collection.JavaConversions.asScalaBuffer
-import scala.collection.JavaConversions.asScalaSet
-import org.eclipse.rdf4j.model.ValueFactory
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory
-import org.eclipse.rdf4j.repository.Repository
-import org.eclipse.rdf4j.repository.sail.SailRepository
-import org.eclipse.rdf4j.repository.sparql.SPARQLRepository
-import org.eclipse.rdf4j.rio.RDFFormat
-import org.eclipse.rdf4j.rio.Rio
-import org.eclipse.rdf4j.sail.memory.MemoryStore
-import org.slf4j.LoggerFactory
-import com.typesafe.config.Config
-import com.typesafe.config.ConfigFactory
-import it.almawave.linkeddata.kb.utils.RDF4JAdapters.StringContextAdapter
-import it.almawave.linkeddata.kb.utils.TryHandlers.TryLog
-import it.almawave.linkeddata.kb.repo.managers.RDFFileManager
-import it.almawave.linkeddata.kb.repo.managers.RDFStoreManager
-import it.almawave.linkeddata.kb.repo.managers.PrefixesManager
-import it.almawave.linkeddata.kb.repo.managers.SPARQLManager
-import scala.concurrent.Future
-import it.almawave.linkeddata.kb.utils.TryHandlers.FutureWithLog
-import scala.util.Try
+import org.eclipse.rdf4j.query.QueryLanguage
 
 object RDFRepository {
 
-  val logger = LoggerFactory.getLogger(this.getClass)
-
   def memory() = {
 
-    val mem = new MemoryStore
-    val repo: Repository = new SailRepository(mem)
-    new RDFRepositoryBase(repo)
+    new RDFRepository(new SailRepository(new MemoryStore))
 
   }
 
 }
 
-class RDFRepositoryBase(repo: Repository) {
+class RDFRepository(repo: Repository) {
 
-  //  val logger = Logger.underlying()
-
-  implicit val logger = LoggerFactory.getLogger(this.getClass)
-
-  // CHECK: providing custom implementation for BN
-
-  private var conf = ConfigFactory.empty()
-
-  def configuration(configuration: Config) = {
-    conf = conf.withFallback(configuration)
+  def start() = Try {
+    if (!repo.isInitialized())
+      repo.initialize()
   }
 
-  def configuration(): Config = conf
-
-  // checking if the repository is up.
-  def isAlive(): Try[Boolean] = {
-
-    TryLog {
-
-      if (!repo.isInitialized()) repo.initialize()
-      repo.getConnection.close()
+  def stop() = Try {
+    if (repo.isInitialized())
       repo.shutDown()
-      true
+  }
 
-    }("repository is not reachable!")
+  object store {
+
+    def clear(contexts: String*) = Try {
+
+      val conn = repo.getConnection
+
+      val vf = conn.getValueFactory
+      val ctxs = contexts.map { cx => vf.createIRI(cx) }
+
+      conn.clear(ctxs: _*)
+
+      conn.close()
+
+    }
 
   }
 
-  def start() = {
+  object io {
 
-    TryLog {
+    def addRDFFile(rdfFile: File, mimeFormat: String, contexts: String*) = Try {
 
-      if (!repo.isInitialized())
-        repo.initialize()
+      val conn = repo.getConnection
+      val vf = conn.getValueFactory
+      val ctxs = contexts.map { cx => vf.createIRI(cx) }
 
-    }(s"KB:RDF> cannot start repository!")
+      val format = Rio.getParserFormatForMIMEType(mimeFormat).get
+      val fis = new FileInputStream(rdfFile.getAbsoluteFile)
+
+      contexts.foreach { context =>
+
+        val _context = URLDecoder.decode(context, "UTF-8")
+
+        val doc = Rio.parse(fis, context, format, vf.createIRI(context))
+
+        conn.add(doc, ctxs: _*)
+
+      }
+
+      fis.close()
+
+      conn.close()
+
+    }
 
   }
 
-  def stop() = {
+  object sparql {
 
-    TryLog {
+    import it.almawave.linkeddata.kb.repo.utils.RDF4JAdapters._
 
-      if (repo.isInitialized())
-        repo.shutDown()
+    def query(query: String) = Try {
 
-    }(s"KB:RDF> cannot stop repository!")
+      val conn = repo.getConnection
+
+      val results = conn.prepareTupleQuery(QueryLanguage.SPARQL, query)
+        .evaluate()
+        .toStream
+        .map(_.toMap())
+        .toList
+
+      conn.close()
+
+      results
+    }
 
   }
-
-  val prefixes = new PrefixesManager(repo)
-  val store = new RDFStoreManager(repo)
-
-  val sparql = new SPARQLManager(repo)
-
-  val io = new RDFFileManager(this)
 
 }

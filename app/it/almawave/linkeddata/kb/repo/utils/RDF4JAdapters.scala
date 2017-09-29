@@ -1,4 +1,4 @@
-package it.almawave.linkeddata.kb.utils
+package it.almawave.linkeddata.kb.repo.utils
 
 import org.eclipse.rdf4j.model.Model
 import org.eclipse.rdf4j.rio.RDFFormat
@@ -16,8 +16,6 @@ import org.eclipse.rdf4j.model.impl.SimpleIRI
 import org.eclipse.rdf4j.sail.memory.model.MemBNode
 import org.eclipse.rdf4j.model.ValueFactory
 import org.eclipse.rdf4j.model.IRI
-import java.util.LinkedHashSet
-import java.util.LinkedHashMap
 
 object RDF4JAdapters {
 

@@ -3,7 +3,6 @@ package it.gov.daf.semantics.api
 import it.almawave.linkeddata.kb.utils.JSONHelper
 import org.slf4j.LoggerFactory
 import play.Logger
-import it.almawave.linkeddata.kb.utils.CSVHelper
 import com.typesafe.config.ConfigFactory
 
 object MainVocabularyAPI extends App {

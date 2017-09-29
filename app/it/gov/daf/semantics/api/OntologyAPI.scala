@@ -29,7 +29,7 @@ class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("cl
   def start() {
 
     logger.debug(s"starting OntologyAPI(${onto_name})")
-    repo.start
+    repo.start()
 
     // clear the underlying store
     val contexts = conf.getStringList("ontology.contexts")
