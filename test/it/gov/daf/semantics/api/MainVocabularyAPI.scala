@@ -1,20 +1,28 @@
 package it.gov.daf.semantics.api
 
-import it.almawave.linkeddata.kb.utils.JSONHelper
 import org.slf4j.LoggerFactory
 import play.Logger
 import com.typesafe.config.ConfigFactory
+import it.almawave.linkeddata.kb.repo.utils.ConfigHelper
+import it.almawave.linkeddata.kb.utils.JSONHelper
 
 object MainVocabularyAPI extends App {
 
+  val params = Map("lang" -> "it")
+
   val logger = Logger.underlying()
 
-  val ontofactory = new VocabularyAPIFactory(TEST_CONFIG)
+  val ontofactory = new VocabularyAPIFactory()
+
+  val TEST_CONFIG = ConfigHelper.injectParameter(VocabularyAPIFactory.DEFAULT_CONFIG, "data_dir", "./dist/data")
+
+  ontofactory.config(TEST_CONFIG)
+
   ontofactory.start()
 
-  val ontoapi = ontofactory.items("Istat-Classificazione-08-Territorio")
+  println("ITEMS: " + ontofactory.items)
 
-  val params = Map("lang" -> "it")
+  val ontoapi = ontofactory.items("Istat-Classificazione-08-Territorio")
 
   val json_tree = ontoapi.extract_data(params)
   //  val json = JSONHelper.writeToString(json_tree)
@@ -24,7 +32,7 @@ object MainVocabularyAPI extends App {
     _.toList.map { item =>
       ("key" -> item._1, "value" -> item._2.toString())
     }.toSeq
-  }.toSeq
+  }.toSeq.slice(0, 2)
 
   val json_results = JSONHelper.writeToString(results)
   logger.debug(json_results)
@@ -33,23 +41,6 @@ object MainVocabularyAPI extends App {
   logger.debug("\n\nKEYS: {}", keys.mkString(" | "))
 
   ontofactory.stop()
-
-  def TEST_CONFIG = ConfigFactory.parseString("""
-  
-  Istat-Classificazione-08-Territorio {
-  
-    vocabulary.name: "Istat-Classificazione-08-Territorio"
-		
-		vocabulary.ontology.name: "CLV-AP_IT"
-		vocabulary.ontology.prefix: "clvapit"
-    
-    vocabulary.file: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio.ttl"
-    # mime: "text/turtle"
-    vocabulary.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
-        
-    vocabulary.query.csv: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
-
-  }""")
 
 }
 

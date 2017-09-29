@@ -72,7 +72,10 @@ package semantic_standardization.yaml {
         }
 
       PropertiesHierarchyList200(items)
-        .recoverWith { case ex: Throwable => PropertiesHierarchyList500(Error(s"cannot obtain property hierarchies for ${ontology_name}/${vocabulary_name} ", ex.getMessage)) }
+        .recoverWith {
+          case ex: Throwable =>
+            PropertiesHierarchyList500(Error(s"cannot obtain property hierarchies for ${ontology_name}/${vocabulary_name} ", ex.getMessage))
+        }
             // ----- End of unmanaged code area for action  Semantic_standardizationYaml.propertiesHierarchyList
         }
         val vocabularyDataset = vocabularyDatasetAction { input: (String, String) =>

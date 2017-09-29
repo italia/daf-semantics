@@ -33,12 +33,12 @@ paths:
         - "application/json"
       parameters:
         - name: vocabulary_name
-          in: path
+          in: query
           description: "the name of a vocabulary"
           required: true
           type: string
         - name: ontology_name
-          in: path
+          in: query
           description: "the name of an ontology"
           required: true
           type: string
