@@ -1,0 +1,8 @@
+prefix: "clvapit"
+uri: "http://dati.gov.it/ontologies/clvapit/"
+contexts: [
+	"http://dati.gov.it/ontologies/clvapit/"
+]
+
+# IDEA: queries: [ { name: luoghi_dataset, query: ./luoghi_dataset.sparql, params ? } ]
+

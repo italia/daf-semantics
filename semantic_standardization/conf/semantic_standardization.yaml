@@ -1,0 +1,159 @@
+swagger: "2.0"
+info: 
+  version: "0.1.0"
+  title: "semantic_standardization"
+  description: "semantic standardization api"
+  termsOfService: "http://swagger.io/terms/"
+  contact: 
+    name: "swagger"
+    email: "apiteam@swagger.io"
+    url: https://github.com/seralf/semantic_standardization
+    
+  license: 
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    
+host: localhost:9000
+basePath: /kb/v1
+schemes: 
+  - "http"
+consumes: 
+  - "application/json"
+produces: 
+  - "application/json"
+  
+paths: 
+  
+  "/hierarchies/properties": 
+    get: 
+      summary: "a vocabulary dataset"
+      description: "a vocabulary dataset"
+      operationId: "propertiesHierarchyList"
+      produces: 
+        - "application/json"
+      parameters:
+        - name: vocabulary_name
+          in: query
+          description: "the name of a vocabulary"
+          required: true
+          type: string
+        - name: ontology_name
+          in: query
+          description: "the name of an ontology"
+          required: true
+          type: string
+        - name: lang
+          in: query
+          description: the language used for exporting vocabulary data
+          required: true
+          type: string
+      responses: 
+        200:
+          description: "vocabulary data"
+          schema:
+            #type: string
+            type: array
+            items:
+              $ref: '#/definitions/PropertyHierarchy'
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags: [ POC ] 
+
+
+  "/vocabularies/{name}": 
+    get: 
+      summary: "a vocabulary dataset"
+      description: "a vocabulary dataset"
+      operationId: "vocabularyDataset"
+      produces: 
+        - "application/json"
+      parameters:
+        - name: name
+          in: path
+          description: "the name of a vocabulary"
+          required: true
+          type: string
+        - name: lang
+          in: query
+          description: the language used for exporting vocabulary data
+          required: true
+          type: string
+      responses: 
+        200:
+          description: "vocabulary data"
+          schema:
+            #type: string
+            type: array
+            items:
+              $ref: '#/definitions/VocabularyItem'
+        500:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags: [ POC ]  
+  
+
+definitions: 
+
+  # HACK: we have to find a general purpose method for mapping generic different models here
+  # only for prototype....................
+
+  VocabularyItem:
+    type: array
+    items:
+      $ref: '#/definitions/VocabularyItemValue'
+
+  VocabularyItemValue:
+    type: object
+    required: 
+      - key
+      - value
+    properties: 
+      key:
+        type: "string"
+      value:
+        type: "string"
+
+
+  PropertyHierarchy:
+    type: object
+    required: 
+      - vocabulary
+      - path
+      - hierarchy_flat
+      - hierarchy
+    properties: 
+      vocabulary:
+        type: "string"
+      path:
+        type: "string"
+      hierarchy_flat:
+        type: "string"
+      hierarchy:
+        type: array
+        items:
+          $ref: '#/definitions/PropertyHierarchyLevel' 
+
+  PropertyHierarchyLevel:
+    type: object
+    required: 
+      - class
+      - level
+    properties: 
+      class:
+        type: "string"
+      level:
+        type: "integer"
+
+  Error:
+    type: "object"
+    required:
+      - message
+      - description
+    properties:
+      message:
+        type: string
+      description:
+        type: string
