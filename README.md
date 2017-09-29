@@ -2,6 +2,7 @@
 semantic_standardization
 ==========================
 
+TODO
 
 ## example: retrieving a vocabulary dataset
 
@@ -116,4 +117,4 @@ TODO:
 
 + more documentation / comments
 + more proper tests
-+ remove redundant classes for RDFREpository, importing external kb-core dependency, instead
++ remove redundant classes for RDFRepository, importing external kb-core dependency, instead

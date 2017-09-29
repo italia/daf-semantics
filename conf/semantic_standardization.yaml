@@ -132,11 +132,9 @@ definitions:
       hierarchy_flat:
         type: "string"
       hierarchy:
-        type: "string"
-        # schema:
-        #  type: "array"
-        #  items:
-        #    $ref: '#/definitions/PropertyHierarchyLevel' 
+        type: array
+        items:
+          $ref: '#/definitions/PropertyHierarchyLevel' 
 
   PropertyHierarchyLevel:
     type: object
