@@ -11,7 +11,7 @@ import scala.io.Source
 import play.Logger
 import it.almawave.linkeddata.kb.utils.JSONHelper
 
-class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("clvapit")) {
+class OntologyAPI(conf: Config = ConfigFactory.empty()) {
 
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
@@ -29,7 +29,7 @@ class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("cl
   def start() {
 
     logger.debug(s"starting OntologyAPI(${onto_name})")
-    repo.start
+    repo.start()
 
     // clear the underlying store
     val contexts = conf.getStringList("ontology.contexts")
@@ -132,27 +132,38 @@ class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("cl
 
 }
 
-class OntologyAPIFactory(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG) {
+class OntologyAPIFactory(config: Config = ConfigFactory.empty()) {
 
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
 
   val logger = Logger.underlying()
 
-  // getting the list of configured ontologies
-  val names = conf.root().keySet().toList
+  private var conf = config
 
   // NOTE: for the prototype there is only an instance!
   var items: Map[String, OntologyAPI] = Map()
+
+  def config(config: Config) {
+
+    // overriding / merging configurations
+    conf = config.withFallback(conf).resolve()
+
+  }
 
   def start() {
 
     logger.debug(s"starting OntologyAPIFactory Factory)")
 
     // initializing each micro-repository
+    // getting the list of configured ontologies
+    val names = conf.root().keySet().toList
     items = names.map { name => (name, new OntologyAPI(conf.getConfig(name))) }.toMap
     // starting each micro-repository
     items.foreach { _._2.start() }
+
+    // overriding / merging configurations
+    conf = config.withFallback(conf)
 
   }
 
@@ -172,16 +183,18 @@ object OntologyAPIFactory {
   // TODO: load from file! 
   val DEFAULT_CONFIG = ConfigFactory.parseString("""
   
+  "data_dir": "./data"
+  
   clvapit {
   
     ontology.name: "CLV-AP_IT"
 		ontology.prefix: "clvapit"
     
-    ontology.file: "./data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.ttl"
+    ontology.file: ${data_dir}"/ontologies/agid/CLV-AP_IT/CLV-AP_IT.ttl"
     
     ontology.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
         
-    ontology.query.hierarchy: "./data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.hierarchy.sparql"
+    ontology.query.hierarchy: ${data_dir}"/ontologies/agid/CLV-AP_IT/CLV-AP_IT.hierarchy.sparql"
 
   }
 

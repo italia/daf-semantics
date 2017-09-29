@@ -2,12 +2,19 @@ package it.gov.daf.semantics.api
 
 import it.almawave.linkeddata.kb.utils.JSONHelper
 import com.typesafe.config.ConfigFactory
+import com.typesafe.config.ConfigValueFactory
+import com.typesafe.config.Config
+import it.almawave.linkeddata.kb.repo.utils.ConfigHelper
 
 object MainOntologyAPI extends App {
 
   val params = Map("lang" -> "it")
 
-  val factory = new OntologyAPIFactory(TEST_CONFIG)
+  val factory = new OntologyAPIFactory()
+
+  val TEST_CONFIG = ConfigHelper.injectParameter(OntologyAPIFactory.DEFAULT_CONFIG, "data_dir", "./dist/data")
+  factory.config(TEST_CONFIG)
+
   factory.start()
 
   val oapi = factory.items("clvapit")
@@ -24,22 +31,5 @@ object MainOntologyAPI extends App {
   println(json)
 
   factory.stop()
-
-  def TEST_CONFIG = ConfigFactory.parseString("""
-  
-  clvapit {
-  
-    ontology.name: "CLV-AP_IT"
-		ontology.prefix: "clvapit"
-    
-    ontology.file: "./dist/data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.ttl"
-    
-    ontology.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
-        
-    ontology.query.hierarchy: "./dist/data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.hierarchy.sparql"
-
-  }
-
-  """)
 
 }
