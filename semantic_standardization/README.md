@@ -2,7 +2,16 @@
 semantic_standardization
 ==========================
 
-TODO
+This project is currently a POC exploring the standardization of terms using the vocabulary `Istat-Classificazione-08-Territorio` and the ontology `CLV-AP_IT`.
+Currently the component are designed to use an in-memory storage of only those ontology and vocabulary, but the component can be extended to act in a similar way for different use cases and ontology/vocabulary couples. 
+
+Two endpoints are provided:
+
+1. the first one retrieves a flat representation of a vocabulary (conceptually similar to a CSV, but in JSON), using an ad-hoc SPARQL query.
+2. the second on expose a list of properties actually used in a vocabulary from an ontology, returning the "local" hierarchy for each property. 
+
+The idea is that each endpoint (and its configured queries) acts for a very specific domain, so the next versions could introduce new vocabularies and ontologies, but needs to create ad-hoc SPARQL queries for retrieving the informations needed.
+
 
 ## example: retrieving a vocabulary dataset
 
