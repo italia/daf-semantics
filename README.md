@@ -16,24 +16,34 @@ The triplestore used is in-memory, rules actually are sparql queries executed in
 + swagger definition
 [http://localhost:9000/spec/semantic_validator.yaml](http://localhost:9000/spec/semantic_validator.yaml)
 
+The validator is currently based on a set of queries (about 150 for DCAT-AP_IT) returning a record of information for the rules broken by the dataset, the most important infos are:
+  
+  - Class name: the class involved in the rule (ex: Organization for DCAT-AP_IT)
+  - Rule ID: the broken rule id (ex: 207 for DCAT-AP_IT) 
+  - Error description: the problem description (ex: "vcard:hasURL should be a resource" for DCAT-AP_IT)
 
+there are two endpoints:
+
+- /validate   : in order to validate a document
+- /validators : in oder to ghe the list of available validators 
+  
 ## instructions
 
 1. compile / package
 
-	```bash
-	$ sbt clean package
-	```
+    ```bash
+    $ sbt clean package
+    ```
 
 2. run
 
-	```bash
-	$ sbt run 
-	```
+    ```bash
+    $ sbt run 
+    ```
 ### Validation rules
 
-The validator is configured with three vocabularies:
-	
+The validator is now configured with three vocabularies:
+    
 - *DCAT-AP_IT* : rules set derived from the original [SEMICeu/dcat-ap_validator](https://github.com/SEMICeu/dcat-ap_validator) and modified in order to be compliant with the AP_IT profile constraints
 - *DCAT-AP* : the original rules set [SEMICeu/dcat-ap_validator](https://github.com/SEMICeu/dcat-ap_validator) 
 - *CPSV-AP* : the original rules set [catalogue-of-services-isa/cpsv-ap_validator](https://github.com/catalogue-of-services-isa/cpsv-ap_validator) 
@@ -52,15 +62,15 @@ Semantic_Validator
 │   validator.conf
 │   ...
 └───dist
-	└─────data
-		  └─────ontologies
+    └─────data
+          └─────ontologies
                 └─────agid
                         └─────DCAT-AP_IT
-                            │	DCAT-AP_IT.owl
-                            │	Licenze.ttl
-                            │	vcard-ns.ttl
-                            │   ...
-	                        └────validators
+                            │ DCAT-AP_IT.owl
+                            │ Licenze.ttl
+                            │ vcard-ns.ttl
+                            │ ...
+                            └────validators
                                  └────sparql
                                       rule-0.rq
                                       rule-1.rq
