@@ -48,7 +48,8 @@ Currently an ontology can be deleted using the endpoint at `/kb/v1/ontologies/re
 This can be done for example with the following CURL command:
 
 ```
-curl -X DELETE 'http://localhost:8777/kb/v1/ontologies/remove?context=http://my_context' -H 'Accept: application/json' 
+curl -X DELETE 'http://localhost:8777/kb/v1/ontologies/remove?context=http://my_context' \ 
+	-H 'Accept: application/json' 
 ```
 
 We could think about removing ontologies by prefix, too.
@@ -60,7 +61,8 @@ A list of all the available contexts can be obtained by the endpoint `/kb/v1/con
 
 For example using the following CURL command:
 ```
-curl -X GET 'http://localhost:8777/kb/v1/contexts' -H  "accept: application/json" -H  "content-type: application/json"
+curl -X GET 'http://localhost:8777/kb/v1/contexts' \ 
+	-H  "accept: application/json" -H  "content-type: application/json"
 ```
 
 ### exploring prefixes
@@ -69,14 +71,16 @@ A list of all the available prefix/namespace pair can be obtained by the endpoin
 
 For example using the following CURL command:
 ```
-curl -X GET 'http://localhost:8777/kb/v1/prefixes' -H  "accept: application/json" -H  "content-type: application/json"
+curl -X GET 'http://localhost:8777/kb/v1/prefixes' \ 
+	-H  "accept: application/json" -H  "content-type: application/json"
 ```
 
 The namespace related to a choosen prefix can be obtained by the endpoint `/kb/v1/prefixes/lookup` .
 
 For example using the following CURL command:
 ```
-curl -X GET http://localhost:8777/kb/v1/prefixes/lookup?prefix=my_prefix -H  "accept: application/json" -H  "content-type: application/json"
+curl -X GET http://localhost:8777/kb/v1/prefixes/lookup?prefix=my_prefix \ 
+	-H  "accept: application/json" -H  "content-type: application/json"
 ```
 
 The namespace corresponds to a context, at the moment.
@@ -86,7 +90,8 @@ The namespace related to a choosen prefix can be obtained by the endpoint `/kb/v
 
 For example using the following CURL command:
 ```
-curl -X GET http://localhost:8777/kb/v1/prefixes/reverse?namespace=http://my_namespace/ -H  "accept: application/json" -H  "content-type: application/json"
+curl -X GET http://localhost:8777/kb/v1/prefixes/reverse?namespace=http://my_namespace/ \ 
+	-H  "accept: application/json" -H  "content-type: application/json"
 ```
 
 The namespace corresponds to a context, at the moment.
@@ -97,20 +102,17 @@ The total amount of triples can be obtained by the endpoint `/kb/v1/triples` .
 
 For example using the following CURL command:
 ```
-curl -X GET http://localhost:8777/kb/v1/triples -H  "accept: application/json" -H  "content-type: application/json"
+curl -X GET http://localhost:8777/kb/v1/triples -H  "accept: application/json" \ 
+	-H  "content-type: application/json"
 ```
 
 The total amount of triples for the prefix `{prefix}` can be obtained by the endpoint `/kb/v1/triples/{prefix}` .
 
 For example using the following CURL command:
 ```
-curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" -H  "content-type: application/json"
+curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" \ 
+	-H  "content-type: application/json"
 ```
-
-
-
-
-
 
 
 
