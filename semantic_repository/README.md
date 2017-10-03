@@ -2,15 +2,12 @@
 semantic_repository
 ====================
 
-The Semantic Repository is a component designed to provide basic functionalities for managing ontologies/vocabularies (not data, at the moment) on an underlying triplestore, using a standard abstract interface, based on the well-know [RDF4J](http://rdf4j.org/) abstraction.
-This first prototype mimics some of the core functionalities of a catalog service of queryable ontologies, which can be implemented over an external triplestore. The internal library has more general and low-level functionalities, and will be exported as a re-usable dependendy soon, on an indipendent repository: the idea behind that is that while these endpoints should consistently change with the evolution of the architecture, the library will become a small framework designed for simplyfing the interaction of one (or more) underlying triplestore.
+The Semantic Repository is a component designed to provide basic functionalities for managing ontologies/vocabularies (there are no endpoints for data, yet) on an underlying triplestore, using a standard abstract interface, based on the well-know [RDF4J](http://rdf4j.org/) abstraction.
 
-At the moment the default triplestore is in-memory, but Virtuoso was tested too.
-**NOTE**: The support for Blazegraph is planned but not already tested, waiting for the [full support](https://github.com/blazegraph/database/issues/40).
+This first prototype mimics some of the core functionalities of a catalog service of queryable ontologies, which can be implemented over an external triplestore, while the internal library has more general and low-level functionalities, and will be exported as a re-usable dependendy soon, on an indipendent repository: the idea behind that is that while these endpoints should consistently change with the evolution of the architecture, the library will become a small framework designed for simplyfing the interaction of one (or more) underlying triplestore.
 
-
-
-NOTE: the default triplestore used is in-memory.
+The default triplestore is currently in-memory, but [Virtuoso](http://vos.openlinksw.com/owiki/wiki/VOS) was tested too.
+**NOTE**: The support for [Blazegraph](https://www.blazegraph.com) is planned but not already tested, waiting for the [full support](https://github.com/blazegraph/database/issues/40).
 
 
 ![semantic_repository component inside the semantic_manager architecture](./docs/semantic_repository-v0.1.0.png)
