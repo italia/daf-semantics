@@ -45,7 +45,7 @@ The validators have to be configured in the *validator.conf* file under the *con
 Semantic_Validator
 │   README.md
 │   build.sbt
-|   ...    
+│   ...    
 │
 └───conf
 │   application.conf
@@ -55,10 +55,10 @@ Semantic_Validator
 	└─────data
 		  └─────ontologies
                 └─────agid
-			    	  └─────DCAT-AP_IT
-							│	DCAT-AP_IT.owl
-							│	Licenze.ttl
-							│	vcard-ns.ttl
+                        └─────DCAT-AP_IT
+                            │	DCAT-AP_IT.owl
+                            │	Licenze.ttl
+                            │	vcard-ns.ttl
                             │   ...
 	                        └────validators
                                  └────sparql
@@ -74,7 +74,7 @@ OWL and ttl files in the specific ontology directory (ex: dist/data/ontologies/a
 ## TODO
 
 - [ ] add an implementation for shacl validations
-- [ ] ad a CPSV-AP_IT validator
+- [ ] add a CPSV-AP_IT rules set for the validator
 - [ ] ...
 
 * * *
