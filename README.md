@@ -2,8 +2,16 @@
 semantic_repository
 ====================
 
-The Semantic Repository is a component (based on RDF4J) designed to provide basic functionalities for managing ontologies/vocabularies (not data, at the moment) on an underlying triplestore.
+The Semantic Repository is a component designed to provide basic functionalities for managing ontologies/vocabularies (not data, at the moment) on an underlying triplestore, using a standard abstract interface, based on the well-know [RDF4J](http://rdf4j.org/) abstraction.
+This first prototype mimics some of the core functionalities of a catalog service of queryable ontologies, which can be implemented over an external triplestore. The internal library has more general and low-level functionalities, and will be exported as a re-usable dependendy soon, on an indipendent repository: the idea behind that is that while these endpoints should consistently change with the evolution of the architecture, the library will become a small framework designed for simplyfing the interaction of one (or more) underlying triplestore.
+
+At the moment the default triplestore is in-memory, but Virtuoso was tested too.
+**NOTE**: The support for Blazegraph is planned but not already tested, waiting for the [full support](https://github.com/blazegraph/database/issues/40).
+
+
+
 NOTE: the default triplestore used is in-memory.
+
 
 ![semantic_repository component inside the semantic_manager architecture](./docs/semantic_repository-v0.1.0.png)
 
@@ -11,15 +19,104 @@ NOTE: the default triplestore used is in-memory.
 ## HTTP API
 
 + entrypoint for the play application (swagger-ui)
-[http://localhost:8888](http://localhost:8888)
+[http://localhost:8777](http://localhost:8777)
 
 + swagger definition
-[http://localhost:8888/spec/semantic_repository.yaml](http://localhost:8888/spec/semantic_repository.yaml)
+[http://localhost:8777/spec/semantic_repository.yaml](http://localhost:8777/spec/semantic_repository.yaml)
+
+
+
+### adding an ontology
+
+An ontology can be added using the endpoint provided at `/kb/v1/ontologies`, for example using a CURL command similar to the following one:
+
+```
+curl -X POST 'http://localhost:8777/kb/v1/ontologies' \ 
+	-H 'Content-Type: multipart/form-data' -H 'Accept: application/json' \ 
+	-F 'fileName=my_rdf_file.rdf' -F 'rdfDocument=@/some/path/my_rdf_file.rdf' \ 
+	-F 'prefix=my_prefix' -F 'context=http://my_context/'
+```
+
+By convention at the moment each ontology will be published under an assigned context (which may coincide with its base URI), and it must have a prefix too. The idea behind this choice is to have only the last version of an ontology loaded, using a conventional prefix/context pair, and this pair must be unique.
+This assumption only affects the external HTTP API (not actually the underlying engine) and may change in the future.
+Vocabularies are handled as ontology, at the moment: however it is not useful to provide a prefix for a vocabulary, and we could imagine adding specific endpoints with different parameters and a similar behaviour under `/kb/v1/vocabularies/` in the next future.
+
+
+### deleting an ontology, by its context
+
+Currently an ontology can be deleted using the endpoint at `/kb/v1/ontologies/remove` providing the conventional context in which it was published.
+This can be done for example with the following CURL command:
+
+```
+curl -X DELETE 'http://localhost:8777/kb/v1/ontologies/remove?context=http://my_context' -H 'Accept: application/json' 
+```
+
+We could think about removing ontologies by prefix, too.
+
+
+### exploring contexts
+
+A list of all the available contexts can be obtained by the endpoint `/kb/v1/contexts` .
+
+For example using the following CURL command:
+```
+curl -X GET 'http://localhost:8777/kb/v1/contexts' -H  "accept: application/json" -H  "content-type: application/json"
+```
+
+### exploring prefixes
+
+A list of all the available prefix/namespace pair can be obtained by the endpoint `/kb/v1/prefixes` .
+
+For example using the following CURL command:
+```
+curl -X GET 'http://localhost:8777/kb/v1/prefixes' -H  "accept: application/json" -H  "content-type: application/json"
+```
+
+The namespace related to a choosen prefix can be obtained by the endpoint `/kb/v1/prefixes/lookup` .
+
+For example using the following CURL command:
+```
+curl -X GET http://localhost:8777/kb/v1/prefixes/lookup?prefix=my_prefix -H  "accept: application/json" -H  "content-type: application/json"
+```
+
+The namespace corresponds to a context, at the moment.
+
+
+The namespace related to a choosen prefix can be obtained by the endpoint `/kb/v1/prefixes/reverse` .
+
+For example using the following CURL command:
+```
+curl -X GET http://localhost:8777/kb/v1/prefixes/reverse?namespace=http://my_namespace/ -H  "accept: application/json" -H  "content-type: application/json"
+```
+
+The namespace corresponds to a context, at the moment.
+
+### counting triples
+
+The total amount of triples can be obtained by the endpoint `/kb/v1/triples` .
+
+For example using the following CURL command:
+```
+curl -X GET http://localhost:8777/kb/v1/triples -H  "accept: application/json" -H  "content-type: application/json"
+```
+
+The total amount of triples for the prefix `{prefix}` can be obtained by the endpoint `/kb/v1/triples/{prefix}` .
+
+For example using the following CURL command:
+```
+curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" -H  "content-type: application/json"
+```
+
+
+
+
+
+
 
 
 ## instructions
 
-1. local publish of dependencies
+1. local publishing of dependencies
 
 	1.1 virtuoso JDBC / RDF4J jar
 
@@ -75,7 +172,7 @@ NOTE: the default triplestore used is in-memory.
 	The generated image should be used for starting a new container, exposing the ports with a command similar to the following one:
 	
 	```
-	$ sbt docker run -d -p 8888:9000 {docker-image-id}
+	$ sbt docker run -d -p 8777:9000 {docker-image-id}
 	```
 	
 
@@ -132,9 +229,8 @@ def clear_all() {
 
 ## TODO
 
-- [ ] move from usage of TryLog to FutureWithLog
-- [ ] switch to new name conventions: `semantic_*`, merge into main daf.
-	NOTE: consider using `git subtree` for the local fork
+- [x] switch to new name conventions: `semantic_*`, merge into main daf.
+- [x] NOTE: consider using `git subtree` for the local fork
 - [ ] publish `kb-core` (changing name conventions) on github / bitbucket or as sub-module
 - [ ] add `kb-core` dependency on sbt - move core to external library
 - [x] add `RDF4J` dependencies on sbt
@@ -143,14 +239,12 @@ def clear_all() {
 - [x] refactoring JUnit tests for engine part: memory
 - [x] refactoring JUnit tests for engine part: virtuoso wrapper
 - [ ] more test coverage for simple example HTTP requests (specs2)
-- [x] ~~datapackage or similar? at the moment~~ a `.metadata` file is used for contexts
-- [x] ~~creating a simple construct for dealing with transactions~~. Done: see `TryHandlers.RepositoryAction[X]`
-- [ ] review repository wrapper code base
-- [ ] review ontonethub wrapper code base
-- [ ] review local filestorage code base
+- [ ] review repository wrapper code base. SEE: semantic_manager
+- [ ] review ontonethub wrapper code base. SEE: semantic_manager
+- [ ] ~~review local filestorage code base~~
 - [ ] review / refactor the response from services, using more meaningful data structures
 
 * * *
 
-SEE: [teamdigitale/daf](https://github.com/teamdigitale/daf) 
+SEE: [teamdigitale/daf](https://github.com/italia/daf) 
 
