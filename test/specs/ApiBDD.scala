@@ -17,9 +17,9 @@ class IntegrationSpec extends Specification {
   "lod-manager" should {
 
     "expose swagger specification" in new WithBrowser {
-      browser.goTo(s"http://${host}:${port}/spec/lod_manager.yaml")
+      browser.goTo(s"http://${host}:${port}/spec/semantic_repository.yaml")
       browser.pageSource must haveSize(greaterThan(0))
-      browser.pageSource must contain("LOD Manager")
+      browser.pageSource must contain("semantic repository")
     }
 
     "list all existing contexts" in new WithBrowser {

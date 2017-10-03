@@ -13,8 +13,10 @@ version in ThisBuild := "0.1.0"
 
 val playVersion = "2.5.14"
 
+val port = 8777
+
 // default port
-PlayKeys.playDefaultPort := 8888
+PlayKeys.playDefaultPort := port
 
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, ApiFirstCore, ApiFirstPlayScalaCodeGenerator, ApiFirstSwaggerParser)
@@ -34,33 +36,18 @@ libraryDependencies ++= Seq(
 	"org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % Test,
 	"org.seleniumhq.selenium" % "selenium-java" % "2.48.2",
 	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.1",
-	//"com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.9.1",
-
-"org.eclipse.rdf4j" % "rdf4j-runtime" % "2.2.2",
-"org.eclipse.rdf4j" %  "rdf4j-repository-sail" % "2.2.2",
-"org.eclipse.rdf4j" % "rdf4j-repository-api" % "2.2.2",
-"org.eclipse.rdf4j" % "rdf4j-sail-memory" % "2.2.2",
-"org.eclipse.rdf4j" % "rdf4j-sail-nativerdf" % "2.2.2",
-"com.github.jsonld-java" % "jsonld-java" % "0.9.0",
-
-  
-"org.scalatest" %% "scalatest" % "2.2.2" % Test,
-"junit" % "junit" % "4.11" % Test,
-"com.novocode" % "junit-interface" % "0.11" % Test,
-
-// "org.eclipse.rdf4j" % "rdf4j-sail-solr" % "2.2.2", 
-// "org.apache.solr" % "solr-solrj" % "5.1.0", 
-// "org.apache.solr" % "solr-core" % "5.1.0", 
-
-	// TODO: jdk.tools
-	//CHECK: withSources() withJavadoc() cross CrossVersion.full 
-  "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
+	"org.eclipse.rdf4j" % "rdf4j-runtime" % "2.2.2",
+	"org.eclipse.rdf4j" %  "rdf4j-repository-sail" % "2.2.2",
+	"org.eclipse.rdf4j" % "rdf4j-repository-api" % "2.2.2",
+	"org.eclipse.rdf4j" % "rdf4j-sail-memory" % "2.2.2",
+	"org.eclipse.rdf4j" % "rdf4j-sail-nativerdf" % "2.2.2",
+	"com.github.jsonld-java" % "jsonld-java" % "0.9.0",
+	"org.scalatest" %% "scalatest" % "2.2.2" % Test,
+	"junit" % "junit" % "4.11" % Test,
+	"com.novocode" % "junit-interface" % "0.11" % Test,
+	"ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
  
 )
-
-//dependencyOverrides ++= Set(
-//	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.1"
-//)
 
 
 resolvers ++= Seq(
@@ -73,8 +60,6 @@ resolvers ++= Seq(
 )
 
 // resolver for local maven repository
-// CHECK: maven local artifacts does not conforms to expected scala version specific name
-// resolvers += "Local Maven Repository" at s"file://${Path.userHome.absolutePath}/.m2/repository"
 resolvers += Resolver.mavenLocal // Also use $HOME/.m2/repository
 
 
@@ -108,7 +93,7 @@ dockerCommands := dockerCommands.value.flatMap {
 }
 
 dockerCommands += ExecCmd("ENTRYPOINT", s"bin/${name.value}", "-Dconfig.file=conf/production.conf")
-dockerExposedPorts := Seq(8888)
+dockerExposedPorts := Seq(port)
 dockerRepository := Option("10.98.74.120:5000")
 
 

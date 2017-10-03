@@ -51,7 +51,8 @@ class SemanticRepositorySpecs extends Specification {
             Duration.Inf)
 
           response.status must be equalTo Status.OK
-          response.json.as[Seq[JsObject]].size must be equals 0
+          //          response.json.as[Seq[JsObject]].size must be equals 0
+          response.json.as[Seq[JsObject]].size must be greaterThan 0
 
         }
       }

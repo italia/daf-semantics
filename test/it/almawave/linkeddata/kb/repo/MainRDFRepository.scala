@@ -12,7 +12,7 @@ object MainRDFRepository extends App {
   val repo = RDFRepository.memory()
   repo.start()
 
-//  repo.io.importFrom("dist/data/ontologies")
+  //  repo.io.importFrom("dist/data/ontologies")
 
   val rdf_file = new File("dist/data/ontologies/foaf/foaf.rdf")
   val prefix = "testing_foaf_00"

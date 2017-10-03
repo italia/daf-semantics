@@ -292,6 +292,16 @@ import java.io.File
 import play.api.mvc.{Action,Controller}
 import play.api.data.validation.Constraint
 import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
 import scala.concurrent.Future
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import it.almawave.linkeddata.kb.utils.JSONHelper
@@ -307,7 +317,7 @@ import java.net.URI
 
 package semantic_repository.yaml {
     // ----- Start of unmanaged code area for package Semantic_repositoryYaml
-    
+        
     // ----- End of unmanaged code area for package Semantic_repositoryYaml
     class Semantic_repositoryYaml @Inject() (
         // ----- Start of unmanaged code area for injections Semantic_repositoryYaml
@@ -388,57 +398,6 @@ package semantic_repository.yaml {
         TriplesCount("_ALL_", triples.get)
       })
             // ----- End of unmanaged code area for action  Semantic_repositoryYaml.countTriples
-        }
-        val vocabularyDataset = vocabularyDatasetAction { input: (String, String) =>
-            val (name, lang) = input
-            // ----- Start of unmanaged code area for action  Semantic_repositoryYaml.vocabularyDataset
-            val vocapi = kb.vocabularyAPI.items(name)
-      val tree = vocapi.extract_data(Map("lang" -> "it"))
-
-      val items = tree
-        .map {
-          _.toList.map { item =>
-            VocabularyItemValue(item._1, item._2.toString())
-          }.toSeq
-        }.toSeq
-
-      VocabularyDataset200(items)
-        .recoverWith {
-          case ex: Throwable =>
-            VocabularyDataset500(Error(s"problems obtaining a flat representation for Vocabulary ${name}", ex.getMessage))
-        }
-
-      //      NotImplementedYet
-            // ----- End of unmanaged code area for action  Semantic_repositoryYaml.vocabularyDataset
-        }
-        val propertiesHierarchyList = propertiesHierarchyListAction { input: (String, String) =>
-            val (name, lang) = input
-            // ----- Start of unmanaged code area for action  Semantic_repositoryYaml.propertiesHierarchyList
-            val parameters = Map("lang" -> lang)
-      val voc_name = "Istat-Classificazione-08-Territorio" // NOTE: there is only one configured vocabulary in the prototype!
-      val vocapi = kb.vocabularyAPI.items(voc_name)
-
-      val ontoapi = kb.ontologyAPI.items(name)
-
-      val fields = vocapi.extract_keys(parameters)
-      val items = ontoapi.extract_hierarchy_properties(parameters, fields)
-        .map { item =>
-          val vocabulary = item.get("vocabulary").get.asInstanceOf[String]
-          val path = item.get("path").get.asInstanceOf[String]
-          val hierarchy_flat = item.get("hierarchy_flat").get.asInstanceOf[String]
-          val hierarchy = item.get("hierarchy").get.asInstanceOf[List[Map[String, Object]]]
-            .map { el =>
-              val klass = el.get("class").get.asInstanceOf[String]
-              val level = BigInt.int2bigInt(el.get("level").get.asInstanceOf[Integer])
-              //              val level = el.get("level").get.asInstanceOf[Integer]
-              PropertyHierarchyLevel(klass, level)
-            }
-          PropertyHierarchy(vocabulary, path, hierarchy_flat, "hierarchy")
-        }
-
-      PropertiesHierarchyList200(items)
-        .recoverWith { case ex: Throwable => PropertiesHierarchyList500(Error(s"cannot obtain property hierarchies for ${name}", ex.getMessage)) }
-            // ----- End of unmanaged code area for action  Semantic_repositoryYaml.propertiesHierarchyList
         }
         val addRDFDoc = addRDFDocAction { input: (String, File, String, String) =>
             val (fileName, rdfDocument, prefix, context) = input
