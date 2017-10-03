@@ -1,0 +1,31 @@
+# IN: 
+# - context vocabolario  ex: clvapit
+# - lingua  ex: it
+
+PREFIX clvapit: <http://dati.gov.it/onto/clvapit#>
+
+SELECT DISTINCT ?clvapit_City_name ?clvapit_Province_name ?clvapit_Region_name ?clvapit_Country_name  
+
+#FROM <http://dati.gov.it/vocabs#>
+#FROM <http://dati.gov.it/onto/clvapit#>
+
+# dataset de-normalization for ${vocabulary.name} for ${vocabulary.ontology}
+WHERE {
+
+	?s a ?klass . 
+
+	?s clvapit:name ?clvapit_City_name .
+
+	OPTIONAL { ?s clvapit:situatedWithin / clvapit:name ?clvapit_Province_name . }
+
+	OPTIONAL { ?s clvapit:situatedWithin / clvapit:situatedWithin / clvapit:name ?clvapit_Region_name . }
+
+	OPTIONAL { ?s clvapit:situatedWithin / clvapit:situatedWithin / clvapit:situatedWithin / clvapit:name ?clvapit_Country_name . }
+
+	FILTER(LANG(?clvapit_City_name) = '${lang}')
+	FILTER(LANG(?clvapit_Province_name) = '${lang}')
+	FILTER(LANG(?clvapit_Region_name) = '${lang}')
+	FILTER(LANG(?clvapit_Country_name) = '${lang}')
+	FILTER(?klass IN (clvapit:City))
+   
+}
