@@ -24,8 +24,21 @@ The validator is currently based on a set of queries (about 150 for DCAT-AP_IT) 
 
 there are two endpoints:
 
-- /validate   : in order to validate a document
-- /validators : in oder to ghe the list of available validators 
+- /validator/validate   : in order to validate a document
+
+```bash
+curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' \
+            -F name=catalog.rdf \
+			-F validator=1 \
+			-F rdfsinf=true \ 
+			'https://localhost:9000/validator/validate'
+```
+
+- /validator/validators : in oder to ghe the list of available validators 
+  
+```bash
+curl -X GET --header 'Accept: application/json' 'https://localhost:9000/validator/validators'
+```  
   
 ## instructions
 
