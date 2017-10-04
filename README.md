@@ -9,20 +9,20 @@ The [semantic_manager]() component exposes the central access point for a subset
 
 The planned components are:
 
-+ ***semantic_frontend***: 
++ [***semantic_frontend***](https://github.com/seralf/daf-semantics/tree/master/semantic_frontend): 
 the front end for the OntoPA catalog [TODO]
-+ ***semantic_manager***: 
++ [***semantic_manager***](https://github.com/seralf/daf-semantics/tree/master/semantic_manager): 
 the main interface between DAF and the daf-semantics microservices [WIP]
-+ ***ontonethub***: 
++ [***ontonethub***](https://github.com/seralf/teamdigitale/ontonethub): 
 a component providing indexing/search capabilities for the catalog [WIP]
-+ ***semantic_repository***: 
++ [***semantic_repository***](https://github.com/seralf/daf-semantics/tree/master/semantic_repository): 
 an abstraction over different triplestores [WIP]
-+ ***semantic_validator***: 
++ [***semantic_validator***](https://github.com/seralf/daf-semantics/tree/master/semantic_validator): 
 a component for validating an ontology over DCAT-AP_IT standard [WIP]
-+ ***semantic_standardization***: 
++ [***semantic_standardization***](https://github.com/seralf/daf-semantics/tree/master/semantic_standardization): 
 a component exposing vocabulary data and hierarchies, useful for simple standardization [POC]
-+ ***semantic_spreadsheet***: 
++ [***semantic_spreadsheet***](https://github.com/seralf/daf-semantics/tree/master/semantic_spreadsheet): 
 a repository collecting recipes for creating RDF data from spreadsheets, using google refine [WIP]
-+ ***semantic_mapping***: 
++ [***semantic_mapping***](#): 
 a component for mapping of incoming data (typically in CSV) to RDF, using W3C standards [TODO]
 
