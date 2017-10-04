@@ -18,6 +18,40 @@ semantic_manager
 
 * * *
 
+## HTTP API
+
+### getting a list of ontologies metadata
+
+Using the endpoint `/kb/v1/ontologies` it's possible to retrieve some metadata about each ontologies, for example using the following CURL command:
+
+```
+curl -X GET 'http://localhost:9000/kb/v1/ontologies' \ 
+	-H  "accept: application/json" -H  "content-type: application/json"
+```
+
+For each ontology the service will return a summarization of useful metadata, such as a brief description, the reference to the original source uploded to the catalog, as well as some general information about its usage (number of triples, number of concepts, and so on).
+
+
+### finds a list of standard properties, by term
+
+The endpoint `/kb/v1/ontologies/properties/find` provides a list of properties from the core vocabularies and ontologies in the catalog, depending on user input terms and choosen language, as shown in the following example CURL command:
+
+```
+curl -X GET 'http://localhost:9000/kb/v1/ontologies/properties/find' \
+	-d 'query=nome' \ 
+	-d 'lang=it' \ 
+	-H  "accept: application/json" -H  "content-type: application/json"
+
+```
+
+This will help during the ingestion phase, when a user need to decide how to mark a dataset field in the form provided by DAF with a standardized ontology/concept/property reference.
+
+
+
+
+
+* * *
+
 ## instructions
 
 0. adjust configuration
