@@ -1,0 +1,39 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX l0: <http://dati.gov.it/onto/l0/> 
+
+PREFIX clvapit: <http://dati.gov.it/onto/clvapit#>
+PREFIX poiapit: <http://dati.gov.it/onto/poiapit#> 
+
+SELECT DiSTINCT ?id ?label ?rank ?vocabulary ?ontology ?concept ?uri 
+
+FROM <http://dati.gov.it/onto/poiapit#> 
+
+WHERE {
+  	
+  	?instance_uri a ?concept .
+  	?instance_uri a poiapit:PointOfInterestCategory .
+  	
+  	?instance_uri skos:prefLabel ?label .
+  	?instance_uri clvapit:hasRankOrder ?rank .
+
+  	# CHECK: ?instance_uri ?property [] . ?property l0:controlledVocabulary ?vocabulary .
+  	
+  	# ?instance_uri a ?concept . ?concept rdfs:isDefinedBy ?ontology .
+  	
+  	# EX: 
+  	#BIND(xsd:string('PointOfInterestCategory') AS ?id)
+    BIND(REPLACE(STR(?concept), '^.*/.*[#/](.*)$', '$1', 'i') AS ?id)
+  	#BIND(xsd:string('ID_01') AS ?id)
+  	
+	# TODO: parameters!
+	#FILTER(LANG(?label)='it')
+	FILTER(LANG(?label)='${lang}')
+    
+}
+
+ORDER BY ?rank 
