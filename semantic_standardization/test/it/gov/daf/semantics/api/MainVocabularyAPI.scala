@@ -12,21 +12,27 @@ object MainVocabularyAPI extends App {
 
   val logger = Logger.underlying()
 
-  val ontofactory = new VocabularyAPIFactory()
+  val voc_factory = new VocabularyAPIFactory()
+
+  //  val config = ConfigHelper.load("conf/vocabularies_api.conf")
 
   val TEST_CONFIG = ConfigHelper.injectParameter(VocabularyAPIFactory.DEFAULT_CONFIG, "data_dir", "./dist/data")
 
-  ontofactory.config(TEST_CONFIG)
+  voc_factory.config(TEST_CONFIG)
 
-  ontofactory.start()
+  voc_factory.start()
 
-  println("ITEMS: " + ontofactory.items)
+  //  println("\nconfigured vocabulary datasets:")
+  //  println(voc_factory.items.mkString("\n"))
+  //  println("\n\n")
 
-  val ontoapi = ontofactory.items("Istat-Classificazione-08-Territorio")
+  //  val vocapi = voc_factory.items("Istat-Classificazione-08-Territorio")
+  val vocapi = voc_factory.items("POICategoryClassification")
 
-  val json_tree = ontoapi.extract_data(params)
+  val json_tree = vocapi.extract_data(params)
   //  val json = JSONHelper.writeToString(json_tree)
-  //  logger.debug(json)
+  //  logger.debug("JSON\n" + json)
+  println("json_tree: " + json_tree)
 
   val results = json_tree.map {
     _.toList.map { item =>
@@ -34,13 +40,16 @@ object MainVocabularyAPI extends App {
     }.toSeq
   }.toSeq.slice(0, 2)
 
-  val json_results = JSONHelper.writeToString(results)
-  logger.debug(json_results)
+  val keys = vocapi.extract_keys(params)
+  logger.debug("\n\nKEYS:\n{}", keys.mkString(" | "))
 
-  val keys = ontoapi.extract_keys(params)
-  logger.debug("\n\nKEYS: {}", keys.mkString(" | "))
+  logger.debug("JSON RESULTS: ")
+  results.foreach { result =>
+    //    val json_result = JSONHelper.writeToString(result)
+    //    logger.debug(json_result)
+    println("json_result: " + result)
+  }
 
-  ontofactory.stop()
-
+  voc_factory.stop()
 }
 

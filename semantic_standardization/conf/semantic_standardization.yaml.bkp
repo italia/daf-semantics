@@ -23,32 +23,6 @@ produces:
   - "application/json"
   
 paths: 
-
-  "/daf/annotation/lookup": 
-    get: 
-      summary: "lookup from the semantic_annotation"
-      description: "lookup from the semantic_annotation"
-      operationId: "semanticAnnotationLookup"
-      produces: 
-        - "application/json"
-      parameters:
-        - name: semantic_annotation
-          in: query
-          description: "semantic_annotation"
-          required: true
-          type: string
-      responses: 
-        200:
-          description: "semantic annotation lookup"
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/SemanticAnnotationInfo'
-        500:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-      tags: [ POC ] 
   
   "/hierarchies/properties": 
     get: 
@@ -172,41 +146,6 @@ definitions:
         type: "string"
       level:
         type: "integer"
-        
-  SemanticAnnotationInfo:
-    type: object
-    required:
-       - semantic_annotation
-       - ontology_prefix
-       - ontology_id
-       - ontology
-       - vocabulary_id
-       - vocabulary
-       - property_id
-       - property
-       - concept_id
-       - concept
-    properties:
-      semantic_annotation:
-        type: string
-      ontology_prefix:
-        type: string
-      ontology_id:
-        type: string
-      ontology:
-        type: string
-      vocabulary_id:
-        type: string
-      vocabulary:
-        type: string
-      property_id:
-        type: string
-      property:
-        type: string
-      concept_id:
-        type: string
-      concept:
-        type: string
 
   Error:
     type: "object"

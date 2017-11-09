@@ -17,6 +17,15 @@ import scala.util._
 
 import javax.inject._
 
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
 import play.api.libs.ws.WSClient
 import utilities.JSONHelper
 import scala.concurrent.ExecutionContext.Implicits._
@@ -40,6 +49,9 @@ import OntonetHubClient.models._
 import OntonetHubClient.models._
 import OntonetHubClient.models._
 import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
+import OntonetHubClient.models._
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -48,7 +60,7 @@ import OntonetHubClient.models._
 
 package semantic_manager.yaml {
     // ----- Start of unmanaged code area for package Semantic_managerYaml
-                    
+                                
     // ----- End of unmanaged code area for package Semantic_managerYaml
     class Semantic_managerYaml @Inject() (
         // ----- Start of unmanaged code area for injections Semantic_managerYaml

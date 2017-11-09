@@ -19,6 +19,7 @@ import play.Mode
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigValueFactory
 import it.almawave.linkeddata.kb.repo.utils.ConfigHelper
+import it.gov.daf.semantics.api.AnnotationLookupAPI
 
 @ImplementedBy(classOf[KBModuleBase])
 trait KBModule
@@ -34,6 +35,8 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
   // VocabularyAPI service
   val vocabularyAPI = new VocabularyAPIFactory()
+
+  val annotation_api = new AnnotationLookupAPI() // TODO: factory!
 
   // when application starts...
   @Inject
@@ -51,10 +54,7 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
       case "prod" => "./data"
     }
 
-    println("\n\n\nUSING DATA DIR:" + data_dir)
-
     // starting OntologyAPI service
-    //    val config_ontologies = ConfigHelper.injectParameter(OntologyAPIFactory.DEFAULT_CONFIG, "data_dir", data_dir)
     val config_ontologies = ConfigHelper.injectParameter(OntologyAPIFactory.DEFAULT_CONFIG, "data_dir", "./dist/data")
     ontologyAPI.config(config_ontologies)
     ontologyAPI.start()
@@ -65,6 +65,10 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     vocabularyAPI.config(config_vocabularies)
     vocabularyAPI.start()
 
+    // lookup service
+    val config_annotations = ConfigHelper.injectParameter(AnnotationLookupAPI.DEFAULT_CONFIG, "data_dir", "./dist/data")
+    annotation_api.config(config_annotations)
+    annotation_api.start
   }
 
   // when application stops...
@@ -77,6 +81,8 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
       // stopping OntologyAPI service
       ontologyAPI.stop()
+
+      annotation_api.stop
 
       // this is useful for saving files, closing connections, release indexes, etc
       //      kbrepo.stop()

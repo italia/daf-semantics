@@ -9,6 +9,8 @@ import org.eclipse.rdf4j.rio.Rio
 import java.io.FileInputStream
 import java.net.URLDecoder
 import org.eclipse.rdf4j.query.QueryLanguage
+import scala.collection.mutable.ListBuffer
+import org.eclipse.rdf4j.model.Statement
 
 object RDFRepository {
 
@@ -33,6 +35,17 @@ class RDFRepository(repo: Repository) {
   }
 
   object store {
+
+    def statements() = {
+      val list = new ListBuffer[Statement]
+      val conn = repo.getConnection
+      val st_list = conn.getStatements(null, null, null, false)
+      while (st_list.hasNext()) {
+        list += st_list.next()
+      }
+      conn.close()
+      list
+    }
 
     def clear(contexts: String*) = Try {
 
@@ -88,7 +101,7 @@ class RDFRepository(repo: Repository) {
 
       val results = conn.prepareTupleQuery(QueryLanguage.SPARQL, query)
         .evaluate()
-        .toStream
+        // .toStream
         .map(_.toMap())
         .toList
 

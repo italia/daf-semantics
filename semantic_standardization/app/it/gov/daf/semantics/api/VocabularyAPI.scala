@@ -88,6 +88,7 @@ class VocabularyAPI(conf: Config = ConfigFactory.empty()) {
 
   def extract_data(parameters: Map[String, Object] = Map.empty) = {
 
+    // we will use the ontology name as a prefix for property_names
     val oname = conf.getString("vocabulary.ontology.name")
 
     extract_data_map(parameters).map {
@@ -113,7 +114,9 @@ class VocabularyAPI(conf: Config = ConfigFactory.empty()) {
       .toStream
       .map {
         // fixing name
-        _.toList.map { el => (el._1.replace(oprefix, oname), el._2) }.toMap
+        _.toList.map { el =>
+          (el._1.replace(oprefix, oname), el._2)
+        }.toMap
       }
       .toList
 
@@ -173,7 +176,7 @@ object VocabularyAPIFactory {
   // TODO: load from file! 
   val DEFAULT_CONFIG = ConfigFactory.parseString("""
   
-  "data_dir": "./data"
+  #"data_dir": "./data"
   
   "Istat-Classificazione-08-Territorio" {
   
@@ -187,6 +190,21 @@ object VocabularyAPIFactory {
     vocabulary.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
         
     vocabulary.query.csv: ${data_dir}"/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
+
+  }
+  
+  "POICategoryClassification" {
+  
+    vocabulary.name: "POICategoryClassification"
+		
+		vocabulary.ontology.name: "POI-AP_IT"
+		vocabulary.ontology.prefix: "poiapit"
+    
+    vocabulary.file: ${data_dir}"/vocabularies/POICategoryClassification.ttl"
+    
+    vocabulary.contexts: [ "http://dati.gov.it/onto/poiapit#" ]
+        
+    vocabulary.query.csv: ${data_dir}"/vocabularies/POICategoryClassification#dataset.csv.sparql"
 
   }
 
