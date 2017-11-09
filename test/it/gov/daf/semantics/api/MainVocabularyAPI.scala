@@ -1,56 +1,55 @@
 package it.gov.daf.semantics.api
 
-import it.almawave.linkeddata.kb.utils.JSONHelper
 import org.slf4j.LoggerFactory
 import play.Logger
-import it.almawave.linkeddata.kb.utils.CSVHelper
 import com.typesafe.config.ConfigFactory
+import it.almawave.linkeddata.kb.repo.utils.ConfigHelper
+import it.almawave.linkeddata.kb.utils.JSONHelper
 
 object MainVocabularyAPI extends App {
 
-  val logger = Logger.underlying()
-
-  val ontofactory = new VocabularyAPIFactory(TEST_CONFIG)
-  ontofactory.start()
-
-  val ontoapi = ontofactory.items("Istat-Classificazione-08-Territorio")
-
   val params = Map("lang" -> "it")
 
-  val json_tree = ontoapi.extract_data(params)
+  val logger = Logger.underlying()
+
+  val voc_factory = new VocabularyAPIFactory()
+
+  //  val config = ConfigHelper.load("conf/vocabularies_api.conf")
+
+  val TEST_CONFIG = ConfigHelper.injectParameter(VocabularyAPIFactory.DEFAULT_CONFIG, "data_dir", "./dist/data")
+
+  voc_factory.config(TEST_CONFIG)
+
+  voc_factory.start()
+
+  //  println("\nconfigured vocabulary datasets:")
+  //  println(voc_factory.items.mkString("\n"))
+  //  println("\n\n")
+
+  //  val vocapi = voc_factory.items("Istat-Classificazione-08-Territorio")
+  val vocapi = voc_factory.items("POICategoryClassification")
+
+  val json_tree = vocapi.extract_data(params)
   //  val json = JSONHelper.writeToString(json_tree)
-  //  logger.debug(json)
+  //  logger.debug("JSON\n" + json)
+  println("json_tree: " + json_tree)
 
   val results = json_tree.map {
     _.toList.map { item =>
       ("key" -> item._1, "value" -> item._2.toString())
     }.toSeq
-  }.toSeq
+  }.toSeq.slice(0, 2)
 
-  val json_results = JSONHelper.writeToString(results)
-  logger.debug(json_results)
+  val keys = vocapi.extract_keys(params)
+  logger.debug("\n\nKEYS:\n{}", keys.mkString(" | "))
 
-  val keys = ontoapi.extract_keys(params)
-  logger.debug("\n\nKEYS: {}", keys.mkString(" | "))
+  logger.debug("JSON RESULTS: ")
+  results.foreach { result =>
+    //    val json_result = JSONHelper.writeToString(result)
+    //    logger.debug(json_result)
+    println("json_result: " + result)
+  }
 
-  ontofactory.stop()
-
-  def TEST_CONFIG = ConfigFactory.parseString("""
-  
-  Istat-Classificazione-08-Territorio {
-  
-    vocabulary.name: "Istat-Classificazione-08-Territorio"
-		
-		vocabulary.ontology.name: "CLV-AP_IT"
-		vocabulary.ontology.prefix: "clvapit"
-    
-    vocabulary.file: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio.ttl"
-    # mime: "text/turtle"
-    vocabulary.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
-        
-    vocabulary.query.csv: "./dist/data/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
-
-  }""")
-
+  voc_factory.stop()
 }
 

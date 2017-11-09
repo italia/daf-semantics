@@ -17,10 +17,74 @@ import scala.util._
 
 import javax.inject._
 
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
 import java.io.File
 import modules.KBModuleBase
 import play.api.libs.ws.WSClient
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
+import semantic_standardization.yaml.SemanticAnnotationInfo
 
 /**
  * This controller is re-generated after each change in the specification.
@@ -29,7 +93,7 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 package semantic_standardization.yaml {
     // ----- Start of unmanaged code area for package Semantic_standardizationYaml
-    
+                                                                
     // ----- End of unmanaged code area for package Semantic_standardizationYaml
     class Semantic_standardizationYaml @Inject() (
         // ----- Start of unmanaged code area for injections Semantic_standardizationYaml
@@ -48,6 +112,30 @@ package semantic_standardization.yaml {
     val kbrepo = kb.kbrepo
 
         // ----- End of unmanaged code area for constructor Semantic_standardizationYaml
+        val semanticAnnotationLookup = semanticAnnotationLookupAction { (semantic_annotation: String) =>  
+            // ----- Start of unmanaged code area for action  Semantic_standardizationYaml.semanticAnnotationLookup
+            val infos = kb.annotation_api.lookup(semantic_annotation).get
+        .map { info =>
+          SemanticAnnotationInfo(
+            info.get("vocabulary_id").get.toString(),
+            info.get("vocabulary").get.toString(),
+            info.get("ontology").get.toString(),
+            info.get("semantic_annotation").get.toString(),
+            info.get("property_id").get.toString(),
+            info.get("concept_id").get.toString(),
+            info.get("ontology_prefix").get.toString(),
+            info.get("ontology_id").get.toString(),
+            info.get("concept").get.toString(),
+            info.get("property").get.toString())
+        }
+
+      SemanticAnnotationLookup200(infos)
+        .recoverWith {
+          case ex: Throwable =>
+            SemanticAnnotationLookup500(Error(s"problems retrieving informations from semantic_annotation: ${semantic_annotation}", ex.getMessage))
+        }
+            // ----- End of unmanaged code area for action  Semantic_standardizationYaml.semanticAnnotationLookup
+        }
         val propertiesHierarchyList = propertiesHierarchyListAction { input: (String, String, String) =>
             val (vocabulary_name, ontology_name, lang) = input
             // ----- Start of unmanaged code area for action  Semantic_standardizationYaml.propertiesHierarchyList
@@ -56,6 +144,7 @@ package semantic_standardization.yaml {
       val ontoapi = kb.ontologyAPI.items(ontology_name)
 
       val fields = vocapi.extract_keys(parameters)
+
       val items = ontoapi.extract_hierarchy_properties(parameters, fields)
         .map { item =>
           val vocabulary = item.get("vocabulary").get.asInstanceOf[String]
@@ -68,11 +157,15 @@ package semantic_standardization.yaml {
               //              val level = el.get("level").get.asInstanceOf[Integer]
               PropertyHierarchyLevel(klass, level)
             }
-          PropertyHierarchy(vocabulary, path, hierarchy_flat, "hierarchy")
+          PropertyHierarchy(vocabulary, path, hierarchy_flat, hierarchy)
+          //          PropertyHierarchy(vocabulary, path, hierarchy_flat, "HIERARCHY")
         }
 
       PropertiesHierarchyList200(items)
-        .recoverWith { case ex: Throwable => PropertiesHierarchyList500(Error(s"cannot obtain property hierarchies for ${ontology_name}/${vocabulary_name} ", ex.getMessage)) }
+        .recoverWith {
+          case ex: Throwable =>
+            PropertiesHierarchyList500(Error(s"cannot obtain property hierarchies for ${ontology_name}/${vocabulary_name} ", ex.getMessage))
+        }
             // ----- End of unmanaged code area for action  Semantic_standardizationYaml.propertiesHierarchyList
         }
         val vocabularyDataset = vocabularyDatasetAction { input: (String, String) =>

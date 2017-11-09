@@ -16,7 +16,8 @@ WHERE {
 	?uri rdfs:label ?label .
 	?uri clvapit:hasRankOrder ?rank .
 
-	FILTER(LANG(?label)='${lang}')
+	#FILTER(LANG(?label)='${lang}')
+	FILTER(LANG(?label)='it')
 
 	BIND(REPLACE(STR(?uri), 'http://dati.gov.it/onto/clvapit#(.*)', '$1') AS ?id)
 	BIND(CONCAT('clvapit') AS ?ontology)

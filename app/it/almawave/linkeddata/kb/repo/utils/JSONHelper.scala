@@ -10,7 +10,6 @@ object JSONHelper {
 
   private val json_mapper = new ObjectMapper()
     .registerModule(DefaultScalaModule)
-
     .configure(SerializationFeature.CLOSE_CLOSEABLE, true)
     .configure(SerializationFeature.EAGER_SERIALIZER_FETCH, true)
     .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, true)
@@ -24,6 +23,7 @@ object JSONHelper {
     .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
   private val json_writer = json_mapper.writerWithDefaultPrettyPrinter()
+
   private val json_reader = json_mapper.reader()
 
   def parse(json: String): JsonNode = {

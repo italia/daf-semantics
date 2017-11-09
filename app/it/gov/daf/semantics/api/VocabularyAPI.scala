@@ -8,11 +8,12 @@ import scala.io.Source
 import java.nio.file.Paths
 import org.eclipse.rdf4j.rio.Rio
 import scala.util.Try
+import it.almawave.linkeddata.kb.utils.JSONHelper
 
 /*
  * NOTE: at the moment this is only a prototype!
  */
-class VocabularyAPI(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG.getConfig("Istat-Classificazione-08-Territorio")) {
+class VocabularyAPI(conf: Config = ConfigFactory.empty()) {
 
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
@@ -47,7 +48,7 @@ class VocabularyAPI(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG.getConfig
   }
 
   private def readFile(filePath: String) = {
-    val dataset_path = Paths.get(filePath).toAbsolutePath()
+    val dataset_path = Paths.get(filePath).normalize().toAbsolutePath()
     val src = Source.fromFile(dataset_path.toFile(), "UTF-8")
     val content = src.getLines().mkString("\n")
     src.close()
@@ -87,6 +88,7 @@ class VocabularyAPI(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG.getConfig
 
   def extract_data(parameters: Map[String, Object] = Map.empty) = {
 
+    // we will use the ontology name as a prefix for property_names
     val oname = conf.getString("vocabulary.ontology.name")
 
     extract_data_map(parameters).map {
@@ -112,7 +114,9 @@ class VocabularyAPI(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG.getConfig
       .toStream
       .map {
         // fixing name
-        _.toList.map { el => (el._1.replace(oprefix, oname), el._2) }.toMap
+        _.toList.map { el =>
+          (el._1.replace(oprefix, oname), el._2)
+        }.toMap
       }
       .toList
 
@@ -124,23 +128,31 @@ class VocabularyAPI(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG.getConfig
 
 }
 
-class VocabularyAPIFactory(conf: Config = VocabularyAPIFactory.DEFAULT_CONFIG) {
+class VocabularyAPIFactory(config: Config = ConfigFactory.empty()) {
 
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
 
   val logger = Logger.underlying()
 
-  // getting the list of configured vocabularies
-  val names = conf.root().keySet().toList
+  private var conf = config
 
   // NOTE: for the prototype there is only an instance!
   var items: Map[String, VocabularyAPI] = Map()
+
+  def config(config: Config) {
+
+    // overriding / merging configurations
+    conf = config.withFallback(conf).resolve()
+
+  }
 
   def start() {
 
     logger.debug(s"starting VocabularyAPI Factory)")
 
+    // getting the list of configured vocabularies
+    val names = conf.root().keySet().toList
     // initializing each micro-repository
     items = names.map { name => (name, new VocabularyAPI(conf.getConfig(name))) }.toMap
     // starting each micro-repository
@@ -164,18 +176,35 @@ object VocabularyAPIFactory {
   // TODO: load from file! 
   val DEFAULT_CONFIG = ConfigFactory.parseString("""
   
-  Istat-Classificazione-08-Territorio {
+  #"data_dir": "./data"
+  
+  "Istat-Classificazione-08-Territorio" {
   
     vocabulary.name: "Istat-Classificazione-08-Territorio"
 		
 		vocabulary.ontology.name: "CLV-AP_IT"
 		vocabulary.ontology.prefix: "clvapit"
     
-    vocabulary.file: "./data/vocabularies/Istat-Classificazione-08-Territorio.ttl"
+    vocabulary.file: ${data_dir}"/vocabularies/Istat-Classificazione-08-Territorio.ttl"
     # mime: "text/turtle"
     vocabulary.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
         
-    vocabulary.query.csv: "./data/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
+    vocabulary.query.csv: ${data_dir}"/vocabularies/Istat-Classificazione-08-Territorio#dataset.csv.sparql"
+
+  }
+  
+  "POICategoryClassification" {
+  
+    vocabulary.name: "POICategoryClassification"
+		
+		vocabulary.ontology.name: "POI-AP_IT"
+		vocabulary.ontology.prefix: "poiapit"
+    
+    vocabulary.file: ${data_dir}"/vocabularies/POICategoryClassification.ttl"
+    
+    vocabulary.contexts: [ "http://dati.gov.it/onto/poiapit#" ]
+        
+    vocabulary.query.csv: ${data_dir}"/vocabularies/POICategoryClassification#dataset.csv.sparql"
 
   }
 

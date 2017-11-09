@@ -1,6 +1,7 @@
 package it.gov.daf.semantics.api
 
 import com.typesafe.config.ConfigFactory
+
 import it.almawave.linkeddata.kb.repo.RDFRepository
 import java.io.File
 import com.typesafe.config.Config
@@ -9,12 +10,11 @@ import java.nio.file.Paths
 import scala.util.Try
 import scala.io.Source
 import play.Logger
-import it.almawave.linkeddata.kb.utils.JSONHelper
 
-class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("clvapit")) {
+import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
-  import scala.collection.JavaConversions._
-  import scala.collection.JavaConverters._
+class OntologyAPI(conf: Config = ConfigFactory.empty()) {
 
   val logger = Logger.underlying()
 
@@ -24,12 +24,11 @@ class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("cl
   val onto_name = conf.getString("ontology.name")
 
   val query_template = readFile(conf.getString("ontology.query.hierarchy"))
-  //  println("QUERY_TEMPLATE: " + query_template)
 
   def start() {
 
     logger.debug(s"starting OntologyAPI(${onto_name})")
-    repo.start
+    repo.start()
 
     // clear the underlying store
     val contexts = conf.getStringList("ontology.contexts")
@@ -79,13 +78,23 @@ class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("cl
     txt
   }
 
-  def extract_hierarchy(parameters: Map[String, Object] = Map.empty) = {
+  def extract_hierarchy(parameters: Map[String, Object] = Map.empty): List[Map[String, Object]] = {
+
+    var results: List[Map[String, Object]] = List()
 
     val query = parse_query(parameters).get
 
-    repo.sparql
-      .query(query).get
-      .toList
+    try {
+      results = repo.sparql
+        .query(query).get
+        .toList
+    } catch {
+      case ex: Throwable =>
+        //        ex.printStackTrace()
+        logger.error(s"error on query: ${query}\n ${ex}")
+    }
+
+    results
 
   }
 
@@ -93,11 +102,14 @@ class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("cl
     parameters: Map[String, Object],
     properties: List[String] = List()): List[Map[String, Object]] = {
 
-    val hierarchy_elements = extract_hierarchy(parameters)
-      .sortBy { map => map.get("rank").get.asInstanceOf[String] }
-      .map { map => map.get("id").get.asInstanceOf[String] }
+    // NOTE: ?id should be used in the bindings
 
-    // TODO: fix the _ with .
+    // extracting a list of concept ids
+    val hierarchy_elements = extract_hierarchy(parameters)
+      .sortBy { map => map.get("rank").getOrElse("0").asInstanceOf[String] }
+      .map { map => map.get("id").getOrElse("").toString() }
+
+    // NOTE: in the SPARQL query we need to use the `_`, here we fix it with `.`
     properties.map { prop =>
 
       // hack for preserving correct naming conventions
@@ -132,27 +144,38 @@ class OntologyAPI(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG.getConfig("cl
 
 }
 
-class OntologyAPIFactory(conf: Config = OntologyAPIFactory.DEFAULT_CONFIG) {
+class OntologyAPIFactory(config: Config = ConfigFactory.empty()) {
 
   import scala.collection.JavaConversions._
   import scala.collection.JavaConverters._
 
   val logger = Logger.underlying()
 
-  // getting the list of configured ontologies
-  val names = conf.root().keySet().toList
+  private var conf = config
 
   // NOTE: for the prototype there is only an instance!
   var items: Map[String, OntologyAPI] = Map()
+
+  def config(config: Config) {
+
+    // overriding / merging configurations
+    conf = config.withFallback(conf).resolve()
+
+  }
 
   def start() {
 
     logger.debug(s"starting OntologyAPIFactory Factory)")
 
     // initializing each micro-repository
+    // getting the list of configured ontologies
+    val names = conf.root().keySet().toList
     items = names.map { name => (name, new OntologyAPI(conf.getConfig(name))) }.toMap
     // starting each micro-repository
     items.foreach { _._2.start() }
+
+    // overriding / merging configurations
+    conf = config.withFallback(conf)
 
   }
 
@@ -177,11 +200,26 @@ object OntologyAPIFactory {
     ontology.name: "CLV-AP_IT"
 		ontology.prefix: "clvapit"
     
-    ontology.file: "./data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.ttl"
+    ontology.file: ${data_dir}"/ontologies/agid/CLV-AP_IT/CLV-AP_IT.ttl"
     
     ontology.contexts: [ "http://dati.gov.it/onto/clvapit#" ]
         
-    ontology.query.hierarchy: "./data/ontologies/agid/CLV-AP_IT/CLV-AP_IT.hierarchy.sparql"
+    ontology.query.hierarchy: ${data_dir}"/ontologies/agid/CLV-AP_IT/CLV-AP_IT.hierarchy.sparql"
+
+  }
+  
+  poiapit {
+  
+    ontology.name: "POI-AP_IT"
+		ontology.prefix: "poiapit"
+    
+    # CHECK: multiple files import: Ontology + Vocabulary
+    #ontology.file: ${data_dir}"/ontologies/agid/POI-AP_IT/POI-AP_IT.ttl"
+    ontology.file: ${data_dir}"/vocabularies/POICategoryClassification.ttl"
+    
+    ontology.contexts: [ "http://dati.gov.it/onto/poiapit#" ]
+        
+    ontology.query.hierarchy: ${data_dir}"/ontologies/agid/POI-AP_IT/POI-AP_IT.hierarchy.sparql"
 
   }
 
