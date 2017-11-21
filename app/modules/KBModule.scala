@@ -34,21 +34,29 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
   // when application starts...
   @Inject
   def onStart(
-    app: Application,
     env: Environment,
     configuration: Configuration)(implicit ec: ExecutionContext) {
 
-    val kbconf = configuration.getConfig("kb")
-      .getOrElse(Configuration.empty)
-      .underlying
+    // get configs
+    val app_type = configuration.underlying.getString("app.type")
 
-    kbrepo.configuration(kbconf)
-    val conf = kbrepo.configuration()
+    val data_dir = app_type match {
+      case "dev"  => "./dist/data"
+      case "prod" => "./data"
+    }
+    Logger.debug("app_type:" + app_type)
+    Logger.debug("data_dir:" + data_dir)
+
+    // starting VocabularyAPI service
+    var conf_voc = ConfigFactory.parseFile(new File("./conf/semantic_repository.conf").getAbsoluteFile)
+    conf_voc = ConfigHelper.injectParameters(conf_voc, ("data_dir", data_dir))
+
+    kbrepo.configuration(conf_voc)
 
     Logger.info("KBModule.START....")
-    Logger.debug("KBModule using configuration:\n" + ConfigHelper.pretty(conf))
+    Logger.debug("KBModule using configuration:\n" + ConfigHelper.pretty(conf_voc))
 
-    println("KBModule using configuration:\n" + ConfigHelper.pretty(conf))
+    println("KBModule using configuration:\n" + ConfigHelper.pretty(conf_voc))
 
     // this is needed for ensure proper connection(s) etc
     kbrepo.start()
@@ -58,8 +66,9 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     kbrepo.prefixes.add(kbrepo.prefixes.DEFAULT.toList: _*)
 
     // CHECK for pre-loading of ontologies
-    if (conf.hasPath("cache"))
-      kbrepo.io.importFrom(conf.getString("cache"))
+    val kbconf = conf_voc.getConfig("kb")
+    if (kbconf.hasPath("cache"))
+      kbrepo.io.importFrom(kbconf.getString("cache"))
 
     // CHECK the initial (total) triples count
     var triples = kbrepo.store.size()

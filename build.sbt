@@ -9,7 +9,7 @@ organization in ThisBuild := "it.almawave"
 
 name := "semantic-repository"
 
-version in ThisBuild := "0.1.0"
+version in ThisBuild := "0.0.2"
 
 val playVersion = "2.5.14"
 
