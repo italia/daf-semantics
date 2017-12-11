@@ -13,7 +13,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
     
-host: localhost:8999
+host: localhost:8777
 basePath: /kb/v1
 schemes: 
   - "http"
@@ -31,30 +31,23 @@ paths:
       summary: adds an ontology
       consumes:
         - multipart/form-data
-      operationId: addOntology
+      operationId: addRDFDoc
       parameters:
-        - name: ontologyID
-          in: formData
+        - in: formData
+          name: fileName
           type: string
           required: true
-          description: the ontologyID used for the ontology
-        - name: rdfDocument
-          in: formData
+        - in: formData
+          name: rdfDocument
           type: file
           required: true
-          description: the RDF document to add (as ontology)
-          # inferred: rdfURL | mime
-        - name: mime
-          in: formData
+          description: the RDF document to add
+        - in: formData
+          name: prefix
           type: string
-          required: false
-        - name: prefix
-          in: formData
-          type: string
-          required: false
-          description: the prefix assigned to the ontology (if not assigned, it is inferred from ontologyID or the last part of the context)
-        - name: context
-          in: formData
+          required: true
+        - in: formData
+          name: context
           type: string
           required: true
           description: the context used for the addition of the RDF document
@@ -70,89 +63,28 @@ paths:
       tags: [ontologies]
 
 
+  "/ontologies/remove":
     delete:
-      summary: "deletes an ontology"
-      operationId: removeOntologyByContext
+      summary: deletes an RDF document
+      operationId: removeRDFDoc
       parameters:
-        # TODO: remove by prefix instead!
-        - name: context
-          in: query
+      # TODO: remove by prefix instead!
+        - in: query
+          name: context
           type: string
           required: true
-          description: the context assigned to the ontology
+          description: the context used for the addition of the RDF document
       responses:
         200:
           description: OK
           schema:
             $ref: '#/definitions/ResultMessage'
-        500:
+        400:
           description: unexpected error
           schema:
             $ref: '#/definitions/Error'
       tags: [ontologies]
-      
-
-  "/vocabularies":
   
-    post:
-      summary: adds a vocabulary
-      consumes:
-        - multipart/form-data
-      operationId: addVocabulary
-      parameters:
-        - name: vocabularyID
-          in: formData
-          type: string
-          required: true
-          description: the vocabularyID used for the vocabulary
-        - name: rdfDocument
-          in: formData
-          type: file
-          required: true
-          description: the RDF document to add (as vocabulary)
-          # inferred: rdfURL | mime
-        - name: mime
-          in: formData
-          type: string
-          required: false
-        - name: context
-          in: formData
-          type: string
-          required: true
-          description: the context used for the addition of the RDF document. This will be also used as a baseURI.
-      responses:
-        200:
-          description: OK
-          schema:
-            $ref: '#/definitions/ResultMessage'
-        500:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-      tags: [vocabularies]
-      
-    delete:
-      summary: "deletes a vocabulary"
-      operationId: removeVocabularyByContext
-      parameters:
-        # TODO: remove by vocabularyID instead!
-        - name: context
-          in: query
-          type: string
-          required: true
-          description: the context assigned to the vocabulary.
-      responses:
-        200:
-          description: OK
-          schema:
-            $ref: '#/definitions/ResultMessage'
-        500:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
-      tags: [vocabularies]
-
-
   
   "/contexts": 
     get: 
@@ -202,8 +134,8 @@ paths:
       produces: 
         - "application/json"
       parameters:
-        - name: prefix
-          in: query
+        - in: query
+          name: prefix
           description: the default prefix associated with a specific ontology
           required: true
           type: string
@@ -227,8 +159,8 @@ paths:
       produces: 
         - "application/json"
       parameters:
-        - name: namespace
-          in: query
+        - in: query
+          name: namespace
           description: the defaul prefix associated with a specific ontology
           required: true
           type: string
@@ -249,16 +181,9 @@ paths:
     get: 
       summary: "number of triples"
       description: "number of triples"
-      #operationId: "countTriples"
-      operationId: "countTriplesByPrefix"
+      operationId: "countTriples"
       produces: 
         - "application/json"
-      parameters:
-        - name: prefix
-          in: query
-          description: the prefix used for an ontology
-          required: true
-          type: string
       responses: 
         200:
           description: "triples"
@@ -270,9 +195,31 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       tags: [ stats ]
-
-
-# MODELS
+      
+  "/triples/{prefix}": 
+    get: 
+      summary: "number of triples"
+      description: "number of triples"
+      operationId: "countTriplesByOntology"
+      produces: 
+        - "application/json"
+      parameters:
+        - in: path
+          name: prefix
+          description: the prefix used for an ontology 
+          required: true
+          type: string
+      responses: 
+        200:
+          description: "triples"
+          examples: { "triples": 0 }
+          schema:
+            $ref: "#/definitions/TriplesCount"
+        400:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags: [ stats ]
 
 definitions: 
 
@@ -319,9 +266,6 @@ definitions:
         type: "string"
       triples: 
         type: "integer"
-
-# TODO: add simple (VOID/DCAT/etc) metadata, while inserting the ontology/vocabulary
-
 
   # TODO: rewrite!
   TriplesCount: 
