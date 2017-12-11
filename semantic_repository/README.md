@@ -1,4 +1,26 @@
 
+
+Conventions
+
+ontology
+
+add
+	src: File | InputStream
+	ontologyID
+	prefix
+	namespace | context | baseURI
+	
+	
+	rdfURL: URL, mime: String,
+    ontologyID: String,
+    prefix: String, namespace: String,
+    contexts: String*) = Try {
+
+
+
+----
+
+
 semantic_repository
 ====================
 
@@ -12,6 +34,10 @@ The default triplestore is currently in-memory, but [Virtuoso](http://vos.openli
 
 ![semantic_repository component inside the semantic_manager architecture](./docs/semantic_repository-v0.1.0.png)
 
+
+**NOTE**: this is an alpha version.
+
+* * * 
 
 ## HTTP API
 

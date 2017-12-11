@@ -9,6 +9,10 @@ import it.almawave.linkeddata.kb.utils.RDF4JAdapters._
 import it.almawave.linkeddata.kb.repo.RepositoryAction
 import scala.concurrent.Future
 
+/**
+ * This is a facility class for handling the prefixes explicitly.
+ * This may be useful when construting queries, in particular.
+ */
 class PrefixesManager(repo: Repository) {
 
   implicit val logger = LoggerFactory.getLogger(this.getClass)

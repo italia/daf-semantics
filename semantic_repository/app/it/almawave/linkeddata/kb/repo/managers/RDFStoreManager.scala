@@ -12,6 +12,8 @@ import it.almawave.linkeddata.kb.utils.RDF4JAdapters._
 import it.almawave.linkeddata.kb.repo.RepositoryAction
 import scala.concurrent.Future
 import org.eclipse.rdf4j.model.Statement
+import scala.collection.mutable.ListBuffer
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory
 
 /*
  * this component can be seen as an RDF datastore abstraction
@@ -20,7 +22,7 @@ class RDFStoreManager(repo: Repository) {
 
   implicit val logger = LoggerFactory.getLogger(this.getClass)
 
-  def clear(contexts: String*) = {
+  def clear(contexts: String*): Try[Unit] = {
 
     RepositoryAction(repo) { conn =>
 
@@ -43,6 +45,21 @@ class RDFStoreManager(repo: Repository) {
 
     RepositoryAction(repo) { conn =>
 
+      //      val list = new ListBuffer
+      //
+      //      list ++ conn.getContextIDs.map { ctx => ctx.stringValue() }.toList
+      //
+      //      val vf = SimpleValueFactory.getInstance
+      //      //      val st:Statement = null
+      //      //      conn.add(st, vf.createIRI("http://examples/"))
+      //
+      //      list ++ conn.getStatements(null, null, null, true).toStream.map { s => s.getContext }.distinct
+      //
+      //      val seq: Seq[String] = list.toSeq
+      //
+      //      seq
+
+      // REVIEW HERE: should be the full list!!!!
       conn.getContextIDs.map { ctx => ctx.stringValue() }.toList
 
     }(s"KB:RDF> cannot retrieve contexts list")
@@ -57,6 +74,7 @@ class RDFStoreManager(repo: Repository) {
         conn.size(contexts.toIRIList: _*)
       else {
         conn.size(null)
+        // conn.size() // CHECK
       }
 
     }(s"can't obtain size for contexts: ${contexts.mkString(" | ")}")
@@ -74,6 +92,9 @@ class RDFStoreManager(repo: Repository) {
 
   }
 
+  /**
+   * adds an RDF Document to the assigned context(s)
+   */
   def add(doc: Model, contexts: String*) = {
 
     RepositoryAction(repo) { conn =>
@@ -86,6 +107,9 @@ class RDFStoreManager(repo: Repository) {
 
   }
 
+  /**
+   * removes an RDF Document from the assigned context(s)
+   */
   def remove(doc: Model, contexts: String*) = {
 
     RepositoryAction(repo) { conn =>

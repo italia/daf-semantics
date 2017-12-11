@@ -27,80 +27,7 @@ import it.almawave.linkeddata.kb.repo.managers.SPARQLManager
 import scala.concurrent.Future
 import it.almawave.linkeddata.kb.utils.TryHandlers.FutureWithLog
 import scala.util.Try
-
-object RDFRepository {
-
-  val logger = LoggerFactory.getLogger(this.getClass)
-
-  def remote(endpoint: String) = {
-    new RDFRepositoryBase(new SPARQLRepository(endpoint, endpoint))
-  }
-
-  def memory() = {
-
-    val mem = new MemoryStore
-    val repo: Repository = new SailRepository(mem)
-    new RDFRepositoryBase(repo)
-
-  }
-
-  // TODO: config
-  def memory(dir_cache: String) = {
-
-    val dataDir = Paths.get(dir_cache).normalize().toAbsolutePath().toFile()
-    if (!dataDir.exists())
-      dataDir.mkdirs()
-    val mem = new MemoryStore()
-    mem.setDataDir(dataDir)
-    mem.setSyncDelay(1000L)
-    mem.setPersist(false)
-    mem.setConnectionTimeOut(1000) // TODO: set a good timeout!
-
-    // IDEA: see how to trace statements added by inferencing
-    // CHECK val inferencer = new DedupingInferencer(new ForwardChainingRDFSInferencer(new DirectTypeHierarchyInferencer(mem)))
-    // SEE CustomGraphQueryInferencer
-
-    val repo = new SailRepository(mem)
-    new RDFRepositoryBase(repo)
-  }
-
-  // VERIFY: virtuoso jar dependencies on maven central
-  def virtuoso() = {
-    // TODO: externalize configurations
-    // TODO: add a factory for switching between dev / prod
-    val host = "localhost"
-    val port = 1111
-    val username = "dba"
-    val password = "dba"
-
-    val repo = new VirtuosoRepository(s"jdbc:virtuoso://${host}:${port}/charset=UTF-8/log_enable=2", username, password)
-    new RDFRepositoryBase(repo)
-  }
-
-  /* DISABLED */
-  def solr() {
-
-    //    val index = new SolrIndex()
-    //    val sailProperties = new Properties()
-    //    sailProperties.put(SolrIndex.SERVER_KEY, "embedded:")
-    //    index.initialize(sailProperties)
-    //    val client = index.getClient()
-    //
-    //    val memoryStore = new MemoryStore()
-    //    // enable lock tracking
-    //    org.eclipse.rdf4j.common.concurrent.locks.Properties.setLockTrackingEnabled(true)
-    //    val lucenesail = new LuceneSail()
-    //    lucenesail.setBaseSail(memoryStore)
-    //    lucenesail.setLuceneIndex(index)
-    //
-    //    val repo = new SailRepository(lucenesail)
-
-  }
-
-}
-
-// TODO: refactorization using trait!!
-trait RDFRepository
+import it.almawave.linkeddata.kb.repo.managers.RDFCatalogManager
 
 /**
  *
@@ -175,5 +102,81 @@ class RDFRepositoryBase(repo: Repository) {
   val sparql = new SPARQLManager(repo)
 
   val io = new RDFFileManager(this)
+
+  val catalog = new RDFCatalogManager(this)
+
+}
+
+// TODO: refactorization using trait!!
+trait RDFRepository
+
+object RDFRepository {
+
+  val logger = LoggerFactory.getLogger(this.getClass)
+
+  def remote(endpoint: String) = {
+    new RDFRepositoryBase(new SPARQLRepository(endpoint, endpoint))
+  }
+
+  def memory() = {
+
+    val mem = new MemoryStore
+    val repo: Repository = new SailRepository(mem)
+    new RDFRepositoryBase(repo)
+
+  }
+
+  // TODO: config
+  def memory(dir_cache: String) = {
+
+    val dataDir = Paths.get(dir_cache).normalize().toAbsolutePath().toFile()
+    if (!dataDir.exists())
+      dataDir.mkdirs()
+    val mem = new MemoryStore()
+    mem.setDataDir(dataDir)
+    mem.setSyncDelay(1000L)
+    mem.setPersist(false)
+    mem.setConnectionTimeOut(1000) // TODO: set a good timeout!
+
+    // IDEA: see how to trace statements added by inferencing
+    // CHECK val inferencer = new DedupingInferencer(new ForwardChainingRDFSInferencer(new DirectTypeHierarchyInferencer(mem)))
+    // SEE CustomGraphQueryInferencer
+
+    val repo = new SailRepository(mem)
+    new RDFRepositoryBase(repo)
+  }
+
+  // VERIFY: virtuoso jar dependencies on maven central
+  def virtuoso() = {
+    // TODO: externalize configurations
+    // TODO: add a factory for switching between dev / prod
+    val host = "localhost"
+    val port = 1111
+    val username = "dba"
+    val password = "dba"
+
+    val repo = new VirtuosoRepository(s"jdbc:virtuoso://${host}:${port}/charset=UTF-8/log_enable=2", username, password)
+    new RDFRepositoryBase(repo)
+  }
+
+  /* DISABLED */
+  def solr() {
+
+    //    val index = new SolrIndex()
+    //    val sailProperties = new Properties()
+    //    sailProperties.put(SolrIndex.SERVER_KEY, "embedded:")
+    //    index.initialize(sailProperties)
+    //    val client = index.getClient()
+    //
+    //    val memoryStore = new MemoryStore()
+    //    // enable lock tracking
+    //    org.eclipse.rdf4j.common.concurrent.locks.Properties.setLockTrackingEnabled(true)
+    //    val lucenesail = new LuceneSail()
+    //    lucenesail.setBaseSail(memoryStore)
+    //    lucenesail.setLuceneIndex(index)
+    //
+    //    val repo = new SailRepository(lucenesail)
+
+  }
 
 }

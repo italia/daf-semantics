@@ -36,7 +36,7 @@ abstract class TestingBaseRDFRepository {
   """
 
   val vf = SimpleValueFactory.getInstance
-  //  val ctxs = List(vf.createIRI("http://localhost"), vf.createIRI("http://graph"))
+
   val ctxs = List("http://localhost", "http://graph")
 
   val docWithContexts = Rio.parse(new StringReader(doc_example), base_uri, RDFFormat.TURTLE, ctxs.toIRIList: _*)
@@ -44,10 +44,8 @@ abstract class TestingBaseRDFRepository {
 
   val dir_base = new File("dist/data/ontologies/").getAbsoluteFile
 
-  // ------------
-
   // TODO: find a way for executing both
-  val mock: RDFRepositoryBase = RDFRepository.memory()
+  val mock: RDFRepositoryBase = null //RDFRepository.memory()
   //  var mock = RDFRepository.virtuoso()
 
   @Before()

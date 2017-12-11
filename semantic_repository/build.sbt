@@ -13,7 +13,7 @@ version in ThisBuild := "0.0.2"
 
 val playVersion = "2.5.14"
 
-val port = 8777
+val port = 8999
 
 // default port
 PlayKeys.playDefaultPort := port
@@ -24,6 +24,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, ApiFirstCore, Ap
 scalaVersion := "2.11.8"
 
 crossPaths := false
+
 
 libraryDependencies ++= Seq(
 	cache,
