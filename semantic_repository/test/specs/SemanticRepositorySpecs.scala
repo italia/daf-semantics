@@ -14,7 +14,7 @@ import play.api.libs.ws.ahc.AhcWSClient
 import org.specs2.runner.JUnitRunner
 import org.specs2.mutable.Specification
 import play.api.libs.json.Json
-import it.almawave.linkeddata.kb.utils.ConfigHelper
+//import it.almawave.linkeddata.kb.utils.ConfigHelper
 
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
@@ -35,12 +35,15 @@ import play.api.mvc.MultipartFormData.FilePart
 import akka.stream.scaladsl.FileIO
 import play.api.libs.ws.WSClient
 
+/*
+ * TODO: REWRITE
+ */
 @RunWith(classOf[JUnitRunner])
 class SemanticRepositorySpecs extends Specification {
 
   def application: Application = GuiceApplicationBuilder().build()
 
-  "The lod-manager" should {
+  "The semantic repository" should {
 
     "call kb/v1/contexts to obtain a list of contexts" in {
       new WithServer(app = application, port = 9999) {
@@ -51,8 +54,8 @@ class SemanticRepositorySpecs extends Specification {
             Duration.Inf)
 
           response.status must be equalTo Status.OK
-          //          response.json.as[Seq[JsObject]].size must be equals 0
-          response.json.as[Seq[JsObject]].size must be greaterThan 0
+          response.json.as[Seq[JsObject]].size must be equals 0
+          // response.json.as[Seq[JsObject]].size must be greaterThan 0 // if pre-loaded ontologies!
 
         }
       }

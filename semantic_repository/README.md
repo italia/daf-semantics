@@ -1,43 +1,22 @@
 
-
-Conventions
-
-ontology
-
-add
-	src: File | InputStream
-	ontologyID
-	prefix
-	namespace | context | baseURI
-	
-	
-	rdfURL: URL, mime: String,
-    ontologyID: String,
-    prefix: String, namespace: String,
-    contexts: String*) = Try {
-
-
-
-----
-
-
 semantic_repository
 ====================
 
-The Semantic Repository is a component designed to provide basic functionalities for managing ontologies/vocabularies (there are no endpoints for data, yet) on an underlying triplestore, using a standard abstract interface, based on the well-know [RDF4J](http://rdf4j.org/) abstraction.
+The Semantic Repository is a component designed to provide basic functionalities for managing ontologies/vocabularies and eventually data on an underlying triplestore, using a standard abstract interface, based on the well-know [RDF4J](http://rdf4j.org/) abstraction.
 
-This first prototype mimics some of the core functionalities of a catalog service of queryable ontologies, which can be implemented over an external triplestore, while the internal library has more general and low-level functionalities, and will be exported as a re-usable dependendy soon, on an indipendent repository: the idea behind that is that while these endpoints should consistently change with the evolution of the architecture, the library will become a small framework designed for simplyfing the interaction of one (or more) underlying triplestore.
+This microservice reiles on the underlying `kbaselib` library, for operations on generic RDF data, and ontology/vocabulary management.
+A similar microservice, designed to support ontology catalog navigation, has been created with the temporary name `kataLOD` in a pecific repository.
 
 The default triplestore is currently in-memory, but [Virtuoso](http://vos.openlinksw.com/owiki/wiki/VOS) was tested too.
 **NOTE**: The support for [Blazegraph](https://www.blazegraph.com) is planned but not already tested, waiting for the [full support](https://github.com/blazegraph/database/issues/40).
 
+![semantic_repository component inside the semantic_manager architecture](./docs/daf-semantics.png)
+**TODO**: update the diagram to the current architecture and modules
 
-![semantic_repository component inside the semantic_manager architecture](./docs/semantic_repository-v0.1.0.png)
 
+**NOTE**: this is an alpha version, still work-in-progress.
 
-**NOTE**: this is an alpha version.
-
-* * * 
+* * *
 
 ## HTTP API
 
@@ -53,7 +32,7 @@ The default triplestore is currently in-memory, but [Virtuoso](http://vos.openli
 
 An ontology can be added using the endpoint provided at `/kb/v1/ontologies`, for example using a CURL command similar to the following one:
 
-```
+```bash
 curl -X POST 'http://localhost:8777/kb/v1/ontologies' \ 
 	-H 'Content-Type: multipart/form-data' -H 'Accept: application/json' \ 
 	-F 'fileName=my_rdf_file.rdf' -F 'rdfDocument=@/some/path/my_rdf_file.rdf' \ 
@@ -70,9 +49,9 @@ Vocabularies are handled as ontology, at the moment: however it is not useful to
 Currently an ontology can be deleted using the endpoint at `/kb/v1/ontologies/remove` providing the conventional context in which it was published.
 This can be done for example with the following CURL command:
 
-```
-curl -X DELETE 'http://localhost:8777/kb/v1/ontologies/remove?context=http://my_context' \ 
-	-H 'Accept: application/json' 
+```bash
+curl -X DELETE 'http://localhost:8777/kb/v1/ontologies/remove?context=http://my_context' \
+	-H 'Accept: application/json'
 ```
 
 We could think about removing ontologies by prefix, too.
@@ -83,7 +62,7 @@ We could think about removing ontologies by prefix, too.
 A list of all the available contexts can be obtained by the endpoint `/kb/v1/contexts` .
 
 For example using the following CURL command:
-```
+```bash
 curl -X GET 'http://localhost:8777/kb/v1/contexts' \ 
 	-H  "accept: application/json" -H  "content-type: application/json"
 ```
@@ -101,8 +80,8 @@ curl -X GET 'http://localhost:8777/kb/v1/prefixes' \
 The namespace related to a choosen prefix can be obtained by the endpoint `/kb/v1/prefixes/lookup` .
 
 For example using the following CURL command:
-```
-curl -X GET http://localhost:8777/kb/v1/prefixes/lookup?prefix=my_prefix \ 
+```bash
+curl -X GET http://localhost:8777/kb/v1/prefixes/lookup?prefix=my_prefix \
 	-H  "accept: application/json" -H  "content-type: application/json"
 ```
 
@@ -112,7 +91,7 @@ The namespace corresponds to a context, at the moment.
 The namespace related to a choosen prefix can be obtained by the endpoint `/kb/v1/prefixes/reverse` .
 
 For example using the following CURL command:
-```
+```bash
 curl -X GET http://localhost:8777/kb/v1/prefixes/reverse?namespace=http://my_namespace/ \ 
 	-H  "accept: application/json" -H  "content-type: application/json"
 ```
@@ -124,7 +103,7 @@ The namespace corresponds to a context, at the moment.
 The total amount of triples can be obtained by the endpoint `/kb/v1/triples` .
 
 For example using the following CURL command:
-```
+```bash
 curl -X GET http://localhost:8777/kb/v1/triples -H  "accept: application/json" \ 
 	-H  "content-type: application/json"
 ```
@@ -132,8 +111,8 @@ curl -X GET http://localhost:8777/kb/v1/triples -H  "accept: application/json" \
 The total amount of triples for the prefix `{prefix}` can be obtained by the endpoint `/kb/v1/triples/{prefix}` .
 
 For example using the following CURL command:
-```
-curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" \ 
+```bash
+curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" \
 	-H  "content-type: application/json"
 ```
 
@@ -147,7 +126,7 @@ curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" 
 
 	The dependencies for virtuoso integration are currently not yet published on the maven central, so they are linked using the convetional `lib` folder in the sbt project:
 
-	```
+	```bash
 	[semantic_repository]
 	├───/lib
 	│   ├───virtjdbc4_2.jar
@@ -165,20 +144,20 @@ curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" 
 3. run
 
 	```bash
-	$ sbt run 
+	$ sbt run
 	```
 
 4. (local, manual) deploy
 
-	```
+	```bash
 	$ sbt clean dist
 	$ unzip -o -d  target/universal/ target/universal/semantic_repository-0.1.0.zip
 	$ cd target/universal/semantic_repository-0.1.0
 	$ bin/semantic-repository -Dconfig.file=./conf/application.conf
 	```
 
-	**NOTE**: if the application crashed, the pid file whould be deleted before attempting re-run 
-	
+	**NOTE**: if the application crashed, the pid file whould be deleted before attempting re-run
+
 	```bash
 	$ rm target/universal/semantic_repository-0.1.0/RUNNING_PID 
 	```
@@ -192,14 +171,34 @@ curl -X GET http://localhost:8777/kb/v1/{prefix} -H  "accept: application/json" 
 	```bash
 	$ sbt docker:publishLocal 
 	```
-	
+
 	after this command, will be generated an image including the deployed application, and published on the local docker system.
 	The generated image should be used for starting a new container, exposing the ports with a command similar to the following one:
-	
-	```
+
+	```bash
 	$ sbt docker run -d -p 8777:9000 {docker-image-id}
 	```
-	
+
+
+### prerequisites: kbaselib
+
+This project uses the library [`kbaselib`](https://bitbucket.org/awodata/kbaselib) as a dependency:
+```bash
+libraryDependencies += "it.almawave.linkeddata.kb" % "kbaselib" % "0.0.2"
+```
+
+The library should be available on the local maven repository, so if it is not yet installed, please install it, using a command like:
+
+```bash
+mvn install \
+	-DgroupId=it.almawave.linkeddata.kb -DartifactId=kbaselib -Dversion=0.0.2 \
+	-Dfile=target/kbaselib-0.0.1.jar -Dpackaging=jar2
+```
+
+*NOTE*: for compatibility reason, please ensure that the library `kbaselib/0.0.1/kbaselib-0.0.1.jar` is also available as `kbaselib_2.11.8/0.0.1/kbaselib-0.0.1.jar`.
+
+
+
 
 * * *
 
@@ -213,7 +212,7 @@ The object `it.almawave.kb.utils.RDF4JAdapters` contains some adapters which may
 `val contexts:Array[Resource] = Array("http://graph").toIRIList`
 + `RepositoryResultIterator` and `TupleResultIterator` are useful for handling results from query as Scala collections, without having to write `while(...)` code.
 + `BindingSetMapAdapter` adds a `toMap` conversion method, useful for writings things like:
-```
+```scala
 val bs: BindingSet = ...
 val map: Map[String, Object] = bs.toMap()
 ```
@@ -249,6 +248,8 @@ def clear_all() {
 + the open/close connection actions are handled by the `RepositoryAction` itself 
 + the provided error message will be used internally both for logging on the chosen logger, and for handling Exception in the usual `Try/Failure` way.
 
+**SEE***: [kbaselib]() library for further details
+
 
 * * *
 
@@ -256,17 +257,14 @@ def clear_all() {
 
 - [x] switch to new name conventions: `semantic_*`, merge into main daf.
 - [x] NOTE: consider using `git subtree` for the local fork
-- [ ] publish `kb-core` (changing name conventions) on github / bitbucket or as sub-module
-- [ ] add `kb-core` dependency on sbt - move core to external library
+- [x] add `kbaselib` dependency on sbt - move core to external library
+- [x] publish `kbaselib` (changing name conventions) on github / bitbucket or as sub-module
 - [x] add `RDF4J` dependencies on sbt
 - [x] add `virtoso` dependencies on sbt
 - [x] add `virtoso` jar on sbt/lib
 - [x] refactoring JUnit tests for engine part: memory
 - [x] refactoring JUnit tests for engine part: virtuoso wrapper
 - [ ] more test coverage for simple example HTTP requests (specs2)
-- [ ] review repository wrapper code base. SEE: semantic_manager
-- [ ] review ontonethub wrapper code base. SEE: semantic_manager
-- [ ] ~~review local filestorage code base~~
 - [ ] review / refactor the response from services, using more meaningful data structures
 
 * * *

@@ -31,6 +31,8 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
   // TODO: SPI per dev / prod
   val kbrepo = RDFRepository.memory()
 
+  val logger = Logger.underlyingLogger
+
   // when application starts...
   @Inject
   def onStart(
@@ -44,8 +46,8 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
       case "dev"  => "./dist/data"
       case "prod" => "./data"
     }
-    Logger.debug("app_type:" + app_type)
-    Logger.debug("data_dir:" + data_dir)
+    logger.debug(s"app_type: ${app_type}")
+    logger.debug(s"data_dir: ${data_dir}")
 
     // starting VocabularyAPI service
     var conf_voc = ConfigFactory.parseFile(new File("./conf/semantic_repository.conf").getAbsoluteFile)
@@ -53,14 +55,15 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
     kbrepo.configuration(conf_voc)
 
-    Logger.info("KBModule.START....")
-    Logger.debug("KBModule using configuration:\n" + ConfigHelper.pretty(conf_voc))
+    logger.info("KBModule.START....")
+    logger.debug("KBModule using configuration:\n" + ConfigHelper.pretty(conf_voc))
 
     println("KBModule using configuration:\n" + ConfigHelper.pretty(conf_voc))
 
     // this is needed for ensure proper connection(s) etc
     kbrepo.start()
 
+    /* LOADING temporarly disabled for testing
     // reset prefixes to default ones
     kbrepo.prefixes.clear()
     kbrepo.prefixes.add(kbrepo.prefixes.DEFAULT.toList: _*)
@@ -69,11 +72,12 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
     val kbconf = conf_voc.getConfig("kb")
     if (kbconf.hasPath("cache"))
       kbrepo.io.importFrom(kbconf.getString("cache"))
+		*/
 
     // CHECK the initial (total) triples count
     var triples = kbrepo.store.size()
 
-    Logger.info(s"KBModule> ${triples} triples loaded")
+    logger.info(s"KBModule> ${triples} triples loaded")
 
   }
 
@@ -84,7 +88,7 @@ class KBModuleBase @Inject() (lifecycle: ApplicationLifecycle) extends KBModule 
 
       // this is useful for saving files, closing connections, release indexes, etc
       kbrepo.stop()
-      Logger.info("KBModule.STOP....")
+      logger.info("KBModule.STOP....")
 
     }
 

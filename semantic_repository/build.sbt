@@ -25,7 +25,6 @@ scalaVersion := "2.11.8"
 
 crossPaths := false
 
-
 libraryDependencies ++= Seq(
 	cache,
 	ws,
@@ -46,24 +45,30 @@ libraryDependencies ++= Seq(
 	"org.scalatest" %% "scalatest" % "2.2.2" % Test,
 	"junit" % "junit" % "4.11" % Test,
 	"com.novocode" % "junit-interface" % "0.11" % Test,
-	"ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
- 
+	"ch.qos.logback" % "logback-classic" % "1.2.3" % "test",
+	
+	"it.almawave.linkeddata.kb" % "kbaselib" % "0.0.2" changing()
+	
 )
 
 
 resolvers ++= Seq(
-  Resolver.mavenLocal,
-  //"Local Maven" at Path.userHome.asFile.toURI.toURL + ".m2/repository"
-  "zalando-bintray" at "https://dl.bintray.com/zalando/maven",
-  "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases",
-  "jeffmay" at "https://dl.bintray.com/jeffmay/maven",
-  Resolver.url("sbt-plugins", url("http://dl.bintray.com/zalando/sbt-plugins"))(Resolver.ivyStylePatterns)
+	Resolver.mavenLocal,
+	"Maven2 Local" at Path.userHome.asFile.toURI.toURL + ".m2/repository/",
+	"zalando-bintray" at "https://dl.bintray.com/zalando/maven",
+	"scalaz-bintray" at "http://dl.bintray.com/scalaz/releases",
+	"jeffmay" at "https://dl.bintray.com/jeffmay/maven",
+	Resolver.url("sbt-plugins", url("http://dl.bintray.com/zalando/sbt-plugins"))(Resolver.ivyStylePatterns)
 )
 
-// resolver for local maven repository
+// CHECK: resolver for local maven repository
+/*
 resolvers += Resolver.mavenLocal // Also use $HOME/.m2/repository
-
-
+resolvers += "Local Maven" at Path.userHome.asFile.toURI.toURL + ".m2/repository"
+resolvers += (
+ "Local Maven Repository" at "file:///"+Path.userHome.absolutePath+"/.m2/repository"
+)
+*/
 
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.

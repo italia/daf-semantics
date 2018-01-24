@@ -14,7 +14,7 @@ class IntegrationSpec extends Specification {
 
   val host = "localhost"
 
-  "lod-manager" should {
+  "semantic_repository" should {
 
     "expose swagger specification" in new WithBrowser {
       browser.goTo(s"http://${host}:${port}/spec/semantic_repository.yaml")
@@ -26,9 +26,10 @@ class IntegrationSpec extends Specification {
       browser.goTo(s"http://${host}:${port}/kb/v1/contexts")
       browser.pageSource must haveSize(greaterThan(0))
 
-      val ctxs = JSONHelper.parseString(browser.pageSource).toList
-      ctxs.find { el => el.get("context").equals("http://xmlns.com/foaf/0.1/") }
-      ctxs.find { el => el.get("triples").equals(631) }
+      // DISABLED
+      //      val ctxs = JSONHelper.parseString(browser.pageSource).toList
+      //      ctxs.find { el => el.get("context").equals("http://xmlns.com/foaf/0.1/") }
+      //      ctxs.find { el => el.get("triples").equals(631) }
     }
 
   }
