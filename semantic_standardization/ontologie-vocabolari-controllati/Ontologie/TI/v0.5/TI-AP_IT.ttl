@@ -1,0 +1,957 @@
+@prefix : <https://w3id.org/italia/onto/TI/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix muapit: <https://w3id.org/italia/onto/MU/> .
+@base <https://w3id.org/italia/onto/TI> .
+
+<https://w3id.org/italia/onto/TI> rdf:type owl:Ontology ;
+                                  
+                                  rdfs:label "Time ontology - Italian Application Profile"@en ,
+                                             "Ontologia del tempo - profilo applicativo italiano"@it ;
+                                  
+                                  dct:issued "2017-09-25"^^xsd:date ;
+                                  
+                                  dct:modified "2018-03-03" ;
+                                  
+                                  dc:creator "Agency for Digital Italy - AgID"@en ,
+                                             "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                             "Italian Digital Transformation Team"@en ;
+                                  
+                                  rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
+                                  
+                                  owl:versionInfo "Version 0.5 - 03 March 2018"@en ;
+                                  
+                                  rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ,
+                                               "Versione 0.5 - 03 Marzo 2018"@it ;
+                                  
+                                  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                  
+                                  owl:imports <https://w3id.org/italia/onto/MU> ;
+                                  
+                                  rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+                                  
+                                  owl:imports <https://w3id.org/italia/onto/l0> ;
+                                  
+                                  owl:versionIRI <https://w3id.org/italia/onto/TI/0.5> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/terms/modified
+
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+
+xsd:date rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+
+xsd:duration rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#gDay
+
+xsd:gDay rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#gMonth
+
+xsd:gMonth rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#time
+
+xsd:time rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/TI/atTime
+
+:atTime rdf:type owl:ObjectProperty ;
+        
+        rdfs:label "at time"@en ,
+                   "al tempo"@it ;
+        
+        rdfs:comment "Relation between any thing and time interval"@en ,
+                     "Relazione tra qualsiasi cosa e intervallo di tempo."@it ;
+        
+        rdfs:domain :TimeIndexedEvent ;
+        
+        rdfs:range :TimeInterval ;
+        
+        rdfs:subPropertyOf :hasTemporalEntity .
+
+
+
+###  https://w3id.org/italia/onto/TI/hasDayOfWeek
+
+:hasDayOfWeek rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "has day of week"@en ,
+                         "ha giorno della settimana"@it ;
+              
+              rdfs:comment "This property relates any object to particular day of the week."@en ,
+                           "Questa proprietà è utilizzata per associare un oggetto che può essere collocato nel tempo ai giorni della settimana."@it ;
+              
+              rdfs:range :DayOfWeek ;
+              
+              rdfs:domain :TimeIndexedEvent ;
+              
+              rdfs:subPropertyOf :hasTemporalEntity ;
+              
+              owl:inverseOf :isDayOfWeekOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/hasDuration
+
+:hasDuration rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has duration"@en ,
+                        "ha durata"@it ;
+             
+             rdfs:comment "This property is used to specify the temporal duration of the validity."@en ,
+                          "Questa proprietà è utilizzata per specificare il periodo temporale di validità."@it ;
+             
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+             
+             rdfs:range :Duration ;
+             
+             rdfs:domain :TimeIndexedEvent ;
+             
+             rdfs:subPropertyOf :hasTemporalEntity ;
+             
+             owl:inverseOf :isDurationOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/hasMonthOfYear
+
+:hasMonthOfYear rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "has month of the year"@en ,
+                           "ha mese dell'anno"@it ;
+                
+                rdfs:comment "Property that links a time indexed event to a month of the year."@en ,
+                             "Proprietà che collega un evento nel tempo ad un mese dell'anno."@it ;
+                
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+                
+                rdfs:range :MonthOfYear ;
+                
+                rdfs:domain :TimeIndexedEvent ;
+                
+                rdfs:subPropertyOf :hasTemporalEntity ;
+                
+                owl:inverseOf :isMonthOfYearOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/hasTemporalCoverage
+
+:hasTemporalCoverage rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "temporal coverage"@en ,
+                                "copertura temporale"@it ;
+                     
+                     rdfs:domain owl:Thing ;
+                     
+                     rdfs:range :TemporalEntity .
+
+
+
+###  https://w3id.org/italia/onto/TI/hasTemporalEntity
+
+:hasTemporalEntity rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "has temporal entity"@en ,
+                              "ha entità temporale"@it ;
+                   
+                   rdfs:comment "Property that links a time indexed event to a temporal entity."@en ,
+                                "Proprietà che collega un evento nel tempo ad un entità temporale."@it ;
+                   
+                   rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+                   
+                   rdfs:range :TemporalEntity ;
+                   
+                   rdfs:domain :TimeIndexedEvent ;
+                   
+                   owl:inverseOf :isTemporalEntityOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/hasYear
+
+:hasYear rdf:type owl:ObjectProperty ;
+         
+         rdfs:label "has year"@en ,
+                    "ha anno"@it ;
+         
+         rdfs:comment "Property that links a time indexed event to its year."@en ,
+                      "Proprietà che collega un evento nel tempo al suo anno."@it ;
+         
+         rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+         
+         rdfs:domain :TimeIndexedEvent ;
+         
+         rdfs:range :Year ;
+         
+         rdfs:subPropertyOf :hasTemporalEntity ;
+         
+         owl:inverseOf :isYearOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/isDayOfWeekOf
+
+:isDayOfWeekOf rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "is day of week of"@en ,
+                          "è giorno della settimana di"@it ;
+               
+               rdfs:comment "Inverse property of has day of week."@en ,
+                            "Proprietà inversa di \"ha giorno della settimana\"."@it ;
+               
+               rdfs:domain :DayOfWeek ;
+               
+               rdfs:range :TimeIndexedEvent ;
+               
+               rdfs:subPropertyOf :isTemporalEntityOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/isDurationOf
+
+:isDurationOf rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "is duration of"@en ,
+                         "è durata di"@it ;
+              
+              rdfs:comment "Inverse object property of hasDuration. It associates a duration with a time indexed event."@en ,
+                           "Proprietà inversa di hasDuration. Associa una durata ad una evento."@it ;
+              
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+              
+              rdfs:domain :Duration ;
+              
+              rdfs:range :TimeIndexedEvent ;
+              
+              rdfs:subPropertyOf :isTemporalEntityOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/isMonthOfYearOf
+
+:isMonthOfYearOf rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "is month of the year of"@en ,
+                            "è mese dell'anno di"@it ;
+                 
+                 rdfs:comment "Property that links a month of the year to a time indexed event."@en ,
+                              "Proprietà che collega un mese dell'anno ad un evento nel tempo."@it ;
+                 
+                 rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+                 
+                 rdfs:domain :MonthOfYear ;
+                 
+                 rdfs:range :TimeIndexedEvent ;
+                 
+                 rdfs:subPropertyOf :isTemporalEntityOf .
+
+
+
+###  https://w3id.org/italia/onto/TI/isTemporalEntityOf
+
+:isTemporalEntityOf rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "is temporal entity of"@en ,
+                               "è entità temporale di"@it ;
+                    
+                    rdfs:comment "Property that links a temporal entity to a time indexed event."@en ,
+                                 "Proprietà che collega un entità temporale ad un evento nel tempo."@it ;
+                    
+                    rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+                    
+                    rdfs:domain :TemporalEntity ;
+                    
+                    rdfs:range :TimeIndexedEvent .
+
+
+
+###  https://w3id.org/italia/onto/TI/isYearOf
+
+:isYearOf rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "is year of"@en ,
+                     "è anno di"@it ;
+          
+          rdfs:comment "Property that links a year to a time indexed event."@en ,
+                       "Proprietà che collega un anno ad un evento nel tempo."@it ;
+          
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+          
+          rdfs:range :TimeIndexedEvent ;
+          
+          rdfs:domain :Year ;
+          
+          rdfs:subPropertyOf :isTemporalEntityOf .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/TI/date
+
+:date rdf:type owl:DatatypeProperty ;
+      
+      rdfs:label "date"@en ,
+                 "data"@it ;
+      
+      rdfs:comment "This property represents a generic date / time instant."@en ;
+      
+      owl:versionInfo "unstable"@en ;
+      
+      rdfs:comment "Questa proprietà rappresenta una generica data / istante di tempo"@it ;
+      
+      owl:versionInfo "provvisoria"@it ;
+      
+      rdfs:domain owl:Thing ;
+      
+      rdfs:isDefinedBy : ;
+      
+      rdfs:range [ rdf:type rdfs:Datatype ;
+                   owl:unionOf ( xsd:date
+                                 xsd:dateTime
+                               )
+                 ] .
+
+
+
+###  https://w3id.org/italia/onto/TI/day
+
+:day rdf:type owl:DatatypeProperty ;
+     
+     rdfs:comment "Property defined for linking an instance of the class DayOfWeed to its literal representation expressed as xsd:gDay."@en ,
+                  "day"@en ,
+                  "Proprietà definita per associare un valore letterale di tipo xsd:gDay ad un'istanza della classe DayOfWeek."@it ,
+                  "giorno"@it ;
+     
+     rdfs:range xsd:gDay ;
+     
+     rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+     
+     rdfs:domain :DayOfWeek ;
+     
+     rdfs:subPropertyOf :time .
+
+
+
+###  https://w3id.org/italia/onto/TI/duration
+
+:duration rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "duration"@en ,
+                     "durata"@it ;
+          
+          rdfs:comment "Property that associates a duratin value with a time interval."@en ,
+                       "Proprietà che associa un valore di durata ad un intervallo di tempo."@it ;
+          
+          rdfs:range xsd:duration ;
+          
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+          
+          rdfs:domain :Duration ;
+          
+          rdfs:subPropertyOf :time .
+
+
+
+###  https://w3id.org/italia/onto/TI/endTime
+
+:endTime rdf:type owl:DatatypeProperty ;
+         
+         rdfs:label "end date"@en ,
+                    "data di fine"@it ;
+         
+         rdfs:comment "This property represents the end date of a time interval."@en ,
+                      "Questa proprietà rappresenta la data di fine di un intervallo temporale."@it ;
+         
+         rdfs:domain :TimeInterval ;
+         
+         rdfs:subPropertyOf :time ;
+         
+         rdfs:range [ rdf:type rdfs:Datatype ;
+                      owl:unionOf ( xsd:date
+                                    xsd:dateTime
+                                    xsd:time
+                                  )
+                    ] .
+
+
+
+###  https://w3id.org/italia/onto/TI/issued
+
+:issued rdf:type owl:DatatypeProperty ;
+        
+        rdfs:label "time of issuance"@en ,
+                   "istante di tempo (generazione)"@it ;
+        
+        rdfs:comment "This property represents the istant of time that can coincide with a generation time or the startTime of an interval."@en ;
+        
+        owl:versionInfo "stable"@en ;
+        
+        rdfs:comment "La proprietà rappresenta l'istante di tempo che può coincidere con un tempo di generazione o con la data di inizio dell'intervallo di tempo."@it ;
+        
+        owl:versionInfo "stabile"@it ;
+        
+        rdfs:domain owl:Thing ;
+        
+        rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+        
+        rdfs:range [ rdf:type rdfs:Datatype ;
+                     owl:unionOf ( xsd:date
+                                   xsd:dateTime
+                                   xsd:time
+                                 )
+                   ] .
+
+
+
+###  https://w3id.org/italia/onto/TI/modified
+
+:modified rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "update time"@en ,
+                     "data ultima modifica (tempo di aggiornamento)"@it ;
+          
+          rdfs:comment "This property  is used in order to model the update time."@en ;
+          
+          owl:versionInfo "stable"@en ;
+          
+          rdfs:comment "Questa proprietà è utilizzata per modellare la data di ultima modifica (o il tempo di aggiornamento)"@it ;
+          
+          owl:versionInfo "stabile"@it ;
+          
+          rdfs:domain owl:Thing ;
+          
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+          
+          rdfs:range [ rdf:type rdfs:Datatype ;
+                       owl:unionOf ( xsd:date
+                                     xsd:dateTime
+                                     xsd:time
+                                   )
+                     ] .
+
+
+
+###  https://w3id.org/italia/onto/TI/month
+
+:month rdf:type owl:DatatypeProperty ;
+       
+       rdfs:comment "Property defined for linking an individual of the class MonthOfTheYear to its literal representation expressed as xsd:gMonth."@en ,
+                    "month"@en ,
+                    "Proprietà definita per collegare un oggetto di tipo MonthOfTheYear al suo valore letterale espresso come xsd:gMonth."@it ,
+                    "mese"@it ;
+       
+       rdfs:range xsd:gMonth ;
+       
+       rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+       
+       rdfs:domain :MonthOfYear ;
+       
+       rdfs:subPropertyOf :time .
+
+
+
+###  https://w3id.org/italia/onto/TI/startTime
+
+:startTime rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "start date"@en ,
+                      "data di inizio"@it ;
+           
+           rdfs:comment "This property represents the start date of the time interval."@en ,
+                        "Questa proprietà rappresenta la data di inizio di un intervallo temporale."@it ;
+           
+           rdfs:domain :TimeInterval ;
+           
+           rdfs:subPropertyOf :time ;
+           
+           rdfs:range [ rdf:type rdfs:Datatype ;
+                        owl:unionOf ( xsd:date
+                                      xsd:dateTime
+                                      xsd:time
+                                    )
+                      ] .
+
+
+
+###  https://w3id.org/italia/onto/TI/time
+
+:time rdf:type owl:DatatypeProperty ;
+      
+      rdfs:label "time"@en ,
+                 "tempo"@it ;
+      
+      rdfs:comment "Abstract property used to represent the time as literal."@en ;
+      
+      owl:versionInfo "stable"@en ;
+      
+      rdfs:comment "Proprietà astratta per rappresentare il tempo come literal."@it ;
+      
+      owl:versionInfo "stabile"@it ;
+      
+      rdfs:range rdfs:Literal ;
+      
+      rdfs:comment <https://w3id.org/italia/onto/TI> ;
+      
+      rdfs:domain :TemporalEntity .
+
+
+
+###  https://w3id.org/italia/onto/TI/year
+
+:year rdf:type owl:DatatypeProperty ;
+      
+      rdfs:label "Datatype property for linking a year to its literal representation as xsd:gYear."@en ,
+                 "year"@en ,
+                 "Properietà definita per collegare un individuo di tipo Year alla sua rappresentazione letterale con datatype xsd:gYear."@it ,
+                 "anno"@it ;
+      
+      rdfs:range xsd:gYear ;
+      
+      rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> ;
+      
+      rdfs:domain :Year ;
+      
+      rdfs:subPropertyOf :time .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/MU/Value
+
+muapit:Value rdf:type owl:Class .
+
+
+
+###  https://w3id.org/italia/onto/TI/DayOfWeek
+
+:DayOfWeek rdf:type owl:Class ;
+           
+           rdfs:label "Day of the Week"@en ,
+                      "Giorno della settimana"@it ;
+           
+           rdfs:subClassOf :TemporalEntity ;
+           
+           owl:disjointWith :MonthOfYear ,
+                            :Year ;
+           
+           rdfs:comment "This class represents the set of all the days of the week."@en ,
+                        "Classe che rappresenta l'insieme dei giorni della settimana."@it ;
+           
+           rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+
+
+
+###  https://w3id.org/italia/onto/TI/Duration
+
+:Duration rdf:type owl:Class ;
+          
+          rdfs:label "Duration"@en ,
+                     "Durata"@it ;
+          
+          rdfs:subClassOf :TemporalEntity ,
+                          [ rdf:type owl:Class ;
+                            owl:unionOf ( muapit:Value
+                                          :TimeInterval
+                                        )
+                          ] ;
+          
+          rdfs:comment "The class for representing duration."@en ,
+                       "La classe che rappresenta la durata."@it ;
+          
+          rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+
+
+
+###  https://w3id.org/italia/onto/TI/MonthOfYear
+
+:MonthOfYear rdf:type owl:Class ;
+             
+             rdfs:label "Month of the year"@en ,
+                        "Mese dell'anno"@it ;
+             
+             rdfs:subClassOf :TemporalEntity ;
+             
+             owl:disjointWith :Year ;
+             
+             rdfs:comment "This class represents a month of the year."@en ,
+                          "Questa classe rappresenta un mese dell'anno."@it ;
+             
+             rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+
+
+
+###  https://w3id.org/italia/onto/TI/TemporalEntity
+
+:TemporalEntity rdf:type owl:Class ;
+                
+                rdfs:label "Temporal entity"@en ,
+                           "Entità temporale"@it ;
+                
+                rdfs:subClassOf l0:Entity ;
+                
+                rdfs:comment "This class represents a temporal entity."@en ,
+                             "Questa classe rappresenta un'entità di natura temporale."@it ;
+                
+                rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+
+
+
+###  https://w3id.org/italia/onto/TI/TimeIndexedEvent
+
+:TimeIndexedEvent rdf:type owl:Class ;
+                  
+                  rdfs:label "Time indexed event"@en ,
+                             "Evento indicizzato nel tempo"@it ;
+                  
+                  rdfs:subClassOf l0:Event ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :atTime ;
+                                    owl:someValuesFrom :TimeInterval
+                                  ] ;
+                  
+                  rdfs:comment "A time indexed event."@en ,
+                               "Un evento indicizzato nel tempo."@it ;
+                  
+                  rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+
+
+
+###  https://w3id.org/italia/onto/TI/TimeInterval
+
+:TimeInterval rdf:type owl:Class ;
+              
+              rdfs:label "Time interval"@en ,
+                         "Intervallo di tempo"@it ;
+              
+              rdfs:subClassOf :TemporalEntity ,
+                              l0:Characteristic ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :startTime ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :endTime ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :date ;
+                                owl:allValuesFrom xsd:date
+                              ] ;
+              
+              rdfs:comment "A time interval"@en ,
+                           "Rappresentazione di intervallo di tempo."@it ;
+              
+              rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+
+
+
+###  https://w3id.org/italia/onto/TI/Year
+
+:Year rdf:type owl:Class ;
+      
+      rdfs:label "Year"@en ,
+                 "Anno"@it ;
+      
+      rdfs:subClassOf :TemporalEntity ;
+      
+      rdfs:comment "Class for representing a year as individual."@en ,
+                   "Classe che rappresenta un anno."@it ;
+      
+      rdfs:isDefinedBy <https://w3id.org/italia/onto/TI> .
+
+
+
+###  https://w3id.org/italia/onto/l0/Characteristic
+
+l0:Characteristic rdf:type owl:Class .
+
+
+
+###  https://w3id.org/italia/onto/l0/Entity
+
+l0:Entity rdf:type owl:Class .
+
+
+
+###  https://w3id.org/italia/onto/l0/Event
+
+l0:Event rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  https://w3id.org/italia/onto/TI/April
+
+:April rdf:type owl:NamedIndividual ,
+                :MonthOfYear ;
+       
+       rdfs:label "April"@en ,
+                  "Aprile"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/August
+
+:August rdf:type owl:NamedIndividual ,
+                 :MonthOfYear ;
+        
+        rdfs:label "August"@en ,
+                   "Agosto"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/December
+
+:December rdf:type owl:NamedIndividual ,
+                   :MonthOfYear ;
+          
+          rdfs:label "December"@en ,
+                     "Dicembre"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/February
+
+:February rdf:type owl:NamedIndividual ,
+                   :MonthOfYear ;
+          
+          rdfs:label "February"@en ,
+                     "Febbraio"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/Friday
+
+:Friday rdf:type owl:NamedIndividual ,
+                 :DayOfWeek ;
+        
+        rdfs:label "Friday"@en ,
+                   "Venerdì"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/January
+
+:January rdf:type owl:NamedIndividual ,
+                  :MonthOfYear ;
+         
+         rdfs:label "January"@en ,
+                    "Gennaio"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/July
+
+:July rdf:type owl:NamedIndividual ,
+               :MonthOfYear ;
+      
+      rdfs:label "July"@en ,
+                 "Luglio"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/June
+
+:June rdf:type owl:NamedIndividual ,
+               :MonthOfYear ;
+      
+      rdfs:label "June"@en ,
+                 "Giugno"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/March
+
+:March rdf:type owl:NamedIndividual ,
+                :MonthOfYear ;
+       
+       rdfs:label "March"@en ,
+                  "Marzo"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/May
+
+:May rdf:type owl:NamedIndividual ,
+              :MonthOfYear ;
+     
+     rdfs:label "Maggio"@it ,
+                "May"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/Monday
+
+:Monday rdf:type owl:NamedIndividual ,
+                 :DayOfWeek ;
+        
+        rdfs:label "Monday"@en ,
+                   "Lunedì"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/November
+
+:November rdf:type owl:NamedIndividual ,
+                   :MonthOfYear ;
+          
+          rdfs:label "November"@en ,
+                     "Novembre"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/October
+
+:October rdf:type owl:NamedIndividual ,
+                  :MonthOfYear ;
+         
+         rdfs:label "October"@en ,
+                    "Ottobre"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/Saturday
+
+:Saturday rdf:type owl:NamedIndividual ,
+                   :DayOfWeek ;
+          
+          rdfs:label "Satruday"@en ,
+                     "Sabato"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/September
+
+:September rdf:type owl:NamedIndividual ,
+                    :MonthOfYear ;
+           
+           rdfs:label "September"@en ,
+                      "Settembre"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/Sunday
+
+:Sunday rdf:type owl:NamedIndividual ,
+                 :DayOfWeek ;
+        
+        rdfs:label "Sunday"@en ,
+                   "Domenica"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/Thursday
+
+:Thursday rdf:type owl:NamedIndividual ,
+                   :DayOfWeek ;
+          
+          rdfs:label "Thursday"@en ,
+                     "Giovedì"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/Tuesday
+
+:Tuesday rdf:type owl:NamedIndividual ,
+                  :DayOfWeek ;
+         
+         rdfs:label "Tuesday"@en ,
+                    "Martedì"@it .
+
+
+
+###  https://w3id.org/italia/onto/TI/Wednesday
+
+:Wednesday rdf:type owl:NamedIndividual ,
+                    :DayOfWeek ;
+           
+           rdfs:label "Wednesday"@en ,
+                      "Mercoledì"@it .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

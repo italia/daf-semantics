@@ -1,0 +1,29 @@
+# QUERY for SKOS!
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+#PREFIX clvapit: <http://dati.gov.it/onto/clvapit#>
+#PREFIX clvapit: <http://w3id.org/italia/onto/clvapit#>
+
+SELECT DISTINCT ?code ?_type_code ?_meta1_code ?label ?_type_label ?_meta1_label ?_meta2
+
+WHERE {
+
+?uri a skos:Concept .
+
+OPTIONAL { 
+  ?uri skos:notation ?code . 
+  BIND("SKOS.Concept.notation" AS ?_meta1_code) .    # metadata 1 level
+  BIND(DATATYPE(?code) AS ?_type_code)
+}
+OPTIONAL { 
+  ?uri skos:prefLabel ?label . 
+  BIND("SKOS.Concept.prefLabel" AS ?_meta1_label) .  # metadata 1 level
+  BIND(LANG(?label) AS ?label_lang) .
+  BIND(DATATYPE(?label) AS ?_type_label) .
+}
+
+BIND("${vocabularyID}.level_${level}" AS ?_meta2)
+
+FILTER(?uri=<${uri}>)
+FILTER(?label_lang="${lang}")
+
+}

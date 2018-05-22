@@ -1,0 +1,30 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/> 
+#PREFIX clvapit0: <http://dati.gov.it/onto/clvapit#> 
+
+SELECT DISTINCT ?uri ?group
+
+FROM <test://VocabolariControllati/territorial-classification/territorial-classification> 
+
+WHERE {
+
+  	?uri a ?concept . 
+  
+  	FILTER(?concept IN (clvapit:Country, clvapit:Region, clvapit:Province, clvapit:City))
+  
+  	{ 
+      ?uri clvapit:situatedWithin* ?group . ?group a ?group_concept . 
+      FILTER(?group_concept IN (clvapit:Country, clvapit:Region, clvapit:Province, clvapit:City))
+      ?group_concept clvapit:hasRankOrder ?rank . 
+    } # hierarchy!
+
+}
+
+
+ORDER BY ?uri ASC(?rank)
+

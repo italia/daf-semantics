@@ -1,0 +1,681 @@
+{
+  "@context": {
+    "clvapit": "http://dati.gov.it/onto/clvapit#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "l0": "http://dati.gov.it/onto/l0/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/isDeathPlaceOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La proprietà per associare un luogo (i.e. una località) ad una persona a persona per rappresentare il luogo di morte di quest'ultima."
+        },
+        {
+          "@language": "en",
+          "@value": "The property to associate a death place (i.e. a location) with a person."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Location"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "luogo di morte di"
+        },
+        {
+          "@language": "en",
+          "@value": "death place of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/familyName",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Il cognome di una persona. Ex. 'Rossi' è il cognome della persona 'Mario Rossi'"
+        },
+        {
+          "@language": "en",
+          "@value": "The family name of a person. E.g. 'Rossi' is the family name of the person 'Mario Rossi'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "cognome"
+        },
+        {
+          "@language": "en",
+          "@value": "family name"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/givenName",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Il nome di una persona. Ex. 'Mario' è il nome della persona 'Mario Rossi'."
+        },
+        {
+          "@language": "en",
+          "@value": "The given name of a person. E.g. 'Mario' is the given name of the person 'Mario Rossi'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "nome"
+        },
+        {
+          "@language": "en",
+          "@value": "given name"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/isNephewOf",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/isUncleOf"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La relazione di parentela tra un nipote ed uno zio."
+        },
+        {
+          "@language": "en",
+          "@value": "The nephew relation between a newphew and an uncle."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is nephew of"
+        },
+        {
+          "@language": "it",
+          "@value": "è nipote di"
+        }
+      ],
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/hasCitizenship",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The citizenship of a person (e.g. Italian)"
+        },
+        {
+          "@language": "it",
+          "@value": "La cittadinanza di una persona (ex. cittadinanza italiana)."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "cittadinanza"
+        },
+        {
+          "@language": "en",
+          "@value": "citizenship"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/Person",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Una persona naturale"
+        },
+        {
+          "@language": "en",
+          "@value": "A natural person"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Persona"
+        },
+        {
+          "@language": "en",
+          "@value": "Person"
+        }
+      ],
+      "rdfs:subClassOf": [
+        {
+          "@id": "l0:Agent"
+        },
+        {
+          "@id": "_:ub193bL281C25"
+        }
+      ]
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/isChildOf",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/isParentOf"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relation child-parent (e.g. John is the son of Peter)."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione figlio-padre (ex. Mario è figlio di Carlo)."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "child of"
+        },
+        {
+          "@language": "it",
+          "@value": "figlio di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/hasRelationshipWith",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Qualsiasi relazione tra agenti."
+        },
+        {
+          "@language": "en",
+          "@value": "Any relationship between agents."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has relationship with"
+        },
+        {
+          "@language": "it",
+          "@value": "ha relazione con"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      }
+    },
+    {
+      "@id": "l0:name",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/isBirthPlaceOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relation between a place and a person. The relation asserts that a place is the place of birth of the person object of the relation."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione tra un luogo ed una persona dove il luogo è il soggetto e la persona l'oggetto della relazione."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "l0:Location"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "is birth place of"
+        },
+        {
+          "@language": "it",
+          "@value": "è luogo di nascita di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/hasDeathPlace",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/isDeathPlaceOf"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Il luogo di morte di una persona."
+        },
+        {
+          "@language": "en",
+          "@value": "A person's place of death."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "luogo di morte"
+        },
+        {
+          "@language": "en",
+          "@value": "death place"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Location"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/isParentOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "The parent-child relationship."
+        },
+        {
+          "@language": "it",
+          "@value": "è genitore di"
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione padre-figlio."
+        },
+        {
+          "@language": "en",
+          "@value": "is parent of"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "_:ub193bL281C25",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "clvapit:hasAddress"
+      },
+      "owl:someValuesFrom": {
+        "@id": "l0:Location"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/hasParentalRelationshipWith",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "A parental relationship between two persons."
+        },
+        {
+          "@language": "it",
+          "@value": "Una relazione di parentela tra due persone."
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "has parental relationship with"
+        },
+        {
+          "@language": "it",
+          "@value": "ha relazione parentale con"
+        }
+      ],
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/hasRelationshipWith"
+      }
+    },
+    {
+      "@id": "l0:identifier",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "l0:"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/birthDate",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:range": {
+        "@id": "xsd:date"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/taxCode",
+      "@type": "owl:DatatypeProperty",
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "stable"
+        },
+        {
+          "@language": "it",
+          "@value": "stabile"
+        }
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "This is the property that allows one to represent the tax code, a specific type of identifier, for a person."
+        },
+        {
+          "@language": "it",
+          "@value": "Questa proprietà consente di modellare il codice fiscale, uno specifico identificativo, per una persona."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/cpvapit"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "tax code"
+        },
+        {
+          "@language": "it",
+          "@value": "codice fiscale"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:identifier"
+      }
+    },
+    {
+      "@id": "l0:Location",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/isUncleOf",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": {
+        "@language": "it",
+        "@value": "La relazione di parentela tra zio e nipote."
+      },
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "The uncleship relation."
+        },
+        {
+          "@language": "en",
+          "@value": "is uncle of"
+        },
+        {
+          "@language": "it",
+          "@value": "è zio di"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/hasParentalRelationshipWith"
+      }
+    },
+    {
+      "@id": "clvapit:hasAddress",
+      "@type": "owl:ObjectProperty",
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/clvapit"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/",
+      "@type": "owl:Ontology",
+      "dc:creator": [
+        {
+          "@language": "en",
+          "@value": "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"
+        },
+        {
+          "@language": "en",
+          "@value": "Italian Digital Transformation Team"
+        },
+        {
+          "@language": "it",
+          "@value": "Team per la Trasformazione Digitale"
+        },
+        {
+          "@language": "it",
+          "@value": "Agenzia per l'italia Digitale (AgID)"
+        },
+        {
+          "@language": "it",
+          "@value": "Istituto di Scienze e Tecnologie della Cognizione dell'Istituto nazionale delle Ricerche (CNR) - Laboratorio di Tecnologie Semantiche (STlab)"
+        },
+        {
+          "@language": "en",
+          "@value": "Agency for Digital Italy - AgID"
+        }
+      ],
+      "dcterms:issued": {
+        "@type": "xsd:date",
+        "@value": "2017-07-19"
+      },
+      "dcterms:license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "dcterms:modified": "2017-11-21",
+      "owl:imports": [
+        {
+          "@id": "l0:"
+        },
+        {
+          "@id": "clvapit:"
+        }
+      ],
+      "owl:versionIRI": {
+        "@id": "http://dati.gov.it/onto/cpvapit/"
+      },
+      "owl:versionInfo": [
+        {
+          "@language": "en",
+          "@value": "Version 0.2 - 08  August 2017 - exclusion of Location part of the ontology since it is included in the related ontology"
+        },
+        {
+          "@language": "it",
+          "@value": "Versione 0.2 - 08 Agosto 2017 - separata la parte luoghi dall'ontologia persone"
+        }
+      ],
+      "prov:wasDerivedFrom": {
+        "@id": "http://dati.gov.it/onto/person/0.1"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "Questa è l'ontologia del profilo applicativo italiano sulle persone."
+        },
+        {
+          "@language": "en",
+          "@value": "This is the ontology of the Italian application profile for Person"
+        }
+      ],
+      "rdfs:isDefinedBy": {
+        "@id": "http://dati.gov.it/onto/person/"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "Ontologia delle persone"
+        },
+        {
+          "@language": "en",
+          "@value": "Person ontology"
+        }
+      ]
+    },
+    {
+      "@id": "l0:Agent",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/hasBirthPlace",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/isBirthPlaceOf"
+      },
+      "rdfs:comment": [
+        {
+          "@language": "it",
+          "@value": "La relazione che permette di asserire che una persona è nata in un certo luogo."
+        },
+        {
+          "@language": "en",
+          "@value": "The relation asserts that a person has a certain place of birth."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "birth place"
+        },
+        {
+          "@language": "it",
+          "@value": "luogo di nascita"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "l0:Location"
+      }
+    },
+    {
+      "@id": "xsd:date",
+      "@type": "rdfs:Datatype"
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/knows",
+      "@type": [
+        "owl:SymmetricProperty",
+        "owl:ObjectProperty"
+      ],
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "The relationship of knowledge between two people. E.g. 'John White' knows 'Bob Black'."
+        },
+        {
+          "@language": "it",
+          "@value": "La relazione di conoscenza che intercorre tra due persone. Ex. 'Mario Rossi' conosce 'Paolo Neri'."
+        }
+      ],
+      "rdfs:domain": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:label": [
+        {
+          "@language": "it",
+          "@value": "conosce"
+        },
+        {
+          "@language": "en",
+          "@value": "knows"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "http://dati.gov.it/onto/cpvapit/Person"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "http://dati.gov.it/onto/cpvapit/hasRelationshipWith"
+      }
+    },
+    {
+      "@id": "http://dati.gov.it/onto/cpvapit/altName",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "l0:name"
+      }
+    }
+  ]
+}

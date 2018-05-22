@@ -1,0 +1,803 @@
+[ {
+  "id" : "POICategoryClassification",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioneCategoriePuntoInteresse/POICategoryClassification.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_7_geographical", "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_6_travel", "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_5_automotive", "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_4_shopping", "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_2_recreation", "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_3_food", "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_1_entertainment", "http://dati.gov.it/onto/controlledvocabulary/POICategoryClassification/cat_8_publicservice" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Point of Interest Category Classification"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione delle categorie dei punti di interesse"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the categories of the point of interest. The classification is based on the first level of the classification proposed by Open Street Map."
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione delle categorie dei punti di interesse. La classificazione è basata su sul primo livello della classificazione proposta da Open Street Map"
+  } ],
+  "publishedBy" : "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+  "owner" : "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ {
+    "label" : "A21_CCBY40",
+    "uri" : "A21_CCBY40",
+    "lang" : ""
+  } ],
+  "version" : [ {
+    "number" : "0.2",
+    "date" : "",
+    "comment" : "",
+    "uri" : ""
+  } ],
+  "lastEditDate" : "2018-01-25",
+  "tags" : [ {
+    "label" : "http://eurovoc.europa.eu/251915",
+    "uri" : "http://eurovoc.europa.eu/251915",
+    "lang" : ""
+  } ],
+  "categories" : [ {
+    "label" : "http://publications.europa.eu/resource/authority/data-theme/EDUC",
+    "uri" : "http://publications.europa.eu/resource/authority/data-theme/EDUC",
+    "lang" : ""
+  }, {
+    "label" : "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "uri" : "http://publications.europa.eu/resource/authority/data-theme/REGI",
+    "lang" : ""
+  } ],
+  "keywords" : [ {
+    "label" : "Category",
+    "uri" : "keywords://en#Category",
+    "lang" : "en"
+  }, {
+    "label" : "Point of Interest",
+    "uri" : "keywords://en#Point+of+Interest",
+    "lang" : "en"
+  }, {
+    "label" : "Sector",
+    "uri" : "keywords://en#Sector",
+    "lang" : "en"
+  }, {
+    "label" : "Categoria",
+    "uri" : "keywords://it#Categoria",
+    "lang" : "it"
+  }, {
+    "label" : "Punti di Interesse",
+    "uri" : "keywords://it#Punti+di+Interesse",
+    "lang" : "it"
+  }, {
+    "label" : "Settore",
+    "uri" : "keywords://it#Settore",
+    "lang" : "it"
+  } ]
+}, {
+  "id" : "Istat-Classificazione-08-Territorio",
+  "url" : "",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioneTerritorio/Istat-Classificazione-08-Territorio.ttl",
+  "instances" : [ ],
+  "titles" : [ ],
+  "descriptions" : [ ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "Channel",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/Channel",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione/Channel.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/Channel/0123", "http://dati.gov.it/onto/controlledvocabulary/Channel/0563", "http://dati.gov.it/onto/controlledvocabulary/Channel/0552", "http://dati.gov.it/onto/controlledvocabulary/Channel/051", "http://dati.gov.it/onto/controlledvocabulary/Channel/021", "http://dati.gov.it/onto/controlledvocabulary/Channel/01", "http://dati.gov.it/onto/controlledvocabulary/Channel/053", "http://dati.gov.it/onto/controlledvocabulary/Channel/0564", "http://dati.gov.it/onto/controlledvocabulary/Channel/0124", "http://dati.gov.it/onto/controlledvocabulary/Channel/0113", "http://dati.gov.it/onto/controlledvocabulary/Channel/04", "http://dati.gov.it/onto/controlledvocabulary/Channel/0553", "http://dati.gov.it/onto/controlledvocabulary/Channel/0112", "http://dati.gov.it/onto/controlledvocabulary/Channel/0566", "http://dati.gov.it/onto/controlledvocabulary/Channel/0122", "http://dati.gov.it/onto/controlledvocabulary/Channel/012", "http://dati.gov.it/onto/controlledvocabulary/Channel/052", "http://dati.gov.it/onto/controlledvocabulary/Channel/042", "http://dati.gov.it/onto/controlledvocabulary/Channel/02", "http://dati.gov.it/onto/controlledvocabulary/Channel/031", "http://dati.gov.it/onto/controlledvocabulary/Channel/0561", "http://dati.gov.it/onto/controlledvocabulary/Channel/056", "http://dati.gov.it/onto/controlledvocabulary/Channel/0565", "http://dati.gov.it/onto/controlledvocabulary/Channel/05", "http://dati.gov.it/onto/controlledvocabulary/Channel/03", "http://dati.gov.it/onto/controlledvocabulary/Channel/0111", "http://dati.gov.it/onto/controlledvocabulary/Channel/055", "http://dati.gov.it/onto/controlledvocabulary/Channel/041", "http://dati.gov.it/onto/controlledvocabulary/Channel/022", "http://dati.gov.it/onto/controlledvocabulary/Channel/011", "http://dati.gov.it/onto/controlledvocabulary/Channel/033", "http://dati.gov.it/onto/controlledvocabulary/Channel/0551", "http://dati.gov.it/onto/controlledvocabulary/Channel/0121", "http://dati.gov.it/onto/controlledvocabulary/Channel/0562", "http://dati.gov.it/onto/controlledvocabulary/Channel/054", "http://dati.gov.it/onto/controlledvocabulary/Channel/032", "http://dati.gov.it/onto/controlledvocabulary/Channel/0125" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Channel"
+  }, {
+    "lang" : "it",
+    "value" : "Canale di erogazione servizio pubblico"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the channel"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione dei canali"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "ServiceInputOutput",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioniPerServiziPubblici/InputOutputServizi/ServiceInputOutput.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/REQ", "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/CERT", "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/AUTHACT", "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/ADMINDOC", "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/PAYMENTDEC", "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/IDDEC", "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/OTHDOC", "http://dati.gov.it/onto/controlledvocabulary/ServiceInputOutput/CODE" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Service Input and Output"
+  }, {
+    "lang" : "it",
+    "value" : "Input e output del servizio"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the Service Input and Output"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione dei tipi di input e di output per i servizi pubblici"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "BE_ITA",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/BE",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioniPerServiziPubblici/LifeBusinessEvent/BE_ITA.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/BE/9", "http://dati.gov.it/onto/controlledvocabulary/BE/12", "http://dati.gov.it/onto/controlledvocabulary/BE/6", "http://dati.gov.it/onto/controlledvocabulary/BE/1", "http://dati.gov.it/onto/controlledvocabulary/BE/15", "http://dati.gov.it/onto/controlledvocabulary/BE/13", "http://dati.gov.it/onto/controlledvocabulary/BE/5", "http://dati.gov.it/onto/controlledvocabulary/BE/2", "http://dati.gov.it/onto/controlledvocabulary/BE/8", "http://dati.gov.it/onto/controlledvocabulary/BE/7", "http://dati.gov.it/onto/controlledvocabulary/BE/10", "http://dati.gov.it/onto/controlledvocabulary/BE/3", "http://dati.gov.it/onto/controlledvocabulary/BE/11", "http://dati.gov.it/onto/controlledvocabulary/BE/4", "http://dati.gov.it/onto/controlledvocabulary/BE/14" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Business Event"
+  }, {
+    "lang" : "it",
+    "value" : "Evento di business (evento della vita di un'impresa)"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the business events for the Italian catalogue of public services"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione degli eventi business per il catalogo italiano dei servizi pubblici"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "LE_ITA",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/LE",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioniPerServiziPubblici/LifeBusinessEvent/LE_ITA.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/LE/14", "http://dati.gov.it/onto/controlledvocabulary/LE/11", "http://dati.gov.it/onto/controlledvocabulary/LE/18", "http://dati.gov.it/onto/controlledvocabulary/LE/2", "http://dati.gov.it/onto/controlledvocabulary/LE/7", "http://dati.gov.it/onto/controlledvocabulary/LE/5", "http://dati.gov.it/onto/controlledvocabulary/LE/10", "http://dati.gov.it/onto/controlledvocabulary/LE/15", "http://dati.gov.it/onto/controlledvocabulary/LE/19", "http://dati.gov.it/onto/controlledvocabulary/LE/1", "http://dati.gov.it/onto/controlledvocabulary/LE/8", "http://dati.gov.it/onto/controlledvocabulary/LE/16", "http://dati.gov.it/onto/controlledvocabulary/LE/4", "http://dati.gov.it/onto/controlledvocabulary/LE/13", "http://dati.gov.it/onto/controlledvocabulary/LE/3", "http://dati.gov.it/onto/controlledvocabulary/LE/17", "http://dati.gov.it/onto/controlledvocabulary/LE/9", "http://dati.gov.it/onto/controlledvocabulary/LE/12", "http://dati.gov.it/onto/controlledvocabulary/LE/6" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Life Event"
+  }, {
+    "lang" : "it",
+    "value" : "Evento della Vita"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the life events for the Italian catalogue of public services"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione degli eventi della vita per il catalogo italiano dei servizi pubblici"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "Authentication",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/Authentication",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione/Authentication.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/Authentication/SFA", "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL2", "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTPBIO", "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDOTP", "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL3", "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FAHW", "http://dati.gov.it/onto/controlledvocabulary/Authentication/IDPWD", "http://dati.gov.it/onto/controlledvocabulary/Authentication/CNS", "http://dati.gov.it/onto/controlledvocabulary/Authentication/MFA", "http://dati.gov.it/onto/controlledvocabulary/Authentication/2FA", "http://dati.gov.it/onto/controlledvocabulary/Authentication/CIE", "http://dati.gov.it/onto/controlledvocabulary/Authentication/NONE", "http://dati.gov.it/onto/controlledvocabulary/Authentication/SPIDL1" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Authentication"
+  }, {
+    "lang" : "it",
+    "value" : "Tipi di Autenticazione"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the types of authentication"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione dei tipi di autenticazione"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "AccommodationStarRating",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioniStruttureRicettive/AccommodationStarRating.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/2", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/3S", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/5", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/4", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/0", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/5L", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/3", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/1", "http://dati.gov.it/onto/controlledvocabulary/AccoStarRating/4S" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Accommodation Star Rating"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione a stelle delle Strutture Ricettiva"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the star ratings of Accommodation."
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione a stelle per le strutture ricettive"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "2017-10-20",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "AccommodationTypology",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/AccoTypology",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/ClassificazioniStruttureRicettive/AccommodationTypology.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A1011", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A71", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A311", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A811", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D12", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B148", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C211", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A31", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C111", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B151", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A611", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A10", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B154", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C21", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B14", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A5", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B13", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B143", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A61", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A7", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/E1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A6", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B147", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D4", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A2", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B112", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C221", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D131", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B116", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D112", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B144", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D211", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D11", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D21", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B155", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A101", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B113", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B15", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B152", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B141", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A511", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C22", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C11", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/BC", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D311", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A1211", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A11", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A1111", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A91", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D3", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A8", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B111", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/E111", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D411", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B114", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A1-1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A911", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A41", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/E11", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A411", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A3", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B16", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B11", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D31", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D121", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B145", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A12-1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D113", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C2", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B161", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A111", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B121", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A211", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D122", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A81", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A21", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A12", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D111", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A9", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D13", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D2", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/E", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B142", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/C1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B131", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B115", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A4", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B146", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/D41", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A11-1", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B12", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A51", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/A711", "http://dati.gov.it/onto/controlledvocabulary/AccoTypology/B153" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Accommodation Typology"
+  }, {
+    "lang" : "it",
+    "value" : "Tipologia di Struttura Ricettiva"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the types of Accommodation. The classification is aligned to the classification of the LodgingBusiness used in schema.org"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione dei tipi di strutture ricettive ai sensi del codice del turismo (Decreto legislativo n°79 del 23 maggio 2011). La classificazione è allineata alla classificazione dei LodgingBusiness del vocabolario schema.org"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "2017-10-20",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "Licenze",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/License",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/Licenze/Licenze.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/License/A24_CCBY25", "http://dati.gov.it/onto/controlledvocabulary/License/B110_CCBYNCSA30", "http://dati.gov.it/onto/controlledvocabulary/License/A22_CCBY30", "http://dati.gov.it/onto/controlledvocabulary/License/A36_CCBYSA20", "http://dati.gov.it/onto/controlledvocabulary/License/B29_CCBYNDNC10", "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40", "http://dati.gov.it/onto/controlledvocabulary/License/A2_Attribution", "http://dati.gov.it/onto/controlledvocabulary/License/A38_CCBYSA10", "http://dati.gov.it/onto/controlledvocabulary/License/A34_CCBYSA25", "http://dati.gov.it/onto/controlledvocabulary/License/A32_CCBYSA30", "http://dati.gov.it/onto/controlledvocabulary/License/A_OpenLicense", "http://dati.gov.it/onto/controlledvocabulary/License/A28_CCBY10", "http://dati.gov.it/onto/controlledvocabulary/License/A210_ODCBY", "http://dati.gov.it/onto/controlledvocabulary/License/B1_NonCommercial", "http://dati.gov.it/onto/controlledvocabulary/License/C1_Unknown", "http://dati.gov.it/onto/controlledvocabulary/License/A41_ADRM", "http://dati.gov.it/onto/controlledvocabulary/License/B19_CCBYNCSA40", "http://dati.gov.it/onto/controlledvocabulary/License/B25_CCBYND25IT", "http://dati.gov.it/onto/controlledvocabulary/License/A39_IODL10", "http://dati.gov.it/onto/controlledvocabulary/License/C11_Unknown", "http://dati.gov.it/onto/controlledvocabulary/License/B113_CCBYNCSA25IT", "http://dati.gov.it/onto/controlledvocabulary/License/B15_CCBYNC25IT", "http://dati.gov.it/onto/controlledvocabulary/License/B17_CCBYNC20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B111_CCBYNCSA30IT", "http://dati.gov.it/onto/controlledvocabulary/License/B12_CCBYNC30", "http://dati.gov.it/onto/controlledvocabulary/License/A33_CCBYSA30IT", "http://dati.gov.it/onto/controlledvocabulary/License/A26_CCBY20", "http://dati.gov.it/onto/controlledvocabulary/License/A311_GFDL13", "http://dati.gov.it/onto/controlledvocabulary/License/A310_ODBL", "http://dati.gov.it/onto/controlledvocabulary/License/B112_CCBYNCSA25", "http://dati.gov.it/onto/controlledvocabulary/License/A27_CCBY20IT", "http://dati.gov.it/onto/controlledvocabulary/License/A29_IODL20", "http://dati.gov.it/onto/controlledvocabulary/License/B114_CCBYNCSA20", "http://dati.gov.it/onto/controlledvocabulary/License/A4_ShareAlikeCopyleftNonComp", "http://dati.gov.it/onto/controlledvocabulary/License/A35_CCBYSA25IT", "http://dati.gov.it/onto/controlledvocabulary/License/B14_CCBYNC25", "http://dati.gov.it/onto/controlledvocabulary/License/A23_CCBY30IT", "http://dati.gov.it/onto/controlledvocabulary/License/B18_CCBYNC10", "http://dati.gov.it/onto/controlledvocabulary/License/C_Unknown", "http://dati.gov.it/onto/controlledvocabulary/License/B115_CCBYNCSA20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B24_CCBYND25", "http://dati.gov.it/onto/controlledvocabulary/License/B11_CCBYNC40", "http://dati.gov.it/onto/controlledvocabulary/License/B13_CCBYNC30IT", "http://dati.gov.it/onto/controlledvocabulary/License/B116_CCBYNCSA10", "http://dati.gov.it/onto/controlledvocabulary/License/B28_CCBYND10", "http://dati.gov.it/onto/controlledvocabulary/License/B22_CCBYND30", "http://dati.gov.it/onto/controlledvocabulary/License/A1_PublicDomain", "http://dati.gov.it/onto/controlledvocabulary/License/B16_CCBYNC20", "http://dati.gov.it/onto/controlledvocabulary/License/A25_CCBY25IT", "http://dati.gov.it/onto/controlledvocabulary/License/A3_ShareAlike", "http://dati.gov.it/onto/controlledvocabulary/License/A37_CCBYSA20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B21_CCBYND40", "http://dati.gov.it/onto/controlledvocabulary/License/B23_CCBYND30IT", "http://dati.gov.it/onto/controlledvocabulary/License/A12_PDDL", "http://dati.gov.it/onto/controlledvocabulary/License/B2_NoDerivs", "http://dati.gov.it/onto/controlledvocabulary/License/A11_CCO10", "http://dati.gov.it/onto/controlledvocabulary/License/B27_CCBYND20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B26_CCBYND20", "http://dati.gov.it/onto/controlledvocabulary/License/A31_CCBYSA40", "http://dati.gov.it/onto/controlledvocabulary/License/B_NonOpenLicense" ],
+  "titles" : [ {
+    "lang" : "de",
+    "value" : "Lizenzen"
+  }, {
+    "lang" : "en",
+    "value" : "Licenses"
+  }, {
+    "lang" : "fr",
+    "value" : "Licences"
+  }, {
+    "lang" : "it",
+    "value" : "Licenze"
+  } ],
+  "descriptions" : [ {
+    "lang" : "de",
+    "value" : "Klassifizierung der Lizenzen. Derzeit sind die Lizenzen für Daten enthalten."
+  }, {
+    "lang" : "en",
+    "value" : "Classification of the licenses. Currently it includes the licenses for data"
+  }, {
+    "lang" : "fr",
+    "value" : "La classification des licences. Actuellement, il inclut les licences pour les données"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione delle licenze. Attualmente include le licenze utilizzate nell'ambito dati"
+  } ],
+  "publishedBy" : "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+  "owner" : "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+  "creators" : [ ],
+  "langs" : [ "de", "en", "fr", "it" ],
+  "licenses" : [ {
+    "label" : "A21_CCBY40",
+    "uri" : "A21_CCBY40",
+    "lang" : ""
+  } ],
+  "version" : [ {
+    "number" : "1.0",
+    "date" : "",
+    "comment" : "",
+    "uri" : ""
+  } ],
+  "lastEditDate" : "2018-01-26",
+  "tags" : [ {
+    "label" : "http://eurovoc.europa.eu/100262",
+    "uri" : "http://eurovoc.europa.eu/100262",
+    "lang" : ""
+  }, {
+    "label" : "http://eurovoc.europa.eu/259037",
+    "uri" : "http://eurovoc.europa.eu/259037",
+    "lang" : ""
+  } ],
+  "categories" : [ {
+    "label" : "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "uri" : "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "lang" : ""
+  } ],
+  "keywords" : [ {
+    "label" : "Gender",
+    "uri" : "keywords://en#Gender",
+    "lang" : "en"
+  }, {
+    "label" : "Sex",
+    "uri" : "keywords://en#Sex",
+    "lang" : "en"
+  }, {
+    "label" : "Genere",
+    "uri" : "keywords://it#Genere",
+    "lang" : "it"
+  }, {
+    "label" : "Sesso",
+    "uri" : "keywords://it#Sesso",
+    "lang" : "it"
+  } ]
+}, {
+  "id" : "MappingDataThemeEurovoc",
+  "url" : "http://eurovoc.europa.eu/100163",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/MappingTema-Sottotema/MappingDataThemeEurovoc.ttl",
+  "instances" : [ "http://publications.europa.eu/resource/authority/data-theme/TECH", "http://publications.europa.eu/resource/authority/data-theme/REGI", "http://publications.europa.eu/resource/authority/data-theme/SOCI", "http://publications.europa.eu/resource/authority/data-theme/INTR", "http://publications.europa.eu/resource/authority/data-theme/ENER", "http://publications.europa.eu/resource/authority/data-theme/GOVE", "http://publications.europa.eu/resource/authority/data-theme/ENVI", "http://publications.europa.eu/resource/authority/data-theme/ECON", "http://publications.europa.eu/resource/authority/data-theme/JUST", "http://publications.europa.eu/resource/authority/data-theme/TRAN", "http://publications.europa.eu/resource/authority/data-theme/HEAL", "http://publications.europa.eu/resource/authority/data-theme/EDUC", "http://publications.europa.eu/resource/authority/data-theme/AGRI" ],
+  "titles" : [ {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  }, {
+    "lang" : "",
+    "value" : ""
+  } ],
+  "descriptions" : [ {
+    "lang" : "",
+    "value" : ""
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+}, {
+  "id" : "EventiPubblici",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/PublicEvent",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/TipiEventiPubblici/EventiPubblici.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/71_MusicFestival", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/52_EcumenicalCelebration", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/54_Jubilee", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/16_DanceShow", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/41_Summit", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/65_PanelDiscussion", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/33_Demonstration", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/32_DebateMeeting", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/3_SocialEvent", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/112_Course", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/110_GuidedTour", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/12_BookPresentation", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/2_SportEvent", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/13_Conference", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/62_Convention", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/55_ReligiousDialogue", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/64_Exhibition", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/31_LocalFestival", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/57_ReligiousReading", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/7_MusicEvent", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/73_MusicTour", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/15_TheathralShow", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/21_Match", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/72_Concert", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/115_Contest", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/35_Commemoration", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/11_Exposure", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/113_Review", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/19_Festival", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/14_PublicLeReading", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/23_Competition", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/4_PoliticalEvent", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/75_MusicAudition", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/53_JubileeAudience", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/114_Award", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/61_BusinessMeeting", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/34_Inauguration", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/66_Market", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/111_FreeTour", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/25_SportGathering", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/63_Expo", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/5_ReligiousEvent", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/17_CinemaProjection", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/37_SocialCelebration", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/6_BusinessEvent", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/38_Parade", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/74_MusicGala", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/18_CulturalCelebration", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/26_SportsAward", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/42_Forum", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/24_SportGala", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/59_Sanctification", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/51_SaintFeast", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/1_CulturalEvent", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/36_HistoricalTournament", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/22_Race", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/56_Procession", "http://dati.gov.it/onto/controlledvocabulary/PublicEvent/58_ReligiousGathering" ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Public Event"
+  }, {
+    "lang" : "it",
+    "value" : "Evento Pubblico"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Classification of the public events"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione degli eventi pubblici"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "creators" : [ ],
+  "langs" : [ "en", "it" ],
+  "licenses" : [ ],
+  "version" : [ ],
+  "lastEditDate" : "",
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ]
+} ]
