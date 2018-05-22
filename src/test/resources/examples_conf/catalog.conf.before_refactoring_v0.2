@@ -1,0 +1,62 @@
+
+http {
+
+	host: 0.0.0.0
+	base: "/kb/api/v1"
+	port: 7777
+	
+}
+
+use_cache: true
+
+local: "./ontologie-vocabolari-controllati"
+
+remote: "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master"
+
+ontologies.base:	"http://dati.gov.it/onto"
+vocabularies.base:	"http://dati.gov.it/onto/controlledvocabulary"
+
+ontologies.data: [
+
+	{ path: "/Ontologie/Cultural-ON/latest/Cultural-ON-AP_IT.ttl" }
+	{ path: "/Ontologie/EventiIoT/latest/IoT-AP_IT.ttl" }
+	{ path: "/Ontologie/IndirizziLuoghi/latest/CLV-AP_IT.ttl" }
+	{ path: "/Ontologie/InternetSocialMedia/latest/SM-AP_IT.ttl" }
+	{ path: "/Ontologie/Livello0/latest/l0.ttl" }
+	{ path: "/Ontologie/Organizzazioni/latest/COV-AP_IT.ttl" }
+	{ path: "/Ontologie/Persone/latest/CPV-AP_IT.ttl" }
+	{ path: "/Ontologie/PrezziOfferteBiglietti/latest/POT-AP_IT.ttl" }
+	{ path: "/Ontologie/PuntoDiInteresse/latest/POI-AP_IT.ttl" }
+	{ path: "/Ontologie/Ruoli/latest/RO-AP_IT.ttl" }
+	{ path: "/Ontologie/StruttureRicettive/latest/ACCO-AP_IT.ttl" }
+	{ path: "/Ontologie/Tempo/latest/TI-AP_IT.ttl" }
+	{ path: "/Ontologie/UnitaDiMisura/latest/MU-AP_IT.ttl" }
+
+]
+
+vocabularies.data: [
+	{ path: "/VocabolariControllati/ClassificazioneCategoriePuntoInteresse/POICategoryClassification.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioneTerritorio/Istat-Classificazione-08-Territorio.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioniPerServiziPubblici/CanaliErogazione/Channel.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioniPerServiziPubblici/InputOutputServizi/ServiceInputOutput.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioniPerServiziPubblici/LifeBusinessEvent/BE_ITA.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioniPerServiziPubblici/LifeBusinessEvent/LE_ITA.ttl" },
+	# CHECK { path: "/VocabolariControllati/ClassificazioniPerServiziPubblici/LivelliInterattività/InteractivityLevel.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioniPerServiziPubblici/TipiAutenticazione/Authentication.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioniStruttureRicettive/AccommodationStarRating.ttl" },
+	{ path: "/VocabolariControllati/ClassificazioniStruttureRicettive/AccommodationTypology.ttl" },
+	{ path: "/VocabolariControllati/Licenze/Licenze.ttl" },
+	{ path: "/VocabolariControllati/MappingTema-Sottotema/MappingDataThemeEurovoc.ttl" },
+	{ path: "/VocabolariControllati/TipiEventiPubblici/EventiPubblici.ttl" }
+]
+
+
+configurations.notes="""
+
++ 	at the moment the paths are described explicitly, while the root can be local or remote.
+	In future improvements we could automatically detect all the files of a certain type and load them: however this would require a minimum of internal metadata to be added, in order to have informations to expose (example: the prefix choice for ontologies).
+
++	ontologies default: the prefix is currently derived from the ontologyID, in future it could be overwritten by a configuration
+
+
+"""

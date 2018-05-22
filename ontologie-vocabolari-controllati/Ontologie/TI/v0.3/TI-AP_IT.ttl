@@ -1,0 +1,318 @@
+@prefix : <http://dati.gov.it/onto/tiapit/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix l0: <http://dati.gov.it/onto/l0/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix muapit: <http://dati.gov.it/onto/muapit/> .
+@base <http://dati.gov.it/onto/tiapit> .
+
+<http://dati.gov.it/onto/tiapit> rdf:type owl:Ontology ;
+                                 
+                                 rdfs:label "Time ontology"@en ,
+                                            "Ontologia del tempo"@it ;
+                                 
+                                 dct:issued "2017-09-25"^^xsd:date ;
+                                 
+                                 dc:creator "Agency for Digital Italy - AgID"@en ,
+                                            "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)"@en ,
+                                            "Italian Digital Transformation Team"@en ;
+                                 
+                                 rdfs:comment "This is the ontology of the Italian application profile for time"@en ;
+                                 
+                                 owl:versionInfo "Version 0.3 - 14 November 2017"@en ;
+                                 
+                                 rdfs:comment "Questa è l'ontologia del profilo applicativo italiano sul tempo"@it ;
+                                 
+                                 owl:versionInfo "Versione 0.3 - 14 Novembre 2017"@it ;
+                                 
+                                 owl:imports l0: ,
+                                             <http://dati.gov.it/onto/muapit/0.1> ;
+                                 
+                                 rdfs:isDefinedBy : ;
+                                 
+                                 owl:versionIRI <http://dati.gov.it/onto/tiapit/0.3> ;
+                                 
+                                 dct:license <https://creativecommons.org/licenses/by/4.0/> .
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+
+xsd:duration rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/tiapit/atTime
+
+:atTime rdf:type owl:ObjectProperty ;
+        
+        rdfs:label "at time"@en ,
+                   "al tempo"@it ;
+        
+        rdfs:comment "Relation between any thing and time interval"@en ,
+                     "Relazione tra qualsiasi cosa e intervallo di tempo."@it ;
+        
+        rdfs:range :TimeInterval ;
+        
+        rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/tiapit/hasDayOfWeek
+
+:hasDayOfWeek rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "has day of week"@en ,
+                         "ha giorno della settimana"@it ;
+              
+              rdfs:comment "This property relates any object to particular day of the week."@en ,
+                           "Questa proprietà è utilizzata per associare un oggetto che può essere collocato nel tempo ai giorni della settimana."@it ;
+              
+              rdfs:range :DayOfWeek ;
+              
+              rdfs:domain owl:Thing .
+
+
+
+###  http://dati.gov.it/onto/tiapit/hasDuration
+
+:hasDuration rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has duration"@en ,
+                        "ha durata"@it ;
+             
+             rdfs:comment "This property is used to specify the temporal duration of the validity."@en ,
+                          "Questa proprietà è utilizzata per specificare il periodo temporale di validità."@it ;
+             
+             rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+             
+             rdfs:domain owl:Thing ;
+             
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( muapit:Value
+                                        :TimeInterval
+                                      )
+                        ] .
+
+
+
+###  http://dati.gov.it/onto/tiapit/isDayOfWeekOf
+
+:isDayOfWeekOf rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "is day of week of"@en ,
+                          "è giorno della settimana di"@it ;
+               
+               rdfs:comment "Inverse property of has day of week."@en ,
+                            "Proprietà inversa di \"ha giorno della settimana\"."@it .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/tiapit/duration
+
+:duration rdf:type owl:DatatypeProperty ;
+          
+          rdfs:label "duration"@en ,
+                     "durata"@it ;
+          
+          rdfs:comment "Property that associates a duratin value with a time interval."@en ,
+                       "Proprietà che associa un valore di durata ad un intervallo di tempo."@it ;
+          
+          rdfs:isDefinedBy <http://dati.gov.it/onto/tiapit> ;
+          
+          rdfs:domain :TimeInterval ;
+          
+          rdfs:range xsd:duration .
+
+
+
+###  http://dati.gov.it/onto/tiapit/endTime
+
+:endTime rdf:type owl:DatatypeProperty ;
+         
+         rdfs:label "end date"@en ,
+                    "data di fine"@it ;
+         
+         rdfs:comment "This property represents the end date of a time interval."@en ,
+                      "Questa proprietà rappresenta la data di fine di un intervallo temporale."@it ;
+         
+         rdfs:domain :TimeInterval ;
+         
+         rdfs:range xsd:dateTime ;
+         
+         rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://dati.gov.it/onto/tiapit/startTime
+
+:startTime rdf:type owl:DatatypeProperty ;
+           
+           rdfs:label "start date"@en ,
+                      "data di inizio"@it ;
+           
+           rdfs:comment "This property represents the start date of the time interval."@en ,
+                        "Questa proprietà rappresenta la data di inizio di un intervallo temporale."@it ;
+           
+           rdfs:domain :TimeInterval ;
+           
+           rdfs:range xsd:dateTime .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/l0/Entity
+
+l0:Entity rdf:type owl:Class .
+
+
+
+###  http://dati.gov.it/onto/tiapit/DayOfWeek
+
+:DayOfWeek rdf:type owl:Class ;
+           
+           rdfs:label "Day of the Week"@en ,
+                      "Giorno della settimana"@it ;
+           
+           rdfs:subClassOf l0:Entity ;
+           
+           rdfs:comment "This class represents the set of all the days of the week."@en ,
+                        "Classe che rappresenta l'insieme dei giorni della settimana."@it .
+
+
+
+###  http://dati.gov.it/onto/tiapit/TimeInterval
+
+:TimeInterval rdf:type owl:Class ;
+              
+              rdfs:label "Time interval"@en ,
+                         "Intervallo di tempo"@it ;
+              
+              rdfs:subClassOf l0:Characteristic ,
+                              l0:Entity ;
+              
+              rdfs:comment "A time interval"@en ,
+                           "Rappresentazione di intervallo di tempo."@it .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://dati.gov.it/onto/tiapit/Friday
+
+:Friday rdf:type :DayOfWeek ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Friday"@en ,
+                   "Venerdì"@it .
+
+
+
+###  http://dati.gov.it/onto/tiapit/Monday
+
+:Monday rdf:type :DayOfWeek ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Monday"@en ,
+                   "Lunedì"@it .
+
+
+
+###  http://dati.gov.it/onto/tiapit/Saturday
+
+:Saturday rdf:type :DayOfWeek ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Satruday"@en ,
+                     "Sabato"@it .
+
+
+
+###  http://dati.gov.it/onto/tiapit/Sunday
+
+:Sunday rdf:type :DayOfWeek ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Sunday"@en ,
+                   "Domenica"@it .
+
+
+
+###  http://dati.gov.it/onto/tiapit/Thursday
+
+:Thursday rdf:type :DayOfWeek ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Thursday"@en ,
+                     "Giovedì"@it .
+
+
+
+###  http://dati.gov.it/onto/tiapit/Tuesday
+
+:Tuesday rdf:type :DayOfWeek ,
+                  owl:NamedIndividual ;
+         
+         rdfs:label "Tuesday"@en ,
+                    "Martedì"@it .
+
+
+
+###  http://dati.gov.it/onto/tiapit/Wednesday
+
+:Wednesday rdf:type :DayOfWeek ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Wednesday"@en ,
+                      "Mercoledì"@it .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

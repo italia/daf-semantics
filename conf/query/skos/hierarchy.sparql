@@ -1,0 +1,13 @@
+# QUERY FOR SKOS!
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX clvapit: <http://dati.gov.it/onto/clvapit#>
+SELECT DISTINCT ?test ?uri ?group 
+WHERE {
+	?uri a skos:Concept .
+	?uri skos:broader* ?group . # NOTE: the group is used to reconstruct hierarchy
+	OPTIONAL { ?group clvapit:hasRankOrder ?rank . }
+	BIND(REPLACE(STR(?group), "_", "0000") AS ?h_ord)
+}
+ORDER BY ?uri ASC(?rank) ASC(?h_ord)
+
+# TODO: unit test to verify anything breaks here

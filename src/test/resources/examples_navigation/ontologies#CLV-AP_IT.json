@@ -1,0 +1,76 @@
+{
+  "id" : "CLV-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IndirizziLuoghi/latest/CLV-AP_IT.ttl",
+  "url" : "http://dati.gov.it/ontoclvapit",
+  "prefix" : "clvapit",
+  "namespace" : "http://dati.gov.it/onto/clvapit",
+  "concepts" : [ "http://dati.gov.it/onto/clvapit#City", "http://dati.gov.it/onto/clvapit#AddressInTime", "http://dati.gov.it/onto/clvapit#Street", "http://dati.gov.it/onto/clvapit#Region", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/clvapit#Address", "http://dati.gov.it/onto/clvapit#AddressArea", "http://dati.gov.it/onto/clvapit#NamedAddressComponent", "http://dati.gov.it/onto/clvapit#InternalAddressNumber", "http://dati.gov.it/onto/clvapit#Country", "http://dati.gov.it/onto/l0/Location", "http://dati.gov.it/onto/clvapit#SpatialObject", "http://dati.gov.it/onto/covapit#Organization", "http://dati.gov.it/onto/clvapit#Feature", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/clvapit#Geometry", "http://dati.gov.it/onto/clvapit#GeometryType", "http://dati.gov.it/onto/clvapit#ExternalAddressNumber", "http://dati.gov.it/onto/clvapit#Province", "http://dati.gov.it/onto/clvapit#CensusSection", "http://dati.gov.it/onto/clvapit#AddressComponent", "http://dati.gov.it/onto/clvapit#Identifier", "http://dati.gov.it/onto/clvapit#AddressNumber" ],
+  "imports" : [ {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Address(Location)"
+  }, {
+    "lang" : "it",
+    "value" : "Indirizzi(Luoghi)"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology of the Italian application profile for Location and Addresses"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia del profilo di italiano sugli indirizzi che hanno anche una connotazione geografica (Italian Core Location Vocabulary - Application Profile  - CLV-AP_IT)"
+  } ],
+  "versions" : [ {
+    "number" : "0.6",
+    "date" : "2017-10-27",
+    "comment" : {
+      "en" : "Refactoring of organization class based on the COV-AP_IT ontology; some labels were corrected."
+    },
+    "uri" : "http://dati.gov.it/onto/clvapit"
+  }, {
+    "number" : "0.6",
+    "date" : "2017-10-27",
+    "comment" : {
+      "it" : "Rifattorizzazione della classe Organizzazione per allineamento con l'ontologia COV-AP_IT; sono state corrette alcune label"
+    },
+    "uri" : "http://dati.gov.it/onto/clvapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/clvapit/0.6",
+    "uri" : "http://dati.gov.it/onto/clvapit",
+    "date_modified" : "2017-11-28",
+    "defined_by_uri" : "http://dati.gov.it/onto/clvapit",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-08-07"
+  } ]
+}

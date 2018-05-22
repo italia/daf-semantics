@@ -1,0 +1,79 @@
+{
+  "id" : "Licenze",
+  "url" : "http://dati.gov.it/onto/controlledvocabulary/License",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/Licenze/Licenze.ttl",
+  "instances" : [ "http://dati.gov.it/onto/controlledvocabulary/License/A24_CCBY25", "http://dati.gov.it/onto/controlledvocabulary/License/B110_CCBYNCSA30", "http://dati.gov.it/onto/controlledvocabulary/License/A22_CCBY30", "http://dati.gov.it/onto/controlledvocabulary/License/A36_CCBYSA20", "http://dati.gov.it/onto/controlledvocabulary/License/B29_CCBYNDNC10", "http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40", "http://dati.gov.it/onto/controlledvocabulary/License/A2_Attribution", "http://dati.gov.it/onto/controlledvocabulary/License/A38_CCBYSA10", "http://dati.gov.it/onto/controlledvocabulary/License/A34_CCBYSA25", "http://dati.gov.it/onto/controlledvocabulary/License/A32_CCBYSA30", "http://dati.gov.it/onto/controlledvocabulary/License/A_OpenLicense", "http://dati.gov.it/onto/controlledvocabulary/License/A28_CCBY10", "http://dati.gov.it/onto/controlledvocabulary/License/A210_ODCBY", "http://dati.gov.it/onto/controlledvocabulary/License/B1_NonCommercial", "http://dati.gov.it/onto/controlledvocabulary/License/C1_Unknown", "http://dati.gov.it/onto/controlledvocabulary/License/A41_ADRM", "http://dati.gov.it/onto/controlledvocabulary/License/B19_CCBYNCSA40", "http://dati.gov.it/onto/controlledvocabulary/License/B25_CCBYND25IT", "http://dati.gov.it/onto/controlledvocabulary/License/A39_IODL10", "http://dati.gov.it/onto/controlledvocabulary/License/C11_Unknown", "http://dati.gov.it/onto/controlledvocabulary/License/B113_CCBYNCSA25IT", "http://dati.gov.it/onto/controlledvocabulary/License/B15_CCBYNC25IT", "http://dati.gov.it/onto/controlledvocabulary/License/B17_CCBYNC20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B111_CCBYNCSA30IT", "http://dati.gov.it/onto/controlledvocabulary/License/B12_CCBYNC30", "http://dati.gov.it/onto/controlledvocabulary/License/A33_CCBYSA30IT", "http://dati.gov.it/onto/controlledvocabulary/License/A26_CCBY20", "http://dati.gov.it/onto/controlledvocabulary/License/A311_GFDL13", "http://dati.gov.it/onto/controlledvocabulary/License/A310_ODBL", "http://dati.gov.it/onto/controlledvocabulary/License/B112_CCBYNCSA25", "http://dati.gov.it/onto/controlledvocabulary/License/A27_CCBY20IT", "http://dati.gov.it/onto/controlledvocabulary/License/A29_IODL20", "http://dati.gov.it/onto/controlledvocabulary/License/B114_CCBYNCSA20", "http://dati.gov.it/onto/controlledvocabulary/License/A4_ShareAlikeCopyleftNonComp", "http://dati.gov.it/onto/controlledvocabulary/License/A35_CCBYSA25IT", "http://dati.gov.it/onto/controlledvocabulary/License/B14_CCBYNC25", "http://dati.gov.it/onto/controlledvocabulary/License/A23_CCBY30IT", "http://dati.gov.it/onto/controlledvocabulary/License/B18_CCBYNC10", "http://dati.gov.it/onto/controlledvocabulary/License/C_Unknown", "http://dati.gov.it/onto/controlledvocabulary/License/B115_CCBYNCSA20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B24_CCBYND25", "http://dati.gov.it/onto/controlledvocabulary/License/B11_CCBYNC40", "http://dati.gov.it/onto/controlledvocabulary/License/B13_CCBYNC30IT", "http://dati.gov.it/onto/controlledvocabulary/License/B116_CCBYNCSA10", "http://dati.gov.it/onto/controlledvocabulary/License/B28_CCBYND10", "http://dati.gov.it/onto/controlledvocabulary/License/B22_CCBYND30", "http://dati.gov.it/onto/controlledvocabulary/License/A1_PublicDomain", "http://dati.gov.it/onto/controlledvocabulary/License/B16_CCBYNC20", "http://dati.gov.it/onto/controlledvocabulary/License/A25_CCBY25IT", "http://dati.gov.it/onto/controlledvocabulary/License/A3_ShareAlike", "http://dati.gov.it/onto/controlledvocabulary/License/A37_CCBYSA20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B21_CCBYND40", "http://dati.gov.it/onto/controlledvocabulary/License/B23_CCBYND30IT", "http://dati.gov.it/onto/controlledvocabulary/License/A12_PDDL", "http://dati.gov.it/onto/controlledvocabulary/License/B2_NoDerivs", "http://dati.gov.it/onto/controlledvocabulary/License/A11_CCO10", "http://dati.gov.it/onto/controlledvocabulary/License/B27_CCBYND20IT", "http://dati.gov.it/onto/controlledvocabulary/License/B26_CCBYND20", "http://dati.gov.it/onto/controlledvocabulary/License/A31_CCBYSA40", "http://dati.gov.it/onto/controlledvocabulary/License/B_NonOpenLicense" ],
+  "titles" : [ {
+    "lang" : "de",
+    "value" : "Lizenzen"
+  }, {
+    "lang" : "en",
+    "value" : "Licenses"
+  }, {
+    "lang" : "fr",
+    "value" : "Licences"
+  }, {
+    "lang" : "it",
+    "value" : "Licenze"
+  } ],
+  "descriptions" : [ {
+    "lang" : "de",
+    "value" : "Klassifizierung der Lizenzen. Derzeit sind die Lizenzen für Daten enthalten."
+  }, {
+    "lang" : "en",
+    "value" : "Classification of the licenses. Currently it includes the licenses for data"
+  }, {
+    "lang" : "fr",
+    "value" : "La classification des licences. Actuellement, il inclut les licences pour les données"
+  }, {
+    "lang" : "it",
+    "value" : "Classificazione delle licenze. Attualmente include le licenze utilizzate nell'ambito dati"
+  } ],
+  "publishedBy" : "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+  "owner" : "http://spcdata.digitpa.gov.it/browse/page/Amministrazione/agid",
+  "creators" : [ ],
+  "langs" : [ "de", "en", "fr", "it" ],
+  "licenses" : [ {
+    "label" : "A21_CCBY40",
+    "uri" : "A21_CCBY40",
+    "lang" : ""
+  } ],
+  "version" : [ {
+    "number" : "1.0",
+    "date" : "",
+    "comment" : "",
+    "uri" : ""
+  } ],
+  "lastEditDate" : "2018-01-26",
+  "tags" : [ {
+    "label" : "http://eurovoc.europa.eu/100262",
+    "uri" : "http://eurovoc.europa.eu/100262",
+    "lang" : ""
+  }, {
+    "label" : "http://eurovoc.europa.eu/259037",
+    "uri" : "http://eurovoc.europa.eu/259037",
+    "lang" : ""
+  } ],
+  "categories" : [ {
+    "label" : "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "uri" : "http://publications.europa.eu/resource/authority/data-theme/TECH",
+    "lang" : ""
+  } ],
+  "keywords" : [ {
+    "label" : "Gender",
+    "uri" : "keywords://en#Gender",
+    "lang" : "en"
+  }, {
+    "label" : "Sex",
+    "uri" : "keywords://en#Sex",
+    "lang" : "en"
+  }, {
+    "label" : "Genere",
+    "uri" : "keywords://it#Genere",
+    "lang" : "it"
+  }, {
+    "label" : "Sesso",
+    "uri" : "keywords://it#Sesso",
+    "lang" : "it"
+  } ]
+}

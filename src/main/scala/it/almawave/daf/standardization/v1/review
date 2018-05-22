@@ -1,0 +1,2 @@
+[WARNING] 
+C:\Users\Al.Serafini\repos\DAF\semantic_standardization\src\test\scala\it\almawave\daf\standardization\v1\StandardizationProcessV1.scala:13: warning: imported `StandardizationQueryV1' is permanently hidden by definition of class StandardizationQueryV1 in package v1

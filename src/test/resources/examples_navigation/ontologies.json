@@ -1,0 +1,1066 @@
+[ {
+  "id" : "Cultural-ON-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Cultural-ON/latest/Cultural-ON-AP_IT.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Cultural-ON/latest/Cultural-ON-AP_IT.ttl",
+  "prefix" : "culturalonapit",
+  "namespace" : "http://dati.beniculturali.it/cis",
+  "concepts" : [ "http://dati.gov.it/onto/l0/Topic", "http://dati.beniculturali.it/cis/OpeningHoursSpecification", "http://dati.gov.it/onto/l0/Description", "http://dati.beniculturali.it/cis/CulturalLandscapeAsset", "http://dati.beniculturali.it/cis/CulturalEvent", "http://dati.beniculturali.it/cis/CulturalHeritageObject", "http://dati.gov.it/onto/muapit/Value", "http://dati.beniculturali.it/roapit/Role", "http://dati.gov.it/onto/muapit/MeasurementUnit", "http://dati.beniculturali.it/cis/ArchaeologicalPark", "http://dati.beniculturali.it/cis/HolderOfArchive", "http://dati.beniculturali.it/cis/ArchaeologicalArea", "http://dati.beniculturali.it/cis/AccessCondition", "http://dati.beniculturali.it/cis/ImageObject", "http://dati.beniculturali.it/cis/Project", "http://www.w3.org/ns/adms#SemanticAsset", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.beniculturali.it/roapit/TimeIndexedRole", "http://dati.beniculturali.it/cis/GeographicalFeature", "http://dati.beniculturali.it/cis/AdmissionType", "http://dati.beniculturali.it/cis/Library", "http://dati.beniculturali.it/cis/Catalogue", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/clvapit#Address", "http://dati.gov.it/onto/smapit/WebSite", "http://dati.beniculturali.it/cis/MonumentalArea", "http://dati.beniculturali.it/cis/Site", "http://dati.beniculturali.it/cis/CreativeWork", "http://dati.gov.it/onto/potapit/Ticket", "http://dati.beniculturali.it/cis/VideoObject", "http://dati.beniculturali.it/cis/CISType", "http://dati.beniculturali.it/cis/CollectionOfCulturalEntities", "http://dati.gov.it/onto/cpevapit#PublicEvent", "http://dati.gov.it/onto/clvapit#SpatialObject", "http://dati.gov.it/onto/poiapit#PointOfInterest", "http://dati.gov.it/onto/smapit/OnlineContactPoint", "http://dati.gov.it/onto/covapit#Organization", "http://dati.beniculturali.it/cis/ClericalAdministrativeArea", "http://dati.beniculturali.it/cis/Service", "http://dati.beniculturali.it/cis/Cinema", "http://dati.gov.it/onto/clvapit#Feature", "http://dati.beniculturali.it/cis/TemporaryClosureType", "http://dati.beniculturali.it/cis/Museum", "http://dati.beniculturali.it/cis/Booking", "http://dati.beniculturali.it/cis/NewsArticle", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Activity", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/clvapit#Geometry", "http://dati.beniculturali.it/cis/CulturalEntity", "http://dati.gov.it/onto/l0/Object", "http://dati.beniculturali.it/cis/Equipment", "http://dati.gov.it/onto/l0/Collection", "http://dati.beniculturali.it/cis/CultReseachCenter", "http://dati.beniculturali.it/cis/Theatre", "http://dati.beniculturali.it/cis/GovernamentalAdministrativeArea", "http://dati.beniculturali.it/cis/AudioObject", "http://dati.beniculturali.it/cis/Attribute", "http://dati.beniculturali.it/cis/NameInTime", "http://dati.beniculturali.it/cis/SubjectDiscipline", "http://dati.beniculturali.it/cis/TemporaryClosure", "http://dati.beniculturali.it/cis/CulturalInstituteOrSite", "http://dati.beniculturali.it/cis/SiteDescription", "http://www.w3.org/2002/07/owl#Thing" ],
+  "imports" : [ {
+    "label" : "cpvapit",
+    "uri" : "http://dati.gov.it/onto/cpvapit/",
+    "lang" : ""
+  }, {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "muapit",
+    "uri" : "http://dati.gov.it/onto/muapit/",
+    "lang" : ""
+  }, {
+    "label" : "potapit",
+    "uri" : "http://dati.gov.it/onto/potapit/",
+    "lang" : ""
+  }, {
+    "label" : "smapit",
+    "uri" : "http://dati.gov.it/onto/smapit/",
+    "lang" : ""
+  }, {
+    "label" : "https://dati.gov.it/onto/clvapit",
+    "uri" : "https://dati.gov.it/onto/clvapit",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "https://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Cultural-ON (Cultural ONtology): Cultural Institute/Site and Cultural Event Ontology"
+  }, {
+    "lang" : "it",
+    "value" : "Cultural-ON (Cultural ONtology): Ontologia dei Luoghi della Cultura e degli Eventi Culturali"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "During the definition of Cultural-ON, an in depth discussion between the working group responsible for cultural linked open data, formed by the Ministry of Cultural Heritage and Activities and Tourism (Service I) and the Institute of Cognitive Sciences and Technologies of the Council of Research (CNR) and the working group of the \"Istituto beni artistici culturali e naturali\" of Emilia Romagna Region, in order to contribute to the integration of the two ontologies, thus guaranteeing semantic interoperability."
+  }, {
+    "lang" : "it",
+    "value" : "Nel corso dell'elaborazione di Cultural-ON è stato avviato un approfondito confronto tra il gruppo di lavoro responsabile del progetto di valorizzazione del patrimonio informativo pubblico attraverso i linked open data, costituito dal Ministero dei beni e delle attività culturali e del turismo (Servizio I della Direzione generale Organizzazione) e dall’Istituto di Scienze e Tecnologie della Cognizione del Consiglio Nazionale delle Ricerche (CNR) con il gruppo costituito nell'ambito del progetto di pubblicazione di linked open data del dominio cultura, intrapreso dall'Istituto beni artistici culturali e naturali della Regione Emilia-Romagna che si inserisce nel più ampio progetto Open Data Emilia-Romagna, al fine di contribuire ad un’ampia integrazione tra le due ontologie, nella prospettiva di una sempre maggiore interoperabilità."
+  } ],
+  "versions" : [ {
+    "number" : "3.1",
+    "date" : "2017-12-18",
+    "comment" : {
+      "en" : "Refactoring based on new available ontologies in the OntoPiA network"
+    },
+    "uri" : "http://dati.beniculturali.it/cis/"
+  }, {
+    "number" : "3.1",
+    "date" : "2017-12-18",
+    "comment" : {
+      "it" : "rifattorizzazione sulla base della disponibilitò di alcune ontologie nella rete OntoPiA (e.g., Core public event vocabulary application profile)"
+    },
+    "uri" : "http://dati.beniculturali.it/cis/"
+  } ],
+  "creators" : [ {
+    "label" : "Aldo Gangemi (ISTC-CNR, ST-Lab)",
+    "lang" : ""
+  }, {
+    "label" : "Andrea Nuzzolese (ISTC-CNR, ST-Lab)",
+    "lang" : ""
+  }, {
+    "label" : "Annarita Orsini (MIBACT)",
+    "lang" : ""
+  }, {
+    "label" : "Chiara Veninata (MIBACT)",
+    "lang" : ""
+  }, {
+    "label" : "Giorgia Lodi (ISTC-CNR, ST-Lab)",
+    "lang" : ""
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione, Consiglio Nazionale delle Ricerche (ISTC-CNR, ST-Lab)",
+    "lang" : ""
+  }, {
+    "label" : "Luigi Asprino (ISTC-CNR, ST-Lab)",
+    "lang" : ""
+  }, {
+    "label" : "Ministero dei Beni e delle Attività Culturali e il Turismo (MIBACT)",
+    "lang" : ""
+  }, {
+    "label" : "Silvio Peroni (ISTC-CNR, ST-Lab)",
+    "lang" : ""
+  }, {
+    "label" : "Valentina Presutti (ISTC-CNR, ST-Lab)",
+    "lang" : ""
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "uri" : "http://dati.beniculturali.it/cis/"
+  } ]
+}, {
+  "id" : "IoT-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/EventiIoT/latest/IoT-AP_IT.ttl",
+  "url" : "http://dati.gov.it/onto/iotapit",
+  "prefix" : "iotapit",
+  "namespace" : "http://dati.gov.it/onto/iotapit",
+  "concepts" : [ "http://dati.gov.it/onto/iotapit/TrafficFlow", "http://dati.gov.it/onto/iotapit/Sensor", "http://dati.gov.it/onto/muapit/Value", "http://dati.gov.it/onto/iotapit/Latency", "http://dati.gov.it/onto/iotapit/Accuracy", "http://dati.gov.it/onto/iotapit/MeasurementQuality", "http://dati.gov.it/onto/iotapit/Observation", "http://dati.gov.it/onto/iotapit/Precision", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/iotapit/ObservationCollection", "http://dati.gov.it/onto/iotapit/Offset", "http://dati.gov.it/onto/iotapit/FeatureOfInterest", "http://dati.gov.it/onto/iotapit/MeasurementQualityValue", "http://dati.gov.it/onto/iotapit/RoadSegment", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Activity", "http://dati.gov.it/onto/iotapit/Repetability", "http://dati.gov.it/onto/clvapit/Geometry", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/l0/Collection", "http://dati.gov.it/onto/iotapit/ObservationValue", "http://dati.gov.it/onto/iotapit/ObservationParameter", "http://dati.gov.it/onto/iotapit/Actuator", "http://dati.gov.it/onto/iotapit/Frequency" ],
+  "imports" : [ {
+    "label" : "http://dati.gov.it/onto/clvapit",
+    "uri" : "http://dati.gov.it/onto/clvapit",
+    "lang" : ""
+  }, {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "muapit",
+    "uri" : "http://dati.gov.it/onto/muapit/",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "IoT event Ontology"
+  }, {
+    "lang" : "it",
+    "value" : "Ontologia per eventi IoT"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology used to represent IoT events. It can be used to model temporal series and measures of sensors of different type. Currently the ontology is specialized for modelling traffic flows."
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia di eventi IoT. Essa può essere utilizzata per esempio per rappresentare serie temporali e misure di sensoristica di vario tipo. Attualmente l'ontologia include classi specializzate per la modellazione di flussi di traffico."
+  } ],
+  "versions" : [ {
+    "number" : "0.10",
+    "date" : "",
+    "comment" : {
+      "en" : "Italian Application Profile)"
+    },
+    "uri" : "http://dati.gov.it/onto/iotapit/"
+  }, {
+    "number" : "0.10",
+    "date" : "",
+    "comment" : {
+      "it" : "Profilo Applicativo Italiano)"
+    },
+    "uri" : "http://dati.gov.it/onto/iotapit/"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'Italia Digitale - AgID",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/iotapit/",
+    "uri" : "http://dati.gov.it/onto/iotapit/",
+    "date_modified" : "2017-11-26",
+    "defined_by_uri" : "http://dati.gov.it/onto/iotapit/",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-05-15"
+  } ]
+}, {
+  "id" : "CLV-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IndirizziLuoghi/latest/CLV-AP_IT.ttl",
+  "url" : "http://dati.gov.it/ontoclvapit",
+  "prefix" : "clvapit",
+  "namespace" : "http://dati.gov.it/onto/clvapit",
+  "concepts" : [ "http://dati.gov.it/onto/clvapit#City", "http://dati.gov.it/onto/clvapit#AddressInTime", "http://dati.gov.it/onto/clvapit#Street", "http://dati.gov.it/onto/clvapit#Region", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/clvapit#Address", "http://dati.gov.it/onto/clvapit#AddressArea", "http://dati.gov.it/onto/clvapit#NamedAddressComponent", "http://dati.gov.it/onto/clvapit#InternalAddressNumber", "http://dati.gov.it/onto/clvapit#Country", "http://dati.gov.it/onto/l0/Location", "http://dati.gov.it/onto/clvapit#SpatialObject", "http://dati.gov.it/onto/covapit#Organization", "http://dati.gov.it/onto/clvapit#Feature", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/clvapit#Geometry", "http://dati.gov.it/onto/clvapit#GeometryType", "http://dati.gov.it/onto/clvapit#ExternalAddressNumber", "http://dati.gov.it/onto/clvapit#Province", "http://dati.gov.it/onto/clvapit#CensusSection", "http://dati.gov.it/onto/clvapit#AddressComponent", "http://dati.gov.it/onto/clvapit#Identifier", "http://dati.gov.it/onto/clvapit#AddressNumber" ],
+  "imports" : [ {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Address(Location)"
+  }, {
+    "lang" : "it",
+    "value" : "Indirizzi(Luoghi)"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology of the Italian application profile for Location and Addresses"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia del profilo di italiano sugli indirizzi che hanno anche una connotazione geografica (Italian Core Location Vocabulary - Application Profile  - CLV-AP_IT)"
+  } ],
+  "versions" : [ {
+    "number" : "0.6",
+    "date" : "2017-10-27",
+    "comment" : {
+      "en" : "Refactoring of organization class based on the COV-AP_IT ontology; some labels were corrected."
+    },
+    "uri" : "http://dati.gov.it/onto/clvapit"
+  }, {
+    "number" : "0.6",
+    "date" : "2017-10-27",
+    "comment" : {
+      "it" : "Rifattorizzazione della classe Organizzazione per allineamento con l'ontologia COV-AP_IT; sono state corrette alcune label"
+    },
+    "uri" : "http://dati.gov.it/onto/clvapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/clvapit/0.6",
+    "uri" : "http://dati.gov.it/onto/clvapit",
+    "date_modified" : "2017-11-28",
+    "defined_by_uri" : "http://dati.gov.it/onto/clvapit",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-08-07"
+  } ]
+}, {
+  "id" : "SM-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/InternetSocialMedia/latest/SM-AP_IT.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/InternetSocialMedia/latest/SM-AP_IT.ttl",
+  "prefix" : "smapit",
+  "namespace" : "http://dati.gov.it/onto/smapit",
+  "concepts" : [ "http://dati.gov.it/onto/smapit/TelephoneType", "http://dati.gov.it/onto/smapit/SocialMedia", "http://dati.gov.it/onto/smapit/UserAccount", "http://dati.gov.it/onto/smapit/WebSite", "http://dati.gov.it/onto/smapit/Image", "http://dati.gov.it/onto/smapit/OnlineContactPoint", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/smapit/Telephone", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/smapit/Email", "http://dati.gov.it/onto/smapit/Post", "http://dati.gov.it/onto/smapit/EmailType" ],
+  "imports" : [ {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Social Media ontology"
+  }, {
+    "lang" : "it",
+    "value" : "Ontologia per i social media"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "The ontology for Social Media. This ontology allows to represents social networks, account, email addresses, logos, etc."
+  }, {
+    "lang" : "it",
+    "value" : "L'ontologia per i social media e i punti di contatto online. Questa ontologia permette di rappresentare social network, account, indirizzi email, loghi, ecc..."
+  } ],
+  "versions" : [ {
+    "number" : "Version 0.3 - added online contact point",
+    "date" : "",
+    "comment" : {
+      "en" : "Version 0.3 - added online contact point"
+    },
+    "uri" : "http://dati.gov.it/onto/smapit/"
+  }, {
+    "number" : "Version 0.3 - aggiunta proprietà per posta certificata",
+    "date" : "",
+    "comment" : {
+      "it" : "Version 0.3 - aggiunta proprietà per posta certificata"
+    },
+    "uri" : "http://dati.gov.it/onto/smapit/"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'Italia Digitale - AgID",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/smapit/0.1/",
+    "uri" : "http://dati.gov.it/onto/smapit/",
+    "date_modified" : "2017-11-28",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-09-29"
+  } ]
+}, {
+  "id" : "l0",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Livello0/latest/l0.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Livello0/latest/l0.ttl",
+  "prefix" : "l0",
+  "namespace" : "http://dati.gov.it/onto/l0",
+  "concepts" : [ "http://dati.gov.it/onto/l0/Topic", "http://dati.gov.it/onto/l0/Description", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/l0/Location", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Activity", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/l0/System", "http://dati.gov.it/onto/l0/Collection" ],
+  "imports" : [ ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Level-0 ontology"
+  }, {
+    "lang" : "it",
+    "value" : "Ontologia Level-0"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This ontology provides the foundational level of the ontological stack of dati.gov.it. The name L0 stands for Level-0 ontology as it provides the basic conceptual foundations to the whole stack. This ontology is partially inspired by DOLCE 0 (http://www.ontologydesignpatterns.org/ont/d0.owl)"
+  }, {
+    "lang" : "it",
+    "value" : "Questa ontologia fornisce il livello fondazionale allo stack ontologico di dati.gov.it. Il nome L0 sta per Level-0 ontology poiché essa fornisce le fondamenta concettuali elementari all'intero stack. Questa ontologia è parzialmente ispirata da DOLCE zero (http://www.ontologydesignpatterns.org/ont/d0.owl)"
+  } ],
+  "versions" : [ ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "date_modified" : "2017-10-18",
+    "date_issued" : "2017-09-29",
+    "uri" : "http://dati.gov.it/onto/l0/"
+  } ]
+}, {
+  "id" : "COV-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Organizzazioni/latest/COV-AP_IT.ttl",
+  "url" : "http://dati.gov.it/ontocovapit",
+  "prefix" : "covapit",
+  "namespace" : "http://dati.gov.it/onto/covapit",
+  "concepts" : [ "http://dati.gov.it/onto/covapit#eInvoiceService", "http://dati.gov.it/onto/covapit#PublicOrganizationCategory", "http://dati.gov.it/onto/covapit#Merger", "http://dati.gov.it/onto/covapit#ActivityType", "http://dati.gov.it/onto/covapit#SupportUnit", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/covapit#HomogeneousOrganizationalArea", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/covapit#Replacement", "http://dati.gov.it/onto/covapit#Closing", "http://dati.gov.it/onto/covapit#PrivateOrganization", "http://dati.gov.it/onto/covapit#BalanceSheet", "http://dati.gov.it/onto/covapit#LegalStatus", "http://dati.gov.it/onto/covapit#ChangeEvent", "http://dati.gov.it/onto/covapit#Group", "http://dati.gov.it/onto/smapit/Image", "http://dati.gov.it/onto/l0/Location", "http://dati.gov.it/onto/smapit/OnlineContactPoint", "http://dati.gov.it/onto/covapit#Organization", "http://dati.gov.it/onto/covapit#OrganizationTypology", "http://dati.gov.it/onto/covapit#Employment", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/covapit#ParticipationType", "http://dati.gov.it/onto/covapit#PublicOrganization", "http://dati.gov.it/onto/covapit#Office", "http://dati.gov.it/onto/covapit#Foundation", "http://dati.gov.it/onto/roapit/Role", "http://dati.gov.it/onto/roapit/TimeIndexedRole", "http://dati.gov.it/onto/covapit#Scission", "http://dati.gov.it/onto/covapit#Participation", "http://dati.gov.it/onto/covapit#PublicPrivateOrganization", "http://dati.gov.it/onto/covapit#Status" ],
+  "imports" : [ {
+    "label" : "clvapit",
+    "uri" : "http://dati.gov.it/onto/clvapit#",
+    "lang" : ""
+  }, {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "roapit",
+    "uri" : "http://dati.gov.it/onto/roapit/",
+    "lang" : ""
+  }, {
+    "label" : "smapit",
+    "uri" : "http://dati.gov.it/onto/smapit/",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Organization (Private & Public)"
+  }, {
+    "lang" : "it",
+    "value" : "Organizzazioni (Pubbliche e Private)"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "Questa è l'ontologia del profilo applicativo italiano sulle organizzazioni (pubbliche e private)"
+  }, {
+    "lang" : "en",
+    "value" : "This is the ontology of the Italian application profile for Organizations (Public and Private)"
+  } ],
+  "versions" : [ {
+    "number" : "0.8",
+    "date" : "",
+    "comment" : {
+      "en" : "updated refactorisation changes to Social Media ontology used in this one."
+    },
+    "uri" : "http://dati.gov.it/onto/covapit"
+  }, {
+    "number" : "0.8",
+    "date" : "2017-10-25",
+    "comment" : {
+      "it" : "Aggiornamento della rifattorizzazione basata sui cambiamenti dell'ontologia Social Media."
+    },
+    "uri" : "http://dati.gov.it/onto/covapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/covapit/0.7",
+    "uri" : "http://dati.gov.it/onto/covapit",
+    "date_modified" : "2017-10-25",
+    "defined_by_uri" : "http://dati.gov.it/onto/covapit",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-07-20"
+  } ]
+}, {
+  "id" : "CPV-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Persone/latest/CPV-AP_IT.ttl",
+  "url" : "http://dati.gov.it/onto/person",
+  "prefix" : "cpvapit",
+  "namespace" : "http://dati.gov.it/onto/cpvapit",
+  "concepts" : [ "http://dati.gov.it/onto/cpvapit/Person", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/l0/Location" ],
+  "imports" : [ {
+    "label" : "clvapit",
+    "uri" : "http://dati.gov.it/onto/clvapit#",
+    "lang" : ""
+  }, {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Person ontology"
+  }, {
+    "lang" : "it",
+    "value" : "Ontologia delle persone"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology of the Italian application profile for Person"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia del profilo applicativo italiano sulle persone."
+  } ],
+  "versions" : [ {
+    "number" : "0.2",
+    "date" : "",
+    "comment" : {
+      "en" : "exclusion of Location part of the ontology since it is included in the related ontology"
+    },
+    "uri" : "http://dati.gov.it/onto/cpvapit/"
+  }, {
+    "number" : "0.2",
+    "date" : "2017-08-08",
+    "comment" : {
+      "it" : "separata la parte luoghi dall'ontologia persone"
+    },
+    "uri" : "http://dati.gov.it/onto/cpvapit/"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'italia Digitale (AgID)",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione dell'Istituto nazionale delle Ricerche (CNR) - Laboratorio di Tecnologie Semantiche (STlab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/person/0.1",
+    "uri" : "http://dati.gov.it/onto/cpvapit/",
+    "date_modified" : "2017-11-21",
+    "defined_by_uri" : "http://dati.gov.it/onto/person/",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-07-19"
+  } ]
+}, {
+  "id" : "POT-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/PrezziOfferteBiglietti/latest/POT-AP_IT.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/PrezziOfferteBiglietti/latest/POT-AP_IT.ttl",
+  "prefix" : "potapit",
+  "namespace" : "http://dati.gov.it/onto/potapit",
+  "concepts" : [ "http://dati.gov.it/onto/l0/Description", "http://dati.gov.it/onto/potapit/PriceSpecification", "http://dati.gov.it/onto/muapit/Value", "http://dati.gov.it/onto/potapit/Card", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/potapit/Offer", "http://dati.gov.it/onto/potapit/Ticket", "http://dati.gov.it/onto/l0/Location", "http://dati.gov.it/onto/potapit/Validity", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/potapit/UserType", "http://dati.gov.it/onto/potapit/Currency" ],
+  "imports" : [ {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "http://dati.gov.it/onto/tiapit/0.3",
+    "uri" : "http://dati.gov.it/onto/tiapit/0.3",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Prices / Offers /Tickets"
+  }, {
+    "lang" : "it",
+    "value" : "Prezzi/Offerte/Biglietti"
+  } ],
+  "descriptions" : [ ],
+  "versions" : [ {
+    "number" : "0.2",
+    "date" : "",
+    "comment" : {
+      "en" : "Added hasOffer and VAT properties and revised rdfs:comments"
+    },
+    "uri" : "http://dati.gov.it/onto/potapit"
+  }, {
+    "number" : "0.2",
+    "date" : "2017-11-19",
+    "comment" : {
+      "it" : "Aggiunte le proprietà ha offerta e IVA e rivisti tutti i commenti"
+    },
+    "uri" : "http://dati.gov.it/onto/potapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'Italia Digitale - AgID",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/potapit/0.1",
+    "uri" : "http://dati.gov.it/onto/potapit",
+    "date_modified" : "2017-11-19",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-11-17"
+  } ]
+}, {
+  "id" : "POI-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/PuntoDiInteresse/latest/POI-AP_IT.ttl",
+  "url" : "http://dati.gov.it/onto/poiapit",
+  "prefix" : "poiapit",
+  "namespace" : "http://dati.gov.it/onto/poiapit",
+  "concepts" : [ "http://dati.gov.it/onto/l0/Topic", "http://dati.gov.it/onto/poiapit#POIState", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/clvapit#Address", "http://dati.gov.it/onto/poiapit#PointOfInterestCategory", "http://dati.gov.it/onto/smapit/Image", "http://dati.gov.it/onto/poiapit#MultiplePointOfInterest", "http://dati.gov.it/onto/poiapit#PointOfInterest", "http://dati.gov.it/onto/poiapit#POINameInTime", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/clvapit#Geometry" ],
+  "imports" : [ {
+    "label" : "clvapit",
+    "uri" : "http://dati.gov.it/onto/clvapit#",
+    "lang" : ""
+  }, {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Point of Interest"
+  }, {
+    "lang" : "it",
+    "value" : "Punti di Interesse"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology of the Italian application profile for Points of Interest"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia del profilo  italiano sui Punti di Interesse (Point of Interest - Italian Application Profile - POI-AP_IT)"
+  } ],
+  "versions" : [ {
+    "number" : "0.2",
+    "date" : "2017-11-03",
+    "comment" : {
+      "en" : "Added associated with the controlled vocabiulary"
+    },
+    "uri" : "http://dati.gov.it/onto/poiapit"
+  }, {
+    "number" : "0.2",
+    "date" : "2017-11-03",
+    "comment" : {
+      "it" : "Aggiunta associazione con i core vocabulary"
+    },
+    "uri" : "http://dati.gov.it/onto/poiapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'Italia Digitale - AgID",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "date_modified" : "2017-11-3",
+    "defined_by_uri" : "http://dati.gov.it/onto/poiapit/",
+    "date_issued" : "2017-10-16",
+    "uri" : "http://dati.gov.it/onto/poiapit"
+  } ]
+}, {
+  "id" : "RO-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Ruoli/latest/RO-AP_IT.ttl",
+  "url" : "http://dati.gov.it/onto/roapit",
+  "prefix" : "roapit",
+  "namespace" : "http://dati.gov.it/onto/tiapit",
+  "concepts" : [ "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/roapit/TemporalEntity", "http://dati.gov.it/onto/roapit/TimeIndexedEvent", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/roapit/Role", "http://dati.gov.it/onto/roapit/TimeIndexedRole" ],
+  "imports" : [ {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Role Ontology"
+  }, {
+    "lang" : "it",
+    "value" : "Ontologia dei Ruoli"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology used to represent roles"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia per la modellazione dei ruoli"
+  } ],
+  "versions" : [ {
+    "number" : "0.1",
+    "date" : "2017-11-21",
+    "comment" : {
+      "en" : "creation of the ontology"
+    },
+    "uri" : "http://dati.gov.it/onto/tiapit/"
+  }, {
+    "number" : "0.1",
+    "date" : "2017-11-21",
+    "comment" : {
+      "it" : "creazione dell'ontologia"
+    },
+    "uri" : "http://dati.gov.it/onto/tiapit/"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'Italia Digitale - AgID",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "date_modified" : "2017-11-21",
+    "defined_by_uri" : "http://dati.gov.it/onto/roapit/",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-11-21"
+  } ]
+}, {
+  "id" : "ACCO-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/StruttureRicettive/latest/ACCO-AP_IT.ttl",
+  "url" : "http://dati.gov.it/onto/accoapit",
+  "prefix" : "accoapit",
+  "namespace" : "http://dati.gov.it/onto/accoapit",
+  "concepts" : [ "http://dati.gov.it/onto/l0/Topic", "http://dati.gov.it/onto/accoapit#AccommodationStarRating", "http://dati.gov.it/onto/accoapit#OSDFeature", "http://dati.gov.it/onto/accoapit#AccommodationTypology", "http://dati.gov.it/onto/accoapit#QuadrupleRoom", "http://dati.gov.it/onto/accoapit#OfferedServiceDescription", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/accoapit#Bedroom", "http://dati.gov.it/onto/accoapit#MeetingRoom", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/potapit/Offer", "http://dati.gov.it/onto/accoapit#TripleRoom", "http://dati.gov.it/onto/accoapit#OSDCriterion", "http://dati.gov.it/onto/accoapit#DoubleRoom", "http://dati.gov.it/onto/poiapit#MultiplePointOfInterest", "http://dati.gov.it/onto/poiapit#PointOfInterest", "http://dati.gov.it/onto/smapit/OnlineContactPoint", "http://dati.gov.it/onto/covapit#Organization", "http://dati.gov.it/onto/accoapit#Suite", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/accoapit#AccommodationChain", "http://dati.gov.it/onto/accoapit#SingleRoom", "http://dati.gov.it/onto/accoapit#Accommodation", "http://dati.gov.it/onto/accoapit#AccommodationRoom" ],
+  "imports" : [ {
+    "label" : "covapit",
+    "uri" : "http://dati.gov.it/onto/covapit#",
+    "lang" : ""
+  }, {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "poiapit",
+    "uri" : "http://dati.gov.it/onto/poiapit#",
+    "lang" : ""
+  }, {
+    "label" : "potapit",
+    "uri" : "http://dati.gov.it/onto/potapit/",
+    "lang" : ""
+  }, {
+    "label" : "smapit",
+    "uri" : "http://dati.gov.it/onto/smapit/",
+    "lang" : ""
+  }, {
+    "label" : "tiapit",
+    "uri" : "http://dati.gov.it/onto/tiapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Accommodation Facilities"
+  }, {
+    "lang" : "it",
+    "value" : "Strutture ricettive"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology of the Italian application profile for Accomodation Facilities"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia del profilo  italiano sulle Strutture Ricettive (Accomodation Facility - Italian Application Profile - ACCO-AP_IT)"
+  } ],
+  "versions" : [ {
+    "number" : "0.2",
+    "date" : "2017-11-19",
+    "comment" : {
+      "en" : "Refactoring based on the POT-AP_IT ontology on prices/offers/tickects and on MeasurementUnit muapit ontology"
+    },
+    "uri" : "http://dati.gov.it/onto/accoapit"
+  }, {
+    "number" : "0.2",
+    "date" : "2017-11-19",
+    "comment" : {
+      "it" : "Rifattorizzazione dell'ontologia sulla base delle due nuove ontologie POT-AP_IT (biglietti, offerte e biglietti) e MU-AP_IT (unità di misura)"
+    },
+    "uri" : "http://dati.gov.it/onto/accoapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'Italia Digitale - AgID",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione del CNR - Laboratorio di Tecnologie Semantiche (STLab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "derived_from_uri" : "http://dati.gov.it/onto/accoapit/0.1",
+    "uri" : "http://dati.gov.it/onto/accoapit",
+    "date_modified" : "2017-12-06",
+    "defined_by_uri" : "http://dati.gov.it/onto/accoapit/",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-10-23"
+  } ]
+}, {
+  "id" : "TI-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Tempo/latest/TI-AP_IT.ttl",
+  "url" : "http://dati.gov.it/onto/tiapit",
+  "prefix" : "tiapit",
+  "namespace" : "http://dati.gov.it/onto/tiapit",
+  "concepts" : [ "http://dati.gov.it/onto/muapit/Value", "http://dati.gov.it/onto/tiapit/MonthOfYear", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/tiapit/Duration", "http://dati.gov.it/onto/tiapit/DayOfWeek", "http://dati.gov.it/onto/tiapit/Year", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/tiapit/TimeIndexedEvent", "http://dati.gov.it/onto/tiapit/TemporalEntity" ],
+  "imports" : [ {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  }, {
+    "label" : "muapit",
+    "uri" : "http://dati.gov.it/onto/muapit/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Time ontology - Italian Application Profile"
+  }, {
+    "lang" : "it",
+    "value" : "Ontologia del tempo - profilo applicativo italiano"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology of the Italian application profile for time"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia del profilo applicativo italiano sul tempo"
+  } ],
+  "versions" : [ {
+    "number" : "Version 0.4 - 21 November 2017",
+    "date" : "",
+    "comment" : {
+      "en" : "Version 0.4 - 21 November 2017"
+    },
+    "uri" : "http://dati.gov.it/onto/tiapit"
+  }, {
+    "number" : "Versione 0.4 - 21 Novembre 2017",
+    "date" : "",
+    "comment" : {
+      "it" : "Versione 0.4 - 21 Novembre 2017"
+    },
+    "uri" : "http://dati.gov.it/onto/tiapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "uri" : "http://dati.gov.it/onto/tiapit",
+    "date_modified" : "2017-11-28",
+    "defined_by_uri" : "http://dati.gov.it/onto/tiapit/",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-09-25"
+  } ]
+}, {
+  "id" : "MU-AP_IT",
+  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/UnitaDiMisura/latest/MU-AP_IT.ttl",
+  "url" : "http://dati.gov.it/onto/muapit",
+  "prefix" : "muapit",
+  "namespace" : "http://dati.gov.it/onto/muapit",
+  "concepts" : [ "http://dati.gov.it/onto/muapit/MeasurementUnit", "http://dati.gov.it/onto/muapit/Value" ],
+  "imports" : [ {
+    "label" : "l0",
+    "uri" : "http://dati.gov.it/onto/l0/",
+    "lang" : ""
+  } ],
+  "titles" : [ {
+    "lang" : "en",
+    "value" : "Measurement Unit Ontology"
+  }, {
+    "lang" : "it",
+    "value" : "Ontologia per le unità di misura"
+  } ],
+  "descriptions" : [ {
+    "lang" : "en",
+    "value" : "This is the ontology used to represent valies and measurment units"
+  }, {
+    "lang" : "it",
+    "value" : "Questa è l'ontologia per la modellazione di valori e unità di misura"
+  } ],
+  "versions" : [ {
+    "number" : "0.1",
+    "date" : "2017-11-13",
+    "comment" : {
+      "en" : "creation of the ontology"
+    },
+    "uri" : "http://dati.gov.it/onto/muapit"
+  }, {
+    "number" : "0.11",
+    "date" : "2017-11-12",
+    "comment" : {
+      "it" : "creazione dell'ontologia"
+    },
+    "uri" : "http://dati.gov.it/onto/muapit"
+  } ],
+  "creators" : [ {
+    "label" : "Agency for Digital Italy - AgID",
+    "lang" : "en"
+  }, {
+    "label" : "Institute of Cognitive Sciences and Technologies of the Italian Research Council (CNR) - Semantic Technology Laboratory (STLab)",
+    "lang" : "en"
+  }, {
+    "label" : "Italian Digital Transformation Team",
+    "lang" : "en"
+  }, {
+    "label" : "Agenzia per l'Italia Digitale - AgID",
+    "lang" : "it"
+  }, {
+    "label" : "Istituto di Scienze e Tecnologie della Cognizione del CNR - Semantic Technology Lab (STLab)",
+    "lang" : "it"
+  }, {
+    "label" : "Team per la Trasformazione Digitale",
+    "lang" : "it"
+  } ],
+  "publishedBy" : "",
+  "owner" : "",
+  "langs" : [ "en", "it" ],
+  "lastEditDate" : "",
+  "licenses" : [ {
+    "label" : "4.0",
+    "uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "lang" : ""
+  } ],
+  "tags" : [ ],
+  "categories" : [ ],
+  "keywords" : [ ],
+  "provenance" : [ {
+    "uri" : "http://dati.gov.it/onto/muapit",
+    "date_modified" : "2017-11-13",
+    "defined_by_uri" : "http://dati.gov.it/onto/muapit/",
+    "license_uri" : "https://creativecommons.org/licenses/by/4.0/",
+    "date_issued" : "2017-11-13"
+  } ]
+} ]
