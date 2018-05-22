@@ -1,0 +1,15 @@
+# Rule_ID:156
+# @title [Common] org:FormalOrganization does not exist
+# @tag Common
+
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message
+   WHERE {
+     FILTER(!EXISTS {?s a org:FormalOrganization}).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (156 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("org:FormalOrganization does not exist." AS ?Rule_Description).
+     BIND (concat("The mandatory class org:FormalOrganization does not exist.") AS ?Message).
+   }

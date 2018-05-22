@@ -1,0 +1,18 @@
+# Rule_ID:5
+# @title [Catalog] dcat:dataset should be a dcatapit:Dataset
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Catalog.
+  ?s dcat:dataset ?o.
+  FILTER(!EXISTS {?o a dcatapit:Dataset}).
+  BIND ("Catalog" AS ?Class_Name).
+  BIND (5 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:dataset should be a dcatapit:Dataset." AS ?Rule_Description).
+  BIND (concat("The dcatapit:Catalog ",IF(isBlank(?s),"@blank_node",str(?s))," has a ",str(?o)," which is not a dcatapit:Dataset") AS ?Message).
+}

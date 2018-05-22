@@ -1,0 +1,13 @@
+# Rule_ID:69
+# @title [Dataset] dct:issued has maximum cardinality of 1 for Dataset
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ("Dataset" AS ?Class_Name) (69 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:issued has maximum cardinality of 1 for Dataset." AS ?Rule_Description) (concat("The dcat:Dataset ",str(?s)," has more than 1 dct:issued.") AS ?Message) ?s (rdf:type AS ?p) (dcat:Dataset AS ?o)
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:issued ?issued.
+} GROUP BY ?s 
+  HAVING (COUNT( ?issued) > 1)

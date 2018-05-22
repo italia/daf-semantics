@@ -1,0 +1,20 @@
+# Rule_ID:157
+# @title [Dataset] dct:source should be a dcat:Dataset
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:source ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dcat:Dataset}).
+  BIND (dct:source AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (157 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:source should be a dcat:Dataset." AS ?Rule_Description).
+  BIND (concat("The dcat:Dataset ",str(?s)," has a ",str(?o)," which is not a dcat:Dataset.") AS ?Message).
+}

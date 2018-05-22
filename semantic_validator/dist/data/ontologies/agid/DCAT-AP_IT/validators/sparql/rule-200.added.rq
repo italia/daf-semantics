@@ -1,0 +1,19 @@
+# Rule_ID:200
+# @title [Standard] dct:title should be a literal
+# @tag Standard
+
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_title ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Standard.
+  ?s dct:title ?o.
+  FILTER(!isLiteral(?o)).
+  BIND (dct:title AS ?p).
+  BIND ("Standard" AS ?Class_Name).
+  BIND (200 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:title should be a literal." AS ?Rule_title).
+  BIND (concat("The dct:title ",IF(isBlank(?o),"@blank_node",str(?o))," is not a literal.") AS ?Message).
+}

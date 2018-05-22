@@ -1,0 +1,12 @@
+# Rule_ID:123
+# @title [Catalog Record] dct:conformsTo has a maximum cardinality of 1 for Catalog Record
+# @tag Catalog Record
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+SELECT ("CatalogRecord" AS ?Class_Name) (123 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:conformsTo has a maximum cardinality of 1 for dcat:CatalogRecord" AS ?Rule_Description) (concat("The dcat:CatalogRecord ", str(?s)," has more than 1 dct:conformsTo.") AS ?Message) ?s
+WHERE {
+  ?s a dcat:CatalogRecord.
+  ?s dct:conformsTo ?mod.
+} GROUP BY ?s 
+  HAVING (COUNT( ?s) > 1)

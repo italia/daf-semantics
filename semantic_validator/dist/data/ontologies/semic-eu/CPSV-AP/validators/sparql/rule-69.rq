@@ -1,0 +1,19 @@
+# Rule_ID:69
+# @title [FormalOrganization] dct:title is a required property for Formal Organization
+# @tag FormalOrganization
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p
+   WHERE {
+     ?s a org:FormalOrganization.
+     FILTER(!EXISTS {?s dct:title ?name}).
+     BIND (dct:title AS ?p).
+     BIND ("FormalOrganization" AS ?Class_Name).
+     BIND (69 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("dct:title is a required property for Formal Organization." AS ?Rule_Description).
+     BIND (concat("The org:FormalOrganization  ",str(?s)," does not have a dct:title property.") AS ?Message).
+   }
+   

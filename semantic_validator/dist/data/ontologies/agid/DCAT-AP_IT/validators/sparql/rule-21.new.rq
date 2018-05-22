@@ -1,0 +1,20 @@
+# Rule_ID:21
+# @title [Dataset] dct:subject is a recommended property for Dataset
+# @tag catalog
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#> 
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+   WHERE {
+     ?s a dcatapit:Dataset.
+	 FILTER(!(EXISTS { ?s dct:subject ?subject})).
+     BIND (rdf:type AS ?p).
+     BIND (dcatapit:Dataset AS ?o).
+     BIND ("Dataset" AS ?Class_Name).
+     BIND (21 AS ?Rule_ID).
+     BIND ("warning" AS ?Rule_Severity).
+     BIND ("dct:subject is a recommended property for Dataset." AS ?Rule_Description).
+     #BIND (concat("The dcatapit:Dataset ",str(?s)," does not have the recommended property dct:subject.") AS ?Message).
+	 BIND (concat("The dcatapit:Dataset ",IF(isBlank(?s),"@blank_node",str(?s))," does not have the recommended property dct:subject.") AS ?Message).
+   }

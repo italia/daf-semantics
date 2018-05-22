@@ -1,0 +1,14 @@
+# Rule_ID:191
+# @title [Agent] dct:identifier has maximum cardinality of 1 for Agent
+# @tag Agent
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ("Agent" AS ?Class_Name) (191 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("dct:identifier has maximum cardinality of 1 for Agent." AS ?Rule_Description) (concat("The dcatapit:Agent ",IF(isBlank(?s),"@blank_node",str(?s))," has more than 1 dct:identifier.") AS ?Message) ?s (rdf:type AS ?p) (dcatapit:Agent AS ?o)
+WHERE {
+  ?s a dcatapit:Agent.
+  ?s dct:identifier ?id.
+} GROUP BY ?s 
+  HAVING (COUNT( ?id) > 1)

@@ -1,0 +1,19 @@
+# Rule_ID:155
+# @title [Dataset] dct:relation should be a resource
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:relation ?o.
+  FILTER(!isURI(?o)).
+  BIND (dct:relation AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (155 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:relation should be a resource." AS ?Rule_Description).
+  BIND (concat("The dct:relation ",str(?s)," is not a resource.") AS ?Message).
+}

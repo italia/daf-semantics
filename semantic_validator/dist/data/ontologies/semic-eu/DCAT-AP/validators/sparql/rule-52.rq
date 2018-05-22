@@ -1,0 +1,20 @@
+# Rule_ID:52
+# @title [Dataset] dct:publisher should be a foaf:Agent
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:publisher as ?p) ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:publisher ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a foaf:Agent}).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (52 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:publisher should be a foaf:Agent." AS ?Rule_Description).
+  BIND (concat("The dct:publisher ",str(?o)," is not a foaf:Agent.") AS ?Message).
+}

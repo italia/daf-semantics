@@ -1,0 +1,12 @@
+# Rule_ID:125
+# @title [Catalog Record] adms:status has a maximum cardinality of 1 for Catalog Record
+# @tag Catalog Record
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+SELECT ("CatalogRecord" AS ?Class_Name) (125 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("adms:status has a maximum cardinality of 1 for dcat:CatalogRecord" AS ?Rule_Description) (concat("The dcat:CatalogRecord ", str(?s)," has more than 1 adms:status.") AS ?Message) ?s
+WHERE {
+  ?s a dcat:CatalogRecord.
+  ?s adms:status ?mod.
+} GROUP BY ?s 
+  HAVING (COUNT( ?s) > 1)

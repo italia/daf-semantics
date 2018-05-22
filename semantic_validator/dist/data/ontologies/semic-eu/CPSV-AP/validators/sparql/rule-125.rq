@@ -1,0 +1,19 @@
+# Rule_ID:125
+# @title [PublicService] cv:sector should be a skos:Concept
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a cv:PublicService.
+     ?s cv:sector ?o.
+     ?o ?p ?val.
+     FILTER(!EXISTS {?o a skos:Concept}).
+     BIND ("PublicService" AS ?Class_Name).
+     BIND (125 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:sector should be a skos:Concept." AS ?Rule_Description).
+     BIND (concat("cv:PublicService ",str(?s)," does not have a cv:sector property of type skos:Concept.") AS ?Message).
+   }

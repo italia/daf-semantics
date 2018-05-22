@@ -1,0 +1,20 @@
+# Rule_ID:150
+# @title [Dataset] dct:accessRights should be a dct:RightsStatement
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:accessRights ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dct:RightsStatement}).
+  BIND (dct:accessRights AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (150 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:accessRights should be a dct:RightsStatement." AS ?Rule_Description).
+  BIND (concat("The dct:accessRights ",str(?o)," is not a dct:RightsStatement.") AS ?Message).
+}

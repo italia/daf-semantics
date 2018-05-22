@@ -1,0 +1,13 @@
+# Rule_ID:104
+# @title [PeriodOfTime] cv:endDateTime has maximum cardinality of 1 for PeriodOfTime
+# @tag PeriodOfTime
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ("PeriodOfTime" AS ?Class_Name) (104 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("cv:endDateTime has maximum cardinality of 1 for PeriodOfTime." AS ?Rule_Description) (concat("The cv:PeriodOfTime ",str(?s)," has more than 1 cv:endDateTime.") AS ?Message) ?s (cv:endDateTime AS ?p) (sample(?end) AS ?o)
+   WHERE {
+     ?s a cv:PeriodOfTime.
+     ?s cv:endDateTime ?end.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+	 

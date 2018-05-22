@@ -1,0 +1,19 @@
+# Rule_ID:63
+# @title [Dataset] dcat:landingPage should be a foaf:Document
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dcat:landingPage as ?p) ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dcat:landingPage ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a foaf:Document}).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (63 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dcat:landingPage should be a foaf:Document." AS ?Rule_Description).
+  BIND (concat("The dcat:Dataset ",str(?s)," has a dcat:landingPage which is not a foaf:Document.") AS ?Message).
+}

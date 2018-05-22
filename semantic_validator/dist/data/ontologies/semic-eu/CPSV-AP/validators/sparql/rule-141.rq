@@ -1,0 +1,18 @@
+# Rule_ID:141
+# @title [PublicService] cv:hasFormalFramework should be a cv:FormalFramework
+# @tag PublicService
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+   WHERE {
+     ?s a cv:PublicService.
+     ?s cv:hasFormalFramework ?o.
+     ?o ?p ?val.
+     FILTER(!EXISTS {?o a cv:FormalFramework}).
+     BIND ("PublicService" AS ?Class_Name).
+     BIND (141 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:hasFormalFramework should be a cv:FormalFramework." AS ?Rule_Description).
+     BIND (concat("cv:PublicService ",str(?s)," does not have a cv:hasFormalFramework property of type cv:FormalFramework.") AS ?Message).
+   }

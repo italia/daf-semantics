@@ -1,0 +1,19 @@
+# Rule_ID:156
+# @title [Dataset] adms:sample should be a dcat:Distribution
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s adms:sample  ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dcat:Distribution}).
+  BIND (adms:sample AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (156 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("adms:sample should be a dcat:Distribution." AS ?Rule_Description).
+  BIND (concat("The adms:sample ",str(?p)," is not a dcat:Distribution.") AS ?Message).
+}

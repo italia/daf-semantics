@@ -1,0 +1,21 @@
+# Rule_ID:73
+# @title [Dataset] dct:modified should be a literal typed as date or dateTime
+# @tag dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Dataset.
+  ?s dct:modified ?o.
+  BIND (dct:modified AS ?p).
+  BIND (datatype(?o) AS ?datatype)
+  FILTER (?datatype != xsd:date && ?datatype != xsd:dateTime)
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (73 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:modified should be a literal typed as date or dateTime." AS ?Rule_Description).
+  BIND (concat("dcat:modified ",str(?s)," is not a literal typed as date or dateTime.") AS ?Message).
+}

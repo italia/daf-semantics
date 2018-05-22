@@ -1,0 +1,18 @@
+# Rule_ID:102
+# @title [PeriodOfTime] cv:endDateTime is a required property for PeriodOfTime
+# @tag PeriodOfTime
+
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p
+   WHERE {
+     ?s a cv:PeriodOfTime.
+     FILTER(!EXISTS {?s cv:endDateTime ?end}).
+     BIND (cv:endDateTime AS ?p).
+     BIND ("PeriodOfTime" AS ?Class_Name).
+     BIND (102 AS ?Rule_ID).
+     BIND ("error" AS ?Rule_Severity).
+     BIND ("cv:endDateTime is a required property for PeriodOfTime." AS ?Rule_Description).
+     BIND (concat("The cv:PeriodOfTime  ",str(?s)," does not have a cv:endDateTime property.") AS ?Message).
+   }
+	 

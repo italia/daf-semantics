@@ -1,0 +1,14 @@
+# Rule_ID:59
+# @title [FormalFramework] adms:adms-status has maximum cardinality of 1 for FormalFramework
+# @tag FormalFramework
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX cv: <http://data.europa.eu/cv/>
+
+SELECT ("FormalFramework" AS ?Class_Name) (59 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("adms:adms-status has maximum cardinality of 1 for FormalFramework." AS ?Rule_Description) (concat("The cv:FormalFramework ",str(?s)," has more than 1 adms:adms-status.") AS ?Message) ?s (adms:adms-status AS ?p) (sample(?sta) AS ?o)
+   WHERE {
+     ?s a cv:FormalFramework.
+     ?s adms:adms-status ?sta.
+   } GROUP BY ?s 
+     HAVING (COUNT( ?s) > 1)
+   

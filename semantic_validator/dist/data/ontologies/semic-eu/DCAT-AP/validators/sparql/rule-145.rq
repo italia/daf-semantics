@@ -1,0 +1,20 @@
+# Rule_ID:145
+# @title [Catalog Record] adms:status is a recommended property for Catalog Record
+# @tag  Catalog Record
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:CatalogRecord.
+  FILTER(!(EXISTS { ?s adms:status ?desc})).
+  BIND (rdf:type AS ?p).
+  BIND (adms:status AS ?o).
+  BIND ("CatalogRecord" AS ?Class_Name).
+  BIND (145 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("adms:status is a recommended property for Catalog Record." AS ?Rule_Description).
+  BIND (concat("The dcat:CatalogRecord ",str(?o)," does not have a adms:status property.") AS ?Message).
+}

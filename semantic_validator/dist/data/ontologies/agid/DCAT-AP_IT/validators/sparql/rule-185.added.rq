@@ -1,0 +1,20 @@
+# Rule_ID:185
+# @title [Dataset] dct:creator should be a dcatapit:Agent
+# @tag dataset
+
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Dataset.
+  ?s dct:creator ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dcatapit:Agent}).
+  BIND (dct:creator AS ?p).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (185 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:creator should be a dcatapit:Agent." AS ?Rule_Description).
+  BIND (concat("The dct:creator ",IF(isBlank(?o),"@blank_node",str(?o))," is not a dcatapit:Agent.") AS ?Message).
+}

@@ -1,0 +1,19 @@
+# Rule_ID:206
+# @title [Organization] vcard:fn should be a literal
+# @tag Organization
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcatapit:Organization.
+  ?s vcard:fn ?o.
+  FILTER(!isLiteral(?o)).
+  BIND (vcard:fn AS ?p)
+  BIND ("Organization" AS ?Class_Name).
+  BIND (206 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("The vcard:fn property should be a literal." AS ?Rule_Description).
+  BIND (concat("The vcard:fn property ",IF(isBlank(?o),"@blank_node",str(?o))," is not a literal.") AS ?Message).
+}

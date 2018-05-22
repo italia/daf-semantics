@@ -1,0 +1,19 @@
+# Rule_ID:71
+# @title [Dataset] dct:spatial should be a dct:Location
+# @tag dataset
+
+PREFIX dcatapit: <http://dati.gov.it/onto/dcatapit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s (dct:spatial as ?p) ?o
+WHERE {
+  ?s a dcatapit:Dataset.
+  ?s dct:spatial ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a dct:Location}).
+  BIND ("Dataset" AS ?Class_Name).
+  BIND (71 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:spatial should be a dct:Location." AS ?Rule_Description).
+  BIND (concat("The dct:spatial ",IF(isBlank(?o),"@blank_node",str(?o))," is not a dct:Location.") AS ?Message).
+}

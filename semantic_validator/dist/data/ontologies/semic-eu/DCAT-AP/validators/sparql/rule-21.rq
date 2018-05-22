@@ -1,0 +1,20 @@
+# Rule_ID:21
+# @title [Catalog] dct:license is a recommended property for Catalog
+# @tag catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?s a dcat:Catalog.
+  FILTER(!(EXISTS { ?s dct:license ?desc})).
+  BIND (rdf:type AS ?p).
+  BIND (dcat:Catalog AS ?o).
+  BIND ("Catalog" AS ?Class_Name).
+  BIND (21 AS ?Rule_ID).
+  BIND ("warning" AS ?Rule_Severity).
+  BIND ("dct:license is a recommended property for Catalog." AS ?Rule_Description).
+  BIND (concat("The dcat:Catalog ",str(?o)," does not have dct:license.") AS ?Message).  
+}

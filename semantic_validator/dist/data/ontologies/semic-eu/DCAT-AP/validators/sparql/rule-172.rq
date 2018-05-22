@@ -1,0 +1,24 @@
+# Rule_ID:172
+# @title [Category scheme] dct:title should be a literal
+# @tag category scheme
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o
+WHERE {
+  ?data a dcat:Dataset.
+  ?data dcat:theme ?theme.
+  ?theme a skos:Concept.
+  ?theme skos:inScheme ?s.
+  ?s a skos:ConceptScheme.
+  ?s dct:title ?o.
+  FILTER(!isLiteral(?o)).
+  BIND (dct:title AS ?p).
+  BIND ("Category scheme" AS ?Class_Name).
+  BIND (172 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("dct:title should be a literal." AS ?Rule_Description).
+  BIND (concat("The dct:title ",str(?o)," is not a literal.") AS ?Message).
+}

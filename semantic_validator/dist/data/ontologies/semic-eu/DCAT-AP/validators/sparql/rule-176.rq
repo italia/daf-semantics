@@ -1,0 +1,14 @@
+# Rule_ID:176
+# @title [Identifier] skos:notation has maximum cardinality of 1 for adms:Identifier
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ("Identifier" AS ?Class_Name) (176 AS ?Rule_ID) ("error" AS ?Rule_Severity) ("skos:notation has maximum cardinality of 1 for adms:Identifier." AS ?Rule_Description) (concat("The adms:Identifier ", str(?s)," has more than 1 skos:notation.") AS ?Message) ?s (rdf:type AS ?p) (adms:Identifier AS ?o)
+WHERE {
+   ?s a adms:Identifier.
+   ?s skos:notation ?type.
+} GROUP BY ?s 
+  HAVING (COUNT( ?type) > 1)
+

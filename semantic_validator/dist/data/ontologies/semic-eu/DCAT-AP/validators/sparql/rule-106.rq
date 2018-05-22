@@ -1,0 +1,21 @@
+# Rule_ID:106
+# @title [Distribution] spdx:checksum should be a spdx:Checksum.
+# @tag distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX spdx: <http://spdx.org/rdf/terms#>
+
+SELECT DISTINCT ?Class_Name ?Rule_ID ?Rule_Severity ?Rule_Description ?Message ?s ?p ?o 
+WHERE {
+  ?s a dcat:Distribution.
+  ?s spdx:checksum ?o.
+  ?o ?pred ?val.
+  FILTER(!EXISTS {?o a spdx:Checksum}).
+  BIND (spdx:checksum AS ?p).
+  BIND ("Distribution" AS ?Class_Name).
+  BIND (106 AS ?Rule_ID).
+  BIND ("error" AS ?Rule_Severity).
+  BIND ("spdx:checksum should be a spdx:Checksum." AS ?Rule_Description).
+  BIND (concat("The spdx:checksum ",str(?s)," is not a spdx:Checksum.") AS ?Message).
+}
