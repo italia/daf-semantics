@@ -45,7 +45,7 @@ import play.api.Logger
 
 package semantic_validator.yaml {
     // ----- Start of unmanaged code area for package Semantic_validatorYaml
-                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                        
     // ----- End of unmanaged code area for package Semantic_validatorYaml
     class Semantic_validatorYaml @Inject() (
         // ----- Start of unmanaged code area for injections Semantic_validatorYaml

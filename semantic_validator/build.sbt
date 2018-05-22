@@ -9,7 +9,7 @@ organization in ThisBuild := "it.gov.daf"
 
 name := "semantic_validator"
 
-version in ThisBuild := "0.0.1"
+version in ThisBuild := "1.0.1"
 
 val playVersion = "2.5.14"
 
