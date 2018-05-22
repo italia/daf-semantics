@@ -19,6 +19,16 @@ import javax.inject._
 
 import java.io.File
 
+import play.api.mvc.{Action,Controller}
+import play.api.data.validation.Constraint
+import play.api.i18n.MessagesApi
+import play.api.inject.{ApplicationLifecycle,ConfigurationProvider}
+import de.zalando.play.controllers._
+import PlayBodyParsing._
+import PlayValidations._
+import scala.util._
+import javax.inject._
+import java.io.File
 import scala.collection.JavaConversions._
 import play.api.inject.ApplicationLifecycle
 import scala.concurrent.Future
@@ -35,7 +45,7 @@ import play.api.Logger
 
 package semantic_validator.yaml {
     // ----- Start of unmanaged code area for package Semantic_validatorYaml
-                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                    
     // ----- End of unmanaged code area for package Semantic_validatorYaml
     class Semantic_validatorYaml @Inject() (
         // ----- Start of unmanaged code area for injections Semantic_validatorYaml
