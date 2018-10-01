@@ -11,7 +11,7 @@ We can thus recognize 4 different areas:
 
 + catalog frontend
 	- [DAF dataportal](https://github.com/italia/daf-dataportal) is the DAF front-end, where all the datasets are available. It includes a section with information about ontologies/vocabularies, and a page for validating metadata, using a standard validator.
-	- [katalod](http://10.121.172.7:10080/public-od/daf/katalod.git) [WIP] is the backend for the "catalog" frontend: it exposes some different endpoints to DAF dataportal, designed ad hoc to provide a conventional data and metadata access from the ontologies and controlled vocabularies from the [OntoPiA network](https://github.com/italia/daf-ontologie-vocabolari-controllati).
+	- [katalod](https://github.com/italia/daf-semantic-katalod) [WIP] is the backend for the "catalog" frontend: it exposes some different endpoints to DAF dataportal, designed ad hoc to provide a conventional data and metadata access from the ontologies and controlled vocabularies from the [OntoPiA network](https://github.com/italia/daf-ontologie-vocabolari-controllati).
 	- [semantic_frontend](https://github.com/italia/daf-semantics/tree/master/semantic_frontend) mockup was designed as a first guideline for developing an ontologies/vocabularies catalog front-end
 	- [OntoPiA-UI](https://github.com/anuzzolese/OntoPiA-UI)
 a docker image, containing a collection of tools useful for exploring the OntoPiA network of ontologies.
