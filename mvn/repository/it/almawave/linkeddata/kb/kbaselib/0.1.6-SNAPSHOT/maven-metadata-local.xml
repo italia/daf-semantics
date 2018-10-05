@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>it.almawave.linkeddata.kb</groupId>
+  <artifactId>kbaselib</artifactId>
+  <version>0.1.6-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <localCopy>true</localCopy>
+    </snapshot>
+    <lastUpdated>20180926115225</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <classifier>javadoc</classifier>
+        <extension>jar</extension>
+        <value>0.1.6-SNAPSHOT</value>
+        <updated>20180926115225</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>sources</classifier>
+        <extension>jar</extension>
+        <value>0.1.6-SNAPSHOT</value>
+        <updated>20180926115224</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>0.1.6-SNAPSHOT</value>
+        <updated>20180926115224</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>0.1.6-SNAPSHOT</value>
+        <updated>20180926115224</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>it.almawave.linkeddata.kb</groupId>
+  <artifactId>kbaselib</artifactId>
+  <versioning>
+    <versions>
+      <version>0.1.6-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20180926115225</lastUpdated>
+  </versioning>
+</metadata>
