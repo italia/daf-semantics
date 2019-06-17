@@ -5,7 +5,7 @@ Il foglio di calcolo, da usare in abbinamento al corrispondente progetto per Goo
 
 **Prerequisiti**
 
-Il progetto necessita dell'installazione di Google Refine preferibilmente la versione 2.5 [pagina download](http://openrefine.org/download.html).
+Il progetto necessita dell'installazione di OpenRefine preferibilmente la versione 2.5 [pagina download](http://openrefine.org/download.html).
 
 Devono poi essere installati le seguenti estensioni:
 
