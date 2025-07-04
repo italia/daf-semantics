@@ -192,8 +192,8 @@
     <dct:title xml:lang="it">Distribuzione CSV della mappatura tra tipi di eventi pubblici e schema.org </dct:title>
     <dct:title xml:lang="en">CSV distribution of the mapping between  types of public events - schema.org</dct:title>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.csv"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.csv"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/public-event-types/38_Parade">
@@ -211,8 +211,8 @@
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/PublicEvent_CSV">
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:title xml:lang="en">CSV distribution for the types of public events</dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"/>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/public-event-types/public-event-types.csv"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/blob/master/VocabolariControllati/public-event-types/public-event-types.csv"/>
     <dct:description xml:lang="en">This is the distribution in CSV of the Linked Open Dataset of the controlled vocabulary related to types of public events</dct:description>
     <dct:title xml:lang="it">Distribuzione CSV per classificazione tipi di eventi pubblici </dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
@@ -440,7 +440,7 @@
     <skos:notation>6.6</skos:notation>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/PublicEventMapping_XLSX">
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <dct:description xml:lang="en">This is the distribution in XLSX of the Linked Open Dataset of the controlled vocabulary related to the mapping between the types of public events and schema.org</dct:description>
     <dct:title xml:lang="it">Distribuzione XLSX della mappatura tra tipi di eventi pubblici e schema.org </dct:title>
@@ -448,7 +448,7 @@
     <dct:title xml:lang="en">XLSX distribution of the mapping between  types of public events - schema.org</dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.xlsx"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/public-event-types/42_Forum">
     <skos:notation>4.2</skos:notation>
@@ -729,20 +729,20 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <dct:description xml:lang="it">Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici</dct:description>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/public-event-types/public-event-types.xlsx"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:description xml:lang="en">This is the distribution in XLSX of the Linked Open Dataset of the controlled vocabulary related to types of public events</dct:description>
     <dct:title xml:lang="en">XLSX distribution for the types of public events</dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"/>
     <dct:title xml:lang="it">Distribuzione XLSX per classificazione tipi di eventi pubblici </dct:title>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/PublicEvent_RDF_XML">
     <dct:description xml:lang="en">This is the distribution in RDF/XML of the Linked Open Dataset of the controlled vocabulary related to types of public events</dct:description>
     <dct:title xml:lang="it">Distribuzione RDF/XML per classificazione tipi di eventi pubblici </dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_XML"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.rdf"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/public-event-types/public-event-types.rdf"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici</dct:description>
     <dct:title xml:lang="en">RDF/XML distribution for the types of public events</dct:title>
@@ -765,10 +765,10 @@
     <dct:description xml:lang="en">This is the distribution in JSON_LD of the Linked Open Dataset of the controlled vocabulary related to types of public events</dct:description>
     <dct:description xml:lang="it">Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sulla classificazione dei tipi di eventi pubblici</dct:description>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.jsonld"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/public-event-types/public-event-types.jsonld"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:title xml:lang="it">Distribuzione JSON_LD per classificazione tipi di eventi pubblici </dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Amministrazione/td_PCM">
     <foaf:name xml:lang="en">Digital Transformation Team</foaf:name>
@@ -804,8 +804,8 @@
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:description xml:lang="en">This is the distribution in RDF/turtle of the Linked Open Dataset of the controlled vocabulary related to types of public events</dct:description>
     <dct:title xml:lang="it">Distribuzione RDF/Turtle per classificazione tipi di eventi pubblici </dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.ttl"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/public-event-types/public-event-types.ttl"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/language">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Property"/>

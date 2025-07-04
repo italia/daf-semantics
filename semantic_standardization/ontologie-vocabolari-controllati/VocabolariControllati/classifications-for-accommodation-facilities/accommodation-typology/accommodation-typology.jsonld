@@ -723,10 +723,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/AccoTypology_CSV",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.csv"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.csv"
       },
       "dct:description": [
         {
@@ -2767,10 +2767,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/AccoTypology_JSON_LD",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.jsonld"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.jsonld"
       },
       "dct:description": [
         {
@@ -3128,10 +3128,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/AccoTypology_RDF_Turtle",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.ttl"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.ttl"
       },
       "dct:description": [
         {
@@ -3298,10 +3298,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/AccoTypology_XLSX",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.xlsx"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.xlsx"
       },
       "dct:description": [
         {
@@ -4231,10 +4231,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/AccoTypology_RDF_XML",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.rdf"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.rdf"
       },
       "dct:description": [
         {

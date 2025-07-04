@@ -631,11 +631,11 @@
     <dct:description xml:lang="en">This is the distribution in RDF/turtle of the Linked Open Dataset of the license controlled vocabulary </dct:description>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences/licences.ttl"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences/licences.ttl"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:title xml:lang="it">Distribuzione RDF/Turtle del vocabolario controllato sulle license</dct:title>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sulle licenze</dct:description>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/licences/B13_CCBYNC30IT">
     <foaf:name xml:lang="de">Creative Commons Namensnennung-Nicht kommerziell 3.0 Italien (CC BY-NC 3.0 IT)</foaf:name>
@@ -812,11 +812,11 @@
     <dct:title xml:lang="en">RDF/XML distribution of the license controlled vocabulary</dct:title>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:description xml:lang="en">This is the distribution in RDF/XML of the Linked Open Dataset of the license controlled vocabulary </dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences/licences.rdf"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences/licences.rdf"/>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sulle licenze</dct:description>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_XML"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/licences/B27_CCBYND20IT">
     <clvapit:hasRankOrder>3</clvapit:hasRankOrder>
@@ -1229,9 +1229,9 @@
     <dct:description xml:lang="it">Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulle licenze</dct:description>
     <dct:title xml:lang="en">CSV distribution of the license controlled vocabulary</dct:title>
     <dct:description xml:lang="en">This is the distribution in CSV of the Linked Open Dataset of the license controlled vocabulary </dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences/licences.csv"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences/licences.csv"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences"/>
     <dct:title xml:lang="it">Distribuzione CSV del vocabolario controllato sulle license</dct:title>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
@@ -1282,13 +1282,13 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/License_JSON_LD">
     <dct:description xml:lang="it">Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sulle licenze</dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences/licences.jsonld"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences/licences.jsonld"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
     <dct:title xml:lang="it">Distribuzione JSON_LD del vocabolario controllato sulle license</dct:title>
     <dct:description xml:lang="en">This is the distribution in JSON_LD of the Linked Open Dataset of the license controlled vocabulary </dct:description>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:title xml:lang="en">JSON_LD distribution of the license controlled vocabulary</dct:title>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/licences/B15_CCBYNC25IT">
@@ -1418,9 +1418,9 @@
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/License_XLSX">
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/licences"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/licences"/>
     <dct:description xml:lang="it">Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sulle licenze</dct:description>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/licences/licences.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/licences/licences.xlsx"/>
     <dct:title xml:lang="en">XLSX distribution of the license controlled vocabulary</dct:title>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:description xml:lang="en">This is the distribution in XLSX of the Linked Open Dataset of the license controlled vocabulary </dct:description>

@@ -898,10 +898,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/Cofog2009-RDFXML",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.rdf"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.rdf"
       },
       "dct:description": {
         "@language": "it",
@@ -1542,10 +1542,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/Cofog2009-CSV",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.csv"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.csv"
       },
       "dct:description": {
         "@language": "it",
@@ -1942,10 +1942,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/Cofog2009-PDF",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.pdf"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.pdf"
       },
       "dct:description": {
         "@language": "it",
@@ -2647,10 +2647,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/Cofog2009-XLSX",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.xlsx"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.xlsx"
       },
       "dct:description": {
         "@language": "it",
@@ -4051,10 +4051,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/Cofog2009-JSONLD",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.jsonld"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.jsonld"
       },
       "dct:description": {
         "@language": "it",
@@ -4228,10 +4228,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/Cofog2009-RDFTurtle",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.ttl"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.ttl"
       },
       "dct:description": {
         "@language": "it",

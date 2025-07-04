@@ -324,10 +324,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/PublicEvent_JSON_LD",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.jsonld"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/public-event-types/public-event-types.jsonld"
       },
       "dct:description": [
         {
@@ -861,10 +861,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/PublicEvent_XLSX",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types.xlsx"
+        "@id": "https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/public-event-types/public-event-types.xlsx"
       },
       "dct:description": [
         {
@@ -987,10 +987,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/PublicEventMapping_XLSX",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.xlsx"
+        "@id": "https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.xlsx"
       },
       "dct:description": [
         {
@@ -1080,10 +1080,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/PublicEvent_RDF_XML",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.rdf"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/public-event-types/public-event-types.rdf"
       },
       "dct:description": [
         {
@@ -1248,10 +1248,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/PublicEventMapping_CSV",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.csv"
+        "@id": "https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/public-event-types/public-event-types-alignment-schemaorg.csv"
       },
       "dct:description": [
         {
@@ -1429,10 +1429,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/PublicEvent_CSV",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"
       },
       "dcat:downloadURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/blob/master/VocabolariControllati/public-event-types/public-event-types.csv"
+        "@id": "https://github.com/italia/dati-semantic-assets/blob/master/VocabolariControllati/public-event-types/public-event-types.csv"
       },
       "dct:description": [
         {
@@ -1827,10 +1827,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/PublicEvent_RDF_Turtle",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/public-event-types"
+        "@id": "https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/public-event-types"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/public-event-types/public-event-types.ttl"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/public-event-types/public-event-types.ttl"
       },
       "dct:description": [
         {

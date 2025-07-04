@@ -167,15 +167,15 @@
     <dct:title xml:lang="it">Distribuzione XLSX vocabolario controllato categorie punti di interesse </dct:title>
     <dct:description xml:lang="en">This is the distribution in XLSX of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
     <dct:title xml:lang="en">CSV distribution of the Point of Interest Categories controlled vocabulary</dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.xlsx"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/POICat_RDF_XML">
     <dct:title xml:lang="it">Distribuzione RDF/XML vocabolario controllato categorie punti di interesse </dct:title>
     <dct:description xml:lang="en">This is the distribution in RDF/XML of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
 >>>>>>> 35ac7c10c2f8fcfd1100f32ad243e7e7e4f359ad
     <dct:description xml:lang="it">Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sulle categorie dei punti di interesse</dct:description>
@@ -183,10 +183,10 @@
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_XML"/>
     <dct:description xml:lang="en">This is the distribution in RDF/XML of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.rdf"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.rdf"/>
     <dct:title xml:lang="en">RDF/XML distribution of the Point of Interest Categories controlled vocabulary</dct:title>
     <dct:title xml:lang="it">Distribuzione RDF/XML vocabolario controllato categorie punti di interesse </dct:title>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
   </rdf:Description>
 <<<<<<< HEAD
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/poi-category-classification/cat_8_publicservice">
@@ -251,10 +251,10 @@
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/POICat_CSV">
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
     <dct:title xml:lang="it">Distribuzione CSV vocabolario controllato categorie punti di interesse </dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.csv"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.csv"/>
     <dct:title xml:lang="en">CSV distribution of the Point of Interest Categories controlled vocabulary</dct:title>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:description xml:lang="it">Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulle categorie dei punti di interesse</dct:description>
     <dct:description xml:lang="en">This is the distribution in CSV of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
@@ -358,18 +358,18 @@
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/POICat_XLSX">
     <dct:title xml:lang="en">CSV distribution of the Point of Interest Categories controlled vocabulary</dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <dct:description xml:lang="it">Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sulle categorie dei punti di interesse</dct:description>
     <dct:description xml:lang="en">This is the distribution in XLSX of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
 <<<<<<< HEAD
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.xlsx"/>
     <dct:title xml:lang="it">Distribuzione XLSX vocabolario controllato categorie punti di interesse </dct:title>
 =======
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:description xml:lang="en">This is the distribution in RDF/turtle of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.ttl"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.ttl"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"/>
 >>>>>>> 35ac7c10c2f8fcfd1100f32ad243e7e7e4f359ad
   </rdf:Description>
@@ -413,13 +413,13 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/POICat_CSV">
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
     <dct:description xml:lang="en">This is the distribution in CSV of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
     <dct:title xml:lang="it">Distribuzione CSV vocabolario controllato categorie punti di interesse </dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.csv"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.csv"/>
     <dct:description xml:lang="it">Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulle categorie dei punti di interesse</dct:description>
     <dct:title xml:lang="en">CSV distribution of the Point of Interest Categories controlled vocabulary</dct:title>
 =======
@@ -456,9 +456,9 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:description xml:lang="it">Questa è la distribuzione JSON-LD del dataset Linked Open Data del vocabolario controllato sulle categorie dei punti di interesse</dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.jsonld"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.jsonld"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/ns/dcat#keyword">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Property"/>
@@ -477,8 +477,8 @@
     <dct:title xml:lang="en">RDF/Turtle distribution of the Point of Interest Categories controlled vocabulary</dct:title>
     <dct:title xml:lang="it">Distribuzione RDF/Turtle vocabolario controllato categorie punti di interesse </dct:title>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sulle categorie dei punti di interesse</dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.ttl"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.ttl"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/onto/dcatapit#Standard">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -528,12 +528,12 @@
     <dct:description xml:lang="en">This is the distribution in JSON-LD of the Linked Open Dataset of the Point Of Interest Categories controlled vocabulary </dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:description xml:lang="it">Questa è la distribuzione JSON-LD del dataset Linked Open Data del vocabolario controllato sulle categorie dei punti di interesse</dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification/poi-category-classification.jsonld"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification/poi-category-classification.jsonld"/>
     <dct:title xml:lang="en">JSON-LD distribution of the Point of Interest Categories controlled vocabulary</dct:title>
     <dct:title xml:lang="it">Distribuzione JSON-LD vocabolario controllato categorie punti di interesse </dct:title>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/poi-category-classification"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/poi-category-classification"/>
 >>>>>>> 35ac7c10c2f8fcfd1100f32ad243e7e7e4f359ad
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/type">

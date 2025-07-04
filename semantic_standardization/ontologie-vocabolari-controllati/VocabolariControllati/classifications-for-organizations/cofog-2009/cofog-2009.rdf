@@ -638,10 +638,10 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
     <dct:title xml:lang="it">Distribuzione XLSX classificazione COFOG 2009</dct:title>
     <dct:description xml:lang="it">Questa è la distribuzione XLSX del dataset Linked Open Data della classificazione ufficiale COFOG 2009 - Classificazione internazionale della spesa pubblica per funzione (Cofog) secondo il Sistema dei Conti Europei SEC9</dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.xlsx"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/036">
     <skos:notation>03.6</skos:notation>
@@ -851,8 +851,8 @@
     <dct:title xml:lang="it">Distribuzione RDF/XML classificazione COFOG 2009</dct:title>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/XML del dataset Linked Open Data della classificazione ufficiale COFOG 2009 - Classificazione internazionale della spesa pubblica per funzione (Cofog) secondo il Sistema dei Conti Europei SEC9</dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.rdf"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.rdf"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_XML"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/104">
@@ -1421,8 +1421,8 @@
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/Turtle del dataset Linked Open Data della classificazione ufficiale COFOG 2009 - Classificazione internazionale della spesa pubblica per funzione (Cofog) secondo il Sistema dei Conti Europei SEC9</dct:description>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.ttl"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.ttl"/>
     <dct:title xml:lang="it">Distribuzione RDF/Turtle classificazione COFOG 2009</dct:title>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"/>
   </rdf:Description>
@@ -2046,13 +2046,13 @@
     <clvapit:hasRankOrder>2</clvapit:hasRankOrder>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/Cofog2009-JSONLD">
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
     <dct:title xml:lang="it">Distribuzione JSON_LD classificazione COFOG 2009</dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
     <dct:description xml:lang="it">Questa è la distribuzione JSON_LD del dataset Linked Open Data della classificazione ufficiale COFOG 2009 - Classificazione internazionale della spesa pubblica per funzione (Cofog) secondo il Sistema dei Conti Europei SEC9</dct:description>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.jsonld"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.jsonld"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/074">
     <skos:broader rdf:resource="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/07"/>
@@ -2423,10 +2423,10 @@
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:title xml:lang="it">Distribuzione CSV classificazione COFOG 2009</dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.csv"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.csv"/>
     <dct:description xml:lang="it">Questa è la distribuzione CSV del dataset Linked Open Data della classificazione ufficiale COFOG 2009 - Classificazione internazionale della spesa pubblica per funzione (Cofog) secondo il Sistema dei Conti Europei SEC9</dct:description>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/0474">
     <skos:broader rdf:resource="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/047"/>
@@ -2675,12 +2675,12 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/Cofog2009-PDF">
     <dct:description xml:lang="it">Questa è la distribuzione PDF del dataset Linked Open Data della classificazione ufficiale COFOG 2009 - Classificazione internazionale della spesa pubblica per funzione (Cofog) secondo il Sistema dei Conti Europei SEC9</dct:description>
-    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
+    <dcat:accessURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
     <dct:title xml:lang="it">Distribuzione PDF classificazione COFOG 2009</dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.pdf"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/cofog-2009/cofog-2009.pdf"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/0485">
     <skos:broader rdf:resource="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/cofog-2009/048"/>

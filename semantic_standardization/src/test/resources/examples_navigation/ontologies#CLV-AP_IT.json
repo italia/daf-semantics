@@ -1,6 +1,6 @@
 {
   "id" : "CLV-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IndirizziLuoghi/latest/CLV-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/IndirizziLuoghi/latest/CLV-AP_IT.ttl",
   "url" : "http://dati.gov.it/ontoclvapit",
   "prefix" : "clvapit",
   "namespace" : "http://dati.gov.it/onto/clvapit",
