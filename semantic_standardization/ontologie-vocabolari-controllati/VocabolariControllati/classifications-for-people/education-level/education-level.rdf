@@ -19,8 +19,8 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"/>
     <dct:title xml:lang="it">Distribuzione RDF/Turtle del vocabolario controllato sul grado di istruzione/titoli di studio delle persone</dct:title>
     <dct:title xml:lang="en">RDF/Turtle distribution of the education level controlled vocabulary</dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/education-level/education-level.ttl"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-people/education-level/education-level.ttl"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
     <dct:description xml:lang="en">This is the distribution in RDF/turtle of the Linked Open Dataset of the education level controlled vocabulary</dct:description>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sul grado di istruzione/titoli di studio delle persone</dct:description>
   </rdf:Description>
@@ -173,8 +173,8 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
     <dct:title xml:lang="it">Distribuzione CSV grado istruzione/titoli di studio delle persone</dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/education-level/education-level.csv"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-people/education-level/education-level.csv"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-people/education-level/ZZUSV">
     <cpvapit:educationLevelDesc xml:lang="it">Diploma di qualifica professionale di scuola secondaria di II grado di 2-3 anni (che non permette l’iscrizione all’Università)</cpvapit:educationLevelDesc>
@@ -195,11 +195,11 @@
     <dct:title xml:lang="en">RDF/XML distribution of the education level controlled vocabulary</dct:title>
     <dct:description xml:lang="en">This is the distribution in RDF/XML of the Linked Open Dataset of the education level controlled vocabulary</dct:description>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_XML"/>
     <dct:title xml:lang="it">Distribuzione RDF/XML del vocabolario controllato sul grado istruzione/titoli di studio delle persone</dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/education-level/education-level.rdf"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-people/education-level/education-level.rdf"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#narrower">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Property"/>
@@ -262,9 +262,9 @@
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/EducationLevel_JSON_LD">
     <dct:description xml:lang="it">Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sul grado di istruzione/titoli di studio delle persone</dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-people/education-level/education-level.jsonld"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-people/education-level/education-level.jsonld"/>
     <dct:title xml:lang="it">Distribuzione JSON_LD del vocabolario controllato sul grado istruzione/titoli di studio delle persone</dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
     <dct:title xml:lang="en">JSON_LD distribution of the education level controlled vocabulary</dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
@@ -291,8 +291,8 @@
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <dct:description xml:lang="it">Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sul grado di istruzione/titoli di studio delle persone</dct:description>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/classifications-for-people/education-level/education-level.xlsx"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-people/education-level"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/classifications-for-people/education-level/education-level.xlsx"/>
     <dct:title xml:lang="it">Distribuzione XLSX grado istruzione/titoli di studio delle persone</dct:title>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:title xml:lang="en">XLSX distribution of education level controlled vocabulary</dct:title>

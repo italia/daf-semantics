@@ -1,7 +1,7 @@
 [ {
   "id" : "Cultural-ON-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Cultural-ON/latest/Cultural-ON-AP_IT.ttl",
-  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Cultural-ON/latest/Cultural-ON-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Cultural-ON/latest/Cultural-ON-AP_IT.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Cultural-ON/latest/Cultural-ON-AP_IT.ttl",
   "prefix" : "culturalonapit",
   "namespace" : "http://dati.beniculturali.it/cis",
   "concepts" : [ "http://dati.gov.it/onto/l0/Topic", "http://dati.beniculturali.it/cis/OpeningHoursSpecification", "http://dati.gov.it/onto/l0/Description", "http://dati.beniculturali.it/cis/CulturalLandscapeAsset", "http://dati.beniculturali.it/cis/CulturalEvent", "http://dati.beniculturali.it/cis/CulturalHeritageObject", "http://dati.gov.it/onto/muapit/Value", "http://dati.beniculturali.it/roapit/Role", "http://dati.gov.it/onto/muapit/MeasurementUnit", "http://dati.beniculturali.it/cis/ArchaeologicalPark", "http://dati.beniculturali.it/cis/HolderOfArchive", "http://dati.beniculturali.it/cis/ArchaeologicalArea", "http://dati.beniculturali.it/cis/AccessCondition", "http://dati.beniculturali.it/cis/ImageObject", "http://dati.beniculturali.it/cis/Project", "http://www.w3.org/ns/adms#SemanticAsset", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.beniculturali.it/roapit/TimeIndexedRole", "http://dati.beniculturali.it/cis/GeographicalFeature", "http://dati.beniculturali.it/cis/AdmissionType", "http://dati.beniculturali.it/cis/Library", "http://dati.beniculturali.it/cis/Catalogue", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/clvapit#Address", "http://dati.gov.it/onto/smapit/WebSite", "http://dati.beniculturali.it/cis/MonumentalArea", "http://dati.beniculturali.it/cis/Site", "http://dati.beniculturali.it/cis/CreativeWork", "http://dati.gov.it/onto/potapit/Ticket", "http://dati.beniculturali.it/cis/VideoObject", "http://dati.beniculturali.it/cis/CISType", "http://dati.beniculturali.it/cis/CollectionOfCulturalEntities", "http://dati.gov.it/onto/cpevapit#PublicEvent", "http://dati.gov.it/onto/clvapit#SpatialObject", "http://dati.gov.it/onto/poiapit#PointOfInterest", "http://dati.gov.it/onto/smapit/OnlineContactPoint", "http://dati.gov.it/onto/covapit#Organization", "http://dati.beniculturali.it/cis/ClericalAdministrativeArea", "http://dati.beniculturali.it/cis/Service", "http://dati.beniculturali.it/cis/Cinema", "http://dati.gov.it/onto/clvapit#Feature", "http://dati.beniculturali.it/cis/TemporaryClosureType", "http://dati.beniculturali.it/cis/Museum", "http://dati.beniculturali.it/cis/Booking", "http://dati.beniculturali.it/cis/NewsArticle", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Activity", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/clvapit#Geometry", "http://dati.beniculturali.it/cis/CulturalEntity", "http://dati.gov.it/onto/l0/Object", "http://dati.beniculturali.it/cis/Equipment", "http://dati.gov.it/onto/l0/Collection", "http://dati.beniculturali.it/cis/CultReseachCenter", "http://dati.beniculturali.it/cis/Theatre", "http://dati.beniculturali.it/cis/GovernamentalAdministrativeArea", "http://dati.beniculturali.it/cis/AudioObject", "http://dati.beniculturali.it/cis/Attribute", "http://dati.beniculturali.it/cis/NameInTime", "http://dati.beniculturali.it/cis/SubjectDiscipline", "http://dati.beniculturali.it/cis/TemporaryClosure", "http://dati.beniculturali.it/cis/CulturalInstituteOrSite", "http://dati.beniculturali.it/cis/SiteDescription", "http://www.w3.org/2002/07/owl#Thing" ],
@@ -107,7 +107,7 @@
   } ]
 }, {
   "id" : "IoT-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/EventiIoT/latest/IoT-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/EventiIoT/latest/IoT-AP_IT.ttl",
   "url" : "http://dati.gov.it/onto/iotapit",
   "prefix" : "iotapit",
   "namespace" : "http://dati.gov.it/onto/iotapit",
@@ -199,7 +199,7 @@
   } ]
 }, {
   "id" : "CLV-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/IndirizziLuoghi/latest/CLV-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/IndirizziLuoghi/latest/CLV-AP_IT.ttl",
   "url" : "http://dati.gov.it/ontoclvapit",
   "prefix" : "clvapit",
   "namespace" : "http://dati.gov.it/onto/clvapit",
@@ -274,8 +274,8 @@
   } ]
 }, {
   "id" : "SM-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/InternetSocialMedia/latest/SM-AP_IT.ttl",
-  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/InternetSocialMedia/latest/SM-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/InternetSocialMedia/latest/SM-AP_IT.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/InternetSocialMedia/latest/SM-AP_IT.ttl",
   "prefix" : "smapit",
   "namespace" : "http://dati.gov.it/onto/smapit",
   "concepts" : [ "http://dati.gov.it/onto/smapit/TelephoneType", "http://dati.gov.it/onto/smapit/SocialMedia", "http://dati.gov.it/onto/smapit/UserAccount", "http://dati.gov.it/onto/smapit/WebSite", "http://dati.gov.it/onto/smapit/Image", "http://dati.gov.it/onto/smapit/OnlineContactPoint", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/smapit/Telephone", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/smapit/Email", "http://dati.gov.it/onto/smapit/Post", "http://dati.gov.it/onto/smapit/EmailType" ],
@@ -353,8 +353,8 @@
   } ]
 }, {
   "id" : "l0",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Livello0/latest/l0.ttl",
-  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Livello0/latest/l0.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Livello0/latest/l0.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Livello0/latest/l0.ttl",
   "prefix" : "l0",
   "namespace" : "http://dati.gov.it/onto/l0",
   "concepts" : [ "http://dati.gov.it/onto/l0/Topic", "http://dati.gov.it/onto/l0/Description", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/l0/Entity", "http://dati.gov.it/onto/l0/Location", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Activity", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/l0/System", "http://dati.gov.it/onto/l0/Collection" ],
@@ -399,7 +399,7 @@
   } ]
 }, {
   "id" : "COV-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Organizzazioni/latest/COV-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Organizzazioni/latest/COV-AP_IT.ttl",
   "url" : "http://dati.gov.it/ontocovapit",
   "prefix" : "covapit",
   "namespace" : "http://dati.gov.it/onto/covapit",
@@ -486,7 +486,7 @@
   } ]
 }, {
   "id" : "CPV-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Persone/latest/CPV-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Persone/latest/CPV-AP_IT.ttl",
   "url" : "http://dati.gov.it/onto/person",
   "prefix" : "cpvapit",
   "namespace" : "http://dati.gov.it/onto/cpvapit",
@@ -570,8 +570,8 @@
   } ]
 }, {
   "id" : "POT-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/PrezziOfferteBiglietti/latest/POT-AP_IT.ttl",
-  "url" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/PrezziOfferteBiglietti/latest/POT-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/PrezziOfferteBiglietti/latest/POT-AP_IT.ttl",
+  "url" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/PrezziOfferteBiglietti/latest/POT-AP_IT.ttl",
   "prefix" : "potapit",
   "namespace" : "http://dati.gov.it/onto/potapit",
   "concepts" : [ "http://dati.gov.it/onto/l0/Description", "http://dati.gov.it/onto/potapit/PriceSpecification", "http://dati.gov.it/onto/muapit/Value", "http://dati.gov.it/onto/potapit/Card", "http://dati.gov.it/onto/tiapit/TimeInterval", "http://dati.gov.it/onto/l0/Agent", "http://dati.gov.it/onto/potapit/Offer", "http://dati.gov.it/onto/potapit/Ticket", "http://dati.gov.it/onto/l0/Location", "http://dati.gov.it/onto/potapit/Validity", "http://dati.gov.it/onto/l0/Characteristic", "http://dati.gov.it/onto/l0/Event", "http://dati.gov.it/onto/l0/Object", "http://dati.gov.it/onto/potapit/UserType", "http://dati.gov.it/onto/potapit/Currency" ],
@@ -647,7 +647,7 @@
   } ]
 }, {
   "id" : "POI-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/PuntoDiInteresse/latest/POI-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/PuntoDiInteresse/latest/POI-AP_IT.ttl",
   "url" : "http://dati.gov.it/onto/poiapit",
   "prefix" : "poiapit",
   "namespace" : "http://dati.gov.it/onto/poiapit",
@@ -729,7 +729,7 @@
   } ]
 }, {
   "id" : "RO-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Ruoli/latest/RO-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Ruoli/latest/RO-AP_IT.ttl",
   "url" : "http://dati.gov.it/onto/roapit",
   "prefix" : "roapit",
   "namespace" : "http://dati.gov.it/onto/tiapit",
@@ -812,7 +812,7 @@
   } ]
 }, {
   "id" : "ACCO-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/StruttureRicettive/latest/ACCO-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/StruttureRicettive/latest/ACCO-AP_IT.ttl",
   "url" : "http://dati.gov.it/onto/accoapit",
   "prefix" : "accoapit",
   "namespace" : "http://dati.gov.it/onto/accoapit",
@@ -912,7 +912,7 @@
   } ]
 }, {
   "id" : "TI-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/Tempo/latest/TI-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/Tempo/latest/TI-AP_IT.ttl",
   "url" : "http://dati.gov.it/onto/tiapit",
   "prefix" : "tiapit",
   "namespace" : "http://dati.gov.it/onto/tiapit",
@@ -986,7 +986,7 @@
   } ]
 }, {
   "id" : "MU-AP_IT",
-  "source" : "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/UnitaDiMisura/latest/MU-AP_IT.ttl",
+  "source" : "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/UnitaDiMisura/latest/MU-AP_IT.ttl",
   "url" : "http://dati.gov.it/onto/muapit",
   "prefix" : "muapit",
   "namespace" : "http://dati.gov.it/onto/muapit",

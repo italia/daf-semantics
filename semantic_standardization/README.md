@@ -4,7 +4,7 @@ semantic_standardization
 
 This project is currently a POC exploring the standardization of terms used in a dataset, given a controlled vocabulary.
 
-For each vocabulary inside the [OntoPiA](https://github.com/italia/daf-ontologie-vocabolari-controllati/) network, a conventional tabular in-memory representation is produced. Those intermediate data are used as the base for  creating a CSV-like representation, as well as a set of metadata (see [metadata.semantics](https://daf-docs.readthedocs.io/en/latest/datamgmt/metacatalog.html#metadata.semantics)), useful to enrich the cells of the internal daf-datamodel. 
+For each vocabulary inside the [OntoPiA](https://github.com/italia/dati-semantic-assets/) network, a conventional tabular in-memory representation is produced. Those intermediate data are used as the base for  creating a CSV-like representation, as well as a set of metadata (see [metadata.semantics](https://daf-docs.readthedocs.io/en/latest/datamgmt/metacatalog.html#metadata.semantics)), useful to enrich the cells of the internal daf-datamodel. 
 
 
 ## endpoints descriptions

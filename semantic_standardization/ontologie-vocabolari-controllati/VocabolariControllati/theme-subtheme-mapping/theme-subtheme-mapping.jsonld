@@ -790,10 +790,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/mappingDTE_RDF_Turtle",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.ttl"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.ttl"
       },
       "dct:description": [
         {
@@ -1181,10 +1181,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/mappingDTE_JSON_LD",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.jsonld"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.jsonld"
       },
       "dct:description": [
         {
@@ -1593,10 +1593,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/mappingDTE_JSON",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.json"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.json"
       },
       "dct:description": [
         {
@@ -2515,10 +2515,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/mappingDTE_JSON",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.json"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.json"
       },
       "dct:description": [
         {
@@ -2730,10 +2730,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/mappingDTE_RDF_XML",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.rdf"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/theme-subtheme-mapping/theme-subtheme-mapping.rdf"
       },
       "dct:description": [
         {

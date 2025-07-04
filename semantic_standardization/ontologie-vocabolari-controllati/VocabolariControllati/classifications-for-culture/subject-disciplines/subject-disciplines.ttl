@@ -245,8 +245,8 @@ Ogni categoria individuata a partire dalla denominazione del MIUR dei settori sc
         dct:description	"Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sugli ambiti disciplinari"@it ;
         dct:format 	<http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
         dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.ttl> ;
-        dcat:accessURL 	<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines> .
+        dcat:downloadURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.ttl> ;
+        dcat:accessURL 	<https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines> .
 
 <http://dati.gov.it/data/resource/Distribution/subject-discipline-RDF-XML>
         a	dcatapit:Distribution  ;
@@ -254,8 +254,8 @@ Ogni categoria individuata a partire dalla denominazione del MIUR dei settori sc
         dct:description	"Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sugli ambiti disciplinari"@it ;
         dct:format 	<http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
         dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.rdf> ;
-        dcat:accessURL 	<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines> .
+        dcat:downloadURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.rdf> ;
+        dcat:accessURL 	<https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines> .
 
 <http://dati.gov.it/data/resource/Distribution/subject-discipline-JSON-LD>
         a	dcatapit:Distribution  ;
@@ -263,8 +263,8 @@ Ogni categoria individuata a partire dalla denominazione del MIUR dei settori sc
         dct:description	"Questa è la distribuzione JSON-LD del dataset Linked Open Data del vocabolario controllato sugli ambiti disciplinari"@it ;
         dct:format 	<http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
         dct:license <https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
-        dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.jsonld> ;
-        dcat:accessURL 	<https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines> .
+        dcat:downloadURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.jsonld> ;
+        dcat:accessURL 	<https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines> .
 
 
 #Definition of the controlled vocabulary

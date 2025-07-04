@@ -5773,10 +5773,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/subject-discipline-RDF-XML",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.rdf"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.rdf"
       },
       "dct:description": {
         "@language": "it",
@@ -6406,10 +6406,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/subject-discipline-RDF-Turtle",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.ttl"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.ttl"
       },
       "dct:description": {
         "@language": "it",
@@ -9317,10 +9317,10 @@
       "@id": "http://dati.gov.it/data/resource/Distribution/subject-discipline-JSON-LD",
       "@type": "dcatapit:Distribution",
       "dcat:accessURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines"
       },
       "dcat:downloadURL": {
-        "@id": "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.jsonld"
+        "@id": "https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-culture/subject-disciplines/subject-disciplines.jsonld"
       },
       "dct:description": {
         "@language": "it",

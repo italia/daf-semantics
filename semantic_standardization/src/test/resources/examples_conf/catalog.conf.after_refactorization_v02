@@ -10,7 +10,7 @@ http {
 catalog {
 	use_cache: true
 	path_local: "./ontologie-vocabolari-controllati"
-	path_remote: "https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master"
+	path_remote: "https://raw.githubusercontent.com/italia/dati-semantic-assets/master"
 }
 
 ontologies { 

@@ -1476,8 +1476,8 @@ N.B. A semantic asset can have more than one evaluations."""@en ;
                                                                  dct:license <http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
                                                                  dct:title "Distribuzione JSON-LD ontologia ADMS-AP_IT"@it ,
                                                                            "JSON-LD distribution of ADMS-AP_IT Ontology"@en ;
-                                                                 dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest> ;
-                                                                 dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest/ADMS-AP_IT.jsonld> .
+                                                                 dcat:accessURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/ADMS/latest> ;
+                                                                 dcat:downloadURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/ADMS/latest/ADMS-AP_IT.jsonld> .
 
 
 ###  http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-TURTLE
@@ -1489,8 +1489,8 @@ N.B. A semantic asset can have more than one evaluations."""@en ;
                                                                     dct:license <http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
                                                                     dct:title "Distribuzione RDF/Turtle ontologia ADMS-AP_IT"@it ,
                                                                               "RDF/Turtle distribution of ADMS-AP_IT Ontology"@en ;
-                                                                    dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest> ;
-                                                                    dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest/ADMS-AP_IT.ttl> .
+                                                                    dcat:accessURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/ADMS/latest> ;
+                                                                    dcat:downloadURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/ADMS/latest/ADMS-AP_IT.ttl> .
 
 
 ###  http://dati.gov.it/data/resource/Distribution/ADMSAPIT-RDF-XML
@@ -1502,8 +1502,8 @@ N.B. A semantic asset can have more than one evaluations."""@en ;
                                                                  dct:license <http://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40> ;
                                                                  dct:title "Distribuzione RDF/XML ontologia ADMS-AP_IT"@it ,
                                                                            "RDF/XML distribution of ADMS-AP_IT Ontology"@en ;
-                                                                 dcat:accessURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest> ;
-                                                                 dcat:downloadURL <https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/Ontologie/ADMS/latest/ADMS-AP_IT.rdf> .
+                                                                 dcat:accessURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/ADMS/latest> ;
+                                                                 dcat:downloadURL <https://raw.githubusercontent.com/italia/dati-semantic-assets/master/Ontologie/ADMS/latest/ADMS-AP_IT.rdf> .
 
 
 ###  http://dati.gov.it/data/resource/project/DAF
