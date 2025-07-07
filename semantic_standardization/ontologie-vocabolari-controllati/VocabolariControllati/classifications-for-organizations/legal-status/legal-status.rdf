@@ -137,15 +137,15 @@
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:description xml:lang="en">This is the distribution in JSON_LD of the Linked Open Dataset of ISTAT's official classification on the organizations' legal status</dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.jsonld"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.jsonld"/>
     <dct:description xml:lang="it">Questa è la distribuzione JSON_LD del dataset Linked Open Data della classificazione ufficiale ISTAT delle forme giuridiche per le organizzazioni</dct:description>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
     <dct:title xml:lang="en">JSON_LD distribution of legal status classification</dct:title>
     <dct:title xml:lang="it">Distribuzione JSON_LD classificazione forme giuridiche</dct:title>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/OrgLegalStatus_XLSX">
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
     <dct:title xml:lang="it">Distribuzione XLSX classificazione forme giuridiche</dct:title>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <dct:description xml:lang="it">Questa è la distribuzione XLSX del dataset Linked Open Data della classificazione ufficiale ISTAT delle forme giuridiche per le organizzazioni</dct:description>
@@ -153,7 +153,7 @@
     <dct:description xml:lang="en">This is the distribution in XLSX of the Linked Open Dataset of ISTAT's official classification on the organizations' legal status</dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:title xml:lang="en">XLSX distribution of legal status classification</dct:title>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/raw/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/raw/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.xlsx"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status/1810">
     <skos:prefLabel xml:lang="it">Associazione non riconosciuta</skos:prefLabel>
@@ -729,8 +729,8 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_XML"/>
     <dct:title xml:lang="it">Distribuzione RDF/XML classificazione forme giuridiche</dct:title>
     <dct:title xml:lang="en">RDF/XML distribution of legal status classification</dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.rdf"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.rdf"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
     <dct:description xml:lang="en">This is the distribution in RDF/XML of the Linked Open Dataset of ISTAT's official classification on the organizations' legal status</dct:description>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/XML del dataset Linked Open Data della classificazione ufficiale ISTAT delle forme giuridiche per le organizzazioni</dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
@@ -1159,10 +1159,10 @@
     <dct:description xml:lang="en">This is the distribution in CSV of the Linked Open Dataset of ISTAT's official classification on the organizations' legal status</dct:description>
     <dct:title xml:lang="en">CSV distribution of legal status classification</dct:title>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.csv"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.csv"/>
     <dct:title xml:lang="it">Distribuzione CSV classificazione forme giuridiche</dct:title>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:description xml:lang="it">Questa è la distribuzione CSV del dataset Linked Open Data della classificazione ufficiale ISTAT delle forme giuridiche per le organizzazioni</dct:description>
   </rdf:Description>
@@ -1327,9 +1327,9 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"/>
     <dct:description xml:lang="en">This is the distribution in RDF/turtle of the Linked Open Dataset of ISTAT's official classification on the organizations' legal status</dct:description>
     <dct:title xml:lang="en">RDF/Turtle distribution of legal status classification</dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-organizations/legal-status"/>
     <dct:title xml:lang="it">Distribuzione RDF/Turtle classificazione forme giuridiche</dct:title>
-    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/daf-ontologie-vocabolari-controllati/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.ttl"/>
+    <dcat:downloadURL rdf:resource="https://raw.githubusercontent.com/italia/dati-semantic-assets/master/VocabolariControllati/classifications-for-organizations/legal-status/legal-status.ttl"/>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/Turtle del dataset Linked Open Data della classificazione ufficiale ISTAT delle forme giuridiche per le organizzazioni</dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>

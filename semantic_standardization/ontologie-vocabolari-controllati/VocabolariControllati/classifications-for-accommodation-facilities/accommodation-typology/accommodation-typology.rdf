@@ -893,9 +893,9 @@
     <dct:license rdf:resource="http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"/>
     <dct:description xml:lang="it">Questa è la distribuzione RDF/XML del dataset Linked Open Data del vocabolario controllato sulla classificazione delle tipologie di strutture ricettive</dct:description>
     <dct:title xml:lang="en">RDF/XML distribution for accommodation facilities typology</dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
     <dct:title xml:lang="it">Distribuzione RDF/XML per classificazione tipologie strutture ricettive </dct:title>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.rdf"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.rdf"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:description xml:lang="en">This is the distribution in RDF/XML of the Linked Open Dataset of the controlled vocabulary related to the typology classification for accommodation facilities</dct:description>
   </rdf:Description>
@@ -903,12 +903,12 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Property"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/AccoTypology_XLSX">
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.xlsx"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.xlsx"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:license rdf:resource="http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"/>
     <dct:description xml:lang="en">This is the distribution in XLSX of the Linked Open Dataset of the controlled vocabulary related to the typology classification for accommodation facilities</dct:description>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
     <dct:title xml:lang="it">Distribuzione XLSX per classificazione tipologie strutture ricettive </dct:title>
     <dct:title xml:lang="en">XLSX distribution for accommodation facilities typology</dct:title>
     <dct:description xml:lang="it">Questa è la distribuzione XLSX del dataset Linked Open Data del vocabolario controllato sulla classificazione delle tipologie di strutture ricettive</dct:description>
@@ -1429,13 +1429,13 @@
   <rdf:Description rdf:about="http://dati.gov.it/data/resource/Distribution/AccoTypology_RDF_Turtle">
     <dct:description xml:lang="it">Questa è la distribuzione RDF/Turtle del dataset Linked Open Data del vocabolario controllato sulla classificazione delle tipologie di strutture ricettive</dct:description>
     <dct:title xml:lang="it">Distribuzione RDF/Turtle per classificazione tipologie strutture ricettive </dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
     <dct:description xml:lang="en">This is the distribution in RDF/turtle of the Linked Open Dataset of the controlled vocabulary related to the typology classification for accommodation facilities</dct:description>
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:title xml:lang="en">RDF/Turtle distribution for accommodation facilities typology</dct:title>
     <dct:license rdf:resource="https://w3id.org/italia/controlled-vocabulary/licences/A21_CCBY40"/>
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"/>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.ttl"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.ttl"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-accommodation-facilities/accommodation-typology/A611">
     <skos:relatedMatch rdf:resource="http://schema.org/Hotel"/>
@@ -1526,10 +1526,10 @@
     <rdf:type rdf:resource="http://dati.gov.it/onto/dcatapit#Distribution"/>
     <dct:license rdf:resource="http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"/>
     <dct:title xml:lang="it">Distribuzione CSV per classificazione tipologie strutture ricettive </dct:title>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
     <dct:title xml:lang="en">CSV distribution for accommodation facilities typology</dct:title>
     <dct:description xml:lang="en">This is the distribution in CSV of the Linked Open Dataset of the controlled vocabulary related to the typology classification for accommodation facilities</dct:description>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.csv"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.csv"/>
     <dct:description xml:lang="it">Questa è la distribuzione CSV del dataset Linked Open Data del vocabolario controllato sulla classificazione delle tipologie di strutture ricettive</dct:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#notation">
@@ -1687,8 +1687,8 @@
     <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON_LD"/>
     <dct:description xml:lang="it">Questa è la distribuzione JSON_LD del dataset Linked Open Data del vocabolario controllato sulla classificazione delle tipologie di strutture ricettive</dct:description>
     <dct:license rdf:resource="http://dati.gov.it/onto/controlledvocabulary/License/A21_CCBY40"/>
-    <dcat:downloadURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.jsonld"/>
-    <dcat:accessURL rdf:resource="https://github.com/italia/daf-ontologie-vocabolari-controllati/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
+    <dcat:downloadURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology/accommodation-typology.jsonld"/>
+    <dcat:accessURL rdf:resource="https://github.com/italia/dati-semantic-assets/tree/master/VocabolariControllati/classifications-for-accommodation-facilities/accommodation-typology"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/italia/controlled-vocabulary/classifications-for-accommodation-facilities/accommodation-typology/B143">
     <skos:altLabel xml:lang="it">Centri di vacanza per minore</skos:altLabel>
